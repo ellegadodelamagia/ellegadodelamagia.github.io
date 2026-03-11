@@ -33,32 +33,18 @@ body {
   color: var(--text);
   overflow-x: hidden;
   cursor: default;
-  -webkit-overflow-scrolling: touch;
-  touch-action: manipulation;
 }
 
-/* ── SIN TEXTURA ── */
-/* ── iOS TOUCH FIXES ── */
-a, button, .filter-btn, .book-card, .char-card, .gallery-item, .stat {
-  -webkit-tap-highlight-color: rgba(201,168,76,0.2);
-  touch-action: manipulation;
-  cursor: pointer;
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none !important;
+  z-index: 0;
+  opacity: 0.4;
 }
-html {
-  -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-a, button, .filter-btn {
-  -webkit-tap-highlight-color: rgba(201,168,76,0.2);
-}
-#map {
-  touch-action: pan-x pan-y;
-}
-
 
 /* ── NAV ── */
 nav {
@@ -902,13 +888,8 @@ footer {
 }
 
 /* ── RESPONSIVE ── */
-
 @media (max-width: 768px) {
-  nav { 
-    padding: 16px 24px; 
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
+  nav { padding: 16px 24px; }
   .nav-links { gap: 20px; }
   section { padding: 70px 24px; }
   .saga-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -916,36 +897,17 @@ footer {
   .gallery-item:first-child { grid-column: span 2; }
   footer { padding: 40px 24px; }
   .social-links { flex-direction: column; gap: 16px; }
-  .btn-ghost { margin-left: 0; margin-top: 12px; }
-  .hero { padding: 100px 24px 80px; }
-  .books-grid { grid-template-columns: 1fr 1fr; }
-  .map-iframe-wrapper { height: 450px !important; }
 }
-
 
 /* ── MAPA INTERACTIVO ── */
 
-  :root {
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
-    --gold-dim: #7a6030;
-    --purple: #9b6dff;
-    --purple-dim: #5a3f99;
-    --red: #e05555;
-    --bg-deep: #0f1520;
-    --bg-panel: #162035;
-    --bg-card: #1a2640;
-    --border: rgba(201,168,76,0.35);
-    --text: #e8dfc0;
-    --text-dim: #9a8f78;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: "EB Garamond", Georgia, serif; background: var(--bg-deep); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+  .mapa-inner header { background: linear-gradient(180deg, #0d1828 0%, #162035 100%); border-bottom: 1px solid rgba(201,168,76,0.35); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; position: relative; z-index: 1000; }
+  .mapa-inner .header-title h1 { font-family: "Cinzel Decorative", serif; font-size: 13px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; line-height: 1; }
+  .mapa-inner .header-title p { font-family: "Cinzel", serif; font-size: 10px; color: var(--text-dim); letter-spacing: 4px; margin-top: 4px; }
+  .mapa-inner .header-ornament { color: var(--gold-dim); font-size: 18px; opacity: 0.6; }
 
-  header { background: linear-gradient(180deg, #0d1828 0%, var(--bg-panel) 100%); border-bottom: 1px solid var(--border); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; position: relative; z-index: 1000; }
-  .header-title h1 { font-family: "Cinzel Decorative", serif; font-size: 13px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; line-height: 1; }
-  .header-title p { font-family: "Cinzel", serif; font-size: 10px; color: var(--text-dim); letter-spacing: 4px; margin-top: 4px; }
-  .header-ornament { color: var(--gold-dim); font-size: 18px; opacity: 0.6; }
+  /* Variables del mapa (purple y red no están en el :root global) */
+  :root { --purple: #9b6dff; --purple-dim: #5a3f99; --red: #e05555; --bg-panel: #162035; --bg-card: #1a2640; }
 
   .filters { background: var(--bg-panel); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex-shrink: 0; position: relative; z-index: 1000; }
   .filter-label { font-family: "Cinzel", serif; font-size: 9px; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; margin-right: 4px; }

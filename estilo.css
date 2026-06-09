@@ -1,0 +1,80 @@
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dark: #8b6914;
+  --dark: #0a0805;
+  --dark-mid: #13100a;
+  --dark-panel: #1a1510;
+  --dark-card: #201a12;
+  --text: #e8dcc8;
+  --text-muted: #a08a68;
+  --silver: #b0b8c8;
+}
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 3rem;
+  background: linear-gradient(to bottom, rgba(10,8,5,0.95) 0%, transparent 100%);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+
+.nav-logo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1rem; color: var(--gold);
+  letter-spacing: 0.1em; text-decoration: none;
+}
+
+.nav-links { 
+  display: flex; 
+  gap: 2.5rem; 
+  list-style: none; 
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif; font-size: 0.75rem;
+  letter-spacing: 0.2em; color: var(--text-muted);
+  text-decoration: none; text-transform: uppercase; transition: color 0.3s;
+}
+
+.nav-links a:hover { 
+  color: var(--gold); 
+}
+
+/* HERO */
+#hero {
+  position: relative; height: 100vh; min-height: 700px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; 
+  inset: 0;
+  /* Recuerda que si metes tu imagen en la carpeta 'img', aquí la llamarías así: */
+  /* background-image: url('../img/tu-imagen-background.jpg'); */
+  background-size: cover;
+  background-position: center;
+}

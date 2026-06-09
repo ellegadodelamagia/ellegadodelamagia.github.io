@@ -1,0 +1,62 @@
+/* =========================================================================
+   🎨 PALETA DE COLORES MÍSTICOS (Variables Globales)
+   ========================================================================= */
+:root {
+    --ink: #100d09;           /* Fondo principal (Tinta oscura) */
+    --ink2: #1a1510;          /* Fondo secundario (Barra lateral) */
+    --gold: #c8a84b;          /* Oro brillante para títulos y elementos activos */
+    --gold-dim: #9a8550;      /* Oro viejo/atenuado para textos secundarios */
+    --parch: #f0e6cc;         /* Pergamino claro para la tarjeta flotante */
+    --sidebar-w: 240px;       /* Ancho de la barra lateral */
+  
+    /* Hilos de Magia por Región */
+    --c-Mexico: #5a9e72;
+    --c-Canada: #5a8fb5;
+    --c-magico: #9060c0;
+    --c-ReinoUnido: #4a7aaa;
+    --c-Dimension: #b04040;
+    --c-Vaticano: #ce14d4;
+    --c-Francia: #c08840;
+    --c-Suiza: #50a080;
+    --c-Italia: #c05838;
+
+    /* Hilos de Magia por Tipo */
+    --c-default: #0633c7;       /* Azul oscuro para registros Padre */
+    --c-ancestral: #646464;     /* Gris ancestral */
+    --c-celestial: #f3f6f8;     /* Blanco celestial */
+    --c-communia: #1684f1;      /* Azul Communia */
+    --c-contemporanea: #dad74d; /* Amarillo contemporánea */
+    --c-oscura: #00070e;        /* Negro para magia oscura */
+    --c-residual: #db2130;      /* Rojo residual */
+    --c-todas: #6bdb21;         /* Verde absoluto */
+}  
+
+/* Reset básico para evitar márgenes extraños */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+/* Configuración del lienzo general */
+html, body { 
+    height: 100%; 
+    font-family: 'Cormorant Garamond', Georgia, serif; 
+    background: var(--ink); 
+}
+
+/* Complementos adicionales */
+.pop-img {
+    width: 100%;
+    max-height: 130px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #1a1208;
+    margin: 6px 0;
+}
+
+.tarjeta-personaje {
+    background-color: #1a1510;
+    border-left: 3px solid var(--gold);
+    padding: 15px;
+}

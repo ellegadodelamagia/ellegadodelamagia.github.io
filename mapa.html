@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>El Despertar de la Magia — Mapa</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?
+        family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&
+        family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&
+        family=Uncial+Antiqua&
+        family=Philosopher:ital,wght@0,400;0,700;1,400&
+        family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&
+        
+        display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
+    <link rel="stylesheet" href="css/globales.css">
+    <link rel="stylesheet" href="css/mapa.css">
+</head>
+
+
+<body>
+<div id="app">
+  <div id="topbar">
+    <div class="eyebrow">El Legado de la Magia &nbsp;·&nbsp; Libro I</div>
+    <h1>El Despertar de la Magia</h1>
+    <div class="tagline">Recorrido de Kaira Ferrer</div>
+    
+    <div id="sidebar-parents"></div> 
+</div>
+  <div id="body">
+    <div id="sidebar">
+      <div id="sidebar-title">
+        <span>Ubicaciones &nbsp;·&nbsp; Orden de viaje</span>
+        <button id="mob-close-btn">✕</button>
+      </div>
+      <div id="sidebar-parents" class="filters-container"></div>
+      <div id="sidebar-list"></div>
+    </div>
+    <div id="map"></div>
+    <div id="detail">
+      <button id="det-close">✕</button>
+      <div id="det-img-wrap">
+        <div id="det-img-placeholder">Sin imagen asignada</div>
+        <img id="det-img" src="" alt="" style="display:none"/>
+      </div>
+      <div id="det-head">
+        <div id="det-cap">PARADA</div>
+        <div id="det-name">Selecciona un lugar</div>
+        <div id="det-loc">Ubicación</div>
+        <div id="det-badge" style="background:var(--gold); color:#fff;">TIPO</div>
+      </div>
+      <div id="det-body">
+        <div id="det-desc">Haz clic en un marcador o en la lista lateral para desplegar los secretos de este escenario.</div>
+        <div id="det-subs-title" style="display:none">Lugares en esta parada</div>
+        <div id="det-subs"></div>
+      </div>
+    </div>
+    <button id="sidebar-fab">☰</button>
+  </div>
+</div>
+
+<div id="lightbox" onclick="document.getElementById('lightbox').classList.remove('open')">
+  <img id="lb-img" src="" alt=""/>
+  <div id="lb-caption"></div>
+  <button id="lb-close">✕</button>
+</div>
+
+<div id="lightbox">
+  <img id="lb-img" src="" alt=""/>
+  <div id="lb-caption"></div>
+  <button id="lb-close">✕</button>
+</div>
+
+<script src="js/lugares.js"></script>
+<script src="js/mapa.js"></script>
+
+</body>
+</html>

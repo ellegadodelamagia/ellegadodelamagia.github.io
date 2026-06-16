@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- PERSONALIZABLE: cambia el título de la pestaña -->
+    <title>Recetas — El Legado de la Magia</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/globales.css">
+    <link rel="stylesheet" href="css/recetas.css">
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════════════════════
+         ENCABEZADO
+         PERSONALIZABLE: cambia "Comidas del recorrido" cuando
+         decidas el nombre definitivo de la sección.
+    ═══════════════════════════════════════════════════════════ -->
+    <header class="recetas-header">
+        <p class="saga-label">El Legado de la Magia &nbsp;·&nbsp; Libro I</p>
+        <h1>El Despertar de la Magia</h1>
+        <p class="libro-label">Recetario de Daniella basado en el recorrido de Kaira</p>
+    </header>
+
+
+    <!-- ══════════════════════════════════════════════════════
+         FILTROS
+         PERSONALIZABLE:
+         - Agrega Libro II cuando corresponda:
+           <button data-valor="2" onclick="filtrarLibro('2')">Libro II</button>
+         - Si agregas un tipo nuevo, ponlo aquí también.
+    ═══════════════════════════════════════════════════════════ -->
+    <nav class="filtros-wrap">
+
+        <!-- Fila 1: por Libro -->
+        <div class="filtros-grupo" id="filtros-libro">
+            <span class="grupo-label">Libro</span>
+            <button data-valor="todos" onclick="filtrarLibro('todos')">Todos</button>
+            <button data-valor="1"     onclick="filtrarLibro('1')">Libro I</button>
+        </div>
+
+        <div class="filtros-separador"></div>
+
+        <!-- Fila 2: por Tipo -->
+        <div class="filtros-grupo" id="filtros-tipo">
+            <span class="grupo-label">Tipo</span>
+            <button data-valor="todos"               onclick="filtrarTipo('todos')">Todos</button>
+            <button data-valor="Desayuno"            onclick="filtrarTipo('Desayuno')">Desayuno</button>
+            <button data-valor="Plato principal"     onclick="filtrarTipo('Plato principal')">Plato principal</button>
+            <button data-valor="Bocadillo"           onclick="filtrarTipo('Bocadillo')">Bocadillo</button>
+            <button data-valor="Pan"                 onclick="filtrarTipo('Pan')">Pan</button>
+            <button data-valor="Postre"              onclick="filtrarTipo('Postre')">Postre</button>
+            <button data-valor="Bebida"              onclick="filtrarTipo('Bebida')">Bebida</button>
+            <button data-valor="Acompañamiento"      onclick="filtrarTipo('Acompañamiento')">Acompañamiento</button>
+            <button data-valor="Tabla de bocadillos" onclick="filtrarTipo('Tabla de bocadillos')">Tabla de bocadillos</button>
+        </div>
+
+    </nav>
+
+
+    <!-- ══════════════════════════════════════════════════════
+         GRID — el motor lo llena automáticamente
+    ═══════════════════════════════════════════════════════════ -->
+    <main id="grid-recetas" class="grid-recetas"></main>
+
+
+    <!-- Scripts: datos primero, motor después -->
+    <script src="js/datos_recetas.js"></script>
+    <script src="js/motor_recetas.js"></script>
+
+</body>
+</html>

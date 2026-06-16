@@ -1,0 +1,551 @@
+/* ============================================================
+   RECETAS.CSS — El Legado de la Magia
+   Complementa globales.css. No repite variables ni resets.
+   ============================================================ */
+
+
+/* ── ENCABEZADO ────────────────────────────────────────────
+   Mismo estilo que el mapa.
+   PERSONALIZABLE: cambia el subtítulo en el HTML cuando
+   decidas el nombre definitivo de la sección.
+   ────────────────────────────────────────────────────────── */
+.recetas-header {
+    text-align: center;
+    padding: 48px 40px 32px;
+    border-bottom: 1px solid rgba(200, 168, 75, 0.2);
+}
+
+.recetas-header .saga-label {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.recetas-header h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}
+
+.recetas-header .libro-label {
+    font-size: 15px;
+    color: var(--gold-dim);
+    letter-spacing: 0.1em;
+}
+
+
+/* ── BARRA DE FILTROS ──────────────────────────────────────
+   Dos filas: Libro y Tipo.
+   PERSONALIZABLE: agrega más filas si necesitas más filtros.
+   ────────────────────────────────────────────────────────── */
+.filtros-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 40px 16px;
+}
+
+.filtros-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+}
+
+.filtros-grupo .grupo-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-right: 4px;
+}
+
+.filtros-grupo button {
+    background: transparent;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold-dim);
+    padding: 6px 18px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.filtros-grupo button:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.filtros-grupo button.activo {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.filtros-separador {
+    width: 1px;
+    height: 24px;
+    background: rgba(200, 168, 75, 0.25);
+    align-self: center;
+    margin: 0 8px;
+}
+
+
+/* ── GRID DE TARJETAS ──────────────────────────────────────
+   PERSONALIZABLE: cambia minmax(260px) para tarjetas más anchas.
+   ────────────────────────────────────────────────────────── */
+.grid-recetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+    padding: 32px 40px 60px;
+    align-items: start;
+}
+
+
+/* ── TARJETA ITEM ──────────────────────────────────────────
+   Al abrirse ocupa todo el ancho del grid.
+   ────────────────────────────────────────────────────────── */
+.tarjeta-item {
+    position: relative;
+    transition: all 0.35s ease;
+}
+
+.tarjeta-item.abierta {
+    grid-column: 1 / -1;
+}
+
+
+/* ── FRENTE DE TARJETA ─────────────────────────────────────
+   ────────────────────────────────────────────────────────── */
+.tarjeta-frente {
+    background: #1a1208;
+    border: 1px solid rgba(200, 168, 75, 0.35);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.tarjeta-frente:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+}
+
+.tarjeta-item.abierta .tarjeta-frente {
+    display: none;
+}
+
+.tarjeta-imagen {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.placeholder-imagen {
+    width: 100%;
+    height: 200px;
+    background: #1a1208;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--gold-dim);
+}
+
+.tarjeta-info-basica {
+    padding: 14px 16px;
+}
+
+.tarjeta-nombre {
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.tarjeta-autor {
+    font-size: 12px;
+    color: var(--gold-dim);
+    letter-spacing: 0.05em;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+/* Badge de dificultad en el frente */
+.badge-dificultad {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 2px 10px;
+    border-radius: 2px;
+    border: 1px solid currentColor;
+    /* PERSONALIZABLE: ajusta colores por dificultad abajo */
+}
+
+.dif-fácil      { color: #5a9e72; }
+.dif-intermedia { color: var(--gold-dim); }
+.dif-avanzada   { color: #c05838; }
+
+
+/* ── PANEL EXPANDIDO ───────────────────────────────────────
+   Dos columnas: imagen izquierda, detalle derecha.
+   ────────────────────────────────────────────────────────── */
+.tarjeta-expandida {
+    display: none;
+    position: relative;
+    background: #1a1208;
+    border: 1px solid rgba(200, 168, 75, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.tarjeta-expandida.visible {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    /* PERSONALIZABLE: cambia 340px para imagen más ancha o angosta */
+}
+
+/* Columna izquierda */
+.expandida-imagen-wrap {
+    background: #100d09;
+}
+
+.expandida-imagen-wrap .tarjeta-imagen,
+.expandida-imagen-wrap .placeholder-imagen {
+    height: 100%;
+    min-height: 320px;
+    /* PERSONALIZABLE: ajusta min-height para imagen más alta o baja */
+}
+
+/* Columna derecha */
+.expandida-detalle {
+    padding: 32px 36px;
+    overflow-y: auto;
+}
+
+.expandida-nombre {
+    font-size: 1.9rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: 0.03em;
+}
+
+.expandida-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(200, 168, 75, 0.2);
+}
+
+.meta-linea {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+}
+
+.meta-etiqueta {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    min-width: 110px;
+    /* PERSONALIZABLE: ajusta min-width si las etiquetas se desalinean */
+}
+
+.meta-valor {
+    font-size: 15px;
+    color: var(--parch);
+}
+
+/* Nota narrativa del libro */
+.expandida-nota {
+    background: rgba(200, 168, 75, 0.06);
+    border-left: 2px solid var(--gold-dim);
+    padding: 14px 18px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 24px;
+}
+
+.nota-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 6px !important;
+}
+
+.expandida-nota p {
+    font-size: 14px;
+    color: var(--gold-dim);
+    font-style: italic;
+    line-height: 1.7;
+    margin: 0;
+}
+
+
+/* ── BOTÓN VER RECETA ──────────────────────────────────────
+   PERSONALIZABLE: cambia el texto en motor_recetas.js
+   ────────────────────────────────────────────────────────── */
+.btn-voltear {
+    display: block;
+    margin-top: 24px;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--ink);
+    padding: 10px 24px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: 700;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-voltear:hover {
+    background: var(--gold-dim);
+    border-color: var(--gold-dim);
+}
+
+
+/* ── DORSO: RECETA NORMAL ──────────────────────────────────
+   ────────────────────────────────────────────────────────── */
+.tarjeta-dorso {
+    display: none;
+    padding: 36px 48px;
+}
+
+.tarjeta-dorso h3 {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+/* Layout de dos columnas: ingredientes | preparación */
+.dorso-contenido {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 8px;
+    align-items: start;
+}
+
+/* Ingredientes en lista simple sin recuadros */
+.lista-ingredientes {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 8px;
+}
+
+.lista-ingredientes li {
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(200, 168, 75, 0.15);
+    border-radius: 0;
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--parch);
+}
+
+.preparacion {
+    font-size: 15px;
+    color: var(--parch);
+    line-height: 1.8;
+
+.dorso-preparacion {
+    background: rgba(200, 168, 75, 0.05);
+    border: 1px solid rgba(200, 168, 75, 0.2);
+    border-radius: 4px;
+    padding: 20px 24px;
+}    
+}
+
+/* Notas de cocina: debajo de todo, ancho completo */
+.dorso-notas {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(200, 168, 75, 0.2);
+}
+
+.dorso-notas h3 {
+    margin-top: 0;
+}
+
+.dorso-notas p {
+    font-size: 14px;
+    color: var(--gold-dim);
+    font-style: italic;
+    line-height: 1.7;
+}
+
+
+/* ── DORSO: TABLA DE BOCADILLOS (pestañas) ─────────────────
+   ────────────────────────────────────────────────────────── */
+.pestanas-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(200, 168, 75, 0.2);
+}
+
+.pestana {
+    background: transparent;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold-dim);
+    padding: 6px 16px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.pestana:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.pestana.pestana-activa {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.panel-mini {
+    display: none;
+}
+
+.panel-mini.panel-activo {
+    display: block;
+}
+
+
+/* ── BOTONES DE ACCIÓN ─────────────────────────────────────
+   ────────────────────────────────────────────────────────── */
+.btn-cerrar {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: var(--gold-dim);
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.btn-cerrar:hover {
+    color: var(--gold);
+}
+
+.btn-regresar {
+    display: block;
+    margin-bottom: 28px;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--ink);
+    padding: 10px 24px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: 700;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-regresar:hover {
+    background: var(--gold-dim);
+    border-color: var(--gold-dim);
+}
+
+
+/* ── MENSAJE SIN RESULTADOS ────────────────────────────────
+   ────────────────────────────────────────────────────────── */
+.sin-resultados {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--gold-dim);
+    font-style: italic;
+    padding: 60px 0;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+}
+
+
+/* ── RESPONSIVE ────────────────────────────────────────────
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .grid-recetas {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .tarjeta-expandida.visible {
+        grid-template-columns: 1fr;
+    }
+
+    .expandida-imagen-wrap .tarjeta-imagen,
+    .expandida-imagen-wrap .placeholder-imagen {
+        min-height: 200px;
+        height: 200px;
+    }
+
+    .expandida-detalle {
+        padding: 20px;
+    }
+
+    .tarjeta-dorso {
+        padding: 20px 24px;
+    }
+
+    .recetas-header {
+        padding: 32px 20px 24px;
+    }
+
+    .filtros-wrap {
+        padding: 16px 20px;
+    }
+}
+
+.dorso-meta {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(200, 168, 75, 0.2);
+}
+
+.dorso-meta-item {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+}

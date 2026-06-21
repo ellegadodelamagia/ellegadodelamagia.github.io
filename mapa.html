@@ -28,9 +28,9 @@
 <body>
 <div id="app">
   <div id="topbar">
-    <div class="eyebrow">El Legado de la Magia &nbsp;·&nbsp; Libro I</div>
+    <div class="eyebrow">El Legado de la Magia </div>
     <h1>El Despertar de la Magia</h1>
-    <div class="tagline">Recorrido de Kaira Ferrer</div>
+    <div class="tagline">Recorrido de Kaira Ferrer &nbsp;·&nbsp; Libro I</div>
     
     <div id="sidebar-parents"></div> 
 </div>
@@ -43,14 +43,24 @@
       <div id="sidebar-parents" class="filters-container"></div>
       <div id="sidebar-list"></div>
     </div>
-    <div id="map"></div>
+    <div id="map">
+        <div id="pantalla-carga">
+            <div class="contenido-carga">
+                <div class="orbe-magico"></div>
+                <h2>La Ruta de Kaira</h2>
+                <p>Sintonizando los hilos de la magia...</p>
+            </div>
+        </div>
+    </div>
+
     <div id="detail">
       <button id="det-close">✕</button>
       <div id="det-img-wrap">
         <div id="det-img-placeholder">Sin imagen asignada</div>
         <img id="det-img" src="" alt="" style="display:none"/>
       </div>
-      <div id="det-head">
+
+            <div id="det-head">
         <div id="det-cap">PARADA</div>
         <div id="det-name">Selecciona un lugar</div>
         <div id="det-loc">Ubicación</div>

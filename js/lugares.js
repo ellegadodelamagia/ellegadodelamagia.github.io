@@ -9,14 +9,14 @@ const DATOS_LUGARES = [
     "Orden": 6,
     "Nivel_de_visualizacion": "Escenario",
     "Lugar": "Cataratas del Niágara",
-    "Pais": "Canada",
-    "Ciudad": "Niagara",
+    "Pais": "Canadá",
+    "Ciudad": "Niágara",
     "latitud": 43.08577,
     "longitud": -79.07626,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Natural",
-    "Tipo_de_magia": "celestial",
-    "Descripcion_corta": "Frente a la fuerza imponente de las Cataratas, Kaira experimenta una emoción intensa.",
+    "Tipo_de_magia": "Poder Celestial",
+    "Descripcion_corta": "Frente a la fuerza imponente de las cataratas, Kaira experimenta una emoción intensa.",
     "Imagen": "can_nia_01.jpg"
   },
   {
@@ -27,15 +27,15 @@ const DATOS_LUGARES = [
     "Capitulo": 13,
     "Orden": 22,
     "Nivel_de_visualizacion": "Detalle",
-    "Lugar": "Opera Garnier",
+    "Lugar": "Ópera Garnier",
     "Pais": "Francia",
-    "Ciudad": "Paris",
+    "Ciudad": "París",
     "latitud": 48.87223,
     "longitud": 2.33169,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "ancestral",
-    "Descripcion_corta": "Debajo se encuentra el Archivo Vedlys, donde se conservan pergaminos y regitros históricos sobre la magia en Europa",
+    "Tipo_de_magia": "Magia Contemporánea",
+    "Descripcion_corta": "Debajo se encuentra el Archivo Vedlys, donde se conservan pergaminos y registros históricos sobre la magia en Europa.",
     "Imagen": "fr_par_04.jpg"
   },
   {
@@ -46,15 +46,15 @@ const DATOS_LUGARES = [
     "Capitulo": 12,
     "Orden": 19,
     "Nivel_de_visualizacion": "Escenario",
-    "Lugar": "Departamento de Paris",
+    "Lugar": "Departamento de París",
     "Pais": "Francia",
-    "Ciudad": "Paris",
+    "Ciudad": "París",
     "latitud": 48.8546,
     "longitud": 2.28941,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
-    "Tipo_de_magia": "communia",
-    "Descripcion_corta": "Pasan Navidad en una comida con sabores increíbles",
+    "Tipo_de_magia": "Sin magia",
+    "Descripcion_corta": "Kaira organiza una comida navideña con sus amigos.",
     "Imagen": "fr_par_01.jpg"
   },
   {
@@ -67,13 +67,13 @@ const DATOS_LUGARES = [
     "Nivel_de_visualizacion": "Escenario",
     "Lugar": "Sacré-Cœur / Montmartre",
     "Pais": "Francia",
-    "Ciudad": "Paris",
+    "Ciudad": "París",
     "latitud": 48.88694,
     "longitud": 2.34314,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "communia",
-    "Descripcion_corta": "Uno de los lugares donde Jeziel tiene que hacer un encargo",
+    "Tipo_de_magia": "Sin magia",
+    "Descripcion_corta": "Uno de los lugares donde Jeziel tiene que hacer un encargo.",
     "Imagen": "fr_par_02.jpg"
   },
   {
@@ -86,13 +86,13 @@ const DATOS_LUGARES = [
     "Nivel_de_visualizacion": "Escenario",
     "Lugar": "Bois de Boulogne",
     "Pais": "Francia",
-    "Ciudad": "Paris",
+    "Ciudad": "París",
     "latitud": 48.8621,
     "longitud": 2.25232,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Natural",
-    "Tipo_de_magia": "communia",
-    "Descripcion_corta": "Lugar de práctica de la huella mágica",
+    "Tipo_de_magia": "Sin magia",
+    "Descripcion_corta": "Lugar de práctica de la huella mágica.",
     "Imagen": "fr_par_03.jpg"
   },
   {
@@ -110,8 +110,8 @@ const DATOS_LUGARES = [
     "longitud": -0.00054,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "communia",
-    "Descripcion_corta": "Kaira se pregunta hasta donde llega el rayo que marca la linea horaria",
+    "Tipo_de_magia": "Sin magia",
+    "Descripcion_corta": "Kaira se pregunta hasta donde llega el rayo que marca la linea horaria.",
     "Imagen": "gb_lon_05.jpg"
   },
   {
@@ -129,8 +129,8 @@ const DATOS_LUGARES = [
     "longitud": -0.15463,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
-    "Tipo_de_magia": "contemporanea",
-    "Descripcion_corta": "Kaira y Jeziel llegan en su primer día, no saben que casi no van a pasar tiempo ahí",
+    "Tipo_de_magia": "Magia Contemporánea",
+    "Descripcion_corta": "Kaira y Jeziel llegan en su primer día, no saben que casi no van a pasar tiempo ahí.",
     "Imagen": "gb_lon_01.jpg"
   },
   {
@@ -148,8 +148,8 @@ const DATOS_LUGARES = [
     "longitud": -0.12734,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "residual",
-    "Descripcion_corta": "La majestuosidad de su interior impresiona a Kaira, pero tambien percibe algo mas.",
+    "Tipo_de_magia": "Magia Residual",
+    "Descripcion_corta": "La majestuosidad de su interior impresiona a Kaira, sin embargo percibe algo especial.",
     "Imagen": "gb_lon_02.jpg"
   },
   {
@@ -167,8 +167,8 @@ const DATOS_LUGARES = [
     "longitud": -0.07602,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "residual",
-    "Descripcion_corta": "En sus mazmorras hay algo que Kaira no puede definir, pero le hiela la sangre.",
+    "Tipo_de_magia": "Magia Residual",
+    "Descripcion_corta": "En sus mazmorras hay algo que Kaira no puede definir, y que le hiela la sangre.",
     "Imagen": "gb_lon_03.jpg"
   },
   {
@@ -186,8 +186,8 @@ const DATOS_LUGARES = [
     "longitud": -0.12734,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Museo",
-    "Tipo_de_magia": "residual",
-    "Descripcion_corta": "La piedra Rosetta es especial",
+    "Tipo_de_magia": "Magia Residual",
+    "Descripcion_corta": "La piedra Roseta tiene algo especial.",
     "Imagen": "gb_lon_04.jpg"
   },
   {
@@ -205,8 +205,8 @@ const DATOS_LUGARES = [
     "longitud": -3.66894,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Biblioteca",
-    "Tipo_de_magia": "ancestral",
-    "Descripcion_corta": "Dentro de la Academia, el lugar mas protegido, donde se guarda la profecía",
+    "Tipo_de_magia": "Magia Ancestral",
+    "Descripcion_corta": "Dentro de la Academia es el lugar mas protegido, ahí se guarda la profecía.",
     "Imagen": "gb_vbr_05.jpg"
   },
   {
@@ -224,8 +224,8 @@ const DATOS_LUGARES = [
     "longitud": -3.66894,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Ciudad",
-    "Tipo_de_magia": "contemporanea",
-    "Descripcion_corta": "Se encuentra en las montañas cercanas a Ben Macdui",
+    "Tipo_de_magia": "Magia Contemporánea",
+    "Descripcion_corta": "Se encuentra en las montañas cercanas a Ben Macdui.",
     "Imagen": "gb_vbr_01.jpg"
   },
   {
@@ -243,8 +243,8 @@ const DATOS_LUGARES = [
     "longitud": -3.66894,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Academia",
-    "Tipo_de_magia": "contemporanea",
-    "Descripcion_corta": "Situada en lo alto de la colina junto a Villa Bretona, es el lugar donde Kaira comienza su aprendizaje.",
+    "Tipo_de_magia": "Magia Contemporánea",
+    "Descripcion_corta": "Situada en lo alto de una colina, es el lugar donde Kaira comienza su aprendizaje.",
     "Imagen": "gb_vbr_02.jpg"
   },
   {
@@ -262,8 +262,8 @@ const DATOS_LUGARES = [
     "longitud": -3.66894,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Biblioteca",
-    "Tipo_de_magia": "contemporanea",
-    "Descripcion_corta": "Una mezcla de tecnologia communia y magia",
+    "Tipo_de_magia": "Magia Contemporánea",
+    "Descripcion_corta": "Donde se mezclan tecnología communia y magia.",
     "Imagen": "gb_vbr_03.jpg"
   },
   {
@@ -281,7 +281,7 @@ const DATOS_LUGARES = [
     "longitud": -3.690826,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Natural",
-    "Tipo_de_magia": "todas",
+    "Tipo_de_magia": "Magia Entretejida",
     "Descripcion_corta": "La magia fluye libre y visible, solo para algunos.",
     "Imagen": "gb_vbr_04.jpg"
   },
@@ -300,8 +300,8 @@ const DATOS_LUGARES = [
     "longitud": -0.60784,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "todas",
-    "Descripcion_corta": "Centro energético",
+    "Tipo_de_magia": "Vórtice de Magia",
+    "Descripcion_corta": "Centro energético.",
     "Imagen": "gb_vbr_06.jpg"
   },
   {
@@ -338,8 +338,8 @@ const DATOS_LUGARES = [
     "longitud": 12.48406,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "ancestral",
-    "Descripcion_corta": "Debajo de la ciudad se esconden secretos.",
+    "Tipo_de_magia": "Magia Ancestral",
+    "Descripcion_corta": "No cualquiera encuentra los secretos escondidos debajo de Roma.",
     "Imagen": "it_rom_09.jpg"
   },
   {
@@ -357,8 +357,8 @@ const DATOS_LUGARES = [
     "longitud": 12.49266,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "celestial",
-    "Descripcion_corta": "Kaira le pide a Jeziel que use su poder celestial \"solo un poquito\".",
+    "Tipo_de_magia": "Poder Celestial",
+    "Descripcion_corta": "Kaira le pide a Jeziel que use su Poder Celestial, solo un poquito.",
     "Imagen": "it_rom_03.jpg"
   },
   {
@@ -376,8 +376,8 @@ const DATOS_LUGARES = [
     "longitud": 12.48984,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "celestial",
-    "Descripcion_corta": "Un espejismo con el que Jeziel sorprende a Kaira",
+    "Tipo_de_magia": "Poder Celestial",
+    "Descripcion_corta": "Un espejismo con el que Jeziel sorprende a Kaira.",
     "Imagen": "it_rom_05.jpg"
   },
   {
@@ -395,8 +395,8 @@ const DATOS_LUGARES = [
     "longitud": 12.4922,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "celestial",
-    "Descripcion_corta": "Todos los caminos llevan al Coliseo",
+    "Tipo_de_magia": "Poder Celestial",
+    "Descripcion_corta": "Todos los caminos llevan al Coliseo.",
     "Imagen": "it_rom_10.jpg"
   },
   {
@@ -414,8 +414,8 @@ const DATOS_LUGARES = [
     "longitud": 12.45391,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "celestial",
-    "Descripcion_corta": "Kaira visita el templo para agradecer su viaje.",
+    "Tipo_de_magia": "Poder Celestial",
+    "Descripcion_corta": "Kaira quiere agradecer su viaje, pero sus pensamientos son mas poderosos de lo que imagina.",
     "Imagen": "it_rom_06.jpg"
   },
   {
@@ -433,8 +433,8 @@ const DATOS_LUGARES = [
     "longitud": 12.48529,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
-    "Tipo_de_magia": "communia",
-    "Descripcion_corta": "Con una vista espectacular",
+    "Tipo_de_magia": "Sin magia",
+    "Descripcion_corta": "Con una vista espectacular, pero no del Coliseo.",
     "Imagen": "it_rom_01.jpg"
   },
   {
@@ -452,8 +452,8 @@ const DATOS_LUGARES = [
     "longitud": 12.46939,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
-    "Tipo_de_magia": "contemporanea",
-    "Descripcion_corta": "En donde communia conviven con vedlys sin saberlo",
+    "Tipo_de_magia": "Magia Contemporánea",
+    "Descripcion_corta": "En donde communia conviven con vedlys sin saberlo.",
     "Imagen": "it_rom_07.jpg"
   },
   {
@@ -471,8 +471,8 @@ const DATOS_LUGARES = [
     "longitud": 12.48083,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "residual",
-    "Descripcion_corta": "La magia está entretejida dentro de las construcciones.",
+    "Tipo_de_magia": "Magia Residual",
+    "Descripcion_corta": "¿Una pirámide en medio de la muralla Aureliana?",
     "Imagen": "it_rom_02.jpg"
   },
   {
@@ -490,8 +490,8 @@ const DATOS_LUGARES = [
     "longitud": 12.50144,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "residual",
-    "Descripcion_corta": "Las motas de magia llenan a Kaira de energía",
+    "Tipo_de_magia": "Magia Residual",
+    "Descripcion_corta": "Las ruinas Romanas estan repletas de historia, y magia.",
     "Imagen": "it_rom_04.jpg"
   },
   {
@@ -509,7 +509,7 @@ const DATOS_LUGARES = [
     "longitud": 12.4769,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "todas",
+    "Tipo_de_magia": "Vórtice de Magia",
     "Descripcion_corta": "Stefen considera que es la prueba definitiva.",
     "Imagen": "it_rom_08.jpg"
   },
@@ -522,14 +522,14 @@ const DATOS_LUGARES = [
     "Orden": 3,
     "Nivel_de_visualizacion": "Escenario",
     "Lugar": "Templo Mayor",
-    "Pais": "Mexico",
-    "Ciudad": "Ciudad de Mexico",
+    "Pais": "México",
+    "Ciudad": "Ciudad de México",
     "latitud": 19.43465,
     "longitud": -99.13183,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "communia",
-    "Descripcion_corta": "En el corazón de Ciudad de México, Kaira lleva a Jeziel a recorrer templos, plazas y calles llenas de vida.",
+    "Tipo_de_magia": "Sin magia",
+    "Descripcion_corta": "Kaira lleva a Jeziel a recorrer templos, plazas y calles llenas de vida.",
     "Imagen": "mex_mex_01.jpg"
   },
   {
@@ -540,15 +540,15 @@ const DATOS_LUGARES = [
     "Capitulo": 4,
     "Orden": 7,
     "Nivel_de_visualizacion": "Escenario",
-    "Lugar": "Pueblo del Aguila",
-    "Pais": "Mexico",
-    "Ciudad": "Pueblo del Aguila",
+    "Lugar": "Pueblo del Águila",
+    "Pais": "México",
+    "Ciudad": "Pueblo del Águila",
     "latitud": 26.69931,
     "longitud": -103.74366,
     "Naturaleza": "ficticio",
     "tipo_de_lugar": "Ciudad",
-    "Tipo_de_magia": "contemporanea",
-    "Descripcion_corta": "En el desierto del Bolsón de Mapimí, Kaira descubre un pueblo oculto donde los vedlys han vivido en secreto durante siglos.",
+    "Tipo_de_magia": "Magia Contemporánea",
+    "Descripcion_corta": "En el desierto del Bolsón de Mapimí, existe un pueblo oculto.",
     "Imagen": "mex_pag_01.jpg"
   },
   {
@@ -560,14 +560,14 @@ const DATOS_LUGARES = [
     "Orden": 4,
     "Nivel_de_visualizacion": "Detalle",
     "Lugar": "Pirámide de Cholula",
-    "Pais": "Mexico",
+    "Pais": "México",
     "Ciudad": "Puebla",
     "latitud": 19.05714,
     "longitud": -98.30322,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "celestial",
-    "Descripcion_corta": "Jeziel conduce a Kaira por un túnel cerrado al público en la Gran Pirámide de Cholula",
+    "Tipo_de_magia": "Poder Celestial",
+    "Descripcion_corta": "El Poder Celestial concede hasta el mínimo deseo.",
     "Imagen": "mex_pue_01.jpg"
   },
   {
@@ -579,13 +579,13 @@ const DATOS_LUGARES = [
     "Orden": 5,
     "Nivel_de_visualizacion": "Escenario",
     "Lugar": "Biblioteca Palafoxiana",
-    "Pais": "Mexico",
+    "Pais": "México",
     "Ciudad": "Puebla",
     "latitud": 19.04301,
     "longitud": -98.19857,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Biblioteca",
-    "Tipo_de_magia": "communia",
+    "Tipo_de_magia": "Sin magia",
     "Descripcion_corta": "Kaira advierte a Jeziel que si viajan juntos, van a visitar muchas Bibliotecas y Templos.",
     "Imagen": "mex_pue_02.jpg"
   },
@@ -598,14 +598,14 @@ const DATOS_LUGARES = [
     "Orden": 2,
     "Nivel_de_visualizacion": "Escenario",
     "Lugar": "Campo de las hadas",
-    "Pais": "Mexico",
+    "Pais": "México",
     "Ciudad": "Toluca",
     "latitud": 19.294786,
     "longitud": -99.681428,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Natural",
-    "Tipo_de_magia": "ancestral",
-    "Descripcion_corta": "En un prado cercano a la casa de Kaira hay una piedra donde realiza un pequeño ritual heredado de su abuela.",
+    "Tipo_de_magia": "Magia Ancestral",
+    "Descripcion_corta": "En la piedra central, Kaira realiza un pequeño ritual heredado de su abuela.",
     "Imagen": "mex_tol_02.jpg"
   },
   {
@@ -617,14 +617,14 @@ const DATOS_LUGARES = [
     "Orden": 1,
     "Nivel_de_visualizacion": "Escenario",
     "Lugar": "Casa de Kaira",
-    "Pais": "Mexico",
+    "Pais": "México",
     "Ciudad": "Toluca",
     "latitud": 19.29528,
     "longitud": -99.682121,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
-    "Tipo_de_magia": "contemporanea",
-    "Descripcion_corta": "Toluca, ciudad donde inicia la historia",
+    "Tipo_de_magia": "Magia Contemporánea",
+    "Descripcion_corta": "Toluca, ciudad donde inicia la historia.",
     "Imagen": "mex_tol_01.jpg"
   },
   {
@@ -642,8 +642,8 @@ const DATOS_LUGARES = [
     "longitud": "",
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
-    "Tipo_de_magia": "todas",
-    "Descripcion_corta": "Espacio interior donde Kaira puede practicar la magia",
+    "Tipo_de_magia": "",
+    "Descripcion_corta": "Dimension alterna fuera de la realidad.",
     "Imagen": "panah_01.jpg"
   },
   {
@@ -661,7 +661,7 @@ const DATOS_LUGARES = [
     "longitud": 6.1471,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "ancestral",
+    "Tipo_de_magia": "Magia Perdida",
     "Descripcion_corta": "En su jardin interior hay un arbol centenario repleto de magia.",
     "Imagen": "sui_gin_02.jpg"
   },
@@ -680,8 +680,8 @@ const DATOS_LUGARES = [
     "longitud": 6.92748,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "ancestral",
-    "Descripcion_corta": "Uno de sus sótanos lleva a la entrada del Palacio de Cristal",
+    "Tipo_de_magia": "Magia Ancestral",
+    "Descripcion_corta": "Uno de sus sótanos lleva a la entrada del Palacio de Cristal.",
     "Imagen": "sui_gin_06.jpg"
   },
   {
@@ -699,8 +699,8 @@ const DATOS_LUGARES = [
     "longitud": 6.1425,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Ciudad",
-    "Tipo_de_magia": "contemporanea",
-    "Descripcion_corta": "Es como un centro comercial, y ahí se encuentra Volkov",
+    "Tipo_de_magia": "Magia Contemporánea",
+    "Descripcion_corta": "Es como un centro comercial, y ahí se encuentra Volkov.",
     "Imagen": "sui_gin_01.jpg"
   },
   {
@@ -718,8 +718,8 @@ const DATOS_LUGARES = [
     "longitud": 6.13822,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Museo",
-    "Tipo_de_magia": "oscura",
-    "Descripcion_corta": "Museo del reloj que oculta secretos, no solo guarda relojes",
+    "Tipo_de_magia": "Magia Oscura",
+    "Descripcion_corta": "Museo del reloj que oculta secretos, no solo guarda relojes.",
     "Imagen": "sui_gin_05.jpg"
   },
   {
@@ -737,7 +737,7 @@ const DATOS_LUGARES = [
     "longitud": 6.14848,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
-    "Tipo_de_magia": "residual",
+    "Tipo_de_magia": "Magia Residual",
     "Descripcion_corta": "Debajo de ella se encuentra un yacimiento arquelógico de varios niveles.",
     "Imagen": "sui_gin_03.jpg"
   },
@@ -756,7 +756,7 @@ const DATOS_LUGARES = [
     "longitud": 6.14505,
     "Naturaleza": "Real",
     "tipo_de_lugar": "Biblioteca",
-    "Tipo_de_magia": "todas",
+    "Tipo_de_magia": "Magia Entretejida",
     "Descripcion_corta": "Solo se puede entrar con un pase especial. Ahí se encuentran los grimorios mas impotantes de Europa.",
     "Imagen": "sui_gin_04.jpg"
   },
@@ -845,7 +845,7 @@ const DATOS_LUGARES = [
     "Orden": "",
     "Nivel_de_visualizacion": "Ciudad",
     "Lugar": "CDMX",
-    "Pais": "Mexico",
+    "Pais": "México",
     "Ciudad": "",
     "latitud": 19.43281,
     "longitud": -99.13339,
@@ -864,7 +864,7 @@ const DATOS_LUGARES = [
     "Orden": "",
     "Nivel_de_visualizacion": "Ciudad",
     "Lugar": "Pueblo del Aguila",
-    "Pais": "Mexico",
+    "Pais": "México",
     "Ciudad": "",
     "latitud": 26.69931,
     "longitud": -103.74366,
@@ -883,7 +883,7 @@ const DATOS_LUGARES = [
     "Orden": "",
     "Nivel_de_visualizacion": "Ciudad",
     "Lugar": "Puebla",
-    "Pais": "Mexico",
+    "Pais": "México",
     "Ciudad": "",
     "latitud": 19.0621,
     "longitud": -98.17708,
@@ -902,7 +902,7 @@ const DATOS_LUGARES = [
     "Orden": "",
     "Nivel_de_visualizacion": "Ciudad",
     "Lugar": "Toluca",
-    "Pais": "Mexico",
+    "Pais": "México",
     "Ciudad": "",
     "latitud": 19.29415,
     "longitud": -99.65379,

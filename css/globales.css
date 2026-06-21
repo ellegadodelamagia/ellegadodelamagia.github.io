@@ -13,7 +13,7 @@
     --c-Mexico: #5a9e72;
     --c-Canada: #5a8fb5;
     --c-magico: #9060c0;
-    --c-ReinoUnido: #4a7aaa;
+    --c-Reino-Unido: #4a7aaa;
     --c-Dimension: #b04040;
     --c-Vaticano: #ce14d4;
     --c-Francia: #c08840;
@@ -21,14 +21,17 @@
     --c-Italia: #c05838;
 
     /* Hilos de Magia por Tipo */
-    --c-default: #0633c7;       /* Azul oscuro para registros Padre */
-    --c-ancestral: #646464;     /* Gris ancestral */
-    --c-celestial: #f3f6f8;     /* Blanco celestial */
-    --c-communia: #1684f1;      /* Azul Communia */
-    --c-contemporanea: #dad74d; /* Amarillo contemporánea */
-    --c-oscura: #00070e;        /* Negro para magia oscura */
-    --c-residual: #db2130;      /* Rojo residual */
-    --c-todas: #6bdb21;         /* Verde absoluto */
+--c-default: #0633c7;             /* Azul oscuro para registros Padre */
+--c-magia-ancestral: #535252;     /* Gris muy oscuro */
+--c-poder-celestial: #f3f6f8;     /* Blanco celestial */
+--c-magia-contemporanea: #929420; /* Amarillo contemporánea */
+--c-magia-oscura: #08023f;        /* Negro para magia oscura */
+
+--c-sin-magia: #2b582b;           /* Beige muy claro y plano — "vacío", casi como papel */
+--c-magia-residual: #e73f83;      /* Rosa-vino apagado — visible pero "gastado" */
+--c-vortice-de-magia: #490886;    /* Púrpura intenso — caos/inestable */
+--c-magia-perdida: #8f1620;       /* Verde bosque apagado — color BASE del patrón de motas */
+--c-magia-entretejida: #8e7cc3;    /* Verde absoluto */
 }  
 
 /* Reset básico para evitar márgenes extraños */
@@ -38,11 +41,19 @@
     box-sizing: border-box; 
 }
 
-/* Configuración del lienzo general */
-html, body { 
-    height: 100%; 
-    font-family: 'Cormorant Garamond', Georgia, serif; 
+/* Configuración del lienzo general (Unificado con la fuente correcta) */
+html {
+    scroll-behavior: smooth;
+}
+
+body { 
+    min-height: 100%; 
+    font-family: 'EB Garamond', Georgia, serif; 
     background: var(--ink); 
+    color: #f0e6cc; /* Color pergamino claro para textos generales */
+    overflow-x: hidden;
+    line-height: 1.8;
+    font-size: 18px;
 }
 
 /* Complementos adicionales */

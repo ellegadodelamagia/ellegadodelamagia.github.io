@@ -20,6 +20,10 @@
     height: 100%; 
     width: 100%;
     position: relative; 
+    transition: filter 0.5s ease, -webkit-filter 0.5s ease;
+
+    /* 🌟 SOLUCIÓN AL PARPADEO: */
+    background-color: var(--ink) !important;
 }
 
 /* -------------------------------------------------------------------------
@@ -75,7 +79,7 @@ html, body {
 }
 
 #topbar h1 {
-    font-family: 'Cynzel', serif;
+    font-family: 'Cynzel Decorative', serif;
 }
 
 /* Contenedor horizontal para los botones de filtrado */
@@ -529,11 +533,11 @@ html, body {
 #det-badge { 
     display: inline-block; 
     font-family: 'Cinzel', serif; 
-    font-size: 0.48rem; 
-    letter-spacing: 0.12em; 
-    text-transform: uppercase; 
-    padding: 2px 8px; 
-    border-radius: 1px; 
+    font-size: 0.8rem;         /* 🚀 ¡Aumentado! Antes era 0.48rem */
+    font-weight: bold;         /* ✍️ Le da más fuerza heráldica */
+    letter-spacing: 0.08em;    /* Ajustamos un poco el espacio entre letras */
+    padding: 6px 12px;         /* 👑 Le damos más aire al fondo para que no se ahogue el texto */
+    border-radius: 4px;        /* Un toque sutil en las esquinas */
 }
 
 /* Cuerpo narrativo de la ubicación */
@@ -590,18 +594,42 @@ html, body {
 @keyframes lbIn { from { opacity: 0; transform: scale(0.96) } to { opacity: 1; transform: scale(1) } }
 #lb-img { max-width: 90vw; max-height: 88vh; object-fit: contain; 
     border: 1px solid rgba(200,168,75,0.25); box-shadow: 0 20px 60px rgba(0,0,0,0.9); }
+
 #lb-caption { 
     position: absolute; 
-    top: 100px; /*si quiero ajustar distancia del titulo se mueve el valor px */
+    top: 100px; /* Ajusta la distancia del título moviendo este valor */
     left: 50%; 
     transform: translateX(-50%); 
-    font-family: 'Cinzel', serif; 
-    font-size: 4vw; 
-    letter-spacing: 0.2em; 
-    color: rgba(200,168,75,0.85); 
+
+    /* 🔄 CAMBIO AQUÍ: Llamamos a la variante decorativa de la portada */
+    font-family: 'Cinzel Decorative', serif;
+
+    /* font-family: 'IM Fell English', serif; /* Ajustado el fallback por si acaso */
+    color: #c8a84b; /* Dorado 100% sólido y brillante */
     text-transform: uppercase; 
     text-align: center; 
+
+    /* 🔄 LOS CAMBIOS MÁGICOS PARA LAS DOS LÍNEAS: */
+    /* 1. Eliminamos white-space: nowrap; (ya no está) */
+    /* 2. Controlamos el ancho para obligar el quiebre simétrico */
+    width: 90%;
+    max-width: 550px; 
+    line-height: 1.3; /* Espacio cómodo entre renglones */
+
+    /* 3. Cambiamos el tamaño: 4vw era enorme para dos líneas, 1.8rem o 2rem es ideal */
+    font-size: 3rem; 
+    letter-spacing: 0.15em; 
+
+    /* 🛡️ ESCUDO DE LEGIBILIDAD REFORZADO (Ideal para Magia Oscura) */
+    text-shadow: 
+        -1.5px -1.5px 0 #000,  
+         1.5px -1.5px 0 #000,
+        -1.5px  1.5px 0 #000,
+         1.5px  1.5px 0 #000,
+         0px  4px 15px rgba(0,0,0,1),  /* Sombra más densa al fondo */
+         0px  0px 25px rgba(0,0,0,0.9);
 }
+
 #lb-close { 
     position: absolute; top: 16px; right: 20px; 
     color: rgba(200,168,75,0.6); font-size: 1.4rem; 
@@ -637,8 +665,11 @@ html, body {
     max-width: 90vw; 
     max-height: 88vh; 
     object-fit: contain; 
-    border: 1px solid rgba(200,168,75,0.25); 
-    box-shadow: 0 20px 60px rgba(0,0,0,0.9); 
+    border: 1px solid rgba(200,168,75,0.6); /* 🌟 Hacemos el borde un poco más visible */
+    
+    /* 🔮 EFECTO DE BRILLO: Mantiene la sombra oscura de fondo y le añade un aura dorada */
+    box-shadow: 0 20px 60px rgba(0,0,0,0.9), 
+                0 0 15px rgba(200,168,75,0.4);    box-shadow: 0 20px 60px rgba(0,0,0,0.9); 
 }
 
 
@@ -686,4 +717,113 @@ html, body {
     #detail { width: calc(100vw - 28px); right: 14px; bottom: 14px; }
     #det-img { height: 140px; }
     .flt { padding: 6px 9px; font-size: 0.52rem; }
+}
+
+/* Pantalla de carga completa */
+#pantalla-carga {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--ink); /* Tu color tinta oscuro */
+    z-index: 9999; /* Se asegura de estar por encima de Leaflet */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Transición suave para el desvanecido */
+}
+
+/* Contenido centrado */
+.contenido-carga {
+    text-align: center;
+    color: var(--parch);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.contenido-carga h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-top: 15px;
+    font-size: 1.8rem;
+}
+
+.contenido-carga p {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Un orbe mágico giratorio (Opcional, un detalle visual) */
+.orbe-magico {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 3px solid transparent;
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: girarMagia 1s linear infinite;
+}
+
+@keyframes girarMagia {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estado místico: Desenfoque total del mapa */
+.mapa-espiritual .leaflet-pane {
+    filter: blur(8px) !important;
+    -webkit-filter: blur(8px) !important;
+    transition: filter 0.5s ease, -webkit-filter 0.5s ease;
+}
+
+/* Transición suave para cuando regrese al plano material */
+.leaflet-pane {
+    transition: filter 0.5s ease, -webkit-filter 0.5s ease;
+}
+
+/* Contenedor inferior para los botones de magia */
+.silver-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Botón Plateado */
+.btn-silver {
+    background: linear-gradient(135deg, #2a2e35 0%, #1c1f24 100%);
+    border: 1px solid #a6b1c2; /* Brillo plata */
+    color: #d1d5db;
+    font-family: 'Cinzel', serif;
+
+    /* ⚡ AJUSTES DE TAMAÑO: Reducimos la letra y el espacio interno */
+    font-size: 0.75rem;       /* Letra un poco más pequeña y elegante */
+    padding: 5px 10px;        /* Menos espacio arriba/abajo y a los lados */
+    gap: 8px;
+
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;    /* Un espacio de letras más sutil */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.btn-silver:hover {
+    background: linear-gradient(135deg, #3d434d 0%, #2a2e35 100%);
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(166, 177, 194, 0.5);
+}
+
+/* Botón de magia activo */
+.btn-silver.active {
+    background: linear-gradient(135deg, #a6b1c2 0%, #737f8f 100%);
+    color: #0d0a07;
+    font-weight: bold;
+    border-color: #ffffff;
+    box-shadow: 0 0 12px rgba(166, 177, 194, 0.7);
 }

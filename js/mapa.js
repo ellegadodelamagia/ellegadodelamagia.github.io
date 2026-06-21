@@ -180,7 +180,8 @@ function renderizarElementos(listaDeLugares) {
 padres.forEach(item => {
     const hijosFiltrados = hijos.filter(h => h.Padre == item.ID);
     
-    if (LIBRO_ACTIVO && hijosFiltrados.length === 0) return;
+   
+    if (LIBRO_ACTIVO && hijosFiltrados.length === 0) return; 
 
     const pBtn = document.createElement('div');
     pBtn.className = 'p-item';

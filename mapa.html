@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?
+        family=Cinzel+Decorative:wght@400;700&
         family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&
         family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&
         family=Uncial+Antiqua&
@@ -22,36 +23,44 @@
     
     <link rel="stylesheet" href="css/globales.css">
     <link rel="stylesheet" href="css/mapa.css">
+
+    <link rel="icon" href="data:,">
+
 </head>
 
 
 <body>
 <div id="app">
   <div id="topbar">
-    <div class="eyebrow">El Legado de la Magia </div>
+    <div class="eyebrow">El Legado de la Magia</div>
     <h1>El Despertar de la Magia</h1>
     <div class="tagline">Recorrido de Kaira Ferrer &nbsp;·&nbsp; Libro I</div>
     
-    <div id="sidebar-parents"></div> 
-</div>
+    <div id="sidebar-parents" class="filters-container"></div> 
+  </div>
+
   <div id="body">
     <div id="sidebar">
       <div id="sidebar-title">
         <span>Ubicaciones &nbsp;·&nbsp; Orden de viaje</span>
         <button id="mob-close-btn">✕</button>
       </div>
-      <div id="sidebar-parents" class="filters-container"></div>
       <div id="sidebar-list"></div>
     </div>
+    
     <div id="map">
-        <div id="pantalla-carga">
-            <div class="contenido-carga">
-                <div class="orbe-magico"></div>
-                <h2>La Ruta de Kaira</h2>
-                <p>Sintonizando los hilos de la magia...</p>
-            </div>
+      <div id="pantalla-carga">
+        <div class="contenido-carga">
+          <div class="orbe-magico"></div>
+          <h2>La Ruta de Kaira</h2>
+          <p>Sintonizando los hilos de la magia...</p>
         </div>
+      </div>
     </div>
+  </div>
+</div>
+
+
 
     <div id="detail">
       <button id="det-close">✕</button>

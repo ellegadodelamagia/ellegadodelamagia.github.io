@@ -686,90 +686,6 @@ html, body {
     line-height: 1; 
 }
 
-/* -------------------------------------------------------------------------
-   9. OPTIMIZACIÓN DISPOSITIVOS MÓVILES (Responsive)
-------------------------------------------------------------------------- */
-#sidebar-fab { 
-    display: none; 
-    position: absolute; 
-    bottom: 24px; 
-    left: 14px; 
-    z-index: 810; 
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%; 
-    background: rgba(18,14,10,0.92); 
-    border: 1px solid rgba(200,168,75,0.4); 
-    color: var(--gold); 
-    font-size: 1.1rem; 
-    cursor: pointer; 
-    align-items: center; 
-    justify-content: center; 
-    box-shadow: 0 4px 16px rgba(0,0,0,0.6); 
-}
-
-@media(max-width: 640px) {
-    :root { --sidebar-w: 230px; }
-    #sidebar { position: absolute; top: 0; left: 0; bottom: 0; transform: translateX(-100%); transition: transform 0.3s ease; box-shadow: 4px 0 20px rgba(0,0,0,0.5); }
-    #sidebar.mob-open { transform: translateX(0); }
-    #mob-close-btn { display: block; }
-    #sidebar-fab { display: flex; }
-    #detail { width: calc(100vw - 28px); right: 14px; bottom: 14px; }
-    #det-img { height: 140px; }
-    .flt { padding: 6px 9px; font-size: 0.52rem; }
-}
-
-/* Pantalla de carga completa */
-#pantalla-carga {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--ink); /* Tu color tinta oscuro */
-    z-index: 9999; /* Se asegura de estar por encima de Leaflet */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease, visibility 0.5s ease; /* Transición suave para el desvanecido */
-}
-
-/* Contenido centrado */
-.contenido-carga {
-    text-align: center;
-    color: var(--parch);
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.contenido-carga h2 {
-    font-family: 'Cinzel', serif;
-    color: var(--gold);
-    letter-spacing: 3px;
-    margin-top: 15px;
-    font-size: 1.8rem;
-}
-
-.contenido-carga p {
-    font-style: italic;
-    opacity: 0.8;
-}
-
-/* Un orbe mágico giratorio (Opcional, un detalle visual) */
-.orbe-magico {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto;
-    border: 3px solid transparent;
-    border-top-color: var(--gold);
-    border-radius: 50%;
-    animation: girarMagia 1s linear infinite;
-}
-
-@keyframes girarMagia {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 /* Estado místico: Desenfoque total del mapa */
 .mapa-espiritual .leaflet-pane {
     filter: blur(8px) !important;
@@ -826,4 +742,123 @@ html, body {
     font-weight: bold;
     border-color: #ffffff;
     box-shadow: 0 0 12px rgba(166, 177, 194, 0.7);
+}
+
+/* -------------------------------------------------------------------------
+    9. OPTIMIZACIÓN DISPOSITIVOS MÓVILES (Responsive Sincronizado)
+------------------------------------------------------------------------- */
+#sidebar-fab { 
+    display: none; 
+    position: absolute; 
+    bottom: 24px; 
+    left: 14px; 
+    z-index: 810; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    background: rgba(18,14,10,0.92); 
+    border: 1px solid rgba(200,168,75,0.4); 
+    color: var(--gold); 
+    font-size: 1.1rem; 
+    cursor: pointer; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 0 4px 16px rgba(0,0,0,0.6); 
+}
+
+/* 🍏 REGLA 1: PARA IPAD Y PANTALLAS MEDIANAS (Menos de 1024px) */
+@media (max-width: 1024px) {
+    /* Achicamos los textos de la barra superior para no perder espacio crítico */
+    #topbar h1 { font-size: 1.6rem !important; margin: 4px 0 !important; }
+    #topbar .tagline { font-size: 0.75rem !important; }
+    #topbar .eyebrow { font-size: 0.7rem !important; }
+
+    /* 🔄 EL EFECTO CARRUSEL: Evita el muro de botones hacia abajo */
+    /* Ajusta estos selectores si tus contenedores de botones se llaman diferente */
+    #parentContainer, 
+    .silver-filter-container {
+        display: flex !important;
+        flex-wrap: nowrap !important; /* Prohibido romperse en varias filas */
+        overflow-x: auto !important;  /* Deslizar de izquierda a derecha con el dedo */
+        justify-content: flex-start !important;
+        padding: 6px 4px !important;
+        gap: 6px !important;
+        width: 100% !important;
+        -webkit-overflow-scrolling: touch; /* Scroll ultra suave en iPad/iOS */
+    }
+
+    /* Ocultamos las barras de scroll feas para que mantenga estética de libro antiguo */
+    #parentContainer::-webkit-scrollbar,
+    .silver-filter-container::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    /* Forzamos a los botones a quedarse en una sola línea compacta */
+    .p-item, .btn-silver {
+        flex: 0 0 auto !important; /* Impide que el navegador los aplaste */
+        white-space: nowrap !important; /* Impide que el texto salte de renglón */
+        font-size: 0.7rem !important;
+        padding: 5px 10px !important;
+    }
+
+    /* 🗺️ RESCATE DEL MAPA EN IPAD: Forzamos su territorio */
+    #map {
+        height: 60vh !important; /* El mapa se queda obligatoriamente con el 60% de la pantalla */
+        position: relative !important;
+    }
+}
+
+/* 📱 REGLA 2: TU REGLA ACTUAL PARA CELULARES (Optimizada a 640px) */
+@media(max-width: 640px) {
+    :root { --sidebar-w: 230px; }
+    #sidebar { position: absolute; top: 0; left: 0; bottom: 0; transform: translateX(-100%); transition: transform 0.3s ease; box-shadow: 4px 0 20px rgba(0,0,0,0.5); }
+    #sidebar.mob-open { transform: translateX(0); }
+    #mob-close-btn { display: block; }
+    #sidebar-fab { display: flex; }
+    #detail { width: calc(100vw - 28px); right: 14px; bottom: 14px; }
+    #det-img { height: 140px; }
+    .flt { padding: 6px 9px; font-size: 0.52rem; }
+
+    /* Reducción extrema para pantallas verticales de celulares */
+    #topbar h1 { font-size: 1.3rem !important; }
+    
+    /* 🗺️ RESCATE DEL MAPA EN CELULAR */
+    #map {
+        height: 50vh !important; /* En celular el mapa asegura la mitad de la pantalla real */
+    }
+}
+
+/* ⏳ Pantalla de carga completa (Se queda intacta abajo) */
+#pantalla-carga {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--ink); 
+    z-index: 9999; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease; 
+}
+
+/* Contenido centrado */
+.contenido-carga {
+    text-align: center;
+    color: var(--parch);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.contenido-carga h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-top: 15px;
+    font-size: 1.8rem;
+}
+
+.contenido-carga p {
+    font-style: italic;
+    opacity: 0.8;
 }

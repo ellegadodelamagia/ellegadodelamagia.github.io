@@ -686,3 +686,19 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 
 // Inicialización del flujo mundial
 cargarBaseDeDatos();
+
+/* =========================================================================
+   📱 SCRIPT DE CONTROL PARA EL MENÚ FLOTANTE EN MÓVILES (3 RAYAS)
+   ========================================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const botonMenu = document.getElementById('sidebar-fab');
+    const menuLateral = document.getElementById('sidebar');
+
+    if (botonMenu && menuLateral) {
+        botonMenu.onclick = (e) => {
+            e.stopPropagation(); // Evita que el clic afecte al mapa que está detrás
+            // Abre o cierra el menú agregando/quitando la clase que ya tienes en tu CSS
+            menuLateral.classList.toggle('mob-open'); 
+        };
+    }
+});

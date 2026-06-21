@@ -767,48 +767,56 @@ html, body {
 }
 
 /* 🍏 REGLA 1: PARA IPAD Y PANTALLAS MEDIANAS (Menos de 1024px) */
+/* 🍏 REGLA 1: PARA IPAD Y PANTALLAS MEDIANAS (Menos de 1024px) */
 @media (max-width: 1024px) {
-    /* Achicamos los textos de la barra superior para no perder espacio crítico */
-    #topbar h1 { font-size: 1.6rem !important; margin: 4px 0 !important; }
-    #topbar .tagline { font-size: 0.75rem !important; }
-    #topbar .eyebrow { font-size: 0.7rem !important; }
+    /* Achicamos la barra superior al máximo */
+    #topbar h1 { font-size: 1.4rem !important; margin: 2px 0 !important; }
+    #topbar .tagline, #topbar .eyebrow { font-size: 0.7rem !important; margin: 0 !important; }
 
-    /* 🔄 EL EFECTO CARRUSEL: Evita el muro de botones hacia abajo */
-    /* Ajusta estos selectores si tus contenedores de botones se llaman diferente */
+    /* 🔄 REFUERZO ULTRA-CARRUSEL: Esto quita el muro de botones sí o sí */
     #parentContainer, 
-    .silver-filter-container {
+    .silver-filter-container,
+    .contenedor-padres, 
+    .p-item-container { 
         display: flex !important;
-        flex-wrap: nowrap !important; /* Prohibido romperse en varias filas */
-        overflow-x: auto !important;  /* Deslizar de izquierda a derecha con el dedo */
+        flex-direction: row !important; /* Fuerza a que vayan de lado a lado */
+        flex-wrap: nowrap !important;   /* Prohibido irse hacia abajo */
+        overflow-x: auto !important;    /* Activa el deslizamiento horizontal con el dedo */
         justify-content: flex-start !important;
-        padding: 6px 4px !important;
+        align-items: center !important;
+        padding: 5px !important;
         gap: 6px !important;
         width: 100% !important;
-        -webkit-overflow-scrolling: touch; /* Scroll ultra suave en iPad/iOS */
+        max-height: 45px !important;    /* Le ponemos un candado de altura máxima */
+        -webkit-overflow-scrolling: touch; 
     }
 
-    /* Ocultamos las barras de scroll feas para que mantenga estética de libro antiguo */
+    /* Ocultamos las barras de scroll para mantener la limpieza visual */
     #parentContainer::-webkit-scrollbar,
     .silver-filter-container::-webkit-scrollbar {
         display: none !important;
+        width: 0 !important;
+        height: 0 !important;
     }
 
-    /* Forzamos a los botones a quedarse en una sola línea compacta */
+    /* Forzamos a los botones dorados y plateados a encogerse al mínimo */
     .p-item, .btn-silver {
-        flex: 0 0 auto !important; /* Impide que el navegador los aplaste */
-        white-space: nowrap !important; /* Impide que el texto salte de renglón */
-        font-size: 0.7rem !important;
-        padding: 5px 10px !important;
+        flex: 0 0 auto !important;     /* Evita que el navegador los deforme o aplaste */
+        white-space: nowrap !important; /* Fuerza a que el texto se quede en una sola línea */
+        font-size: 0.7rem !important;  /* Letra más pequeña para dispositivos */
+        padding: 4px 8px !important;   /* Espaciado interno mínimo */
+        margin: 0 !important;
     }
 
-    /* 🗺️ RESCATE DEL MAPA EN IPAD: Forzamos su territorio */
+    /* 🗺️ EL MAPA RECUPERA SU ESPACIO REAL EN IPAD */
     #map {
-        height: 60vh !important; /* El mapa se queda obligatoriamente con el 60% de la pantalla */
-        position: relative !important;
+        height: 65vh !important;       /* Subimos al 65% de la pantalla para el mapa */
+        width: 100% !important;
+        margin-top: 5px !important;
     }
 }
 
-/* 📱 REGLA 2: TU REGLA ACTUAL PARA CELULARES (Optimizada a 640px) */
+/* 📱 REGLA 2: TU REGLA ACTUAL PARA CELULARES (Menos de 640px) */
 @media(max-width: 640px) {
     :root { --sidebar-w: 230px; }
     #sidebar { position: absolute; top: 0; left: 0; bottom: 0; transform: translateX(-100%); transition: transform 0.3s ease; box-shadow: 4px 0 20px rgba(0,0,0,0.5); }
@@ -824,7 +832,7 @@ html, body {
     
     /* 🗺️ RESCATE DEL MAPA EN CELULAR */
     #map {
-        height: 50vh !important; /* En celular el mapa asegura la mitad de la pantalla real */
+        height: 55vh !important; /* Le damos un empujón extra para que se vea genial en el cel */
     }
 }
 

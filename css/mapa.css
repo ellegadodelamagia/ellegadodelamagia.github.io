@@ -745,11 +745,11 @@ html, body {
 }
 
 /* -------------------------------------------------------------------------
-    9. OPTIMIZACIÓN DISPOSITIVOS MÓVILES & TOPBAR PC (Dos Filas Compactas)
+    9. OPTIMIZACIÓN DISPOSITIVOS MÓVILES & TOPBAR PC (Ajuste de Rango iPad)
 ------------------------------------------------------------------------- */
 
-/* 💻 REGLA PARA PC: Se mantiene igual (Filas fluidas centradas) */
-@media (min-width: 1025px) {
+/* 💻 REGLA PARA PC: Ahora solo se activa en pantallas verdaderamente grandes (Más de 1367px) */
+@media (min-width: 1367px) {
     #topbar #sidebar-parents {
         display: flex;
         flex-direction: row;
@@ -769,53 +769,51 @@ html, body {
     }
 }
 
-/* 🍏 REGLA PARA IPAD Y TABLETS (Menos de 1024px y más de 641px) */
-@media (min-width: 641px) and (max-width: 1024px) {
-    /* Achicamos drásticamente los textos de la cabecera para ahorrar espacio vertical */
+/* 🍏 REGLA PARA IPAD Y TABLETS (Cubre iPad Mini, iPad Normal e iPad Pro de pie o acostado) */
+@media (min-width: 641px) and (max-width: 1366px) {
+    /* Mantenemos la cabecera delgada para proteger el mapa en horizontal */
     #topbar {
-        padding: 8px 10px !important;
+        padding: 6px 10px !important;
     }
     #topbar .eyebrow { font-size: 0.65rem !important; margin: 0; }
-    #topbar h1 { font-size: 1.2rem !important; margin: 2px 0 !important; }
-    #topbar .tagline { font-size: 0.7rem !important; margin: 0; }
+    #topbar h1 { font-size: 1.1rem !important; margin: 2px 0 !important; }
+    #topbar .tagline { font-size: 0.68rem !important; margin: 0; }
 
-    /* En iPad los volvemos a poner en una sola línea horizontal ultra delgada */
+    /* Forzamos UNA SOLA FILA horizontal para que no aplaste el mapa al acostar el dispositivo */
     #topbar #sidebar-parents, 
     div#app .silver-filter-container {
         display: flex !important;
         flex-direction: row !important;
-        flex-wrap: nowrap !important; /* 👈 Una sola fila para que no crezca hacia abajo */
-        justify-content: flex-start !important; /* Alineados a la izquierda para el scroll */
-        overflow-x: auto !important; /* 👈 Activamos su scroll horizontal propio */
+        flex-wrap: nowrap !important; /* 👈 Prohibido hacer dos filas aquí */
+        justify-content: flex-start !important; 
+        overflow-x: auto !important; /* Scroll horizontal elástico */
         overflow-y: hidden !important;
         width: 100% !important;
         max-width: 100vw !important;
-        max-height: 38px !important; /* 👈 Altura súper bajita */
+        max-height: 36px !important; /* 👈 Ultra delgado */
         box-sizing: border-box;
         padding: 4px 10px !important;
         gap: 6px !important;
         -webkit-overflow-scrolling: touch !important;
     }
 
-    /* Ocultamos la barra de scroll visual para mantener la elegancia */
     #topbar #sidebar-parents::-webkit-scrollbar,
     div#app .silver-filter-container::-webkit-scrollbar {
         display: none !important;
     }
 
-    /* Botones pequeños y en línea para el iPad */
     #topbar #sidebar-parents .p-item, 
     div#app .silver-filter-container .btn-silver {
-        flex: 0 0 auto !important; /* 👈 Evita que se encojan, manteniendo su tamaño real */
+        flex: 0 0 auto !important; /* No se encogen */
         white-space: nowrap !important;
         font-size: 0.65rem !important;
         padding: 4px 10px !important;
         margin: 0 !important;
     }
 
-    /* Le devolvemos el espacio que le robaron al mapa */
+    /* Maximizamos el mapa en tablets */
     #map {
-        height: 75vh !important; /* 👈 El mapa ahora recupera el 75% de la pantalla */
+        height: 70vh !important; /* 👈 Le da el 70% del alto total de la pantalla al mapa */
         width: 100% !important;
     }
 }

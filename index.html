@@ -7,58 +7,85 @@
   
   <link rel="stylesheet" href="css/globales.css">
   <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/personajes.css">
   <link rel="icon" href="data:,">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav class="barra-navegacion">
+  <nav class="barra-navegacion">
     <a href="#hero" class="btn-navegacion">Inicio</a>
-    <a href="mapa.html" class="btn-navegacion">Mapa del viaje de Kaira</a>
-    <a href="recetas.html" class="btn-navegacion">Recetario de Daniella</a>
+    
+    <a href="mapa.html" id="btn-abrir-mapa" class="btn-navegacion" onclick="return abrirPortal('mapa')">Mapa del viaje de Kaira</a>
+    <a href="recetas.html" id="btn-abrir-recetario" class="btn-navegacion" onclick="return abrirPortal('recetas')">Recetario de Daniella</a>
+
+    <a href="#historia" class="btn-navegacion">La historia</a>
+    <a href="#mundo" class="btn-navegacion">Los mundos</a>
+    <a href="#libros" class="btn-navegacion">Los libros</a>
+    <a href="#personajes" class="btn-navegacion">Personajes</a>
+    <a href="#objetos" class="btn-navegacion">Objetos</a>
   </nav>
 
   <section id="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-subtitle-top">UNA SAGA DE DIEZ LIBROS</p>
-      <h1 class="hero-title">EL LEGADO<br>DE LA MAGIA</h1>
-      <p class="hero-author">POR IRENE</p>
+    
+      <h1 class="hero-title">
+        <span class="letra-magica">E</span>l 
+        <span class="letra-magica">L</span>egado<br> 
+        <span class="letra-magica">D</span>e 
+        <span class="letra-magica">L</span>a 
+        <span class="letra-magica">M</span>agia
+      </h1>
+      <p class="hero-author">POR IRENE NACHER</p>
       <blockquote class="hero-quote">
         "Hay quienes nacen con la magia en la sangre.<br>
         Y hay quienes nacen siendo la magia."
       </blockquote>
       
-      <div class="contenedor-descubrir">
-        <button id="btn-maestro-descubrir" class="btn-dorado">Descubrir la saga</button>
-        
-        <div id="menu-saga-opciones">
-          <a href="#historia" class="enlace-saga">🔮 La Historia</a>
-          <a href="#mundo" class="enlace-saga">🗺️ Los Mundos</a>
-          <a href="#personajes" class="enlace-saga">👥 Personajes</a>
-          <a href="#objetos" class="enlace-saga">📜 Objetos Mágicos</a>
-          <a href="#libros" class="enlace-saga">📚 Los 10 Libros</a>
-        </div>
+      <div id="menu-saga-opciones">
+        <a href="#historia" class="enlace-saga">🔮 La Historia</a>
+        <a href="#mundo" class="enlace-saga">🗺️ Los Mundos</a>
+        <a href="#personajes" class="enlace-saga">👥 Personajes</a>
+        <a href="#objetos" class="enlace-saga">📜 Objetos Mágicos</a>
+        <a href="#libros" class="enlace-saga">📚 Los 10 Libros</a>
       </div>
-
     </div>
-   <div class="scroll-indicator">
+
+    <div class="scroll-indicator">
       <span>EXPLORAR</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
   <section id="historia" class="seccion-mistica">
-    <p class="titulo-seccion-sub">EL DESPERTAR DE LA SAGA</p>
+    <p class="titulo-seccion-sub">EL DESPERTAR DE LA MAGIA</p>
     <h2 class="titulo-seccion">LA HISTORIA</h2>
     
     <div class="divisor-mistico"><div class="rombo"></div></div>
 
     <div class="historia-container">
       <p class="sinopsis-texto">
-        Kaira es una joven mexicana con un deseo imposible de cumplir: viajar de verdad. En su cumpleaños le regalan un libro sobre lugares mágicos, y aparece Jeziel, un ángel enviado para cumplir ese anhelo que no entiende las emociones humanas. Uno de sus destinos es el Pueblo del Águila, el lugar de la magia en México, donde descubren que Kaira es la recolectora elegida por una profecía antigua. Viajan a Inglaterra para que realice la prueba definitiva, pero absorbe toda la magia del lugar en lugar de solo el excedente. Desde entonces debe aprender magia, devolver lo que tomó sin querer y seguir viajando con el ángel mientras cumple su nueva misión.
+        Kaira Ferrer creció cerca de la Ciudad de México, su mayor deseo fue siempre conocer el mundo. 
+        No como turista, sino de verdad. Pero no se atrevía a hacerlo sola.<br>
+        Ese deseo fue escuchado.<br>
+        Jeziel es un serafín con una misión aparentemente simple: mostrarle el mundo. 
+        En su aventura, Kaira descubre que detrás de los lugares reales existen 
+        otros que no deberían existir. Espacios increíbles escondidos a plena vista, donde la magia no es 
+        una leyenda sino una arquitectura viva.<br>
+        Viajando desde México, pasando por ciudades europeas donde encuentran magia escondida, llegan finalmente 
+        a Roma, el destino que siempre soñó.<br>
+      </p>
+    
+      <p class="sinopsis-texto">
+        <br>Y Kaira descubre que:<br>
+        Algunos lugares transforman tu forma de ver la vida.<br> 
+        Otros cambian quién eres. <br>
+        Pero hay lugares en los que encuentras responsabilidades para las que no estás preparado. 
       </p>
       
-      <button id="btn-revelar-profecia" class="btn-dorado" style="margin-top: 2rem; font-size: 0.9rem; padding: 0.8rem 1.5rem;">
+      <button type="button" id="btn-revelar-profecia" class="btn-dorado" style="margin-top: 2rem; font-size: 0.9rem; padding: 0.8rem 1.5rem;">
         Revelar la Profecía
       </button>
     </div>
@@ -70,77 +97,60 @@
         un <span class="resalto-oro">recolector</span>, un <span class="resalto-oro">heredero</span>,<br>
         la fuente de agua clara<br>
         refleja su alma.<br><br>
-        La prueba aguarda.<br>
-        Un portal sagrado, susurro entre piedra,<br>
+
+        Un <span class="texto-argento">collar argento y cristal</span>,<br>
+        símbolo añejo del poder remoto,<br>
+        murmullos de saberes olvidados.<br>
+
+        La prueba aguarda: portal sagrado.<br>
+        Susurro entre piedra,<br>
         rito antiguo bajo luna menguante,<br>
-        el cielo se alumbra con <span class="resalto-verde">albor verde</span>.<br><br>
+        el cielo se alumbra con <span class="resalto-verde">albor verde</span>.<br>
+        el viento sopla en la noche larga.<br><br>
+
         La tentación acecha cada paso,<br>
-        las garras de la sombra son un lazo.<br>
-        Deberá ser sabio, nunca imprudente."
+        las garras de la <span class="resalto-sombra">sombra</span> son un lazo,<br>
+        deberá ser sabio, nunca imprudente.<br><br>
+        
+        Cada sortilegio lanzado,<br>
+        puede traer grandeza o arruinar su destino,<br>
+        el recolector ha de elegir con prudencia,<br>
+        el equilibrio es frágil en su camino."
       </blockquote>
     </div>
   </section>
 
   <section id="mundo" class="seccion-mistica">
-    <p class="titulo-seccion-sub">EXPLORA EL UNIVERSO</p>
-    <h2 class="titulo-seccion">LOS TRES MUNDOS</h2>
-    
-    <div class="divisor-mistico"><div class="rombo"></div></div>
+  
+  <div id="mundos-container">
+      <p id="dinamico-subtitulo" class="titulo-seccion-sub">EXPLORA EL UNIVERSO</p>
+      <h2 id="dinamico-titulo" class="titulo-seccion">LOS TRES MUNDOS</h2>
+      
+      <div class="divisor-mistico"><div class="rombo"></div></div>
 
-    <div class="mundos-grid">
-      <div class="mundo-card">
-        <div class="roman-bg">I</div>
-        <div class="mundo-card-content">
-          <h3>COMMUNIA</h3>
-          <p>El plano terrenal. El mundo de los humanos, desprovisto de magia visible pero conectado sutilmente a través de hilos invisibles.</p>
-        </div>
-      </div>
+      <div id="contenedor-boton-volver"></div>
 
-      <div class="mundo-card" id="btn-vedlys" style="cursor: pointer;">
-        <div class="roman-bg">II</div>
-        <div class="mundo-card-content">
-          <h3>VEDLYS 🌟</h3>
-          <p>El plano mágico por excelencia. Un tejido de regiones místicas. <em>(Pulsa para explorar sus regiones)</em></p>
-        </div>
-      </div>
+      <div id="mundos-grid-dinamico" class="mundos-grid-layout"></div>
+  </div>
 
-      <div class="mundo-card" id="btn-celestial" style="cursor: pointer;">
-        <div class="roman-bg">III</div>
-        <div class="mundo-card-content">
-          <h3>CELESTIAL 🌌</h3>
-          <p>El reino superior de los seres de luz y los ángeles guardianes. <em>(Pulsa para explorar sus planos)</em></p>
-        </div>
-      </div>
-    </div>
-  </section>
+</section>
 
-  <section id="sub-vedlys" class="seccion-mistica sub-mundo-seccion">
-    <p class="titulo-seccion-sub">REINO DE VEDLYS</p>
-    <h2 class="titulo-seccion">REGIONES MÍSTICAS</h2>
-    <div class="divisor-mistico"><div class="rombo"></div></div>
-    
-    <div class="mundos-grid">
-      <div class="mundo-card sub-card"><div class="mundo-card-content"><h3>Región 1</h3><p>Espacio reservado para la primera región mágica de Vedlys.</p></div></div>
-      <div class="mundo-card sub-card"><div class="mundo-card-content"><h3>Región 2</h3><p>Espacio reservado para la segunda región mágica de Vedlys.</p></div></div>
-      <div class="mundo-card sub-card"><div class="mundo-card-content"><h3>Región 3</h3><p>Espacio reservado para la tercera región mágica de Vedlys.</p></div></div>
-    </div>
-  </section>
-
-  <section id="sub-celestial" class="seccion-mistica sub-mundo-seccion">
-    <p class="titulo-seccion-sub">REINO CELESTIAL</p>
-    <h2 class="titulo-seccion">PLANOS SUPERIORES</h2>
-    <div class="divisor-mistico"><div class="rombo"></div></div>
-    
-    <div class="mundos-grid">
-      <div class="mundo-card sub-card"><div class="mundo-card-content"><h3>Plano 1</h3><p>Espacio reservado para el primer plano de los seres de luz.</p></div></div>
-      <div class="mundo-card sub-card"><div class="mundo-card-content"><h3>Plano 2</h3><p>Espacio reservado para el segundo plano de los seres de luz.</p></div></div>
-      <div class="mundo-card sub-card"><div class="mundo-card-content"><h3>Plano 3</h3><p>Espacio reservado para el tercer plano de los seres de luz.</p></div></div>
-    </div>
-  </section>
-
+ 
+</section>
   <section id="personajes" class="seccion-mistica">
     <h2 class="titulo-seccion">PERSONAJES</h2>
     <div class="divisor-mistico"><div class="rombo"></div></div>
+
+  <div class="contenedor-filtros-libros">
+    <button class="btn-filtro activo" onclick="filtrarPorLibro('principales', this)">Principales</button>
+    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 1', this)">Libro 1</button>
+    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 2', this)">Libro 2</button>
+    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 3', this)">Libro 3</button>
+    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 4', this)">Libro 4</button>
+    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 5', this)">Libro 5</button>
+</div>
+
+    <div id="contenedor-personajes-grid" class="personajes-grid"></div>
   </section>
 
   <section id="objetos" class="seccion-mistica">
@@ -153,6 +163,21 @@
     <div class="divisor-mistico"><div class="rombo"></div></div>
   </section>
 
+  <div id="modal-portal">
+    <div class="modal-contenido">
+      <h3 id="modal-titulo">Portal de Viaje</h3>
+      <p id="modal-descripcion">Preparando conjuro de transmutación de espacio...</p>
+      <div class="modal-botones">
+        <button type="button" id="btn-modal-proceder" class="btn-dorado">Viajar</button>
+        <button type="button" id="btn-modal-cancelar" class="btn-oscuro">Regresar al Inicio</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/datos_personajes.js"></script>
+  <script src="js/personajes.js"></script>
   <script src="js/motor_principal.js"></script>
+  <script type="module" src="js/mundos.js"></script>
+
 </body>
 </html>

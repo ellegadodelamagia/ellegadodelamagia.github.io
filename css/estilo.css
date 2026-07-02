@@ -2,9 +2,9 @@
    🔮 ESTILOS GENERALES Y ATMÓSFERA MÍSTICA
    ========================================================================= */
 :root {
-  --gold: #c8a84b;       /* Oro viejo místico */
-  --parch: #f5ebd5;      /* Color pergamino para letras */
-  --dark-bg: #0d0a07;    /* Fondo casi negro profundo */
+  --gold: #c5a956;       /* Oro viejo místico */
+  --parch: #f5e4bf;      /* Color pergamino para letras */
+  --dark-bg: #010413;    /* Fondo casi negro profundo */
 }
 
 body {
@@ -31,7 +31,7 @@ body {
 }
 
 .titulo-seccion-sub {
-  color: rgba(245, 235, 213, 0.5);
+  color: rgba(228, 210, 171, 0.5);
   font-size: 0.85rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -110,20 +110,45 @@ body {
   z-index: 1;
 }
 
+/* Animación para que todo el contenido "vuele" al cargar */
 .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  padding: 0 2rem;
+  animation: vueloMistico 2.5s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+  opacity: 0; /* Inicia invisible */
 }
 
+/* El hechizo del movimiento */
+@keyframes vueloMistico {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98); /* Viene desde abajo y un poco más pequeña */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1); /* Llega a su lugar perfecto */
+  }
+}
+
+/* El cuerpo general del título: Elegante, limpio y legible */
 .hero-title {
-  font-size: 4rem;
-  letter-spacing: 0.2em;
-  color: #fff;
-  text-shadow: 0 0 20px rgba(0,0,0,0.8);
+  font-family: 'Cinzel', serif; /* Cambiamos a la versión limpia sin colitas */
+  font-size: 4.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
   margin: 0.5rem 0;
   line-height: 1.2;
+}
+
+/* 🪄 LAS INICIALES MÁGICAS: Solo estas letras tendrán la tipografía decorativa */
+.hero-title .letra-magica {
+  font-family: 'Cinzel Decorative', serif; /* Esta sí lleva los adornos */
+  font-size: 5rem; /* Un poquito más grande para que destaque como capitular */
+  color: var(--gold);
+  
+  /* Activamos los glifos especiales de la L y la M de tu imagen */
+  font-variant-ligatures: discretionary-ligatures;
+  font-feature-settings: "dlig" 1, "ss01" 1, "ss02" 1;
 }
 
 .hero-quote {
@@ -132,6 +157,18 @@ body {
   margin: 2rem auto;
   font-size: 1.1rem;
   line-height: 1.6;
+}
+
+/* 🌪️ LAS REGLAS DEL VUELO: Agrega esto justo aquí abajo para controlar la animación */
+@keyframes vueloMistico {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98); /* Inicia abajo y un poquito encogido */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1); /* Termina en su posición perfecta */
+  }
 }
 
 /* =========================================================================
@@ -148,37 +185,96 @@ body {
 }
 
 .sinopsis-texto {
-  font-size: 1.1rem;
-  line-height: 1.8;
   color: rgba(245, 235, 213, 0.85);
+  font-family: 'Cormorant Garamond', serif; /* Cambiamos de Cinzel a esta tipografía */
+  font-size: 1.3rem; /* Al tener minúsculas, puedes subirle un poquito el tamaño */
+  line-height: 1.6;
+  text-transform: none; /* Nos aseguramos de que el navegador no fuerce mayúsculas */
+  font-variant: normal; /* Desactiva cualquier efecto de letras chicas */
 }
 
-/* Caja de la profecía oculta */
+/* =========================================================================
+   🌌 CONTROL DE INTERCAMBIO INTEGRAL (HISTORIA VS PROFECÍA)
+   ========================================================================= */
+
+/* 1. La imagen de la profecía SOLO se aplica a la sección, NO al body global */
+body.pantalla-profecia #historia {
+  background-image: url('../imagenes_principal/profecia.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  
+  /* Cambiamos 'fixed' por 'scroll' para que la sección se lleve su fondo al subir */
+  background-attachment: scroll !important; 
+  background-color: #100d09 !important;
+  
+  padding-top: 4rem !important;
+  min-height: 100vh; /* Ocupa toda la pantalla solo en esta sección */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* El body solo cambia de color de fondo si es necesario, sin heredar la imagen */
+body.pantalla-profecia {
+  background-color: #100d09 !important;
+}
+
+/* 2. FULMINAMOS el texto de la historia viejo para que no estorbe */
+body.pantalla-profecia #historia .titulo-seccion-sub:not(:first-child), 
+body.pantalla-profecia #historia > .titulo-seccion-sub,
+body.pantalla-profecia #historia .titulo-seccion,
+body.pantalla-profecia #historia .divisor-mistico,
+body.pantalla-profecia #historia .sinopsis-texto,
+body.pantalla-profecia .scroll-indicator {
+  display: none !important;
+}
+
+/* =========================================================================
+   🔮 CAJA DE LA PROFECÍA (UNIFICADA CON TRANSICIÓN FLUIDA)
+   ========================================================================= */
 #profecia-clandestina {
-  display: none;
+  /* CAMBIO CLAVE: Quitamos display: none para que la transición pueda existir */
   opacity: 0;
-  transition: opacity 0.5s ease;
-  margin: 3rem auto 0 auto;
+  max-height: 0;
+  overflow: hidden; /* Evita que el texto se asome mientras está cerrado */
+  transform: translateY(-10px); /* Mini efecto místico de deslizamiento */
+
+  background: linear-gradient(to bottom, rgba(37, 26, 14, 0.5), rgba(16, 13, 9, 0.8));
+
+  /* 👁️ TRUCO EXTRA: Difumina la imagen de fondo que queda detrás de la caja */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /* Soporte para Safari */
+
+  border: 1px solid rgba(200, 168, 75, 0.2);
+  padding: 0 2rem; /* El padding vertical (arriba/abajo) se activa en la clase .mostrar */
+  border-radius: 6px;
+  max-width: 600px;
+  margin: 0 auto; /* El margen superior se maneja abajo para evitar saltos */
+  
+  /* Agregamos max-height y transform a la transición mística */
+  transition: opacity 0.6s ease, max-height 0.6s ease-in-out, transform 0.6s ease, padding 0.6s ease, margin 0.6s ease;
+
+  /* Sombra externa negra para separar la caja del fondo por completo */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
 }
 
 #profecia-clandestina.mostrar {
-  display: block !important;
   opacity: 1;
-}
-
-.profecia-box {
-  background: linear-gradient(to bottom, rgba(26,21,16,0.5), rgba(16,13,9,0.8));
-  border: 1px solid rgba(200,168,75,0.2);
-  padding: 3rem;
-  border-radius: 4px;
-  max-width: 600px;
-  margin: 0 auto;
+  max-height: 1000px; /* Le damos una altura máxima generosa para que se despliegue todo el poema */
+  transform: translateY(0);
+  padding: 3rem 2rem; /* Recuperamos el acolchado suavemente al abrir */
+  margin-top: 2rem; /* El espacio con el botón aparece de forma fluida */
 }
 
 .profecia-poema {
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  line-height: 2;
-  font-size: 1.05rem;
+  line-height: 1.7;
+  font-size: 1.15rem;
+  color: #e5dcd3;
+  margin: 0;
+  display: block;
 }
 
 /* =========================================================================
@@ -194,9 +290,40 @@ body {
 
 /* Verde esmeralda para el albor verde */
 .resalto-verde {
-  color: #2e7d32 !important; /* Verde bosque antiguo */
+  color: #67c26d !important; /* Verde bosque antiguo */
   font-weight: bold;
-  text-shadow: 0 0 8px rgba(46, 125, 50, 0.4);
+  text-shadow: 0 0 8px rgba(29, 71, 31, 0.4);
+}
+
+/* ✨ EFECTO PLATEADO MÍSTICO PARA LA PROFECÍA */
+.texto-argento {
+  font-weight: bold; /* Lo hace resaltar un poco más */
+  color: #d1d1cf !important; /* plateado */
+    text-shadow: 0 0 8px rgba(211, 214, 211, 0.4);
+  
+  /* Un sutil brillo plateado de fondo para que resalte sobre el pergamino oscuro */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* 🖤 EFECTO DE SOMBRA ABSOLUTA Y OSCURA */
+.resalto-sombra {
+  color: #000000 !important; /* Negro puro para la palabra */
+  font-weight: bold;
+  
+  /* 👁️ Truco mágico: Un resplandor oscuro alrededor para que se note sobre el fondo */
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.8);
+  
+  /* Un ligero espaciado para darle un toque más imponente */
+  letter-spacing: 1px;
+}
+
+/* 🌌 CAMBIO DE FONDO DINÁMICO PARA LA PROFECÍA */
+body.modo-profecia {
+  background-image: url('../imagenes_principal/profecia.jpg') !important; 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 0.5s ease-in-out; /* Hace que el cambio de fondo sea suave y no de golpe */
 }
 
 /* =========================================================================
@@ -308,41 +435,48 @@ body {
 }
 
 /* =========================================================================
-   🧭 BARRA DE NAVEGACIÓN SUPERIOR
+   🧭 BARRA DE NAVEGACIÓN SUPERIOR - DISEÑO LIMPIO Y CENTRADO
    ========================================================================= */
-.barra-navegacion {
+nav.barra-navegacion {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(13, 10, 7, 0.95); /* El fondo oscuro de tu saga */
-  border-bottom: 1px solid rgba(200, 168, 75, 0.3); /* Línea delgada dorada */
+  background: rgba(0, 2, 22, 0.9); /*fondo obscuro traslucido */
   z-index: 1000;
+
+  /* 🎯 El estándar para centrar elementos hijos directos */
   display: flex;
-  justify-content: center;
-  padding: 0.8rem 0;
-  backdrop-filter: blur(5px); /* Efecto esmerilado místico */
+  justify-content: center; 
+  align-items: center;
+  
+  padding: 1.2rem 2rem; /*controla el grosor de la barra arriba y abajo */
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(219, 185, 81, 0.4); /*lalinea dorada*/
 }
 
-/* Botones individuales de la barra */
-.btn-navegacion {
+/* Enlaces de navegación individuales */
+nav.barra-navegacion .btn-navegacion {
   font-family: 'Cinzel', serif;
-  color: var(--parch) !important;
+  color: rgba(241, 219, 171, 0.7); /*color pergamino suave*/
   text-decoration: none;
   font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  padding: 0.5rem 1.2rem;
-  margin: 0 0.5rem;
-  border: 1px solid transparent;
-  border-radius: 2px;
+  letter-spacing: 0.12em;
+  padding: 0.5rem 0.8rem; /*espaciado interno de cada palabra*/
+  margin: 0 0.5rem; /*separa los botones entre si*/
+  
+  /* Limpieza de estilos de caja anteriores */
+  border: none;
+  background: none;
+  box-shadow: none;
+  
   transition: all 0.3s ease;
 }
 
-.btn-navegacion:hover {
-  color: var(--gold) !important;
-  border-color: var(--gold);
-  background: rgba(200, 168, 75, 0.05);
-  box-shadow: 0 0 10px rgba(200, 168, 75, 0.1);
+/* Efecto Hover cuando pasas el cursor sobre los titulos brillan */
+nav.barra-navegacion .btn-navegacion:hover {
+  color: var(--gold); 
+  text-shadow: 0 0 8px rgba(200, 168, 75, 0.6);
 }
 
 /* =========================================================================
@@ -391,3 +525,154 @@ body {
     opacity: 1;
   }
 }
+
+/* 🔮 TRUCO DE SCROLL: Evita que la barra de navegación tape el inicio de las secciones */
+section {
+  scroll-margin-top: 80px; /* Ajusta este número (en píxeles) según el grosor de tu barra */
+}
+
+/* =========================================================================
+   📜 CONFIGURACIÓN DE FONDO PARA LA SECCIÓN HISTORIA
+   ========================================================================= */
+
+/* 1. Tu sección mística general (limpia para las demás páginas) */
+.seccion-mistica {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+  box-sizing: border-box;
+  background-color: #000207; 
+  z-index: 1;
+}
+
+/* 2. Aplicamos el mapa DIRECTAMENTE a la sección de la historia */
+section#historia.seccion-mistica::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* 🔍 TRIPLE REVISIÓN: Si tu archivo real tiene espacios, déjalo con espacios. 
+     Si tiene guiones bajos, cámbialo a guiones bajos. Aquí lo dejo con espacios: */
+  background-image: url('../imagenes_principal/mapa_detras_de_la_historia.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+/* 🎯 CAMBIO CLAVE: Muestra la imagen completa sin recortes */
+  background-size: contain; 
+  
+  /* Centra el mapa en el medio del bloque de la historia */
+  background-position: center; 
+  background-repeat: no-repeat;  
+
+  /* 🧪 PRUEBA DE FUEGO: Lo dejamos visible (0.35) para ver si carga la imagen */
+  opacity: 0.35; 
+  filter: grayscale(30%) brightness(40%); 
+  z-index: -1;
+  
+  transition: opacity 1.5s ease-in-out; 
+}
+
+/* 3. Clon de respaldo por si el JS ya está mandando la clase */
+section#historia.seccion-mistica.mapa-activo::before {
+  opacity: 0.35; 
+}
+
+/* Aseguramos que el contenedor de tu texto flote perfectamente arriba */
+.historia-container {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  text-align: center;
+  background: rgba(1, 24, 51, 0.6); 
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+/* =========================================================================
+   🌌 VENTANA MODAL (PORTAL INTERACTIVO)
+   ========================================================================= */
+#modal-portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 8, 6, 0.85); /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(8px); /* Difumina lo que queda atrás */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Asegura que se ponga por encima de TODO */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* Clase que activará el JavaScript para mostrar el modal */
+#modal-portal.mostrar {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-contenido {
+  background: linear-gradient(to bottom, rgba(25, 21, 17, 0.95), rgba(15, 12, 10, 0.98));
+  border: 1px solid rgba(200, 168, 75, 0.3);
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+  transform: translateY(-20px);
+  transition: transform 0.4s ease;
+}
+
+#modal-portal.mostrar .modal-contenido {
+  transform: translateY(0);
+}
+
+.modal-contenido h3 {
+  font-family: 'Cormorant Garamond', serif;
+  color: #c8a84b;
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal-contenido p {
+  color: #e5dcd3;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* Estilo rápido para el botón de cancelar si no tienes uno similar */
+.btn-oscuro {
+  background: transparent;
+  border: 1px solid rgba(229, 220, 211, 0.3);
+  color: #e5dcd3;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.btn-oscuro:hover {
+  background: rgba(229, 220, 211, 0.1);
+  border-color: #e5dcd3;
+}
+
+

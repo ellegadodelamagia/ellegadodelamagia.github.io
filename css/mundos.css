@@ -1,0 +1,358 @@
+/* ==========================================================================
+   ESTRUCTURA BASE Y GRID (SAGA: EL LEGADO DE LA MAGIA)
+   ========================================================================== */
+
+/* Contenedor macro de la sección */
+#mundos-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* Reducimos padding para dar más aire */
+    box-sizing: border-box;
+}
+
+/* Fuerza al Grid a alinearse en filas y columnas bonitas (Corregido para tu HTML) */
+#mundos-grid-dinamico, .mundos-grid-layout {
+    display: grid !important;
+    /* Esto obliga a las tarjetas a ponerse de lado a lado si hay espacio, en vez de una columna gorda */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 30px !important;
+    margin-top: 30px !important;
+    width: 100% !important;
+}
+
+/* ==========================================================================
+   ESTILIZADO DE TARJETAS INDIVIDUALES (COMPACTAS Y SEPARADAS)
+   ========================================================================== */
+
+.mundo-card {
+    position: relative;
+    height: 380px;            /* Un poco más compactas de altura */
+    
+    /* CONTROL DE ANCHO Y CENTRADO */
+    width: 90% !important;
+    max-width: 320px !important; /* Pasaron de ser gigantes a un ancho estilizado de libro */
+    margin: 0 auto 35px auto !important; /* Centra la tarjeta y genera 35px de separación con la de abajo */
+    
+    border-radius: 14px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    background-color: #120b20;
+    
+    /* Transición suave para el efecto de flote */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease !important;
+}
+
+/* --- EFECTO AL PASAR EL MOUSE (Mantiene la elegancia) --- */
+.mundo-card.estado-nivel-1:hover {
+    transform: translateY(-8px) scale(1.02) !important; /* Flota ligeramente hacia arriba y se agranda un 2% */
+    box-shadow: 0 20px 40px rgba(138, 43, 226, 0.25) !important; /* Brillo místico expandido */
+}
+
+/* Margen extra de seguridad para el contenedor del Grid */
+#mundos-grid-dinamico, .mundos-grid-layout {
+    display: block !important; /* Cambiamos a bloque para que respeten el centrado por margen */
+    width: 100% !important;
+    padding: 10px 0 !important;
+}
+
+/* Contenido interno de la tarjeta (Corregido a .mundo-card-content) */
+.mundo-card-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(to top, rgba(15, 10, 25, 0.95) 0%, rgba(15, 10, 25, 0.4) 70%, transparent 100%);
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.mundo-card h3 {
+    margin: 12px 0 8px 0;
+    font-size: 1.6rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+}
+
+.mundo-card p {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Indicador de acción (Pulsa para explorar) */
+.indicador-accion {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #bfa1db;
+    opacity: 0.8;
+}
+
+/* Números romanos de fondo */
+.roman-bg {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 6rem;
+    font-family: 'Cinzel', serif;
+    color: rgba(255, 255, 255, 0.03);
+    font-weight: bold;
+    user-select: none;
+    z-index: 0;
+}
+
+/* --- ESTADO NIVEL 2: BLOQUEADO (DESENFOQUE) --- */
+.mundo-card-content.bloqueado-blur {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(15, 12, 22, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.txt-bloqueado {
+    color: #ffb703 !important;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 15px 0 !important;
+}
+
+.badge-libro {
+    font-size: 0.85rem;
+    color: #aaa;
+    border-top: 1px solid #332244;
+    padding-top: 8px;
+    width: 80%;
+}
+
+/* --- ESTADO NIVEL 3: OCULTO/SPOILER --- */
+.oculto-total {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #0d0b11;
+    border: 2px dashed #2c2536;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   BOTONES DE NAVEGACIÓN MÍSTICA (ESTILIZADO ÉPICO)
+   ========================================================================== */
+
+/* ==========================================================================
+   BOTÓN DE REGRESAR EXCLUSIVO (CON MÁXIMA PRIORIDAD CSS)
+   ========================================================================== */
+
+#navegacion-mundos a {
+    background-color: #110924;
+    color: #bfa1db;
+    border: 2px solid #4a2e6d;
+    padding: 14px 32px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+
+   /* Contenedor del botón centrado */
+#contenedor-boton-volver {
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Selector ultra-específico para el enlace-botón */
+#contenedor-boton-volver a.btn-volver-mundos {
+    /* Reseteo y comportamiento de bloque para que acepte dimensiones */
+    display: inline-block !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    
+    /* Colores base y recuadro místico bien definido */
+    background-color: #110924 !important;
+    color: #bfa1db !important;
+    border: 2px solid #4a2e6d !important; 
+    
+    /* Espaciado interno para darle cuerpo de botón real */
+    padding: 14px 32px !important;         
+    border-radius: 6px !important;
+    
+    /* Tipografía de alta visibilidad para que no se confunda con el lore */
+    font-family: 'Cinzel', serif, Georgia, 'Times New Roman', sans-serif !important;
+    font-size: 1rem !important;             
+    font-weight: bold !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    
+    /* Alineación y sombras */
+    margin: 25px auto !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* --- EFECTO: AL PASAR EL CURSOR (ILUMINACIÓN) --- */
+#contenedor-boton-volver a.btn-volver-mundos:hover {
+    background-color: #20103c !important;
+    border-color: #c5a059 !important; /* El recuadro se ilumina en oro místico */
+    color: #ffffff !important;         /* Las letras brillan en blanco */
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* --- EFECTO: AL DAR CLIC (PULSACIÓN) --- */
+#contenedor-boton-volver a.btn-volver-mundos:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Contenedor del botón para asegurar que se centre en la pantalla */
+#contenedor-boton-volver {
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
+}
+/* ==========================================================================
+   TARJETA DE LORE EXPANDIDA (PANTALLA COMPLETA)
+   ========================================================================== */
+
+tarjeta-lore-expandida {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    padding: 45px 35px !important;
+    margin: 40px auto !important; 
+    width: 88% !important;        
+    max-width: 450px !important; 
+    box-sizing: border-box !important;
+    color: #fff !important;
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85) !important;
+    
+    /* SEGURIDAD DE MARCO: */
+    border-width: 3px !important;
+    border-style: solid !important; /* Declaramos explícitamente que es sólido */
+    border-image: linear-gradient(135deg, #c5a059 0%, #f5eab7 50%, #b38f43 100%) 1 !important;
+    position: relative !important;
+    display: block !important; /* Asegura que actúe como una caja independiente */
+    
+    animation: girarYExpandir 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Caja de respaldo interna para oscurecer el fondo de la imagen */
+.cuerpo-tarjeta-expandida {
+    background: rgba(11, 7, 20, 0.85);
+    padding: 25px 20px;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(197, 160, 89, 0.15);
+}
+
+/* Detalles de esquinas de la tarjeta */
+.marco-dorado-ancestral::before, .marco-dorado-ancestral::after {
+    content: '✦';
+    position: absolute;
+    color: #f5eab7;
+    font-size: 0.9rem;
+    text-shadow: 0 0 6px #b38f43;
+}
+.marco-dorado-ancestral::before { top: -10px; left: -6px; }
+.marco-dorado-ancestral::after { bottom: -12px; right: -6px; }
+
+/* Extracto destacado superior (Corregido max-width para no romper al padre) */
+.extracto-breve {
+    font-style: italic;
+    color: #d1b8e7;
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 100%; /* Se adapta de forma segura al tamaño de la tarjeta */
+}
+
+/* Títulos internos del Códice */
+.seccion-lore-bloque h3 {
+    color: #f5eab7; 
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    padding-bottom: 8px;
+}
+
+/* Texto fluido de lectura */
+.texto-fluido-lore {
+    color: #e3daf0;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin: 0;
+}
+
+/* Bloque destacado para Reglas de la Magia */
+.caja-magia-dorada {
+    background: rgba(197, 160, 89, 0.03);
+    border: 1px solid rgba(197, 160, 89, 0.15);
+    padding: 25px;
+    border-radius: 6px;
+}
+
+/* --- ANEXOS Y SUB-RAZAS --- */
+.subrazas-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+}
+.subrazas-container h4 {
+    color: #f5eab7;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+.subrazas-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.tag-subraza {
+    background: #251b35;
+    color: #e2cbfa;
+    border: 1px solid #483563;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   ANIMACIONES
+   ========================================================================== */
+@keyframes girarYExpandir {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotateY(-90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+    }
+}
+
+/* Optimización para dispositivos móviles */
+@media (max-width: 768px) {
+    .tarjeta-lore-expandida {
+        padding: 30px 20px !important;
+        width: 95% !important;
+    }
+    .seccion-lore-bloque h3 { font-size: 1.15rem; }
+    .texto-fluido-lore { font-size: 0.95rem; }
+}

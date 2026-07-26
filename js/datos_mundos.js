@@ -4,7 +4,7 @@ const MUNDOS_DATA = [
   {
     id: "mundo_humano",
     nombre: "Mundo Humano",
-    nombre_visible: "Mundo Humano",
+    nombre_visible: "Humano",
     tipo: "Dimensión",
     descripcion_breve: "El plano terrenal donde la magia opera bajo el velo de la discreción y el secreto.",
     historia_o_lore: "El Mundo Humano ha permanecido aislado de las corrientes macro de la magia pura durante milenios. Protegido por antiguas barreras, es el hogar de sociedades mortales que, en su mayoría, ignoran los hilos místicos que sostienen su realidad.",
@@ -40,7 +40,7 @@ const MUNDOS_DATA = [
   {
     id: "mundo_celestial",
     nombre: "Mundo Celestial",
-    nombre_visible: "Mundo Celestial",
+    nombre_visible: "Celestial",
     tipo: "Dimensión",
     descripcion_breve: "El reino de las esferas superiores, el orden sagrado y la justicia etérea.",
     historia_o_lore: "Gobernado por entidades de luz pura y estructuras inquebrantables, el plano celestial vigila el equilibrio del multiverso.",
@@ -58,10 +58,10 @@ const MUNDOS_DATA = [
   {
     id: "el_nemori",
     nombre: "El Nemori",
-    nombre_visible: "El Nemori",
+    nombre_visible: "Nemori",
     tipo: "Mundo Ancestral",
     descripcion_breve: "La cuna de la magia de la naturaleza, espíritus elementales y razas antiguas.",
-    historia_o_lore: "Un ecosistema salvaje, eterno y mágico que respira por sí mismo. Aquí, la tierra, los árboles y el agua poseen conciencia propia y se comunican con sus habitantes.",
+    historia_o_lore: "Perciben el aura de los humanos",
     reglas_de_magia: "Flujo de esencia libre y salvaje. No se necesitan catalizadores; la magia se moldea directamente con la voluntad y el respeto a la naturaleza.",
     imagen_fondo: "imagenes_principal/mundos/nemori_bg.jpg",
     desbloqueado: 1,
@@ -70,14 +70,14 @@ const MUNDOS_DATA = [
 
     regiones: [
       {
-        id: "drydalys",
-        nombre: "Drydalys",
-        nombre_visible: "Drydalys",
+        id: "dridalys",
+        nombre: "Dridalys",
+        nombre_visible: "Dridalys",
         tipo: "Raza Ancestral",
-        descripcion_breve: "Espíritus y guardianes profundamente conectados con la esencia viva del bosque.",
-        historia_o_lore: "Los Drydalys son los protectores de la flora profunda del Nemori. No poseen un gobierno centralizado, sino que se organizan en comunidades ligadas a árboles madre.",
-        reglas_de_magia: "Fitomancia avanzada, camuflaje orgánico y transmutación vegetal.",
-        imagen_fondo: "imagenes_principal/mundos/drydalys.jpg",
+        descripcion_breve: "Comerciante y mensajeros entre las razas",
+        historia_o_lore: "Fueron los primeros que detectaron la magia perdida.",
+        reglas_de_magia: "Pueden trasladarse grandes distancias llevando objetos o personas con ellos. Son excelentes cocineros",
+        imagen_fondo: "imagenes_principal/mundos/dridalys.jpg",
         desbloqueado: 1,
         sub_razas: ["Aluxes", "Kete", "Uchuy", "Qizm", "Malenkiy", "Xiao", "Tanuki"] // Integradas sin saturar la UI
       },

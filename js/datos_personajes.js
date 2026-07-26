@@ -225,7 +225,7 @@ const SAGA_PERSONAJES = [
     "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
-    "imagen": ""
+    "imagen": "enrique.jpg"
   },
   {
     "id": "wilbur",
@@ -277,7 +277,7 @@ const SAGA_PERSONAJES = [
     "subtipo": "",
     "origen": "Gran Bretaña",
     "rol": "Profesora culturas mágicas",
-    "orden": "10",
+    "orden": "12",
     "libros": ["Libro 1", "Libro 2"],
     "alias": "Ailsa",
     "descripcion": "",
@@ -288,7 +288,7 @@ const SAGA_PERSONAJES = [
     "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
-    "imagen": ""
+    "imagen": "ailsa.jpg"
   },
   {
     "id": "shin-liu",
@@ -298,7 +298,7 @@ const SAGA_PERSONAJES = [
     "subtipo": "",
     "origen": "China",
     "rol": "Compañera de trabajo de Kaira en China",
-    "orden": "11",
+    "orden": "10",
     "libros": ["Libro 1", "Libro 5"],
     "alias": "Shin Liu",
     "descripcion": "",
@@ -309,7 +309,7 @@ const SAGA_PERSONAJES = [
     "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
-    "imagen": ""
+    "imagen": "shinliu.jpg"
   },
   {
     "id": "altair",
@@ -319,7 +319,7 @@ const SAGA_PERSONAJES = [
     "subtipo": "",
     "origen": "Brasil",
     "rol": "Compañero de trabajo de Kaira en Brasil",
-    "orden": "12",
+    "orden": "11",
     "libros": ["Libro 1", "Libro 7"],
     "alias": "Altair",
     "descripcion": "",
@@ -330,7 +330,7 @@ const SAGA_PERSONAJES = [
     "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
-    "imagen": ""
+    "imagen": "altair.jpg"
   },
   {
     "id": "dasha",
@@ -351,7 +351,7 @@ const SAGA_PERSONAJES = [
     "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
-    "imagen": ""
+    "imagen": "dasha.jpg"
   },
   {
     "id": "videl",
@@ -372,7 +372,7 @@ const SAGA_PERSONAJES = [
     "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
-    "imagen": ""
+    "imagen": "videl.jpg"
   },
   {
     "id": "mustafa",
@@ -393,7 +393,7 @@ const SAGA_PERSONAJES = [
     "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
-    "imagen": ""
+    "imagen": "mustafa.jpg"
   },
   {
     "id": "zagner",

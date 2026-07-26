@@ -68,7 +68,7 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
 
         if (contenedorVolver) {
             const btnVolver = document.createElement("a"); 
-            btnVolver.innerHTML = "← Volver a los Tres Mundos";
+            btnVolver.innerHTML = "← Volver a los Mundos";
             btnVolver.className = "btn-volver-mundos"; 
 
             btnVolver.onclick = () => renderizarNivel(MundosEstructuraSaga, false);
@@ -76,7 +76,7 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
         }
     } else {
         if (txtSubtitulo) txtSubtitulo.innerText = "EXPLORA EL UNIVERSO";
-        if (txtTitulo) txtTitulo.innerText = "LOS TRES MUNDOS";
+        if (txtTitulo) txtTitulo.innerText = "LOS MUNDOS";
     }
 
     // 2. RENDERIZAR TARJETAS
@@ -240,7 +240,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
         <div class="cuerpo-tarjeta-expandida">
             <div class="seccion-lore-bloque">
-                <h3>📜 HISTORIA Y LORE</h3>
+                <h3>📜 HISTORIA </h3>
                 <p class="texto-fluido-lore">${objeto.historia_o_lore || "El archivo histórico se actualizará pronto..."}</p>
             </div>
             

@@ -1,0 +1,127 @@
+/* 1. Selector limpio y específico sin imports */
+section#tipos_magia div#contenedor_tipos_magia {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  
+  /* NUEVO: Asegura que el contenedor tenga altura suficiente para el giro */
+  min-height: 450px; 
+  /* NUEVO: Fija el punto de fuga para que no varíe al girar */
+  perspective-origin: center center;
+}
+
+/* 2. Estructura de la Flip-Card 3D */
+.tarjeta-magia-flip {
+  background-color: transparent;
+  /* Altura fija para que el espacio no varíe al girar */
+  height: 380px; 
+  /* Perspectiva aplicada AQUÍ para un giro más limpio */
+  perspective: 1500px; 
+  cursor: pointer;
+  position: relative; /* Importante para el posicionamiento interno */
+}
+
+/* 3. El contenedor interno que gira */
+.tarjeta-magia-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Giro más natural */
+  transform-style: preserve-3d;
+  border-radius: 12px;
+  /* Asegura que no se desplace verticalmente */
+  transform-origin: center center; 
+}
+
+/* 4. Clase que ejecuta el giro al hacer clic (toggle por JS) */
+.tarjeta-magia-flip.rotada .tarjeta-magia-inner {
+  transform: rotateY(180deg);
+}
+
+/* 5. Caras Frontal y Trasera */
+.tarjeta-frente, .tarjeta-dorso {
+  position: absolute;
+  top: 0;   /* Fuerza posición superior */
+  left: 0;  /* Fuerza posición izquierda */
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Oculta la cara trasera */
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  box-sizing: border-box; /* Asegura que padding/borde no sumen altura */
+}
+
+/* --- FRONTAL --- */
+.tarjeta-frente {
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--color-marco, #8a2be2);
+  box-shadow: 0 0 15px var(--color-marco, rgba(138, 43, 226, 0.4));
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 2; /* Asegura que el frente esté arriba inicialmente */
+}
+
+/* Gradiente para que el texto resalte */
+.overlay-frente {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 15%, rgba(0,0,0,0.2) 60%);
+  z-index: 1;
+}
+
+.titulo-magia-frente {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-size: 1.5rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  margin: 0;
+}
+
+/* --- REVERSO (DORSO) --- */
+.tarjeta-dorso {
+  background-image: 
+    /* Capa 1: Estrellas brillantes pequeñas dispersas asimétricamente */
+    radial-gradient(1.5px 1.5px at 20px 30px, rgba(255, 255, 255, 0.9), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 150px 80px, rgba(255, 255, 255, 0.7), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 80px 220px, rgba(255, 255, 255, 0.85), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 240px 170px, rgba(255, 255, 255, 0.6), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 190px 300px, rgba(255, 255, 255, 0.8), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 40px 320px, rgba(255, 255, 255, 0.75), rgba(0,0,0,0)),
+    
+    /* Capa 2: Resplandor de nebulosa con el color de la magia (centro-arriba) */
+    radial-gradient(circle at 50% 30%, var(--color-fondo-reverso, #4c1d95) 0%, transparent 70%),
+    
+    /* Capa 3: Base oscura mística */
+    radial-gradient(circle at 50% 50%, #12101d 0%, #05040a 100%);
+
+  border: 2px solid var(--color-marco, #8a2be2);
+  color: #ffffff;
+  transform: rotateY(180deg); /* Ya está rotada 180 grados */
+  padding: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+  z-index: 1; /* Inicialmente detrás */
+}
+
+/* Ajustes Media Query sin imports */
+@media (max-width: 768px) {
+  section#tipos_magia div#contenedor_tipos_magia {
+    grid-template-columns: 1fr;
+  }
+  .tarjeta-magia-flip {
+    height: 350px; /* Un poco más bajas en móvil */
+  }
+}

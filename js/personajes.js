@@ -115,27 +115,32 @@ function renderizarPersonajes() {
 }
 
 // 🖱️ FUNCIÓN ACTIVADA AL HACER CLIC EN UN BOTÓN DE LIBRO
-// Se añade 'botonPresionado' en el argumento para que sea compatible con el 'this' del HTML
 function filtrarPorLibro(nombreLibro, botonPresionado) {
-    // 1. Actualizamos nuestra variable de control global
+    // 1. Actualizamos la variable de control global
     libroActual = nombreLibro;
     
-    // 2. Renderizamos de nuevo las tarjetas (el filtro se aplicará automáticamente)
+    // 2. Renderizamos las tarjetas (el filtro aplicará la lógica de candado automáticamente)
     renderizarPersonajes();
     
-    // 3. Estética de la interfaz: Cambiar el botón activo de color dorado
+    // 3. Estética: Cambiar la clase activa al botón presionado
     const botones = document.querySelectorAll('.btn-filtro');
     botones.forEach(btn => btn.classList.remove('activo'));
 
-    // 4. Le ponemos la clase dorada 'activo' directamente al botón que presionó el usuario (si se pasó 'this')
     if (botonPresionado) {
         botonPresionado.classList.add('activo');
     } else {
-        // Respaldo por si se usa el evento del navegador tradicional window.event
         const botonActivo = window.event ? window.event.target : null;
         if (botonActivo) {
             botonActivo.classList.add('activo');
         }
+    }
+}
+
+// 📜 FUNCIÓN PARA CERRAR EL PERGAMINO MANUALMENTE
+function cerrarPergamino() {
+    const avisoElem = document.getElementById('aviso-pergamino');
+    if (avisoElem) {
+        avisoElem.classList.add('d-none');
     }
 }
 

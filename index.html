@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/personajes.css">
   <link rel="stylesheet" href="css/tipos_magia.css">
   <link rel="stylesheet" href="css/escritos.css">
+  <link rel="stylesheet" href="css/saga.css">
 
   <link rel="icon" href="data:,">
 
@@ -66,30 +67,34 @@
   </section>
 
   <section id="historia" class="seccion-mistica">
-    <p class="titulo-seccion-sub">EL LEGADO DE LA MAGIA</p>
-    <h2 class="titulo-seccion">Cómo inició todo...</h2>
-    
-    <div class="divisor-mistico"><div class="rombo"></div></div>
+  <p class="titulo-seccion-sub">EL LEGADO DE LA MAGIA</p>
+  <h2 class="titulo-seccion">Cómo inició todo...</h2>
+  
+  <div class="divisor-mistico"><div class="rombo"></div></div>
 
-    <div class="historia-container">
-      <p class="sinopsis-texto">
-        Kaira Ferrer creció cerca de la Ciudad de México, su mayor deseo fue siempre conocer el mundo. 
-        No como turista, sino de verdad. Pero no se atrevía a hacerlo sola.<br>
-        Ese deseo fue escuchado.<br>
-        Jeziel es un serafín con una misión aparentemente simple: mostrarle el mundo. 
-        En su aventura, Kaira descubre que detrás de los lugares reales existen 
-        otros que no deberían existir. La aventura apenas comienza.<br>
-        Y la magia entra a su vida de una forma que jamás imaginó.<br>
-      </p>
-    
-      <p class="sinopsis-texto">
-        <br>Kaira descubre que:<br>
-        Algunos lugares transforman tu forma de ver la vida.<br> 
-        Otros cambian quién eres. <br>
-        Pero hay lugares en los que encuentras responsabilidades para las que no estás preparado. 
-      </p>
-    </div>
-  </section>
+  <!-- Contenedor dinámico controlado 100% desde js/saga.js -->
+  <div id="contenedor-modulo-saga" class="historia-container">
+    <p class="sinopsis-texto">
+      Kaira Ferrer creció cerca de la Ciudad de México, su mayor deseo fue siempre conocer el mundo. 
+      No como turista, sino de verdad. Pero no se atrevía a hacerlo sola.<br>
+      Ese deseo fue escuchado.<br>
+      Jeziel es un serafín con una misión aparentemente simple: mostrarle el mundo. 
+      En su aventura, Kaira descubre que detrás de los lugares reales existen 
+      otros que no deberían existir. La aventura apenas comienza.<br>
+      Y la magia entra a su vida de una forma que jamás imaginó.<br>
+    </p>
+  
+    <p class="sinopsis-texto">
+      <br>Kaira descubre que:<br>
+      Algunos lugares transforman tu forma de ver la vida.<br> 
+      Otros cambian quién eres. <br>
+      Pero hay lugares en los que encuentras responsabilidades para las que no estás preparado. 
+    </p>
+
+    <!-- JS inyectará el botón redondeado aquí automáticamente -->
+    <div id="slot-boton-saga" style="text-align: center; margin-top: 2.5rem;"></div>
+  </div>
+</section>
 
   <section id="mundo" class="seccion-mistica">
     <div id="mundos-container">
@@ -183,6 +188,8 @@
   <script src="js/datos_escritos.js"></script>
   <script src="js/escritos.js"></script>
    <script src="js/motor_principal.js"></script>
+  <script src="js/datos_saga.js" defer></script>
+<script src="js/saga.js" defer></script>
 
 </body>
 </html>

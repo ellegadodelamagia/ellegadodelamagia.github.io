@@ -11,14 +11,28 @@
     box-sizing: border-box;
 }
 
-/* Retícula dinámica fluida (Grid) */
-#mundos-grid-dinamico, .mundos-grid-layout {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-    gap: 30px !important;
-    margin-top: 30px !important;
-    width: 100% !important;
-    padding: 10px 0 !important;
+/* Contenedor Grid con especificidad incrementada mediante ID + ID/Clase */
+#mundos-container #mundos-grid-dinamico {
+    display: grid;
+    /* auto-fill evita que las columnas se expandan para llenar el espacio vacío */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 350px));
+    justify-content: center;
+    align-items: start;
+    gap: 25px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 40px auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Limitador individual usando especificidad compuesta (#id .clase) */
+#mundos-grid-dinamico .mundo-card {
+    width: 100%;
+    max-width: 350px;
+    justify-self: center;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 /* ==========================================================================

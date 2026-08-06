@@ -96,79 +96,76 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-/* 🖼️ Ruta corregida apuntando a tu carpeta y archivo exacto */
+  /* 🖼️ Ruta de fondo */
   background-image: url('../imagenes_principal/fuente_merlin.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
+/* Capa oscurecedora sutil para aclarar la imagen y dar paso a la luz real */
 .hero-overlay {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle, rgba(13,10,7,0.4) 0%, rgba(13,10,7,0.95) 90%);
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: radial-gradient(circle, rgba(13, 10, 7, 0.2) 0%, rgba(13, 10, 7, 0.75) 90%);
   z-index: 1;
 }
 
-/* Animación para que todo el contenido "vuele" al cargar */
+/* 🕊️ Animación del vuelo místico intacta */
 .hero-content {
+  position: relative;
+  z-index: 2; /* Se coloca por encima de la capa protectora */
   animation: vueloMistico 2.5s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
-  opacity: 0; /* Inicia invisible */
+  opacity: 0; /* Inicia invisible hasta volar */
 }
 
 /* El hechizo del movimiento */
 @keyframes vueloMistico {
   0% {
     opacity: 0;
-    transform: translateY(40px) scale(0.98); /* Viene desde abajo y un poco más pequeña */
+    transform: translateY(40px) scale(0.98);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1); /* Llega a su lugar perfecto */
+    transform: translateY(0) scale(1);
   }
 }
 
-/* El cuerpo general del título: Elegante, limpio y legible */
+/* El cuerpo general del título: Elegante, dorado nítido y legible */
 .hero-title {
-  font-family: 'Cinzel', serif; /* Cambiamos a la versión limpia sin colitas */
+  font-family: 'Cinzel', serif;
   font-size: 4.2rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: var(--gold);
-  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+  color: #ffd700; /* Dorado brillante */
+  text-shadow: 2px 2px 6px #000000, 0px 0px 20px rgba(0, 0, 0, 0.95);
   margin: 0.5rem 0;
   line-height: 1.2;
 }
 
-/* 🪄 LAS INICIALES MÁGICAS: Solo estas letras tendrán la tipografía decorativa */
+/* 🪄 LAS INICIALES MÁGICAS */
 .hero-title .letra-magica {
-  font-family: 'Cinzel Decorative', serif; /* Esta sí lleva los adornos */
-  font-size: 5rem; /* Un poquito más grande para que destaque como capitular */
-  color: var(--gold);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 5rem;
+  color: #ffd700;
+  text-shadow: 2px 2px 6px #000000, 0px 0px 22px rgba(0, 0, 0, 0.95);
   
-  /* Activamos los glifos especiales de la L y la M de tu imagen */
   font-variant-ligatures: discretionary-ligatures;
   font-feature-settings: "dlig" 1, "ss01" 1, "ss02" 1;
 }
 
+/* Frase o cita de la portada: Blanco luminoso de alta definición */
 .hero-quote {
   font-style: italic;
-  color: rgba(245, 235, 213, 0.7);
+  color: #ffffff; /* Blanco puro para contraste perfecto */
   margin: 2rem auto;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
-}
-
-/* 🌪️ LAS REGLAS DEL VUELO: Agrega esto justo aquí abajo para controlar la animación */
-@keyframes vueloMistico {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.98); /* Inicia abajo y un poquito encogido */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1); /* Termina en su posición perfecta */
-  }
+  text-shadow: 2px 2px 5px #000000, 0px 0px 12px rgba(0, 0, 0, 0.9);
 }
 
 /* =========================================================================
@@ -193,138 +190,8 @@ body {
   font-variant: normal; /* Desactiva cualquier efecto de letras chicas */
 }
 
-/* =========================================================================
-   🌌 CONTROL DE INTERCAMBIO INTEGRAL (HISTORIA VS PROFECÍA)
-   ========================================================================= */
 
-/* 1. La imagen de la profecía SOLO se aplica a la sección, NO al body global */
-body.pantalla-profecia #historia {
-  background-image: url('../imagenes_principal/profecia.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  
-  /* Cambiamos 'fixed' por 'scroll' para que la sección se lleve su fondo al subir */
-  background-attachment: scroll !important; 
-  background-color: #100d09 !important;
-  
-  padding-top: 4rem !important;
-  min-height: 100vh; /* Ocupa toda la pantalla solo en esta sección */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
-/* El body solo cambia de color de fondo si es necesario, sin heredar la imagen */
-body.pantalla-profecia {
-  background-color: #100d09 !important;
-}
-
-/* 2. FULMINAMOS el texto de la historia viejo para que no estorbe */
-body.pantalla-profecia #historia .titulo-seccion-sub:not(:first-child), 
-body.pantalla-profecia #historia > .titulo-seccion-sub,
-body.pantalla-profecia #historia .titulo-seccion,
-body.pantalla-profecia #historia .divisor-mistico,
-body.pantalla-profecia #historia .sinopsis-texto,
-body.pantalla-profecia .scroll-indicator {
-  display: none !important;
-}
-
-/* =========================================================================
-   🔮 CAJA DE LA PROFECÍA (UNIFICADA CON TRANSICIÓN FLUIDA)
-   ========================================================================= */
-#profecia-clandestina {
-  /* CAMBIO CLAVE: Quitamos display: none para que la transición pueda existir */
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden; /* Evita que el texto se asome mientras está cerrado */
-  transform: translateY(-10px); /* Mini efecto místico de deslizamiento */
-
-  background: linear-gradient(to bottom, rgba(37, 26, 14, 0.5), rgba(16, 13, 9, 0.8));
-
-  /* 👁️ TRUCO EXTRA: Difumina la imagen de fondo que queda detrás de la caja */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px); /* Soporte para Safari */
-
-  border: 1px solid rgba(200, 168, 75, 0.2);
-  padding: 0 2rem; /* El padding vertical (arriba/abajo) se activa en la clase .mostrar */
-  border-radius: 6px;
-  max-width: 600px;
-  margin: 0 auto; /* El margen superior se maneja abajo para evitar saltos */
-  
-  /* Agregamos max-height y transform a la transición mística */
-  transition: opacity 0.6s ease, max-height 0.6s ease-in-out, transform 0.6s ease, padding 0.6s ease, margin 0.6s ease;
-
-  /* Sombra externa negra para separar la caja del fondo por completo */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-}
-
-#profecia-clandestina.mostrar {
-  opacity: 1;
-  max-height: 1000px; /* Le damos una altura máxima generosa para que se despliegue todo el poema */
-  transform: translateY(0);
-  padding: 3rem 2rem; /* Recuperamos el acolchado suavemente al abrir */
-  margin-top: 2rem; /* El espacio con el botón aparece de forma fluida */
-}
-
-.profecia-poema {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  line-height: 1.7;
-  font-size: 1.15rem;
-  color: #e5dcd3;
-  margin: 0;
-  display: block;
-}
-
-/* =========================================================================
-   🔮 COLORES MÍSTICOS PARA LAS PALABRAS DE LA PROFECÍA
-   ========================================================================= */
-
-/* Oro místico para el recolector y el heredero */
-.resalto-oro {
-  color: var(--gold) !important;
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(200, 168, 75, 0.4);
-}
-
-/* Verde esmeralda para el albor verde */
-.resalto-verde {
-  color: #67c26d !important; /* Verde bosque antiguo */
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(29, 71, 31, 0.4);
-}
-
-/* ✨ EFECTO PLATEADO MÍSTICO PARA LA PROFECÍA */
-.texto-argento {
-  font-weight: bold; /* Lo hace resaltar un poco más */
-  color: #d1d1cf !important; /* plateado */
-    text-shadow: 0 0 8px rgba(211, 214, 211, 0.4);
-  
-  /* Un sutil brillo plateado de fondo para que resalte sobre el pergamino oscuro */
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-}
-
-/* 🖤 EFECTO DE SOMBRA ABSOLUTA Y OSCURA */
-.resalto-sombra {
-  color: #000000 !important; /* Negro puro para la palabra */
-  font-weight: bold;
-  
-  /* 👁️ Truco mágico: Un resplandor oscuro alrededor para que se note sobre el fondo */
-  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.8);
-  
-  /* Un ligero espaciado para darle un toque más imponente */
-  letter-spacing: 1px;
-}
-
-/* 🌌 CAMBIO DE FONDO DINÁMICO PARA LA PROFECÍA */
-body.modo-profecia {
-  background-image: url('../imagenes_principal/profecia.jpg') !important; 
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  transition: background-image 0.5s ease-in-out; /* Hace que el cambio de fondo sea suave y no de golpe */
-}
 
 /* =========================================================================
    🗺️ SECCIÓN 3: EL GRID DE LOS TRES MUNDOS

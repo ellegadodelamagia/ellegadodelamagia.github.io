@@ -325,3 +325,99 @@
     border-radius: 4px;
     line-height: 1.3;
 }
+
+/* =========================================================================
+   🔮 CAJA DE LA PROFECÍA (UNIFICADA CON TRANSICIÓN FLUIDA)
+   ========================================================================= */
+#profecia-clandestina {
+  /* CAMBIO CLAVE: Quitamos display: none para que la transición pueda existir */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden; /* Evita que el texto se asome mientras está cerrado */
+  transform: translateY(-10px); /* Mini efecto místico de deslizamiento */
+
+  background: linear-gradient(to bottom, rgba(37, 26, 14, 0.5), rgba(16, 13, 9, 0.8));
+
+  /* 👁️ TRUCO EXTRA: Difumina la imagen de fondo que queda detrás de la caja */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /* Soporte para Safari */
+
+  border: 1px solid rgba(200, 168, 75, 0.2);
+  padding: 0 2rem; /* El padding vertical (arriba/abajo) se activa en la clase .mostrar */
+  border-radius: 6px;
+  max-width: 600px;
+  margin: 0 auto; /* El margen superior se maneja abajo para evitar saltos */
+  
+  /* Agregamos max-height y transform a la transición mística */
+  transition: opacity 0.6s ease, max-height 0.6s ease-in-out, transform 0.6s ease, padding 0.6s ease, margin 0.6s ease;
+
+  /* Sombra externa negra para separar la caja del fondo por completo */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+}
+
+#profecia-clandestina.mostrar {
+  opacity: 1;
+  max-height: 1000px; /* Le damos una altura máxima generosa para que se despliegue todo el poema */
+  transform: translateY(0);
+  padding: 3rem 2rem; /* Recuperamos el acolchado suavemente al abrir */
+  margin-top: 2rem; /* El espacio con el botón aparece de forma fluida */
+}
+
+.profecia-poema {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  line-height: 1.7;
+  font-size: 1.15rem;
+  color: #e5dcd3;
+  margin: 0;
+  display: block;
+}
+
+/* =========================================================================
+   🔮 COLORES MÍSTICOS PARA LAS PALABRAS DE LA PROFECÍA
+   ========================================================================= */
+
+/* Oro místico para el recolector y el heredero */
+.resalto-oro {
+  color: var(--gold) !important;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(200, 168, 75, 0.4);
+}
+
+/* Verde esmeralda para el albor verde */
+.resalto-verde {
+  color: #67c26d !important; /* Verde bosque antiguo */
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(29, 71, 31, 0.4);
+}
+
+/* ✨ EFECTO PLATEADO MÍSTICO PARA LA PROFECÍA */
+.texto-argento {
+  font-weight: bold; /* Lo hace resaltar un poco más */
+  color: #d1d1cf !important; /* plateado */
+    text-shadow: 0 0 8px rgba(211, 214, 211, 0.4);
+  
+  /* Un sutil brillo plateado de fondo para que resalte sobre el pergamino oscuro */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* 🖤 EFECTO DE SOMBRA ABSOLUTA Y OSCURA */
+.resalto-sombra {
+  color: #000000 !important; /* Negro puro para la palabra */
+  font-weight: bold;
+  
+  /* 👁️ Truco mágico: Un resplandor oscuro alrededor para que se note sobre el fondo */
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.8);
+  
+  /* Un ligero espaciado para darle un toque más imponente */
+  letter-spacing: 1px;
+}
+
+/* 🌌 CAMBIO DE FONDO DINÁMICO PARA LA PROFECÍA */
+body.modo-profecia {
+  background-image: url('../imagenes_principal/profecia.jpg') !important; 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 0.5s ease-in-out; /* Hace que el cambio de fondo sea suave y no de golpe */
+}

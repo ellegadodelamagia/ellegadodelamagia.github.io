@@ -675,4 +675,114 @@ section#historia.seccion-mistica.mapa-activo::before {
   border-color: #e5dcd3;
 }
 
+/* ===================================================
+   ESTILOS PARA BOTONES DE NAVEGACIÓN Y ACCIÓN (LORE)
+   =================================================== */
 
+/* Contenedor principal de los botones de retorno/exploración */
+#contenedor-boton-volver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+/* Estilo base de los botones (AHORA CON FORMA OVALADA) */
+.btn-volver-mundos {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 28px; /* Relleno lateral ligeramente mayor para enfatizar la curva */
+    font-family: 'Cinzel', serif, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f5eab7; /* Dorado claro */
+    background: linear-gradient(135deg, rgba(25, 17, 43, 0.9) 0%, rgba(13, 8, 25, 0.95) 100%);
+    border: 1px solid #c5a059; /* Borde dorado */
+    border-radius: 50px; /* <--- Esto hace que el botón sea completamente óvalo/píldora */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(197, 160, 89, 0.15);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* EFECTO HOVER (Al pasar el cursor) */
+.btn-volver-mundos:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, rgba(45, 28, 80, 0.95) 0%, rgba(22, 12, 45, 0.98) 100%);
+    border-color: #f5eab7;
+    box-shadow: 0 6px 20px rgba(197, 160, 89, 0.35), inset 0 0 15px rgba(245, 234, 183, 0.3);
+    transform: translateY(-2px);
+}
+
+/* EFECTO CLICK (Active) */
+.btn-volver-mundos:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Brillo sutil al pasar el mouse por los botones */
+.btn-volver-mundos::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(245, 234, 183, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.btn-volver-mundos:hover::after {
+    opacity: 1;
+}
+
+/* Indicadores de acción dentro de las tarjetas "(Pulsa para explorar)" */
+.indicador-accion {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #c5a059;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.mundo-card:hover .indicador-accion {
+    color: #f5eab7;
+    text-shadow: 0 0 8px rgba(245, 234, 183, 0.5);
+}
+
+/* ===================================================
+   LEYENDA EN TARJETAS DE SUBMUNDOS / REGIONES
+   =================================================== */
+
+.indicador-accion {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'Cinzel', serif, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #c5a059; /* Dorado atenúado */
+    opacity: 0.85;
+    transition: all 0.3s ease;
+}
+
+/* EFECTO HOVER: Ilumina y mueve ligeramente la leyenda al pasar el cursor sobre la tarjeta */
+.mundo-card:hover .indicador-accion,
+.region-card:hover .indicador-accion {
+    color: #f5eab7; /* Dorado brillante */
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(245, 234, 183, 0.6);
+    transform: translateX(4px); /* Desplazamiento sutil hacia la derecha */
+}

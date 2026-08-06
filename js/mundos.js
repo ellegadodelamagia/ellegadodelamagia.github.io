@@ -51,6 +51,7 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
     gridDinamico.innerHTML = "";
     if (contenedorVolver) contenedorVolver.innerHTML = "";
 
+    
     // 1. CONFIGURAR CABECERAS Y BOTÓN VOLVER
     if (esSubNivel && objetoPadre) {
         if (txtSubtitulo) txtSubtitulo.innerText = objetoPadre.nombre ? objetoPadre.nombre.toUpperCase() : "REGIONES";
@@ -67,7 +68,6 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
             contenedorVolver.appendChild(btnVolver);
         }
     } else {
-        // Cambia estos textos por los que pusiste en tu HTML:
         if (txtSubtitulo) txtSubtitulo.innerText = "EXISTEN DIFERENTES MUNDOS CONVIVIENDO";
         if (txtTitulo) txtTitulo.innerText = "COMPRENDE EL UNIVERSO";
     }
@@ -91,7 +91,7 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
                 <div class="mundo-card-content">
                     <h3>${nombreMostrar.toUpperCase()}</h3>
                     <p>${item.descripcion_breve || ""}</p>
-                    ${(!esSubNivel && ((item.regiones && item.regiones.length > 0) || (item.razas && item.razas.length > 0))) ? '<span class="indicador-accion"><em>(Pulsa para explorar)</em></span>' : ''}
+                    <span class="indicador-accion">Pulsa para explorar →</span>
                 </div>
             `;
 
@@ -104,18 +104,28 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
             };
 
         } else if (item.desbloqueado === 2) {
-            const nombreMostrar = item.nombre_visible || item.nombre || "";
-            tarjeta.innerHTML = `
-                <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
-                <div class="mundo-card-content bloqueado-blur">
-                    <h3>${nombreMostrar.toUpperCase()}</h3>
-                    <p class="txt-bloqueado">🔒 Contenido Bloqueado</p>
-                    <span class="badge-libro">Se revela en: ${item.revelado_en}</span>
-                </div>
-            `;
-            tarjeta.style.cursor = "not-allowed";
+    const nombreMostrar = item.nombre_visible || item.nombre || "";
+    
+    // Verificamos si el libro corresponde a los Herederos o a la Profecía
+    const libroAsociado = (item.revelado_en || "").toLowerCase();
+    const esLibroProtegido = libroAsociado.includes("herederos") || libroAsociado.includes("profecía") || libroAsociado.includes("profecia");
 
-        } else if (item.desbloqueado === 3) {
+    // Definimos el texto del badge/leyenda según el caso
+    const textoRevelado = esLibroProtegido 
+        ? "Información protegida hasta el momento adecuado" 
+        : `Se revela en: ${item.revelado_en || 'Siguientes libros'}`;
+
+    tarjeta.innerHTML = `
+        <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
+        <div class="mundo-card-content bloqueado-blur">
+            <h3>${nombreMostrar.toUpperCase()}</h3>
+            <p class="txt-bloqueado">🔒 Contenido Bloqueado</p>
+            <span class="badge-libro">${textoRevelado}</span>
+        </div>
+    `;
+    tarjeta.style.cursor = "not-allowed";
+
+} else if (item.desbloqueado === 3) {
             tarjeta.innerHTML = `
                 <div class="roman-bg">?</div>
                 <div class="mundo-card-content oculto-total">
@@ -224,7 +234,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
     fichaCompleta.style.display = "block";
     fichaCompleta.style.width = "92%";
-    fichaCompleta.style.maxWidth = "700px";         
+    fichaCompleta.style.maxWidth = "700px";        
     fichaCompleta.style.margin = "20px auto";
     fichaCompleta.style.boxSizing = "border-box";
     fichaCompleta.style.borderWidth = "4px";
@@ -232,7 +242,6 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
     fichaCompleta.style.borderImage = "linear-gradient(135deg, #c5a059 0%, #f5eab7 50%, #b38f43 100%) 1";
     
     if (objeto.imagen_fondo) {
-        // AQUÍ ES DONDE SE CONTROLA LA TRANSPARENCIA DEL FONDO:
         fichaCompleta.style.backgroundImage = `linear-gradient(rgba(43, 40, 49, 0.45), rgba(10, 6, 21, 0.95)), url('${objeto.imagen_fondo}')`;
         fichaCompleta.style.backgroundSize = "cover";
         fichaCompleta.style.backgroundPosition = "center";
@@ -244,18 +253,16 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
     let subrazasHTML = "";
     if (objeto.sub_razas && objeto.sub_razas.length > 0) {
         if (tieneSubRazasObjetos) {
-            // Si son objetos (Trolls, Volkov), mostramos un botón de acción en lugar de solo texto plano
             subrazasHTML = `
                 <div class="subrazas-container" style="text-align: center; margin-top: 30px;">
                     <h4>CLANES Y VARIANTES REGISTRADAS</h4>
                     <p style="color: #d1b8e7; font-size: 0.9rem; margin-bottom: 15px;">Esta categoría contiene fichas individuales completas para cada clan.</p>
                     <button id="btn-abrir-subrazas-grid" class="btn-volver-mundos" style="cursor: pointer; padding: 10px 20px; font-size: 0.95rem;">
-                         Ver Tarjetas de Sub-razas (Trolls, Volkov...) →
+                         Ver Tarjetas de Sub-razas →
                     </button>
                 </div>
             `;
         } else {
-            // Si es texto simple (Dridalys, Kotole, etc.)
             const tags = objeto.sub_razas.map(raza => `<span class="tag-subraza">${raza}</span>`).join("");
             subrazasHTML = `
                 <div class="subrazas-container">
@@ -280,7 +287,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
         <div class="cuerpo-tarjeta-expandida">
             <div class="seccion-lore-bloque">
-                <h3>📜 HISTORIA </h3>
+                <h3>📜 HISTORIA</h3>
                 <p class="texto-fluido-lore">${objeto.historia_o_lore || "El archivo histórico se actualizará pronto..."}</p>
             </div>
             
@@ -299,7 +306,6 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
     document.getElementById("mundos-container").appendChild(fichaCompleta);
 
-    // Asignar evento al botón interno si existe
     if (tieneSubRazasObjetos) {
         const btnSubGrid = document.getElementById("btn-abrir-subrazas-grid");
         if (btnSubGrid) {
@@ -310,7 +316,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
     }
 }
 
-// --- FUNCIÓN QUE RENDERIZA EL GRID DE TARJETAS PARA TROLLS Y VOLKOV ---
+// --- FUNCIÓN QUE RENDERIZA EL GRID DE TARJETAS PARA SUB-RAZAS / CLANES ---
 function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPadre) {
     const gridDinamico = document.getElementById("mundos-grid-dinamico");
     const txtSubtitulo = document.getElementById("dinamico-subtitulo");
@@ -366,8 +372,18 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
             <div class="mundo-card-content">
                 <h3>${nombreRaza.toUpperCase()}</h3>
                 <p>${descripcionRaza}</p>
+                ${esObjeto ? '<span class="indicador-accion"><em>(Pulsa para ver lore)</em></span>' : ''}
             </div>
         `;
+
+        // CORRECCIÓN: Asignar interacción si la sub-raza es un objeto con datos detallados
+        if (esObjeto) {
+            tarjeta.style.cursor = "pointer";
+            tarjeta.onclick = () => {
+                // Abre la ficha completa de la sub-raza pasando el objeto actual como padre
+                mostrarFichaLoreCompleta(item, listaOtras, objetoActual);
+            };
+        }
 
         gridDinamico.appendChild(tarjeta);
     });

@@ -1,0 +1,327 @@
+/* =========================================================================
+   📜 SECCIÓN ESCRITOS Y MANUSCRITOS ANCESTRALES
+   ========================================================================= */
+
+.escritos-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  color: var(--parch);
+}
+
+/* --- FILTROS DE CATEGORÍA --- */
+.filtros-escritos {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.filtros-escritos button.btn-filtro {
+  background: rgba(16, 13, 9, 0.8);
+  border: 1px solid rgba(197, 169, 86, 0.3);
+  color: var(--parch);
+  padding: 0.6rem 1.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.filtros-escritos button.btn-filtro:hover,
+.filtros-escritos button.btn-filtro.activo {
+  background: var(--gold);
+  color: var(--dark-bg);
+  border-color: var(--gold);
+  box-shadow: 0 0 15px rgba(197, 169, 86, 0.4);
+}
+
+/* --- GRILLA DE TARJETAS EN 3 COLUMNAS --- */
+#escritos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+  #escritos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  #escritos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.escrito-card {
+  background: linear-gradient(135deg, rgba(26, 21, 16, 0.7) 0%, rgba(16, 13, 9, 0.95) 100%);
+  border: 1px solid rgba(197, 169, 86, 0.2);
+  border-radius: 6px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.escrito-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: 0 12px 30px rgba(197, 169, 86, 0.15);
+}
+
+.escrito-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  color: var(--gold);
+  margin: 0.4rem 0;
+  letter-spacing: 0.05em;
+}
+
+.escrito-card .subtitulo {
+  font-size: 0.85rem;
+  color: rgba(245, 228, 191, 0.6);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.escrito-card .descripcion {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--parch);
+  margin-bottom: 1.5rem;
+}
+
+.badge-categoria {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+}
+
+.escrito-card .btn-dorado {
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* =========================================================================
+   📜 MODAL / VISTA COMPLETA DE LECTURA (LIMPIO)
+   ========================================================================= */
+
+.modal-escrito {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(5, 4, 3, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 3000;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.modal-escrito.visible {
+  display: flex;
+}
+
+/* Contenedor principal del modal con imagen de fondo completa */
+.modal-escrito .modal-contenido {
+  position: relative;
+  width: 90%;
+  max-width: 850px;
+  margin: auto;
+  
+  /* CUBRE TODO EL FOND0 Y NO SE DUPLICA */
+  background-size: cover; 
+  background-position: center top;
+  background-repeat: no-repeat;
+  
+  border: 1px solid rgba(197, 169, 86, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Capa de opacidad sobre la imagen de fondo */
+.modal-overlay-bg {
+  /* CAMBIA ESTE VALOR PARA EL BRILLO DE LA IMAGEN DE FONDO:
+     - 0.25 = Imagen muy clara / brillante
+     - 0.40 = Equilibrio
+     - 0.65 = Más oscura para lectura intensa */
+  background: rgba(10, 8, 6, 0.65); 
+  
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+/* TEXTO MÍSTICO COMPLETAMENTE LIMPIO (Sin recuadros ni línea izquierda) */
+/* Tarjeta de fondo oscuro translúcido SOLO para el texto de la profecía */
+.escrito-cuerpo-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  color: var(--parch);
+  text-align: center;
+  
+  /* FONDO Y BORDE TIPO PERGAMINO OSCURO */
+  background: rgba(12, 10, 8, 0.75); /* Fondo oscuro con opacidad (modifica 0.75 si quieres más o menos transparencia) */
+  border: 1px solid rgba(197, 169, 86, 0.4); /* Borde dorado tenue místico */
+  border-radius: 8px;
+  
+  /* MARGEN Y PADDING */
+  padding: 1.8rem 2rem;
+  margin: 1.5rem auto;
+  max-width: 650px;
+  
+  /* SOMBRA PARA SEPARAR EL TEXTO DEL FONDO DE LA IMAGEN */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 
+              inset 0 0 20px rgba(0, 0, 0, 0.5);
+  
+  /* EFECTO DE DESENFOQUE SUAVE DETRÁS DEL RECUADRO */
+  backdrop-filter: blur(4px);
+}
+
+/* Aclaramos levemente el fondo general del modal para que la imagen se aprecie clara */
+.modal-overlay-bg {
+  background: rgba(10, 8, 6, 0.25); /* Sombra suave general para no oscurecer la imagen */
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+}
+
+.leyenda-escritos {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: rgba(71, 52, 9, 0.75);
+  max-width: 680px;
+  margin: 0.8rem auto 1.5rem auto;
+  /* 2. ESPACIADO ENTRE RENGLONES:
+     Reduce line-height (ej. 1.3 o 1.4 para juntar los renglones) */
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* --- SUBGRILLA DE LOS 8 HEREDEROS --- */
+.subgrid-herederos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .subgrid-herederos { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .subgrid-herederos { grid-template-columns: 1fr; }
+}
+
+.heredero-card {
+  background: rgba(16, 13, 9, 0.85);
+  border: 1px solid rgba(197, 169, 86, 0.3);
+  border-radius: 6px;
+  padding: 1.2rem;
+  text-align: left;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.heredero-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.heredero-card h4 {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.heredero-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--parch);
+  line-height: 1.4;
+}
+
+/* --- IMAGEN EN TARJETAS DE ESCRITOS (INICIALES) --- */
+.escrito-img-container {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(197, 169, 86, 0.25);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.escrito-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.escrito-card:hover .escrito-card-img {
+  transform: scale(1.05);
+}
+
+/* --- BOTÓN REGRESAR EN EL MODAL --- */
+.btn-regresar-modal {
+  padding: 0.75rem 2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 50px; /* Bordes completamente redondeados / ovalado */
+  
+  /* Fondo oscuro y sólido con borde dorado para garantizar visibilidad sobre la imagen */
+  background: rgba(16, 13, 9, 0.95);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.btn-regresar-modal:hover {
+  background: var(--gold);
+  color: var(--dark-bg);
+  box-shadow: 0 0 20px rgba(197, 169, 86, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Estilo para etiquetas de contenido protegido/bloqueado */
+.badge-libro {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #e5c158;
+    background: rgba(20, 10, 30, 0.6);
+    border: 1px dashed #c5a059;
+    border-radius: 4px;
+    line-height: 1.3;
+}

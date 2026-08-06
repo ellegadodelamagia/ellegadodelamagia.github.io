@@ -28,7 +28,7 @@ function abrirPortal(tipo) {
         paginaDestinoGlobal = "mapa.html";
     } else if (tipo === 'recetas') {
         modalTitulo.textContent = "EL RECETARIO DE DANIELLA";
-        modalDescripcion.textContent = "Adéntrate en los secretos culinarios de Daniella. Descubrirás sus recetas mas interesantes y algunas que Wilbur le enseñó.";
+        modalDescripcion.textContent = "Adéntrate en los secretos culinarios de Daniella. Descubrirás sus recetas más interesantes y algunas que Wilbur le enseñó.";
         btnProceder.textContent = "Abrir Recetario";
         paginaDestinoGlobal = "recetas.html";
     }
@@ -129,36 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observadorMistico.observe(seccionHistoria);
     }
 
-    // --- 4. BOTÓN INTERACTIVO PARA LA PROFECÍA ---
-    const btnProfecia = document.getElementById('btn-revelar-profecia');
-    const cajaProfecia = document.getElementById('profecia-clandestina');
-
-    if (btnProfecia && cajaProfecia) {
-        btnProfecia.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            
-            cajaProfecia.classList.toggle('mostrar');
-            document.body.classList.toggle('pantalla-profecia');
-            
-            const destinoScroll = document.getElementById('historia');
-            if (destinoScroll) {
-                if (cajaProfecia.classList.contains('mostrar')) {
-                    btnProfecia.textContent = "Ocultar la Profecía";
-                    // Al abrir, bajamos suavemente para acompañar el despliegue
-                    window.scrollTo({ top: destinoScroll.offsetTop, behavior: 'smooth' });
-                } else {
-                    btnProfecia.textContent = "Revelar la Profecía";
-                    // Al cerrar, DEJAMOS que el CSS haga su magia encogiendo la caja,
-                    // sin forzar scrolls raros que rompan la animación.
-                }
-            }
-        });
-    } // <-- Recuerda cerrar la llave de la función principal si venía desde arriba
-    else {
-        console.warn("Aviso: Botón de profecía o caja clandestina no detectados.");
-    }
-
-    // --- 5. NAVEGACIÓN DE LOS MUNDOS (VEDLYS Y CELESTIAL) ---
+    // --- 4. NAVEGACIÓN DE LOS MUNDOS (VEDLYS Y CELESTIAL) ---
     const btnVedlys = document.getElementById('btn-vedlys');
     const btnCelestial = document.getElementById('btn-celestial');
 

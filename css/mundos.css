@@ -7,58 +7,46 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px; /* Reducimos padding para dar más aire */
+    padding: 20px;
     box-sizing: border-box;
 }
 
-/* Fuerza al Grid a alinearse en filas y columnas bonitas (Corregido para tu HTML) */
+/* Retícula dinámica fluida (Grid) */
 #mundos-grid-dinamico, .mundos-grid-layout {
     display: grid !important;
-    /* Esto obliga a las tarjetas a ponerse de lado a lado si hay espacio, en vez de una columna gorda */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
     gap: 30px !important;
     margin-top: 30px !important;
     width: 100% !important;
+    padding: 10px 0 !important;
 }
 
 /* ==========================================================================
-   ESTILIZADO DE TARJETAS INDIVIDUALES (COMPACTAS Y SEPARADAS)
+   ESTILIZADO DE TARJETAS INDIVIDUALES
    ========================================================================== */
 
 .mundo-card {
     position: relative;
-    height: 380px;            /* Un poco más compactas de altura */
-    
-    /* CONTROL DE ANCHO Y CENTRADO */
-    width: 90% !important;
-    max-width: 320px !important; /* Pasaron de ser gigantes a un ancho estilizado de libro */
-    margin: 0 auto 35px auto !important; /* Centra la tarjeta y genera 35px de separación con la de abajo */
-    
+    height: 380px;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
     border-radius: 14px;
     background-size: cover;
     background-position: center;
     overflow: hidden;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
     background-color: #120b20;
-    
-    /* Transición suave para el efecto de flote */
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease !important;
 }
 
-/* --- EFECTO AL PASAR EL MOUSE (Mantiene la elegancia) --- */
+/* Efecto al pasar el mouse */
 .mundo-card.estado-nivel-1:hover {
-    transform: translateY(-8px) scale(1.02) !important; /* Flota ligeramente hacia arriba y se agranda un 2% */
-    box-shadow: 0 20px 40px rgba(138, 43, 226, 0.25) !important; /* Brillo místico expandido */
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(138, 43, 226, 0.25) !important;
 }
 
-/* Margen extra de seguridad para el contenedor del Grid */
-#mundos-grid-dinamico, .mundos-grid-layout {
-    display: block !important; /* Cambiamos a bloque para que respeten el centrado por margen */
-    width: 100% !important;
-    padding: 10px 0 !important;
-}
-
-/* Contenido interno de la tarjeta (Corregido a .mundo-card-content) */
+/* Contenido interno de la tarjeta */
 .mundo-card-content {
     position: absolute;
     bottom: 0;
@@ -147,108 +135,82 @@
 }
 
 /* ==========================================================================
-   BOTONES DE NAVEGACIÓN MÍSTICA (ESTILIZADO ÉPICO)
+   BOTONES DE NAVEGACIÓN (ESTILO PÍLDORA / ÓVALO DESTACADO)
    ========================================================================== */
 
-/* ==========================================================================
-   BOTÓN DE REGRESAR EXCLUSIVO (CON MÁXIMA PRIORIDAD CSS)
-   ========================================================================== */
-
-#navegacion-mundos a {
-    background-color: #110924;
-    color: #bfa1db;
-    border: 2px solid #4a2e6d;
-    padding: 14px 32px;
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    text-transform: uppercase;
-}
-
-
-   /* Contenedor del botón centrado */
 #contenedor-boton-volver {
-    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 15px !important;
+    margin: 20px 0 30px 0 !important;
+    flex-wrap: wrap !important;
     width: 100% !important;
-    display: block !important;
 }
 
-/* Selector ultra-específico para el enlace-botón */
 #contenedor-boton-volver a.btn-volver-mundos {
-    /* Reseteo y comportamiento de bloque para que acepte dimensiones */
-    display: inline-block !important;
-    text-decoration: none !important;
-    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 28px !important;
     
-    /* Colores base y recuadro místico bien definido */
-    background-color: #110924 !important;
-    color: #bfa1db !important;
-    border: 2px solid #4a2e6d !important; 
+    /* Forma ovalada / píldora para alta visibilidad */
+    border-radius: 50px !important;
     
-    /* Espaciado interno para darle cuerpo de botón real */
-    padding: 14px 32px !important;         
-    border-radius: 6px !important;
+    background: rgba(19, 13, 34, 0.85) !important;
+    border: 2px solid #c5a059 !important;
+    color: #f5eab7 !important;
     
-    /* Tipografía de alta visibilidad para que no se confunda con el lore */
-    font-family: 'Cinzel', serif, Georgia, 'Times New Roman', sans-serif !important;
-    font-size: 1rem !important;             
+    font-family: 'Cinzel', serif, sans-serif !important;
+    font-size: 0.95rem !important;
     font-weight: bold !important;
-    letter-spacing: 2px !important;
+    letter-spacing: 1.5px !important;
+    text-decoration: none !important;
     text-transform: uppercase !important;
     
-    /* Alineación y sombras */
-    margin: 25px auto !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 160, 89, 0.2) !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
 }
 
-/* --- EFECTO: AL PASAR EL CURSOR (ILUMINACIÓN) --- */
 #contenedor-boton-volver a.btn-volver-mundos:hover {
-    background-color: #20103c !important;
-    border-color: #c5a059 !important; /* El recuadro se ilumina en oro místico */
-    color: #ffffff !important;         /* Las letras brillan en blanco */
-    box-shadow: 0 0 15px rgba(138, 43, 226, 0.6) !important;
-    transform: translateY(-2px) !important;
+    background: linear-gradient(135deg, #c5a059 0%, #b38f43 100%) !important;
+    color: #0a0615 !important;
+    border-color: #f5eab7 !important;
+    box-shadow: 0 6px 20px rgba(245, 234, 183, 0.4), 0 0 15px rgba(197, 160, 89, 0.6) !important;
+    transform: translateY(-2px) scale(1.03) !important;
 }
 
-/* --- EFECTO: AL DAR CLIC (PULSACIÓN) --- */
 #contenedor-boton-volver a.btn-volver-mundos:active {
-    transform: translateY(1px) !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+    transform: translateY(1px) scale(0.98) !important;
 }
 
-/* Contenedor del botón para asegurar que se centre en la pantalla */
-#contenedor-boton-volver {
-    text-align: center !important;
-    width: 100% !important;
-    display: block !important;
-}
 /* ==========================================================================
-   TARJETA DE LORE EXPANDIDA (PANTALLA COMPLETA)
+   TARJETA DE LORE EXPANDIDA (FICHA COMPLETA)
    ========================================================================== */
 
-tarjeta-lore-expandida {
+.tarjeta-lore-expandida {
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     padding: 45px 35px !important;
     margin: 40px auto !important; 
-    width: 88% !important;        
-    max-width: 450px !important; 
+    width: 92% !important;        
+    max-width: 700px !important; 
     box-sizing: border-box !important;
     color: #fff !important;
     box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85) !important;
     
-    /* SEGURIDAD DE MARCO: */
     border-width: 3px !important;
-    border-style: solid !important; /* Declaramos explícitamente que es sólido */
+    border-style: solid !important;
     border-image: linear-gradient(135deg, #c5a059 0%, #f5eab7 50%, #b38f43 100%) 1 !important;
     position: relative !important;
-    display: block !important; /* Asegura que actúe como una caja independiente */
+    display: block !important;
     
     animation: girarYExpandir 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Caja de respaldo interna para oscurecer el fondo de la imagen */
+/* Caja de respaldo interna para el texto */
 .cuerpo-tarjeta-expandida {
     background: rgba(11, 7, 20, 0.85);
     padding: 25px 20px;
@@ -257,7 +219,7 @@ tarjeta-lore-expandida {
     border: 1px solid rgba(197, 160, 89, 0.15);
 }
 
-/* Detalles de esquinas de la tarjeta */
+/* Detalles de esquinas místicas */
 .marco-dorado-ancestral::before, .marco-dorado-ancestral::after {
     content: '✦';
     position: absolute;
@@ -268,7 +230,7 @@ tarjeta-lore-expandida {
 .marco-dorado-ancestral::before { top: -10px; left: -6px; }
 .marco-dorado-ancestral::after { bottom: -12px; right: -6px; }
 
-/* Extracto destacado superior (Corregido max-width para no romper al padre) */
+/* Extracto destacado superior */
 .extracto-breve {
     font-style: italic;
     color: #d1b8e7;
@@ -276,10 +238,10 @@ tarjeta-lore-expandida {
     text-align: center;
     line-height: 1.6;
     margin: 0 auto;
-    max-width: 100%; /* Se adapta de forma segura al tamaño de la tarjeta */
+    max-width: 100%;
 }
 
-/* Títulos internos del Códice */
+/* Títulos internos */
 .seccion-lore-bloque h3 {
     color: #f5eab7; 
     font-size: 1.3rem;
@@ -334,7 +296,7 @@ tarjeta-lore-expandida {
 }
 
 /* ==========================================================================
-   ANIMACIONES
+   ANIMACIONES Y RESPONSIVO
    ========================================================================== */
 @keyframes girarYExpandir {
     0% {
@@ -347,7 +309,6 @@ tarjeta-lore-expandida {
     }
 }
 
-/* Optimización para dispositivos móviles */
 @media (max-width: 768px) {
     .tarjeta-lore-expandida {
         padding: 30px 20px !important;

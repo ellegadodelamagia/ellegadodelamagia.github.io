@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/estilo.css">
   <link rel="stylesheet" href="css/personajes.css">
   <link rel="stylesheet" href="css/tipos_magia.css">
+  <link rel="stylesheet" href="css/escritos.css">
 
   <link rel="icon" href="data:,">
 
@@ -24,11 +25,10 @@
 
     <a href="#historia" class="btn-navegacion">Descubre la historia</a>
     <a href="#mundo" class="btn-navegacion">Comprende el Universo</a>
-    <a href="#libros" class="btn-navegacion">Adentrate en los libros</a>
+    <a href="#escritos" class="btn-navegacion">Adéntrate en los escritos</a>
     <a href="#personajes" class="btn-navegacion">Conoce a los personajes</a>
     <a href="#objetos" class="btn-navegacion">Examina los objetos</a>
     <a href="#tipos_magia" class="btn-navegacion">Desvela los tipos de magia</a>
-
   </nav>
 
   <section id="hero">
@@ -50,13 +50,13 @@
       </blockquote>
       
       <div id="menu-saga-opciones">
-  <a href="#historia" class="enlace-saga">🔮 Como inició todo</a>
-  <a href="#mundo" class="enlace-saga">🗺️ Comprende el universo</a>
-  <a href="#personajes" class="enlace-saga">👥 Personajes</a>
-  <a href="#objetos" class="enlace-saga">📜 Objetos Mágicos</a>
-  <a href="#libros" class="enlace-saga">📚 Los 10 Libros</a>
-  <a href="#tipos_magia" class="enlace-saga">✨ Desvela los tipos de magia</a>
-</div>
+        <a href="#historia" class="enlace-saga">🔮 Cómo inició todo</a>
+        <a href="#mundo" class="enlace-saga">🗺️ Comprende el universo</a>
+        <a href="#escritos" class="enlace-saga">📜 Adéntrate en los escritos</a>
+        <a href="#personajes" class="enlace-saga">👥 Personajes</a>
+        <a href="#objetos" class="enlace-saga">🗡️ Objetos Mágicos</a>
+        <a href="#tipos_magia" class="enlace-saga">✨ Desvela los tipos de magia</a>
+      </div>
     </div>
 
     <div class="scroll-indicator">
@@ -67,7 +67,7 @@
 
   <section id="historia" class="seccion-mistica">
     <p class="titulo-seccion-sub">EL LEGADO DE LA MAGIA</p>
-    <h2 class="titulo-seccion">Como inició todo...</h2>
+    <h2 class="titulo-seccion">Cómo inició todo...</h2>
     
     <div class="divisor-mistico"><div class="rombo"></div></div>
 
@@ -78,7 +78,7 @@
         Ese deseo fue escuchado.<br>
         Jeziel es un serafín con una misión aparentemente simple: mostrarle el mundo. 
         En su aventura, Kaira descubre que detrás de los lugares reales existen 
-        otros que no deberían existir. La aventura apenzas comienza.<br>
+        otros que no deberían existir. La aventura apenas comienza.<br>
         Y la magia entra a su vida de una forma que jamás imaginó.<br>
       </p>
     
@@ -88,74 +88,57 @@
         Otros cambian quién eres. <br>
         Pero hay lugares en los que encuentras responsabilidades para las que no estás preparado. 
       </p>
-      
-      <button type="button" id="btn-revelar-profecia" class="btn-dorado" style="margin-top: 2rem; font-size: 0.9rem; padding: 0.8rem 1.5rem;">
-        Revelar la Profecía
-      </button>
-    </div>
-
-    <div id="profecia-clandestina" class="profecia-box">
-      <p class="titulo-seccion-sub" style="text-align: center; margin-bottom: 2rem;">LA PROFECÍA DEL RECOLECTOR</p>
-      <blockquote class="profecia-poema">
-        "En la bruma surge un destino,<br>
-        un <span class="resalto-oro">recolector</span>, un <span class="resalto-oro">heredero</span>,<br>
-        la fuente de agua clara<br>
-        refleja su alma.<br><br>
-
-        Un <span class="texto-argento">collar argento y cristal</span>,<br>
-        símbolo añejo del poder remoto,<br>
-        murmullos de saberes olvidados.<br>
-
-        La prueba aguarda: portal sagrado.<br>
-        Susurro entre piedra,<br>
-        rito antiguo bajo luna menguante,<br>
-        el cielo se alumbra con <span class="resalto-verde">albor verde</span>.<br>
-        el viento sopla en la noche larga.<br><br>
-
-        La tentación acecha cada paso,<br>
-        las garras de la <span class="resalto-sombra">sombra</span> son un lazo,<br>
-        deberá ser sabio, nunca imprudente.<br><br>
-        
-        Cada sortilegio lanzado,<br>
-        puede traer grandeza o arruinar su destino,<br>
-        el recolector ha de elegir con prudencia,<br>
-        el equilibrio es frágil en su camino."
-      </blockquote>
     </div>
   </section>
 
   <section id="mundo" class="seccion-mistica">
+    <div id="mundos-container">
+      <h2 id="dinamico-titulo" class="titulo-seccion">COMPRENDE EL UNIVERSO</h2>
+      <p id="dinamico-subtitulo" class="titulo-seccion-sub">Existen diferentes mundos conviviendo</p>
+      
+      <div class="divisor-mistico"><div class="rombo"></div></div>
+
+      <div id="contenedor-boton-volver"></div>
+      <div id="mundos-grid-dinamico" class="mundos-grid-layout"></div>
+    </div>
+  </section>
+
+  <section id="escritos" class="seccion-mistica escritos-section">
+  <p class="titulo-seccion-sub">MANUSCRITOS Y REGISTROS ANCESTRALES</p>
+  <h2 class="titulo-seccion">ADÉNTRATE EN LOS ESCRITOS</h2>
   
-  <div id="mundos-container">
-    <!-- 1. TÍTULO ARRIBA -->
-    <h2 id="dinamico-titulo" class="titulo-seccion">COMPRENDE EL UNIVERSO</h2>
-    
-    <!-- 2. SUBTÍTULO ABAJO -->
-    <p id="dinamico-subtitulo" class="titulo-seccion-sub">Existen diferentes mundos conviviendo</p>
-    
-    <div class="divisor-mistico"><div class="rombo"></div></div>
+  <!-- Subtítulo diegético -->
+  <p class="leyenda-escritos">
+    Aquí yacen las profecías olvidadas, los antiguos grimorios y los textos diegéticos que custodian los secretos guardados en los confines de la saga.
+  </p>
 
-    <div id="contenedor-boton-volver"></div>
+  <div class="divisor-mistico"><div class="rombo"></div></div>
 
-    <div id="mundos-grid-dinamico" class="mundos-grid-layout"></div>
-</div>
+  <!-- Botones limpios sin onclick inline -->
+  <div class="filtros-escritos">
+    <button type="button" class="btn-filtro activo" data-categoria="todos">Todos</button>
+    <button type="button" class="btn-filtro" data-categoria="profecias">Profecías</button>
+    <button type="button" class="btn-filtro" data-categoria="compendios">Compendios</button>
+    <button type="button" class="btn-filtro" data-categoria="legado">Legado</button>
+    <button type="button" class="btn-filtro" data-categoria="registros">Registros</button>
+  </div>
 
-</section>
+    <!-- Contenedor dinámico de tarjetas -->
+    <div id="escritos-grid" class="escritos-grid"></div>
+  </section>
 
- 
-</section>
   <section id="personajes" class="seccion-mistica">
     <h2 class="titulo-seccion">CONOCE A LOS PERSONAJES</h2>
     <div class="divisor-mistico"><div class="rombo"></div></div>
 
-  <div class="contenedor-filtros-libros">
-    <button class="btn-filtro activo" onclick="filtrarPorLibro('principales', this)">Principales</button>
-    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 1', this)">Libro 1</button>
-    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 2', this)">Libro 2</button>
-    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 3', this)">Libro 3</button>
-    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 4', this)">Libro 4</button>
-    <button class="btn-filtro" onclick="filtrarPorLibro('Libro 5', this)">Libro 5</button>
-</div>
+    <div class="contenedor-filtros-libros">
+      <button class="btn-filtro activo" onclick="filtrarPorLibro('principales', this)">Principales</button>
+      <button class="btn-filtro" onclick="filtrarPorLibro('Libro 1', this)">Libro 1</button>
+      <button class="btn-filtro" onclick="filtrarPorLibro('Libro 2', this)">Libro 2</button>
+      <button class="btn-filtro" onclick="filtrarPorLibro('Libro 3', this)">Libro 3</button>
+      <button class="btn-filtro" onclick="filtrarPorLibro('Libro 4', this)">Libro 4</button>
+      <button class="btn-filtro" onclick="filtrarPorLibro('Libro 5', this)">Libro 5</button>
+    </div>
 
     <div id="contenedor-personajes-grid" class="personajes-grid"></div>
   </section>
@@ -165,19 +148,14 @@
     <div class="divisor-mistico"><div class="rombo"></div></div>
   </section>
 
-  <section id="libros" class="seccion-mistica">
-    <h2 class="titulo-seccion">LOS 10 LIBROS</h2>
+  <section id="tipos_magia" class="seccion-mistica">
+    <h2 class="titulo-seccion">TIPOS DE MAGIA</h2>
     <div class="divisor-mistico"><div class="rombo"></div></div>
+    
+    <div id="contenedor_tipos_magia" class="grid-tipos_magia"></div>
   </section>
 
-  <section id="tipos_magia" class="seccion-mistica">
-  <h2 class="titulo-seccion">TIPOS DE MAGIA</h2>
-  <div class="divisor-mistico"><div class="rombo"></div></div>
-  
-  <!-- Aquí es donde tipos_magia.js inyectará las tarjetas -->
-  <div id="contenedor_tipos_magia" class="grid-tipos_magia"></div>
-</section>
-
+  <!-- Modal Global de Portal -->
   <div id="modal-portal">
     <div class="modal-contenido">
       <h3 id="modal-titulo">Portal de Viaje</h3>
@@ -189,12 +167,22 @@
     </div>
   </div>
 
+ <!-- Modal de Lectura de Escritos -->
+<div id="escrito-modal" class="modal-escrito">
+  <div id="modal-detalle-contenido" class="modal-contenido">
+    <!-- El contenido JavaScript se inyecta aquí dinámicamente -->
+  </div>
+</div>
+
+  <!-- Scripts -->
   <script src="js/datos_personajes.js"></script>
   <script src="js/personajes.js"></script>
-  <script src="js/motor_principal.js"></script>
-  <script type="module" src="js/mundos.js"></script>
+   <script type="module" src="js/mundos.js"></script>
   <script src="js/datos_tipos_magia.js"></script>
-<script src="js/tipos_magia.js"></script>
+  <script src="js/tipos_magia.js"></script>
+  <script src="js/datos_escritos.js"></script>
+  <script src="js/escritos.js"></script>
+   <script src="js/motor_principal.js"></script>
 
 </body>
 </html>

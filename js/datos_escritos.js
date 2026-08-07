@@ -18,36 +18,88 @@ mientras el olvido amenaza con consumirlo todo.`,
     }
   },
   {
-    id: "profecia-del-recolector",
-    titulo: "La Profecía del Recolector",
-    categoria: "profecias",
-    subtitulo: "Registro antiguo sobre el destino del elegido",
-    desbloqueado: 1, // <-- 1 significa Desbloqueado y Visible
-    imagen: "imagenes_principal/escritos/profecia.jpg",
-    descripcionCorta: "Predicción ancestral sobre la prueba del portal sagrado y el equilibrio de la magia.",
-    contenidoCompleto: {
-      origen: "Pergamino recuperado de los anales del templo.",
-      texto: `En la bruma surge un destino,<br>
-un <span class="resalto-oro">recolector</span>, un <span class="resalto-oro">heredero</span>,<br>
-la fuente de agua clara refleja su alma.<br><br>
-Un <span class="texto-argento">collar argento y cristal</span>,<br>
-símbolo añejo del poder remoto,<br>
-murmullos de saberes olvidados.<br><br>
-La prueba aguarda: portal sagrado.<br>
-Susurro entre piedra,<br>
-rito antiguo bajo luna menguante,<br>
-el cielo se alumbra con <span class="resalto-verde">albor verde</span>,<br>
-el viento sopla en la noche larga.<br><br>
-La tentación acecha cada paso,<br>
-las garras de la <span class="resalto-sombra">sombra</span> son un lazo,<br>
-deberá ser sabio, nunca imprudente.<br><br>
-Cada sortilegio lanzado,<br>
-puede traer grandeza o arruinar su destino,<br>
-el recolector ha de elegir con prudencia,<br>
-el equilibrio es frágil en su camino.`,
-      notas: "Traducción elaborada por Stefen a partir de una traducción del latín y español antiguo. La profecía original está escrita en idioma antigo."
-    }
-  },
+  id: "profecia-recolector",
+  titulo: "La Profecía del Recolector",
+  subtitulo: "Registro antiguo",
+  categoria: "profecias",
+  desbloqueado: 1,
+  imagen: "imagenes_principal/escritos/recolector-bg.jpg",
+  descripcionCorta: "Predicción ancestral de la prueba en un portal sagrado para equilibrar la magia",
+  contenidoCompleto: {
+    origen: "Nemori",
+    texto: `
+      <!-- VISTA 1: Tríptico de miniaturas -->
+      <div id="vista-triptico" class="contenedor-triptico-profecia">
+        <div class="tarjeta-version-profecia" 
+             data-titulo="Profecía original elaborada por los elfos"
+             data-img="imagenes_principal/escritos/profecia_recolector_v1.jpg"
+             data-desc="Escrita en idioma antiguo, se cree que su lectura es por raíces con un sistema de runas y fonemas, sin embargo no se sabe de nadie que pueda leerlo.">
+          <img src="imagenes_principal/escritos/profecia_recolector_v1.jpg" alt="Original" class="img-profecia-miniatura">
+          <span class="label-version">Original</span>
+        </div>
+
+        <div class="tarjeta-version-profecia" 
+             data-titulo="Primera traducción "
+             data-img="imagenes_principal/escritos/profecia_recolector_v2.jpg"
+             data-desc="Se cree que fue elaborada por erudito italiano alrededor de 1700 ya  que usó un registro herméticos/alquímicos de esa época, que mezclaban terminología griega con sintaxis latina. No se sabe si conocía el idioma antiguo.">
+          <img src="imagenes_principal/escritos/profecia_recolector_v2.jpg" alt="Primera traducción" class="img-profecia-miniatura">
+          <span class="label-version">Primera traducción</span>
+        </div>
+
+        <div class="tarjeta-version-profecia" 
+             data-titulo="Segunda traducción"
+             data-img="imagenes_principal/escritos/profecia_recolector_v3.jpg"
+             data-desc="Realizada por Stefen, corregida entre Stefen y Jeziel. Utilizada para la prueba de Kaira.">
+          <img src="imagenes_principal/escritos/profecia_recolector_v3.jpg" alt="Segunda traducción" class="img-profecia-miniatura">
+          <span class="label-version">Segunda traducción</span>
+        </div>
+      </div>
+
+      <!-- VISTA 2: Vista ampliada (Oculta por defecto) -->
+      <div id="vista-ampliada-profecia" class="vista-ampliada-profecia" style="display: none;">
+        <div style="text-align: left; margin-bottom: 1rem;">
+          <button id="btn-volver-triptico" class="btn-volver-triptico">← Volver al Tríptico</button>
+        </div>
+        <div class="contenedor-profecia-foco">
+          <img id="img-profecia-foco" src="" alt="Visión Ampliada" class="img-profecia-grande">
+          <div class="info-profecia-foco">
+            <h3 id="titulo-profecia-foco" class="titulo-foco"></h3>
+            <p id="desc-profecia-foco" class="desc-foco"></p>
+          </div>
+        </div>
+      </div>
+    `,
+    notas: "Haz clic en cualquier versión para examinar el grabado a detalle."
+  }
+},
+
+  {
+  id: "canto-de-los-libros",
+  titulo: "El Canto de la Saga",
+  subtitulo: "Los versos de los tomos futuros",
+  categoria: "profecias",
+  desbloqueado: 1,
+  imagen: "assets/img/canto-saga-bg.jpg",
+  descripcionCorta: "Una estrofa grabada en el tiempo por cada tomo que compone la historia.",
+  contenidoCompleto: {
+    origen: "Canto continuo registrado en las Crónicas de la Saga",
+    texto: `
+      <div class="canto-saga-contenedor">
+        <p class="verso-tomo link-saga" data-libro="libro-1"><span class="badge-tomo">I</span> "La magia permanece oculta, hasta que una profecía la despierta."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-2"><span class="badge-tomo">II</span> "Lo robado exige ser devuelto."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-3"><span class="badge-tomo">III</span> "Nadie recibe sin antes demostrar que lo merece."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-4"><span class="badge-tomo">IV</span> "No toda misión termina donde promete."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-5"><span class="badge-tomo">V</span> "El tiempo guarda secretos que pocos pueden leer."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-6"><span class="badge-tomo">VI</span> "Verdades que estan ocultas, hasta que los tres se encuentran."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-7"><span class="badge-tomo">VII</span> "No toda magia se controla, ni todo lo perdido regresa."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-8"><span class="badge-tomo">VIII</span> "Los antiguos dejaron instrucciones, hoy dispersas."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-9"><span class="badge-tomo">IX</span> "Antes de la prueba final, hay que aprender lo que nadie enseña."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-10"><span class="badge-tomo">X</span> "La sombra y el despertar se enfrentan por primera y última vez."</p>
+      </div>
+    `,
+    notas: "Haz clic en cualquier verso para viajar a su tomo."
+  }
+},
   {
     id: "atlas-del-mundo",
     titulo: "El Atlas del Mundo Vedlys",
@@ -55,9 +107,9 @@ el equilibrio es frágil en su camino.`,
     subtitulo: "Guía no autorizada de los Consejos Vedlys.",
     desbloqueado: 1, // <-- 1 significa Desbloqueado y Visible
     imagen: "imagenes_principal/escritos/atlas.jpg",
-    descripcionCorta: "Compendio de mapas interactivos y anotaciones de los grandes exploradores.",
+    descripcionCorta: "Compendio de mapas y anotaciones de exploradores incógnitos.",
     contenidoCompleto: {
-      origen: "Cartógrafos reales de la Era Antigua.",
+      origen: "Solo se sabe que Zaha lo encontró en un pueblo perdido en España.",
       texto: "La comunidad Vedlys internacional no reconoce oficialmente la existencia de esta obra. Aun así, es la referencia más completa sobre los Consejos Vedlys del mundo.",
       notas: "Incluye ubicaciones aproximadas de Consejos pertenecientes a la Hermandad de Merlín."
     }

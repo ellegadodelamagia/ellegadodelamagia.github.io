@@ -14,6 +14,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+
+  padding-bottom: 50px; /* Deja espacio para que el footer no tape nada */
 }
 
 /* Títulos y Subtítulos de las secciones */
@@ -104,14 +106,15 @@ body {
   overflow: hidden;
 }
 
-/* Capa oscurecedora sutil para aclarar la imagen y dar paso a la luz real */
+/* Capa oscurecedora para resaltar el texto de la portada */
 .hero-overlay {
   position: absolute;
   top: 0; 
   left: 0; 
   width: 100%; 
   height: 100%;
-  background: radial-gradient(circle, rgba(13, 10, 7, 0.2) 0%, rgba(13, 10, 7, 0.75) 90%);
+  /* Subimos el centro a 0.45 y los bordes a 0.88 para oscurecer el fondo */
+  background: radial-gradient(circle, rgba(13, 10, 7, 0.45) 0%, rgba(13, 10, 7, 0.88) 90%);
   z-index: 1;
 }
 
@@ -141,7 +144,7 @@ body {
   font-size: 4.2rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: #ffd700; /* Dorado brillante */
+  color: #96862a; /* Dorado brillante */
   text-shadow: 2px 2px 6px #000000, 0px 0px 20px rgba(0, 0, 0, 0.95);
   margin: 0.5rem 0;
   line-height: 1.2;
@@ -151,7 +154,7 @@ body {
 .hero-title .letra-magica {
   font-family: 'Cinzel Decorative', serif;
   font-size: 5rem;
-  color: #ffd700;
+  color: #96862a;
   text-shadow: 2px 2px 6px #000000, 0px 0px 22px rgba(0, 0, 0, 0.95);
   
   font-variant-ligatures: discretionary-ligatures;
@@ -370,28 +373,7 @@ nav.barra-navegacion .btn-navegacion:hover {
   text-transform: uppercase;
 }
 
-/* ⬇️ DISEÑO DE LA FLECHA MÍSTICA HACIA ABAJO */
-.scroll-line {
-  width: 12px;
-  height: 12px;
-  border-right: 2px solid var(--gold);
-  border-bottom: 2px solid var(--gold);
-  transform: rotate(45deg); /* Gira un cuadrado para volverlo flecha v */
-  animation: reboteMistico 2s infinite; /* Animación de sube y baja */
-  margin-top: 0.2rem;
-}
 
-/* Animación sutil para que la flecha invite a bajar */
-@keyframes reboteMistico {
-  0%, 100% {
-    transform: rotate(45deg) translate(0, 0);
-    opacity: 0.3;
-  }
-  50% {
-    transform: rotate(45deg) translate(5px, 5px);
-    opacity: 1;
-  }
-}
 
 /* 🔮 TRUCO DE SCROLL: Evita que la barra de navegación tape el inicio de las secciones */
 section {
@@ -652,4 +634,30 @@ section#historia.seccion-mistica.mapa-activo::before {
     opacity: 1;
     text-shadow: 0 0 8px rgba(245, 234, 183, 0.6);
     transform: translateX(4px); /* Desplazamiento sutil hacia la derecha */
+}
+
+/* =========================================================================
+   📜 PIE DE PÁGINA (FOOTER) FIJO
+   ========================================================================= */
+footer {
+  position: fixed;        /* Lo fija con respecto a la pantalla del usuario */
+  bottom: 0;              /* Lo pega exactamente al borde inferior */
+  left: 0;                /* Se alinea desde la izquierda */
+  width: 100%;            /* Ocupa todo el ancho de la pantalla */
+  z-index: 9999;           /* Asegura que quede por encima de otros elementos */
+  
+  /* 🎨 Estética Mística */
+  background: rgba(10, 8, 6, 0.85); /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(8px);       /* Efecto cristal/desenfoque de fondo */
+  border-top: 1px solid rgba(200, 168, 75, 0.2); /* Línea dorada sutil arriba */
+  padding: 0.8rem 0;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  color: #c8a84b;          /* Tono dorado místico */
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
 }

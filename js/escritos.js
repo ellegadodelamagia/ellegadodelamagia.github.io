@@ -31,10 +31,8 @@ function renderizarEscritos(lista) {
     const card = document.createElement("article");
     card.className = "escrito-card";
 
-    // Convertimos a número para asegurar que compare bien si es 2 o "2"
     const esBloqueado = Number(escrito.desbloqueado) === 2 || escrito.bloqueado === true;
 
-    // 🔒 CASO 1: ESCRITO BLOQUEADO
     if (esBloqueado) {
       card.innerHTML = `
         <div>
@@ -48,15 +46,9 @@ function renderizarEscritos(lista) {
         </button>
       `;
       card.style.cursor = "not-allowed";
-
-    // 🔓 CASO 2: ESCRITO DISPONIBLE
+   // 🔓 CASO 2: ESCRITO DISPONIBLE
     } else {
-      const HTMLImagen = escrito.imagen 
-        ? `<div class="escrito-img-container"><img src="${escrito.imagen}" alt="${escrito.titulo}" class="escrito-card-img" onerror="this.parentElement.style.display='none'"></div>`
-        : '';
-
       card.innerHTML = `
-        ${HTMLImagen}
         <div>
           <span class="badge-categoria">${obtenerNombreCategoria(escrito.categoria)}</span>
           <h3>${escrito.titulo}</h3>
@@ -82,7 +74,6 @@ function abrirEscrito(id) {
 
   const item = listaDatos.find(e => e.id === id);
 
-  // Seguridad extra: Si está bloqueado, no abrir el modal
   if (!item || item.desbloqueado === 2) return;
 
   const modal = document.getElementById("escrito-modal");
@@ -90,14 +81,10 @@ function abrirEscrito(id) {
 
   if (!modal || !modalContenido) return;
 
-  // Asignar imagen de fondo completa al modal si existe
-  if (item.imagen) {
-    modalContenido.style.backgroundImage = `url('${item.imagen}')`;
-  } else {
-    modalContenido.style.backgroundImage = 'none';
-  }
+  // Limpiamos imagen de fondo previa
+  modalContenido.style.backgroundImage = 'none';
 
-  // Verificar si es el Libro de los Herederos para renderizar las 8 sub-tarjetas
+  // Subgrid si es Libro de Herederos (o si trae partesHerederos)
   let contenidoEspecial = '';
   if (item.partesHerederos && Array.isArray(item.partesHerederos)) {
     const tarjetasHerederos = item.partesHerederos.map(part => `
@@ -114,11 +101,10 @@ function abrirEscrito(id) {
     `;
   }
 
-  // ✅ CÓDIGO ACTUALIZADO (Colores de alto contraste con fondo suave)
-const origenTexto = item.contenidoCompleto && item.contenidoCompleto.origen 
-  ? `<div class="escrito-origen" style="text-align:center; color: #eceba7; font-size: 0.95rem; margin-bottom: 12px; text-shadow: 0 2px 6px rgba(0,0,0,0.9);">
-      <strong style="color: var(--gold);">Origen:</strong> ${item.contenidoCompleto.origen}
-     </div>` 
+  const origenTexto = item.contenidoCompleto && item.contenidoCompleto.origen 
+    ? `<div class="escrito-origen" style="color: #eceba7; font-size: 0.95rem; margin-bottom: 12px; text-shadow: 0 2px 6px rgba(0,0,0,0.9);">
+        <strong style="color: var(--gold);">Origen:</strong> ${item.contenidoCompleto.origen}
+       </div>` 
     : '';
 
   const cuerpoTexto = item.contenidoCompleto && item.contenidoCompleto.texto 
@@ -129,24 +115,56 @@ const origenTexto = item.contenidoCompleto && item.contenidoCompleto.origen
     ? `<em>${item.contenidoCompleto.notas}</em>` 
     : '';
 
-  // Estructura limpia sin recuadros feos
-  modalContenido.innerHTML = `
-    <div class="modal-overlay-bg">
-      <h2 style="font-family:'Cinzel', serif; color:var(--gold); font-size: 2rem; margin-bottom: 5px; text-align:center;">${item.titulo}</h2>
-      
-      ${origenTexto}
+  // EVALUACIÓN FLEXIBLE DE EXCEPCIONES: Detecta cualquier ID que contenga estas palabras clave
+  const idMinusculas = (item.id || '').toLowerCase();
+  const esExcepcionLayout = 
+    idMinusculas.includes('canto') || 
+    idMinusculas.includes('recolector') || 
+    idMinusculas.includes('heredero') ||
+    (item.partesHerederos && item.partesHerederos.length > 0);
 
-      <!-- Texto místico sin marco ni cuadro -->
+  // Construcción del maquetado
+  let estructuraCuerpo = '';
+
+  if (!esExcepcionLayout && item.imagen) {
+    // 📌 LAYOUT 2 COLUMNAS (Solo para escritos comunes con imagen)
+    estructuraCuerpo = `
+      <div class="modal-layout-dos-columnas">
+        <div class="columna-imagen-modal">
+          <img src="${item.imagen}" alt="${item.titulo}" class="img-escrito-lateral">
+        </div>
+        <div class="columna-texto-modal">
+          <h2 style="font-family:'Cinzel', serif; color:var(--gold); font-size: 1.8rem; margin-bottom: 10px;">${item.titulo}</h2>
+          ${origenTexto}
+          <div class="escrito-cuerpo-texto">
+            ${cuerpoTexto}
+          </div>
+          ${contenidoEspecial}
+        </div>
+      </div>
+    `;
+  } else {
+    // 📌 LAYOUT COMPLETO CENTRADO (Para El Canto de la Saga, Recolector y Herederos)
+    estructuraCuerpo = `
+      <h2 style="font-family:'Cinzel', serif; color:var(--gold); font-size: 2rem; margin-bottom: 5px; text-align:center;">${item.titulo}</h2>
+      ${origenTexto}
       <div class="escrito-cuerpo-texto">
         ${cuerpoTexto}
       </div>
-
-      <!-- Sub-tarjetas si corresponden (Libro de los Herederos) -->
       ${contenidoEspecial}
+    `;
+  }
 
-      <div style="margin-top:20px; text-align:center; font-size:0.9rem; color: #f5e4bf; background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 6px; display: inline-block;">
-  ${notasTexto}
-</div>
+  // Inyección HTML en el modal
+  modalContenido.innerHTML = `
+    <div class="modal-overlay-bg">
+      ${estructuraCuerpo}
+
+      ${notasTexto ? `
+        <div style="margin-top:20px; text-align:center; font-size:0.9rem; color: #f5e4bf; background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 6px; display: inline-block; width: 100%; box-sizing: border-box;">
+          ${notasTexto}
+        </div>
+      ` : ''}
       
       <div style="text-align: center; margin-top: 2.5rem;">
         <button type="button" class="btn-dorado btn-regresar-modal" id="btn-cerrar-lectura">
@@ -156,12 +174,74 @@ const origenTexto = item.contenidoCompleto && item.contenidoCompleto.origen
     </div>
   `;
 
-  // Evento de cierre
+  // 1. Evento de cerrar modal
   const btnRegresar = document.getElementById("btn-cerrar-lectura");
   if (btnRegresar) {
     btnRegresar.addEventListener("click", () => modal.classList.remove("visible"));
   }
 
+  // 2. LÓGICA DE AMPLIACIÓN (Tríptico / Profecía del Recolector)
+  const triptico = modalContenido.querySelector("#vista-triptico");
+  const vistaAmpliada = modalContenido.querySelector("#vista-ampliada-profecia");
+  const btnVolver = modalContenido.querySelector("#btn-volver-triptico");
+
+  if (triptico && vistaAmpliada) {
+    const tarjetas = triptico.querySelectorAll(".tarjeta-version-profecia");
+
+    tarjetas.forEach(tarjeta => {
+      tarjeta.addEventListener("click", () => {
+        const titulo = tarjeta.getAttribute("data-titulo");
+        const rutaImg = tarjeta.getAttribute("data-img");
+        const desc = tarjeta.getAttribute("data-desc");
+
+        const imgFoco = modalContenido.querySelector("#img-profecia-foco");
+        const tituloFoco = modalContenido.querySelector("#titulo-profecia-foco");
+        const descFoco = modalContenido.querySelector("#desc-profecia-foco");
+
+        if (imgFoco) imgFoco.src = rutaImg;
+        if (tituloFoco) tituloFoco.textContent = titulo;
+        if (descFoco) descFoco.textContent = desc;
+
+        triptico.style.display = "none";
+        vistaAmpliada.style.display = "block";
+      });
+    });
+
+    if (btnVolver) {
+      btnVolver.addEventListener("click", () => {
+        vistaAmpliada.style.display = "none";
+        triptico.style.display = "flex";
+      });
+    }
+  }
+
+  // 3. NAVEGACIÓN A SAGA (Desde el Canto de los Libros)
+  const enlacesSaga = modalContenido.querySelectorAll(".link-saga");
+  enlacesSaga.forEach(enlace => {
+    enlace.style.cursor = "pointer";
+    enlace.addEventListener("click", () => {
+      const libroId = enlace.getAttribute("data-libro");
+      
+      modal.classList.remove("visible");
+
+      if (typeof window.mostrarGridSaga === "function") {
+        window.mostrarGridSaga();
+      }
+
+      const seccionDestino = document.getElementById("historia") || document.getElementById("contenedor-modulo-saga");
+      if (seccionDestino) {
+        seccionDestino.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      setTimeout(() => {
+        if (typeof window.abrirDetalleLibro === "function") {
+          window.abrirDetalleLibro(libroId);
+        }
+      }, 350);
+    });
+  });
+
+  // Mostrar el modal
   modal.classList.add("visible");
 }
 

@@ -62,8 +62,8 @@
 }
 
 .escrito-card {
-  background: linear-gradient(135deg, rgba(26, 21, 16, 0.7) 0%, rgba(16, 13, 9, 0.95) 100%);
-  border: 1px solid rgba(197, 169, 86, 0.2);
+  background: linear-gradient(135deg, rgba(16, 26, 41, 0.7) 0%, rgba(6, 19, 31, 0.95) 100%);
+  border: 1px solid rgba(197, 169, 86, 0.5);
   border-radius: 6px;
   padding: 1.8rem;
   display: flex;
@@ -79,27 +79,38 @@
   box-shadow: 0 12px 30px rgba(197, 169, 86, 0.15);
 }
 
+/* 1. Título principal y Subtítulos dentro de las tarjetas */
 .escrito-card h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 1.25rem;
-  color: var(--gold);
-  margin: 0.4rem 0;
-  letter-spacing: 0.05em;
+  color: #9b884b !important; /* Dorado claro brillante */
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.2); /* Resplandor dorado suave */
+  font-size: 1.4rem;
 }
 
+/* 2. El subtítulo justo debajo del título principal */
 .escrito-card .subtitulo {
-  font-size: 0.85rem;
-  color: rgba(245, 228, 191, 0.6);
-  margin-bottom: 1rem;
-  font-style: italic;
+  color: #E2E8F0 !important; /* Blanco hueso brillante */
+  font-weight: 500;
+  opacity: 0.95;
 }
 
+/* 3. La descripción corta dentro de la tarjeta */
 .escrito-card .descripcion {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--parch);
-  margin-bottom: 1.5rem;
+  color: #CBD5E1 !important; /* Gris claro de alto contraste */
+  line-height: 1.5;
+}
+
+/* 4. Etiqueta / Badge de la categoría arriba del título */
+.escrito-card .badge-categoria {
+  color: #FFE600 !important; /* Amarillo reluciente */
+  background: rgba(16, 17, 54, 0.6);
+  border: 1px solid rgba(255, 230, 0, 0.4);
+}
+
+/* 5. Si te refieres al subtítulo principal de la sección fuera de las tarjetas */
+#escritos .subtitulo-seccion,
+.seccion-escritos p {
+  color: #F1F5F9 !important; /* Blanco brillante */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .badge-categoria {
@@ -130,7 +141,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(5, 4, 3, 0.95);
+  background-color: rgba(3, 3, 5, 0.95);
   backdrop-filter: blur(10px);
   z-index: 3000;
   justify-content: center;
@@ -168,7 +179,7 @@
      - 0.25 = Imagen muy clara / brillante
      - 0.40 = Equilibrio
      - 0.65 = Más oscura para lectura intensa */
-  background: rgba(10, 8, 6, 0.65); 
+  background: rgba(6, 7, 10, 0.65); 
   
   padding: 2.5rem 2rem;
   box-sizing: border-box;
@@ -185,7 +196,7 @@
   text-align: center;
   
   /* FONDO Y BORDE TIPO PERGAMINO OSCURO */
-  background: rgba(12, 10, 8, 0.75); /* Fondo oscuro con opacidad (modifica 0.75 si quieres más o menos transparencia) */
+  background: rgba(6, 16, 36, 0.75); /* Fondo oscuro con opacidad (modifica 0.75 si quieres más o menos transparencia) */
   border: 1px solid rgba(197, 169, 86, 0.4); /* Borde dorado tenue místico */
   border-radius: 8px;
   
@@ -213,7 +224,7 @@
   font-family: 'Cinzel', serif;
   font-size: 1.15rem;
   font-style: italic;
-  color: rgba(71, 52, 9, 0.75);
+  color: rgba(128, 101, 41, 0.75);
   max-width: 680px;
   margin: 0.8rem auto 1.5rem auto;
   /* 2. ESPACIADO ENTRE RENGLONES:
@@ -420,4 +431,261 @@ body.modo-profecia {
   background-position: center;
   background-attachment: fixed;
   transition: background-image 0.5s ease-in-out; /* Hace que el cambio de fondo sea suave y no de golpe */
+}
+
+/* Estilo místico para el Canto de la Saga */
+.canto-saga-contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.verso-tomo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  color: var(--parch);
+  text-align: center;
+  font-style: italic;
+  margin: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Efecto al pasar el cursor sobre cada verso/tomo */
+.verso-tomo:hover {
+  color: #ffe89e;
+  transform: scale(1.02);
+}
+
+/* Etiqueta opcional para marcar el tomo al que pertenece cada frase */
+.badge-tomo {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  color: var(--gold);
+  background: rgba(197, 169, 86, 0.15);
+  border: 1px solid rgba(197, 169, 86, 0.4);
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.verso-tomo.link-saga {
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.verso-tomo.link-saga:hover {
+  background: rgba(197, 169, 86, 0.25);
+  color: #ffe89e;
+  transform: translateX(6px);
+}
+
+@keyframes pulsoTarjetaSaga {
+  0% { box-shadow: 0 0 0px transparent; transform: scale(1); }
+  50% { box-shadow: 0 0 25px var(--gold); transform: scale(1.03); }
+  100% { box-shadow: 0 0 0px transparent; transform: scale(1); }
+}
+
+.resaltar-tarjeta {
+  animation: pulsoTarjetaSaga 1.8s ease-in-out;
+  border-radius: 8px;
+}
+
+/* Layout del Tríptico */
+/* TRÍPTICO (MINIATURAS) */
+.contenedor-triptico-profecia {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.tarjeta-version-profecia {
+  flex: 1;
+  max-width: 200px;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(197, 169, 86, 0.4);
+  background: rgba(10, 8, 6, 0.8);
+  transition: all 0.3s ease;
+  filter: brightness(0.6);
+  text-align: center;
+}
+
+.tarjeta-version-profecia:hover {
+  filter: brightness(1);
+  transform: translateY(-4px);
+  border-color: var(--gold, #d4af37);
+  box-shadow: 0 0 15px rgba(197, 169, 86, 0.4);
+}
+
+.img-profecia-miniatura {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.label-version {
+  display: block;
+  padding: 8px 0;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: var(--parch, #e0d7c6);
+  background: rgba(15, 12, 9, 0.9);
+}
+
+/* VISTA AMPLIADA A DETALLE */
+.vista-ampliada-profecia {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.btn-volver-triptico {
+  background: transparent;
+  border: 1px solid var(--gold, #d4af37);
+  color: var(--gold, #d4af37);
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+  transition: all 0.25s ease;
+}
+
+.btn-volver-triptico:hover {
+  background: rgba(197, 169, 86, 0.2);
+  transform: translateX(-3px);
+}
+
+.contenedor-profecia-foco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 169, 86, 0.2);
+}
+
+.img-profecia-grande {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(197, 169, 86, 0.3);
+}
+
+.info-profecia-foco {
+  text-align: center;
+  max-width: 600px;
+}
+
+.titulo-foco {
+  color: var(--gold, #d4af37);
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.desc-foco {
+  color: var(--parch, #e0d7c6);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* 1. Agrandar la ventana contenedora del modal */
+#escrito-modal .modal-contenido,
+.modal-escrito-contenido {
+  max-width: 950px; /* Incrementado (antes solía estar en 600px o 700px) */
+  width: 90%;
+  max-height: 85vh; /* Ocupa hasta el 85% del alto de la pantalla */
+  padding: 2.5rem;
+  overflow-y: auto; /* Permite scroll interno si el texto es muy largo */
+}
+
+/* 2. Agrandar la tipografía del cuerpo del texto */
+.escrito-cuerpo-texto {
+  font-size: 1.15rem; /* Texto de lectura más grande y claro */
+  line-height: 1.8;   /* Interlineado más amplio para mejor legibilidad */
+  max-width: 800px;
+  margin: 0 auto 1.5rem auto;
+}
+
+/* 3. Agrandar el título principal */
+#modal-detalle-contenido h2 {
+  font-size: 2.4rem !important;
+  margin-bottom: 0.8rem !important;
+}
+
+/* 4. Agrandar las miniaturas si usas el tríptico/profecía */
+.tarjeta-version-profecia {
+  min-width: 200px;
+  padding: 12px;
+}
+
+.tarjeta-version-profecia img {
+  max-height: 220px;
+  object-fit: cover;
+}
+
+/* Layout en 2 columnas para modales con imagen lateral */
+.modal-layout-dos-columnas {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+
+.columna-imagen-modal {
+  flex: 0 0 38%; /* Ocupa el 38% del ancho */
+  max-width: 320px;
+}
+
+.img-escrito-lateral {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 169, 86, 0.4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+
+.columna-texto-modal {
+  flex: 1; /* Ocupa el espacio restante */
+  text-align: left;
+}
+
+/* En dispositivos móviles se apila verticalmente */
+@media (max-width: 768px) {
+  .modal-layout-dos-columnas {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .columna-imagen-modal {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .columna-texto-modal {
+    text-align: center;
+  }
 }

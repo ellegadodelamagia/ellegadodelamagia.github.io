@@ -88,7 +88,7 @@ const tiposDeMagiaData = [
   {
      id: "poder_celestia;",
     nombre: "Poder Celestial",
-    imagenFondo: "imagenes/imagenes_tipos_magia/elemental.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/celestial.png",
     colorMarco: "#f7f3f2",       // Color para el borde/brillo frontal
     colorFondoReverso: "#8edada",// Color de fondo al dar vuelta
     origenMundo: "Blanca",

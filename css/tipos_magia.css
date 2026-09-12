@@ -61,14 +61,22 @@ section#tipos_magia div#contenedor_tipos_magia {
 
 /* --- FRONTAL --- */
 .tarjeta-frente {
+  /* 1. Hace que la imagen cubra todo el cuadro sin deformarse (corta los sobrantes) */
   background-size: cover;
+
+  /* 2. Centra la imagen para que el punto principal siempre quede en medio */
   background-position: center;
+
+  /* 3. Evita que la imagen se repita si es más pequeña que la tarjeta */
+  background-repeat: no-repeat;
+
+  /* Estilos que ya tenías: */
   border: 3px solid var(--color-marco, #8a2be2);
   box-shadow: 0 0 15px var(--color-marco, rgba(138, 43, 226, 0.4));
   align-items: flex-end;
   justify-content: center;
   padding: 1.5rem;
-  z-index: 2; /* Asegura que el frente esté arriba inicialmente */
+  z-index: 2;
 }
 
 /* Gradiente para que el texto resalte */

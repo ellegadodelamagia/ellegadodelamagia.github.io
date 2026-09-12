@@ -281,8 +281,8 @@ const DATOS_LUGARES = [
     "longitud": -3.690826,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Natural",
-    "Tipo_de_magia": "Magia Entretejida",
-    "Descripcion_corta": "La magia fluye libre y visible, solo para algunos.",
+    "Tipo_de_magia": "Vórtice de Magia",
+    "Descripcion_corta": "Hay lugares donde la magia decide crear un espacio, ahí fluye libre. Visible solo para los que saben verla.",
     "Imagen": "gb_vbr_04.jpg"
   },
   {

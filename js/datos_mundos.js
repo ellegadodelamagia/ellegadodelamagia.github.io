@@ -18,9 +18,9 @@ const MUNDOS_DATA = [
         nombre: "Communia",
         nombre_visible: "Communia",
         tipo: "Región Humana",
-        descripcion_breve: "El eje central de la sociedad mortal y el comercio del plano físico.",
-        historia_o_lore: "Communia es el corazón latente de la civilización humana en la saga. Una vasta extensión urbana y rural donde las intrigas políticas se mezclan con remanentes de magia antigua.",
-        reglas_de_magia: "Flujo mágico pasivo. Los hechizos requieren alta concentración y rituales estructurados.",
+        descripcion_breve: "Los communia constituyen la población general: personas sin acceso a ningún tipo de energía, magia o sensibilidad especial.",
+        historia_o_lore: "	Viven su vida cotidiana sin percibir la magia que los rodea. Algunos communia poseen conocimiento parcial de la magia, pero esto es excepcional (como en el caso de Daniella). Cuando un communia descubre la magia, la reacción del mundo vedlys depende de las circunstancias: pueden ser vigilados o integrados en la comunidad mágica.",
+        reglas_de_magia: "La mayoría no detecta la magia en absoluto. Esta falta de percepción facilita mantener el secreto.",
         imagen_fondo: "imagenes_principal/mundos/communia.jpg",
         desbloqueado: 1
       },
@@ -29,9 +29,9 @@ const MUNDOS_DATA = [
         nombre: "Vedlys",
         nombre_visible: "Vedlys",
         tipo: "Región Humana",
-        descripcion_breve: "Una región mística oculta entre los pliegues del espacio humano.",
-        historia_o_lore: "Vedlys actúa como un puente cuántico/mágico dentro del Mundo Humano. Es una zona de acceso restringido donde las leyes físicas comienzan a desdibujarse.",
-        reglas_de_magia: "Distorsión espacial leve. Los catalizadores aumentan su rendimiento un 50%.",
+        descripcion_breve: "Son personas capaces de manipular la energía natural y la magia contemporánea",
+         historia_o_lore: "Existe una práctica social y cultural no escrita: los vedlys no revelan su naturaleza ni la existencia de la magia a los communia. Se organizan en comunidades locales y globales, reguladas principalmente por gobiernos mágicos nacionales o regionales. Algunos vedlys viven completamente integrados entre communia,",
+        reglas_de_magia: "Respeto por la jerarquía y las tradiciones mágicas. Mantener la discreción frente a los communia.	Estas responsabilidades son reguladas por cada gobierno mágico.",
         imagen_fondo: "imagenes_principal/mundos/vedlys.jpg",
         desbloqueado: 1
       }
@@ -43,8 +43,8 @@ const MUNDOS_DATA = [
     nombre_visible: "Celestial",
     tipo: "Dimensión",
     descripcion_breve: "El reino de las esferas superiores, el orden sagrado y la justicia etérea.",
-    historia_o_lore: "Gobernado por entidades de luz pura y estructuras inquebrantables, el plano celestial vigila el equilibrio del multiverso.",
-    reglas_de_magia: "Magia basada en la frecuencia lumínica y decretos divinos. Inmune a la corrupción orgánica.",
+    historia_o_lore: "Los seres celestiales se organizan en categorías con funciones y poderes distintos.",
+    reglas_de_magia: "No soportan la magia activa: si están en contacto prolongado o intenso con ella, se convierten en polvo cósmico. Los ángeles no ven la magia pero sí perciben su presencia, porque la proximidad a la magia activa los debilita.",
     desbloqueado: 2, // Nivel 2: Bloqueado pero identificable
     revelado_en: "Libro 2",
     imagen_fondo: "imagenes_principal/mundos/celestial_bg.jpg",
@@ -54,9 +54,9 @@ const MUNDOS_DATA = [
         nombre: "Serafines", 
         nombre_visible: "Serafines", 
         tipo: "Orden Celestial", 
-        descripcion_breve: "Guerreros sagrados de la primera esfera.",
-        historia_o_lore: "Los guerreros de la primera esfera en la jerarquía del Reino Celestial.", 
-        reglas_de_magia: "Manipulación de la llama eterna sagrada.",
+        descripcion_breve: "Enviados al mundo humano por el Hacedor de Todo.",
+        historia_o_lore: "Entre otras cosas, son enviados para ayudar a humanos en peligro, eliminar posibles amenazas, y conceder deseos a quienes el Hacedor de Todo considera dignos. No tienen conocimiento profundo del mundo humano ni comprenden las emociones humanas, ya que no suelen relacionarse directamente con las personas.", 
+        reglas_de_magia: "Cuando necesitan estar en el mundo físico, toman prestado el cuerpo de un recipiente: un ser humano con características especiales que de antemano ha dado su consentimiento.",
         imagen_fondo: "imagenes_principal/mundos/serafines.jpg", 
         desbloqueado: 1 
       },
@@ -66,8 +66,8 @@ const MUNDOS_DATA = [
         nombre_visible: "Ángeles Guardianes", 
         tipo: "Orden Celestial", 
         descripcion_breve: "Protectores asignados al plano terrenal.",
-        historia_o_lore: "Protectores asignados al plano mortal para preservar vidas clave en el destino.", 
-        reglas_de_magia: "Escudos de transmutación espectral e invisibilidad sutil.",
+        historia_o_lore: "Son creados y enviados cada vez que nace una persona, por lo que toda su existencia transcurre en la Tierra. Sus poderes son limitados y no tienen permitido alejarse de su humano.", 
+        reglas_de_magia: "La magia no los afecta. Tienen una conexión completa con el ser que cuidan: cuando este se encuentra en peligro pueden influir parcialmente en sus decisiones, dentro de los límites del libre albedrío. No tienen permitido aparecer ante los humanos.",
         imagen_fondo: "imagenes_principal/mundos/guardianes.jpg", 
         desbloqueado: 1 
       },
@@ -77,8 +77,8 @@ const MUNDOS_DATA = [
         nombre_visible: "Querubines Estudiosos", 
         tipo: "Orden Celestial", 
         descripcion_breve: "Archivistas del conocimiento cósmico.",
-        historia_o_lore: "Guardias del conocimiento ancestral y observadores del tejido espacio-temporal.", 
-        reglas_de_magia: "Magia psiónica, lectura de líneas temporales e historia.",
+        historia_o_lore: "Observan,analizan y registran todos acontecimientos del mundo humano. Guardias del conocimiento ancestral y observadores del tejido espacio-temporal.", 
+        reglas_de_magia: "No están en contacto con la magia por lo que se desconoce si los afecta.",
         imagen_fondo: "imagenes_principal/mundos/querubines.jpg", 
         desbloqueado: 1 
       },
@@ -88,8 +88,8 @@ const MUNDOS_DATA = [
         nombre_visible: "Arcángeles", 
         tipo: "Orden Celestial", 
         descripcion_breve: "Los comandantes absolutos del ejército celestial.",
-        historia_o_lore: "Líderes estratégicos y ejecutores directos de la voluntad de las esferas superiores.", 
-        reglas_de_magia: "Magia de orden macro y alteración del entorno a gran escala.",
+        historia_o_lore: "Los arcángeles dirigen a los guerreros celestiales y tienen autoridad sobre las demás categorías; el más relevante es Miguel.", 
+        reglas_de_magia: "La magia los afecta menos que a los serafines, aunque si les causa dolor.",
         imagen_fondo: "imagenes_principal/mundos/arcangeles.jpg", 
         desbloqueado: 1 
       }
@@ -106,27 +106,68 @@ const MUNDOS_DATA = [
     imagen_fondo: "imagenes_principal/mundos/nemori_bg.jpg",
     desbloqueado: 1,
     regiones: [
-      {
-        id: "dridalys",
-        nombre: "Dridalys",
-        nombre_visible: "Dridalys",
-        tipo: "Raza Ancestral",
-        descripcion_breve: "Guardianes del equilibrio entre razas y elementos, y los mejores cocineros del mundo.",
-        historia_o_lore: "Fueron progresivamente esclavizados por las demás razas antes de que el Hacedor enviara el castigo que transformó el mundo. Durante siglos vivieron en casas humanas antes de retirarse al mundo subterráneo; con el tiempo se unieron a familias vedlys, que sí pueden verlos, y hoy son parte integral de sus comunidades.",
-        reglas_de_magia: "No se corrompieron durante las guerras mágicas. Usan la energía natural del fuego y pueden realizar pequeños encantamientos. Su capacidad de trasladarse largas distancias y aparecer en lugares con protecciones mágicas no tiene límite de distancia, pero sí de peso en lo que llevan consigo.",
-        imagen_fondo: "imagenes_principal/mundos/dridalys.jpg",
-        desbloqueado: 1,
-        sub_razas: [
-          "Aluxes (México)", 
-          "Kete (África)", 
-          "Uchuy (Sudamérica)", 
-          "Qizm (Arabia)", 
-          "Malenkiy (Siberia)", 
-          "Xiao (China)", 
-          "Tanuki (Asia)", 
-          "Brownies (Europa)"
-        ]
-      },
+      // Dentro del objeto Dridalys en js/datos_mundos.js:
+{
+  id: "dridalys",
+  nombre: "Dridalys",
+  nombre_visible: "Dridalys",
+  tipo: "Raza Ancestral",
+  descripcion_breve: "Guardianes del equilibrio entre razas y elementos, y los mejores cocineros del mundo.",
+  historia_o_lore: "Fueron progresivamente esclavizados por las demás razas antes de que el Hacedor enviara el castigo que transformó el mundo...",
+  reglas_de_magia: "No se corrompieron durante las guerras mágicas. Usan la energía natural del fuego...",
+  imagen_fondo: "imagenes_principal/mundos/dridalys.jpg",
+  desbloqueado: 1,
+  sub_razas: [
+    {
+      nombre: "Aluxes",
+      region: "México",
+      imagen_fondo: "imagenes_principal/mundos/subrazas/aluxes.jpg",
+      descripcion_breve: "Cuidadores de la selva y antiguos santuarios del plano mesoamericano."
+    },
+    {
+      nombre: "Kete",
+      region: "África",
+      imagen_fondo: "imagenes_principal/mundos/subrazas/kete.jpg",
+      descripcion_breve: "Espíritus guardianes de las sabanas y las raíces milenarias."
+    },
+    {
+      nombre: "Uchuy",
+      region: "Sudamérica",
+      imagen_fondo: "imagenes_principal/mundos/subrazas/uchuy.jpg",
+      descripcion_breve: "Moradores de las alturas andinas y protectores de los ríos."
+    },
+    {
+      nombre: "Qizm",
+      region: "Arabia",
+      imagen_fondo: "imagenes_principal/mundos/subrazas/qizm.jpg",
+      descripcion_breve: "Nómadas de los oasis y guardianes de secretos bajo las arenas."
+    },
+    {
+      nombre: "Malenkiy",
+      region: "Siberia",
+      imagen_fondo: "imagenes_principal/mundos/subrazas/malenkiy.jpg",
+      descripcion_breve: "Resistentes al frío eterno, guardianes de los bosques taiga."
+    },
+    {
+      nombre: "Xiao",
+      region: "China",
+      imagen_fondo: "imagenes_principal/mundos/subrazas/xiao.jpg",
+      descripcion_breve: "Armoniosos custodios de las montañas sagradas y valles de bambú."
+    },
+    {
+      nombre: "Tanuki",
+      region: "Asia Oriental",
+      imagen_fondo: "imagenes_principal/mundos/subrazas/tanuki.jpg",
+      descripcion_breve: "Astutos guardianes de la naturaleza urbana y rural del archipiélago."
+    },
+    {
+      nombre: "Brownies",
+      region: "Europa (ahora Drydalis)",
+      imagen_fondo: "imagenes_principal/mundos/subrazas/brownies.jpg",
+      descripcion_breve: "Protectores del hogar y artesanos de la cocina mística."
+    }
+  ]
+},
       {
         id: "elfos",
         nombre: "Elfos",
@@ -138,18 +179,57 @@ const MUNDOS_DATA = [
         imagen_fondo: "imagenes_principal/mundos/elfos.jpg",
         desbloqueado: 1
       },
+  
       {
-        id: "kotole",
-        nombre: "Kotole",
-        nombre_visible: "Kotole",
-        tipo: "Raza Ancestral",
-        descripcion_breve: "Grandes clanes dedicados al cuidado y trabajo del subsuelo.",
-        historia_o_lore: "Encargados de extraer los minerales necesarios para la vida, su profundo conocimiento de la tierra los convirtió en maestros artesanos. Un grupo exiliado mantiene esta tradición en el mundo subterráneo. Fabrican armas y objetos para contener la magia muy codiciados.",
-        reglas_de_magia: "Su magia proviene de la energía natural de la tierra. Aunque su especialidad es fabricar objetos mágicos, también son capaces de manipular la magia de forma directa.",
-        imagen_fondo: "imagenes_principal/mundos/kotole.jpg",
-        desbloqueado: 1,
-        sub_razas: ["Nórdicos", "Asiáticos", "Americanos", "Africanos"]
-      },
+  
+  id: "kotole",
+  nombre: "Kotole",
+  nombre_visible: "Kotole",
+  tipo: "Raza Ancestral",
+  descripcion_breve: "Grandes clanes dedicados al cuidado y trabajo del subsuelo.",
+  historia_o_lore: "Encargados de extraer los minerales necesarios para la vida, su profundo conocimiento de la tierra los convirtió en maestros artesanos. Un grupo exiliado mantiene esta tradición en el mundo subterráneo. Fabrican armas y objetos para contener la magia muy codiciados.",
+  reglas_de_magia: "Su magia proviene de la energía natural de la tierra. Aunque su especialidad es fabricar objetos mágicos, también son capaces de manipular la magia de forma directa.",
+  imagen_fondo: "imagenes_principal/mundos/kotole.jpg",
+  desbloqueado: 1,
+  sub_razas: [
+    {
+      id: "kotole-nordicos",
+      nombre: "Nórdicos",
+      tipo: "PUEBLO ANCESTRAL",
+      descripcion_breve: "Maestros forjadores del norte helado y la piedra profunda.",
+      historia_o_lore: "Ubicados en las cumbres más frías, perfeccionaron el arte de forjar runas de hielo y contención en las profundidades.",
+      reglas_de_magia: "Canalizan la energía de las piedras heladas para crear recipientes místicos.",
+      desbloqueado: 1
+    },
+    {
+      id: "kotole-asiaticos",
+      nombre: "Asiáticos",
+      tipo: "PUEBLO ANCESTRAL",
+      descripcion_breve: "Artesanos del equilibrio, la energía fluida y la piedra jade.",
+      historia_o_lore: "Conservan la tradición de manipular las vetas de jade subterráneas para moldear catalizadores mágicos.",
+      reglas_de_magia: "Fluidez energética a través de la canalización de minerales puros.",
+      desbloqueado: 1
+    },
+    {
+      id: "kotole-americanos",
+      nombre: "Americanos",
+      tipo: "PUEBLO ANCESTRAL",
+      descripcion_breve: "Guardianes de la tierra ancestral y los minerales sagrados.",
+      historia_o_lore: "Habitantes de las profundidades boscosas y cavernas sagradas con un lazo espiritual con las piedras vivas.",
+      reglas_de_magia: "Magia ligada al pulso telúrico del mundo.",
+      desbloqueado: 1
+    },
+    {
+      id: "kotole-africanos",
+      nombre: "Africanos",
+      tipo: "PUEBLO ANCESTRAL",
+      descripcion_breve: "Sabios del fuego primigenio y el moldeado de la tierra fértil.",
+      historia_o_lore: "Especialistas en la fundición con magma y el tratado de metales dorados bajo presión telúrica.",
+      reglas_de_magia: "Control térmico y manipulación de metales en estado líquido.",
+      desbloqueado: 1
+    }
+  ]
+},
       {
         id: "nereidas",
         nombre: "Nereidas",
@@ -200,18 +280,43 @@ const MUNDOS_DATA = [
     ]
   },
   {
-    id: "mundo_secreto",
-    nombre: "Dimensión del Vacío",
-    nombre_visible: "???",
-    tipo: "Desconocido",
-    descripcion_breve: "???",
-    historia_o_lore: "???",
-    reglas_de_magia: "???",
-    imagen_fondo: "imagenes_principal/mundos/locked_bg.jpg",
-    desbloqueado: 3, // Nivel 3: Spoiler total
-    revelado_en: "Libro 3",
-    regiones: []
-  }
+  id: "mundo_secreto",
+  nombre: "Dimensión del Vacío",
+  nombre_visible: "???",
+  tipo: "Plano Divino",
+  descripcion_breve: "El dominio secreto donde residen las antiguas deidades y fuerzas primigenias de las distintas culturas.",
+  historia_o_lore: "Las divinidades de diferentes culturas existen de forma real, aunque su presencia no es constante ni universal. Son entidades con poder propio, distintas de los seres celestiales: no usan magia, pues su poder proviene de su esencia divina, una fuerza completamente diferente a la magia vedlys, no clasificable ni medible por los humanos.",
+  reglas_de_magia: "La magia en esta dimensión trasciende las leyes terrenales y responde al dominio conceptual de cada deidad. Las divinidades son neutrales o ambivalentes; no responden a conceptos humanos de bien o mal. Se conocen entre sí y pueden interactuar, especialmente las relacionadas con los mundos de los muertos. ",
+  imagen_fondo: "imagenes_principal/mundos/locked_bg.jpg",
+  desbloqueado: 3, // Nivel 3: Spoiler total hasta el Libro 3
+  revelado_en: "Libro 3",
+  
+  // Lista de deidades / reinos culturales
+  regiones: [
+    {
+      id: "divinidad_inframundo_mexica",
+      nombre: "Mictlantecuhtli",
+      cultura: "Mexica",
+      region: "Mesoamérica (México)",
+      tipo_divinidad: "Dios del Inframundo",
+      descripcion_breve: "Señor del Mictlán y del descanso eterno de las almas.",
+      historia_o_lore: "Gobernante del noveno nivel subterráneo, custodia los huesos de las eras pasadas.",
+      imagen_fondo: "imagenes_principal/mundos/micu.jpg",
+      desbloqueado: 3
+    },
+    {
+      id: "divinidad_trueno_nordico",
+      nombre: "Thor",
+      cultura: "Nórdica",
+      region: "Escandinavia",
+      tipo_divinidad: "Dios del Trueno y la Fuerza",
+      descripcion_breve: "Protector de los reinos y portador del rayo primigenio.",
+      historia_o_lore: "Defensor incansable contra las sombras, cuyo poder resuena en las tormentas del vacío.",
+      desbloqueado: 3
+    }
+    // Puedes ir agregando más dioses con esta misma estructura
+  ]
+}
 ];
 
 export default MUNDOS_DATA;

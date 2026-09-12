@@ -1,333 +1,217 @@
 /* ==========================================================================
-   ESTRUCTURA BASE Y GRID (SAGA: EL LEGADO DE LA MAGIA)
+   ESTRUCTURA DE GRID (SIN IMPORTANT)
    ========================================================================== */
 
-/* Contenedor macro de la sección */
 #mundos-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
 }
 
-/* Contenedor Grid con especificidad incrementada mediante ID + ID/Clase */
-#mundos-container #mundos-grid-dinamico {
+/* Aplicamos las 4 columnas tanto al ID como a la clase de tu HTML */
+#mundos-grid-dinamico,
+.mundos-grid-layout {
     display: grid;
-    /* auto-fill evita que las columnas se expandan para llenar el espacio vacío */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 350px));
-    justify-content: center;
-    align-items: start;
-    gap: 25px;
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     width: 100%;
     margin: 0 auto 40px auto;
     padding: 10px;
     box-sizing: border-box;
 }
 
-/* Limitador individual usando especificidad compuesta (#id .clase) */
-#mundos-grid-dinamico .mundo-card {
-    width: 100%;
-    max-width: 350px;
-    justify-self: center;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
-/* ==========================================================================
-   ESTILIZADO DE TARJETAS INDIVIDUALES
-   ========================================================================== */
-
+/* Tarjeta individual ajustada al ancho exacto de su columna */
 .mundo-card {
     position: relative;
     height: 380px;
-    width: 100% !important;
-    max-width: 320px !important;
-    margin: 0 auto !important;
+    width: 100%;
     border-radius: 14px;
     background-size: cover;
     background-position: center;
     overflow: hidden;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
     background-color: #120b20;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease !important;
+    box-sizing: border-box;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Efecto al pasar el mouse */
-.mundo-card.estado-nivel-1:hover {
-    transform: translateY(-8px) scale(1.02) !important;
-    box-shadow: 0 20px 40px rgba(138, 43, 226, 0.25) !important;
+/* Responsivo */
+@media (max-width: 1024px) {
+    #mundos-grid-dinamico, .mundos-grid-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* Contenido interno de la tarjeta */
-.mundo-card-content {
-    position: absolute;
-    bottom: 0;
+@media (max-width: 600px) {
+    #mundos-grid-dinamico, .mundos-grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   ESTILIZADO DE TARJETAS INDIVIDUALES
+   ========================================================================== */
+
+/* Limpiamos la tarjeta de anchos fijos para que el Grid controle el tamaño */
+.mundo-card {
+    position: relative;
+    height: 380px;
     width: 100%;
-    padding: 25px;
-    background: linear-gradient(to top, rgba(15, 10, 25, 0.95) 0%, rgba(15, 10, 25, 0.4) 70%, transparent 100%);
-    color: #ffffff;
+    border-radius: 14px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    background-color: #120b20;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+/* Eliminamos la sobreescritura de #mundos-grid-dinamico .mundo-card que tenía max-width: 350px */
+
+/* Ajuste Responsivo Limpio (para pantallas pequeñas) */
+@media (max-width: 1024px) {
+    #mundos-container #mundos-grid-dinamico {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #mundos-container #mundos-grid-dinamico {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Borrar de estilo.css y meter en tu CSS de mundos */
+#mundos-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+#mundos-grid-dinamico,
+.mundos-grid-layout,
+.mundos-grid {
+    display: grid;
+    /* auto-fit con minmax para que las columnas se adapten según la cantidad de tarjetas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
+    /* Centra la cuadrícula entera dentro del contenedor */
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto 40px auto;
+    padding: 10px 0;
     box-sizing: border-box;
 }
 
-.mundo-card h3 {
-    margin: 12px 0 8px 0;
-    font-size: 1.6rem;
-    font-family: 'Cinzel', serif;
-    letter-spacing: 1px;
+.mundo-card {
+    position: relative;
+    height: 380px;
+    width: 100%;
+    border-radius: 14px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    background-color: #120b20;
+    box-sizing: border-box;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    /* 🎯 Alineación y centrado interno total */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center;     /* Centra el contenido horizontalmente */
+    text-align: center;      /* Centra los textos de varias líneas */
+    padding: 20px;           /* Margen interno para que el texto no toque los bordes */
 }
 
-.mundo-card p {
-    font-size: 0.9rem;
-    color: #ccc;
-    line-height: 1.4;
-    margin: 0;
+.mundo-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: 0 15px 35px rgba(200, 168, 75, 0.15);
 }
 
-/* Indicador de acción (Pulsa para explorar) */
-.indicador-accion {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.8rem;
-    color: #bfa1db;
-    opacity: 0.8;
-}
-
-/* Números romanos de fondo */
 .roman-bg {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 6rem;
-    font-family: 'Cinzel', serif;
-    color: rgba(255, 255, 255, 0.03);
-    font-weight: bold;
-    user-select: none;
-    z-index: 0;
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 6rem;
+  font-family: 'Cinzel', serif;
+  color: rgba(200, 168, 75, 0.05);
+  font-weight: bold;
+  pointer-events: none;
 }
 
-/* --- ESTADO NIVEL 2: BLOQUEADO (DESENFOQUE) --- */
-.mundo-card-content.bloqueado-blur {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: rgba(15, 12, 22, 0.85);
-    backdrop-filter: blur(8px);
+.indicador-accion {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: 'Cinzel', serif, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #c5a059;
+  opacity: 0.85;
+  transition: all 0.3s ease;
 }
 
-.txt-bloqueado {
-    color: #ffb703 !important;
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin: 15px 0 !important;
+.mundo-card:hover .indicador-accion {
+  color: #f5eab7;
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(245, 234, 183, 0.6);
+  transform: translateX(4px);
 }
 
-.badge-libro {
-    font-size: 0.85rem;
-    color: #aaa;
-    border-top: 1px solid #332244;
-    padding-top: 8px;
-    width: 80%;
+@media (max-width: 1024px) {
+  #mundos-grid-dinamico, .mundos-grid-layout, .mundos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* --- ESTADO NIVEL 3: OCULTO/SPOILER --- */
-.oculto-total {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #0d0b11;
-    border: 2px dashed #2c2536;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
+@media (max-width: 600px) {
+  #mundos-grid-dinamico, .mundos-grid-layout, .mundos-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* ==========================================================================
-   BOTONES DE NAVEGACIÓN (ESTILO PÍLDORA / ÓVALO DESTACADO)
-   ========================================================================== */
+/* Color del borde o resplandor al pasar el cursor para cada pueblo */
 
-#contenedor-boton-volver {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 15px !important;
-    margin: 20px 0 30px 0 !important;
-    flex-wrap: wrap !important;
-    width: 100% !important;
+/* Nórdicos: Tonos fríos, azulados y plateados */
+.mundo-card.pueblo-nordico:hover {
+  border-color: #8ab4f8;
+  box-shadow: 0 15px 35px rgba(138, 180, 248, 0.25);
+}
+.pueblo-nordico .indicador-accion {
+  color: #aecdff;
 }
 
-#contenedor-boton-volver a.btn-volver-mundos {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 12px 28px !important;
-    
-    /* Forma ovalada / píldora para alta visibilidad */
-    border-radius: 50px !important;
-    
-    background: rgba(19, 13, 34, 0.85) !important;
-    border: 2px solid #c5a059 !important;
-    color: #f5eab7 !important;
-    
-    font-family: 'Cinzel', serif, sans-serif !important;
-    font-size: 0.95rem !important;
-    font-weight: bold !important;
-    letter-spacing: 1.5px !important;
-    text-decoration: none !important;
-    text-transform: uppercase !important;
-    
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 160, 89, 0.2) !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
+/* Asiáticos: Tonos místicos, jade o flor de cerezo/rojo dorado */
+.mundo-card.pueblo-asiatico:hover {
+  border-color: #5cdb95;
+  box-shadow: 0 15px 35px rgba(92, 219, 149, 0.25);
+}
+.pueblo-asiatico .indicador-accion {
+  color: #8ee4af;
 }
 
-#contenedor-boton-volver a.btn-volver-mundos:hover {
-    background: linear-gradient(135deg, #c5a059 0%, #b38f43 100%) !important;
-    color: #0a0615 !important;
-    border-color: #f5eab7 !important;
-    box-shadow: 0 6px 20px rgba(245, 234, 183, 0.4), 0 0 15px rgba(197, 160, 89, 0.6) !important;
-    transform: translateY(-2px) scale(1.03) !important;
+/* Americanos: Tonos ámbar, turquesa o verde selva */
+.mundo-card.pueblo-americano:hover {
+  border-color: #40e0d0;
+  box-shadow: 0 15px 35px rgba(64, 224, 208, 0.25);
+}
+.pueblo-americano .indicador-accion {
+  color: #7fffd4;
 }
 
-#contenedor-boton-volver a.btn-volver-mundos:active {
-    transform: translateY(1px) scale(0.98) !important;
+/* Africanos: Tonos cálidos, sol, oro y fuego */
+.mundo-card.pueblo-africano:hover {
+  border-color: #e67e22;
+  box-shadow: 0 15px 35px rgba(230, 126, 34, 0.25);
 }
-
-/* ==========================================================================
-   TARJETA DE LORE EXPANDIDA (FICHA COMPLETA)
-   ========================================================================== */
-
-.tarjeta-lore-expandida {
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    padding: 45px 35px !important;
-    margin: 40px auto !important; 
-    width: 92% !important;        
-    max-width: 700px !important; 
-    box-sizing: border-box !important;
-    color: #fff !important;
-    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85) !important;
-    
-    border-width: 3px !important;
-    border-style: solid !important;
-    border-image: linear-gradient(135deg, #c5a059 0%, #f5eab7 50%, #b38f43 100%) 1 !important;
-    position: relative !important;
-    display: block !important;
-    
-    animation: girarYExpandir 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* Caja de respaldo interna para el texto */
-.cuerpo-tarjeta-expandida {
-    background: rgba(11, 7, 20, 0.85);
-    padding: 25px 20px;
-    border-radius: 6px;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(197, 160, 89, 0.15);
-}
-
-/* Detalles de esquinas místicas */
-.marco-dorado-ancestral::before, .marco-dorado-ancestral::after {
-    content: '✦';
-    position: absolute;
-    color: #f5eab7;
-    font-size: 0.9rem;
-    text-shadow: 0 0 6px #b38f43;
-}
-.marco-dorado-ancestral::before { top: -10px; left: -6px; }
-.marco-dorado-ancestral::after { bottom: -12px; right: -6px; }
-
-/* Extracto destacado superior */
-.extracto-breve {
-    font-style: italic;
-    color: #d1b8e7;
-    font-size: 1.1rem;
-    text-align: center;
-    line-height: 1.6;
-    margin: 0 auto;
-    max-width: 100%;
-}
-
-/* Títulos internos */
-.seccion-lore-bloque h3 {
-    color: #f5eab7; 
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
-    padding-bottom: 8px;
-}
-
-/* Texto fluido de lectura */
-.texto-fluido-lore {
-    color: #e3daf0;
-    font-size: 1.05rem;
-    line-height: 1.8;
-    text-align: justify;
-    margin: 0;
-}
-
-/* Bloque destacado para Reglas de la Magia */
-.caja-magia-dorada {
-    background: rgba(197, 160, 89, 0.03);
-    border: 1px solid rgba(197, 160, 89, 0.15);
-    padding: 25px;
-    border-radius: 6px;
-}
-
-/* --- ANEXOS Y SUB-RAZAS --- */
-.subrazas-container {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(197, 160, 89, 0.2);
-}
-.subrazas-container h4 {
-    color: #f5eab7;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-}
-.subrazas-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-.tag-subraza {
-    background: #251b35;
-    color: #e2cbfa;
-    border: 1px solid #483563;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-
-/* ==========================================================================
-   ANIMACIONES Y RESPONSIVO
-   ========================================================================== */
-@keyframes girarYExpandir {
-    0% {
-        opacity: 0;
-        transform: scale(0.8) rotateY(-90deg);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) rotateY(0deg);
-    }
-}
-
-@media (max-width: 768px) {
-    .tarjeta-lore-expandida {
-        padding: 30px 20px !important;
-        width: 95% !important;
-    }
-    .seccion-lore-bloque h3 { font-size: 1.15rem; }
-    .texto-fluido-lore { font-size: 0.95rem; }
+.pueblo-africano .indicador-accion {
+  color: #f39c12;
 }

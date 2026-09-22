@@ -76,7 +76,7 @@ mientras el olvido amenaza con consumirlo todo.`,
   {
   id: "canto-de-los-libros",
   titulo: "El Canto de la Saga",
-  subtitulo: "Los versos de los tomos futuros",
+  subtitulo: "Fragmentos de origen incierto",
   categoria: "profecias",
   desbloqueado: 1,
   imagen: "assets/img/canto-saga-bg.jpg",
@@ -86,14 +86,14 @@ mientras el olvido amenaza con consumirlo todo.`,
     texto: `
       <div class="canto-saga-contenedor">
         <p class="verso-tomo link-saga" data-libro="libro-1"><span class="badge-tomo">I</span> "La magia permanece oculta, hasta que una profecía la despierta."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-2"><span class="badge-tomo">II</span> "Lo robado exige ser devuelto."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-3"><span class="badge-tomo">III</span> "Nadie recibe sin antes demostrar que lo merece."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-4"><span class="badge-tomo">IV</span> "No toda misión termina donde promete."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-5"><span class="badge-tomo">V</span> "El tiempo guarda secretos que pocos pueden leer."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-6"><span class="badge-tomo">VI</span> "Verdades que estan ocultas, hasta que los tres se encuentran."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-2"><span class="badge-tomo">II</span> "Lo robado exige ser devuelto, pero en el camino la sombra acecha."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-3"><span class="badge-tomo">III</span> "La aprobación de los antiguos dioses solo llega superando las pruebas."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-4"><span class="badge-tomo">IV</span> "Toda recolección esconde una revelación que no pediste."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-5"><span class="badge-tomo">V</span> "Así como los secretos pueden ser leídos, los elegidos no siempre son los esperadosL."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-6"><span class="badge-tomo">VI</span> "Hay verdades que no se revelan sino hasta que los tres convergen."</p>
         <p class="verso-tomo link-saga" data-libro="libro-7"><span class="badge-tomo">VII</span> "No toda magia se controla, ni todo lo perdido regresa."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-8"><span class="badge-tomo">VIII</span> "Los antiguos dejaron instrucciones, hoy dispersas."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-9"><span class="badge-tomo">IX</span> "Antes de la prueba final, hay que aprender lo que nadie enseña."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-8"><span class="badge-tomo">VIII</span> "Lo que los antiguos dejaron disperso es lo único que puede detener su regreso."</p>
+        <p class="verso-tomo link-saga" data-libro="libro-9"><span class="badge-tomo">IX</span> "Lo que nadie enseña es lo que hay que aprender antesde la prueba final."</p>
         <p class="verso-tomo link-saga" data-libro="libro-10"><span class="badge-tomo">X</span> "La sombra y el despertar se enfrentan por primera y última vez."</p>
       </div>
     `,

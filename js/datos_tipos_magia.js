@@ -2,7 +2,7 @@ const tiposDeMagiaData = [
   {
     id: "energia_natural",
     nombre: "Energía Natural",
-    imagenFondo: "imagenes/imagenes_tipos_magia/natural.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/natural.png",
     colorMarco: "#0b692f",       // Color para el borde/brillo frontal
     colorFondoReverso: "#08ac10",// Color de fondo al dar vuelta
     origenMundo: "Sin color",
@@ -12,7 +12,7 @@ const tiposDeMagiaData = [
   {
     id: "magia_antigua",
     nombre: "Magia Antigua",
-    imagenFondo: "imagenes/imagenes_tipos_magia/divina.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/antigua.png",
     colorMarco: "#C0C0C8",
     colorFondoReverso: "#6f7175",
     origenMundo: "Hebras Platinadas",
@@ -22,7 +22,7 @@ const tiposDeMagiaData = [
   {
     id: "magia_contemporanea",
     nombre: "Magia Contemporanea",
-    imagenFondo: "imagenes/imagenes_tipos_magia/elemental.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/actual.png",
     colorMarco: "#e4e28c",       // Color para el borde/brillo frontal
     colorFondoReverso: "#7a711c",// Color de fondo al dar vuelta
     origenMundo: "Serpentinas Doradas",
@@ -77,12 +77,12 @@ const tiposDeMagiaData = [
   {
      id: "vortice_de_magia",
     nombre: "Vortice de Magia",
-    imagenFondo: "imagenes/imagenes_tipos_magia/elemental.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/vortice.png",
     colorMarco: "#8a32dd",       // Color para el borde/brillo frontal
     colorFondoReverso: "#381468",// Color de fondo al dar vuelta
     origenMundo: "Platinada y Dorada",
     descripcion: "Lugares de canalización de la mágia.",
-    caracteristicas: ["Antigua y contemporánea"]
+    caracteristicas: ["Antigua y contemporánea combinadas"]
   },
 
   {

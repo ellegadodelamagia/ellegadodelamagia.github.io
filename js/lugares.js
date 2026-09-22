@@ -16,7 +16,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Natural",
     "Tipo_de_magia": "Poder Celestial",
-    "Descripcion_corta": "Frente a la fuerza imponente de las cataratas, Kaira experimenta una emoción intensa.",
+    "Descripcion_corta": "Al amanecer, el agua se vuelve oro y el ruido del mundo desaparece. Ahí, sin buscarlo, Kaira tocó por un instante algo que era solo silencio, luz blanca y la certeza de estar en el corazón de algo inmenso.",
     "Imagen": "can_nia_01.jpg"
   },
   {
@@ -35,7 +35,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Magia Contemporánea",
-    "Descripcion_corta": "Debajo se encuentra el Archivo Vedlys, donde se conservan pergaminos y registros históricos sobre la magia en Europa.",
+    "Descripcion_corta": "Bajo el mármol y las lámparas dignas de un cuento, unas aguas quietas guardan un secreto que ningún turista sospecha: un camino hacia el lugar donde Europa ha resguardado su memoria mágica durante siglos",
     "Imagen": "fr_par_04.jpg"
   },
   {
@@ -46,7 +46,7 @@ const DATOS_LUGARES = [
     "Capitulo": 12,
     "Orden": 19,
     "Nivel_de_visualizacion": "Escenario",
-    "Lugar": "Departamento de París",
+    "Lugar": "Las calles de París",
     "Pais": "Francia",
     "Ciudad": "París",
     "latitud": 48.8546,
@@ -54,7 +54,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
     "Tipo_de_magia": "Sin magia",
-    "Descripcion_corta": "Kaira organiza una comida navideña con sus amigos.",
+    "Descripcion_corta": "La ciudad de la luz recibió a Kaira entre vitrinas navideñas, hechizos que salieron mal antes del desayuno y una Nochebuena compartida con Daniella y Stefen entre vino caliente y castañas, un capítulo de una aventura que apenas empezaba a mostrar su otro lado.",
     "Imagen": "fr_par_01.jpg"
   },
   {
@@ -73,7 +73,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Sin magia",
-    "Descripcion_corta": "Uno de los lugares donde Jeziel tiene que hacer un encargo.",
+    "Descripcion_corta": "Entre pintores callejeros y el aroma a pan recién horneado, Kaira bajó estas calles empinadas queriendo perderse en el presente. Pero ni el crepe más delicioso pudo borrar la pregunta que empezaba a dolerle: ¿cuánto de lo compartido con Jeziel era elección, y cuánto solo una misión?",
     "Imagen": "fr_par_02.jpg"
   },
   {
@@ -92,7 +92,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Natural",
     "Tipo_de_magia": "Sin magia",
-    "Descripcion_corta": "Lugar de práctica de la huella mágica.",
+    "Descripcion_corta": "Bajo faroles y árboles desnudos, un círculo de hebras doradas guardó las primeras lecciones de Kaira: cómo hacer magia, y cómo esconderla después. Ahí aprendió que el hilo plateado que la delataba, distinto al de todos, no se borraba con un simple movimiento de mano.",
     "Imagen": "fr_par_03.jpg"
   },
   {
@@ -111,7 +111,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Sin magia",
-    "Descripcion_corta": "Kaira se pregunta hasta donde llega el rayo que marca la linea horaria.",
+    "Descripcion_corta": "Al final de un camino que sube sin sentirse, un rayo verde parte el mundo en dos con precisión milimétrica. Ahí, entre relojes astronómicos y la ciudad encendiéndose a lo lejos, Kaira se preguntó por primera vez cuántos secretos mágicos podía guardar el mundo entero, no solo el suyo.",
     "Imagen": "gb_lon_05.jpg"
   },
   {
@@ -122,7 +122,7 @@ const DATOS_LUGARES = [
     "Capitulo": 5,
     "Orden": 8,
     "Nivel_de_visualizacion": "Escenario",
-    "Lugar": "Departamento de Londres",
+    "Lugar": "Londres",
     "Pais": "Reino Unido",
     "Ciudad": "Londres",
     "latitud": 51.50936,
@@ -130,8 +130,8 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
     "Tipo_de_magia": "Magia Contemporánea",
-    "Descripcion_corta": "Kaira y Jeziel llegan en su primer día, no saben que casi no van a pasar tiempo ahí.",
-    "Imagen": "gb_lon_01.jpg"
+    "Descripcion_corta": "Entre Piccadilly, Winter Wonderland y las letras de LOVE, Londres esconde también un callejón empedrado donde varitas de utilería y calderos humeantes imitan una magia que, sin que casi nadie lo sepa, sí existe a la vuelta de la esquina.",
+    "Imagen": "gb_lon_1.jpg"
   },
   {
     "ID": "GB-LON-02",
@@ -149,7 +149,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Magia Residual",
-    "Descripcion_corta": "La majestuosidad de su interior impresiona a Kaira, sin embargo percibe algo especial.",
+    "Descripcion_corta": "Solamente en compañía de su ángel particular, Kaira se asombró de los vitrales góticos. Entre tumbas de reyes y científicos descubrió un resplandor que solo ella podía ver. No tenía certeza de que era exactamente, y prefirió no preguntar demasiado.",
     "Imagen": "gb_lon_02.jpg"
   },
   {
@@ -168,7 +168,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Magia Residual",
-    "Descripcion_corta": "En sus mazmorras hay algo que Kaira no puede definir, y que le hiela la sangre.",
+    "Descripcion_corta": "Un castillo normando donde Jeziel invocó, con poder celestial, guardias y nobles de otra época, hasta llegar a las mazmorras, donde el encanto se rompió de golpe: una energía oscura y un dolor ajeno que Kaira sintió en la piel mucho después de haber salido.",
     "Imagen": "gb_lon_03.jpg"
   },
   {
@@ -187,7 +187,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Museo",
     "Tipo_de_magia": "Magia Residual",
-    "Descripcion_corta": "La piedra Roseta tiene algo especial.",
+    "Descripcion_corta": "La Piedra Rosetta brilló con una luz plateada que solo Kaira pudo ver, el primer indicio de que algo en ella empezaba a despertar. Entre los mármoles del Partenón y los toros alados de Mesopotamia, esa misma luz antigua reaparecería, recordándole que no todo lo que brilla ahí es solo historia.",
     "Imagen": "gb_lon_04.jpg"
   },
   {
@@ -206,7 +206,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Biblioteca",
     "Tipo_de_magia": "Magia Ancestral",
-    "Descripcion_corta": "Dentro de la Academia es el lugar mas protegido, ahí se guarda la profecía.",
+    "Descripcion_corta": "Tras una puerta tallada con símbolos que Kaira reconoció sin saber por qué, la sala más resguardada del castillo guarda la profecía original y sus traducciones, un juego de teléfono descompuesto de siglos, del que depende, sin que nadie se lo diga del todo, mucho más de lo que le cuentan.",
     "Imagen": "gb_vbr_05.jpg"
   },
   {
@@ -225,7 +225,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Ciudad",
     "Tipo_de_magia": "Magia Contemporánea",
-    "Descripcion_corta": "Se encuentra en las montañas cercanas a Ben Macdui.",
+    "Descripcion_corta": "Al pie del Ben Macdui, un sendero de niebla lleva a un pueblo medieval que se siente vivo de verdad: la fuente de Merlín, animales que parecen alebrijes, capas que desfilan solas, libros que vuelan y guantes que se sienten como una segunda piel.",
     "Imagen": "gb_vbr_01.jpg"
   },
   {
@@ -244,7 +244,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Academia",
     "Tipo_de_magia": "Magia Contemporánea",
-    "Descripcion_corta": "Situada en lo alto de una colina, es el lugar donde Kaira comienza su aprendizaje.",
+    "Descripcion_corta": "Sobre una colina, con muros de piedra casi negra que parecen fundirse con el paisaje, el castillo se alza al final de una subida empinada donde el pueblo, el bosque y un río plateado quedan atrás. Dentro, hasta la arquitectura desafía la lógica: escaleras que aparecen y desaparecen bajo los pies, y una puerta suspendida en el aire que solo la magia sabe alcanzar.",
     "Imagen": "gb_vbr_02.jpg"
   },
   {
@@ -263,7 +263,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Biblioteca",
     "Tipo_de_magia": "Magia Contemporánea",
-    "Descripcion_corta": "Donde se mezclan tecnología communia y magia.",
+    "Descripcion_corta": "Cinco pisos de libros alrededor de una sala silenciosa, organizados con fichas y archiveros tan comunes como cualquier biblioteca; hasta que Kaira abre uno: cada página exhala su propio aroma, su propia brisa, su propio mundo, como si estuviera hecha para despertar la imaginación de quien la lee.",
     "Imagen": "gb_vbr_03.jpg"
   },
   {
@@ -282,7 +282,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Natural",
     "Tipo_de_magia": "Vórtice de Magia",
-    "Descripcion_corta": "Hay lugares donde la magia decide crear un espacio, ahí fluye libre. Visible solo para los que saben verla.",
+    "Descripcion_corta": "Bajo una cúpula donde nunca nieva, el aire vibra con hebras de luz doradas y platinadas: vivas, curiosas, hambrientas. Ahí Kaira aprendió a recolectar magia con las manos... y a un paso de perderse en ella, aprendió también a dejarla ir.",
     "Imagen": "gb_vbr_04.jpg"
   },
   {
@@ -301,7 +301,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Vórtice de Magia",
-    "Descripcion_corta": "Centro energético.",
+    "Descripcion_corta": "Al final de una escalinata interminable sobre el acantilado, entre ruinas donde tres tipos de magia se entrelazan como telarañas de luz, una losa negra reconoció a Kaira antes que nadie más pudiera acercarse. Lo que pasó después, ni Jeziel pudo presenciarlo de cerca.",
     "Imagen": "gb_vbr_06.jpg"
   },
   {
@@ -339,7 +339,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Magia Ancestral",
-    "Descripcion_corta": "No cualquiera encuentra los secretos escondidos debajo de Roma.",
+    "Descripcion_corta": "Bajo una pared que parece cualquiera, unas escaleras que ondulan llevan siglos hacia abajo: una ciudad de mármol y agua cristalina, más antigua que la antigua Roma, que los vedlys reclamaron para sí en secreto. Al salir, la Fontana di Trevi espera arriba, como si siempre hubiera sabido guardar ese otro tesoro.",
     "Imagen": "it_rom_09.jpg"
   },
   {
@@ -358,7 +358,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Poder Celestial",
-    "Descripcion_corta": "Kaira le pide a Jeziel que use su Poder Celestial, solo un poquito.",
+    "Descripcion_corta": "Cerradas y ya en penumbra, las ruinas, tan vastas como un estadio, cobraron vida bajo el poder celestial de Jeziel: bóvedas transparentes, mosaicos que recuperaban su color, una piscina que volvía a llenarse solo para los ojos de Kaira. Todo, menos el calor del agua, que el tiempo no le devolvió al espejismo.",
     "Imagen": "it_rom_03.jpg"
   },
   {
@@ -377,7 +377,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Poder Celestial",
-    "Descripcion_corta": "Un espejismo con el que Jeziel sorprende a Kaira.",
+    "Descripcion_corta": "Con un giro y los ojos cerrados, Jeziel devolvió a la vida la Roma de Trajano: senadores con togas púrpura, gladiadores, carreras de cuadrigas y un Coliseo completo bajo el sol. Todo real para los sentidos; y un templo al que Jeziel, por alguna razón que no explicó, nunca quiso entrar.",
     "Imagen": "it_rom_05.jpg"
   },
   {
@@ -396,7 +396,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Poder Celestial",
-    "Descripcion_corta": "Todos los caminos llevan al Coliseo.",
+    "Descripcion_corta": "Todos los caminos llevan al Coliseo. Desde el prado, entre fuegos artificiales y doce destellos que anunciaron el año nuevo, Kaira sintió un eco de algo ya vivido, imposible de nombrar. Horas después, con el Coliseo brillando a la distancia, cambió de año acurrucada junto a su ángel.",
     "Imagen": "it_rom_10.jpg"
   },
   {
@@ -415,7 +415,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Poder Celestial",
-    "Descripcion_corta": "Kaira quiere agradecer su viaje, pero sus pensamientos son mas poderosos de lo que imagina.",
+    "Descripcion_corta": "Antes del amanecer, en una basílica casi vacía, la gratitud de Kaira se convirtió en luz desbordada, sentida por toda Roma. Huyeron entre gelato y susurros de «más lejos», dejando atrás una ciudad con un escudo nuevo que antes no existía.",
     "Imagen": "it_rom_06.jpg"
   },
   {
@@ -426,7 +426,7 @@ const DATOS_LUGARES = [
     "Capitulo": 16,
     "Orden": 30,
     "Nivel_de_visualizacion": "Escenario",
-    "Lugar": "Departamento de Roma",
+    "Lugar": "Paseo por Roma",
     "Pais": "Italia",
     "Ciudad": "Roma",
     "latitud": 41.89662,
@@ -434,8 +434,8 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
     "Tipo_de_magia": "Sin magia",
-    "Descripcion_corta": "Con una vista espectacular, pero no del Coliseo.",
-    "Imagen": "it_rom_01.jpg"
+    "Descripcion_corta": "Un día de turismo genuinamente humano: techos de oro, obeliscos egipcios e iglesias sobre iglesias sobre iglesias. Bajo la Porta Maggiore, sin embargo, apareció algo distinto: una basílica subterránea communia, olvidada bajo Roma durante siglos, con dragones y seres alados que nadie más recuerda.",
+    "Imagen": "paseo_roma.jpg"
   },
   {
     "ID": "IT-ROM-07",
@@ -453,7 +453,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
     "Tipo_de_magia": "Magia Contemporánea",
-    "Descripcion_corta": "En donde communia conviven con vedlys sin saberlo.",
+    "Descripcion_corta": "Un barrio entero, camuflado por un hechizo tan elegante que los communia lo cruzan sin notar nada. Kaira, mareada por ver ambas realidades a la vez, aprende a enfocar cada una a voluntad. Lo que ve ahí termina siendo una anomalía que ni el propio Stefen sabe explicar.",
     "Imagen": "it_rom_07.jpg"
   },
   {
@@ -472,7 +472,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Magia Residual",
-    "Descripcion_corta": "¿Una pirámide en medio de la muralla Aureliana?",
+    "Descripcion_corta": "Siguiendo la muralla, Kaira descubrió que en Roma la magia vive dentro de la piedra misma. Una puerta la cruzó al primer vestigio del Imperio; una pirámide, incrustada en el muro y bañada en blanco antinatural, casi la absorbió por completo, destellos tan densos que no supo distinguir dónde terminaba la historia y dónde comenzaba la magia.",
     "Imagen": "it_rom_02.jpg"
   },
   {
@@ -491,7 +491,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Magia Residual",
-    "Descripcion_corta": "Las ruinas Romanas estan repletas de historia, y magia.",
+    "Descripcion_corta": "Sobre una muralla de veinte metros, siglos de historia se leen en capas de piedra; y entretejida en ellas, magia dorada y platinada que nunca deja de renovar su firma. Ahí, sin varita, Kaira recolectó su primera magia perdida a mano limpia, guiada solo por el zumbido de la piedra bajo sus dedos..",
     "Imagen": "it_rom_04.jpg"
   },
   {
@@ -510,7 +510,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Vórtice de Magia",
-    "Descripcion_corta": "Stefen considera que es la prueba definitiva.",
+    "Descripcion_corta": "Bajo el óculo que deja caer un solo rayo de luz, la magia de Roma entera parece haberse concentrado en este vórtice. Aquí Kaira, sin querer, hizo desaparecer a todo un salón de turistas. Tambiénaprendió, con cristales creados de su propia mano, cómo tomar solo lo que le correspondía sin llevarse el lugar entero consigo.",
     "Imagen": "it_rom_08.jpg"
   },
   {
@@ -521,7 +521,7 @@ const DATOS_LUGARES = [
     "Capitulo": 2,
     "Orden": 3,
     "Nivel_de_visualizacion": "Escenario",
-    "Lugar": "Templo Mayor",
+    "Lugar": "Ciudad de México",
     "Pais": "México",
     "Ciudad": "Ciudad de México",
     "latitud": 19.43465,
@@ -529,7 +529,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Sin magia",
-    "Descripcion_corta": "Kaira lleva a Jeziel a recorrer templos, plazas y calles llenas de vida.",
+    "Descripcion_corta": "El primer paseo de Kaira con su ángel, sin magia de por medio: el Templo Mayor bajo el nivel de la calle, una catedral que se hunde poco a poco sobre templos ajenos, y la frase con la que Kaira resume lo que es viajar: «tocar el alma de un lugar».",
     "Imagen": "mex_mex_01.jpg"
   },
   {
@@ -548,8 +548,8 @@ const DATOS_LUGARES = [
     "Naturaleza": "ficticio",
     "tipo_de_lugar": "Ciudad",
     "Tipo_de_magia": "Magia Contemporánea",
-    "Descripcion_corta": "En el desierto del Bolsón de Mapimí, existe un pueblo oculto.",
-    "Imagen": "mex_pag_01.jpg"
+    "Descripcion_corta": "En elTras horas de calor, torbellinos y brújulas enloquecidas por el desierto, el Atlas llevó a Kaira hasta un pueblo fantasma: casas en ruinas, una fuente sin agua en décadas, calles vacías. Pero lo que ella veía y lo que Jeziel preguntaba insistentemente si veía no eran, quizás, la misma cosa.",
+    "Imagen": "pueblo_destruido.jpg"
   },
   {
     "ID": "MEX-PUE-01",
@@ -567,7 +567,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Histórico",
     "Tipo_de_magia": "Poder Celestial",
-    "Descripcion_corta": "El Poder Celestial concede hasta el mínimo deseo.",
+    "Descripcion_corta": "Cerrado al público desde hace años, un solo deseo bastó para que Jeziel disolviera a Kaira dentro de él: un túnel donde los murales se ven recién pintados bajo luz seráfica, y del que salieron atravesando una reja cerrada como si no existiera.",
     "Imagen": "mex_pue_01.jpg"
   },
   {
@@ -586,7 +586,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Real",
     "tipo_de_lugar": "Biblioteca",
     "Tipo_de_magia": "Sin magia",
-    "Descripcion_corta": "Kaira advierte a Jeziel que si viajan juntos, van a visitar muchas Bibliotecas y Templos.",
+    "Descripcion_corta": "Bajo vitrales que dibujan luz sobre libros centenarios, Patrimonio de la UNESCO, Kaira encontró su tipo de destino favorito: un manuscrito original de Sor Juana, abierto e inmóvil en el tiempo, sus palabras aún vivas después de siglos.",
     "Imagen": "mex_pue_02.jpg"
   },
   {
@@ -605,7 +605,7 @@ const DATOS_LUGARES = [
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Natural",
     "Tipo_de_magia": "Magia Ancestral",
-    "Descripcion_corta": "En la piedra central, Kaira realiza un pequeño ritual heredado de su abuela.",
+    "Descripcion_corta": "Un claro sencillo tras el jardín de Kaira, escondido a quien no sabe buscarlo: una roca central, dos pinos de guardia y un hormigueo eléctrico que ella atribuía a la imaginación. Ahí aprendió a hablar con su hada madrina, mucho antes de saber que la magia también sabe guardar secretos.",
     "Imagen": "mex_tol_02.jpg"
   },
   {
@@ -625,7 +625,7 @@ const DATOS_LUGARES = [
     "tipo_de_lugar": "Especial",
     "Tipo_de_magia": "Magia Contemporánea",
     "Descripcion_corta": "Toluca, ciudad donde inicia la historia.",
-    "Imagen": "mex_tol_01.jpg"
+        "Imagen": "mex_tol_01.jpg"
   },
   {
     "ID": "PANAH-01",
@@ -638,13 +638,13 @@ const DATOS_LUGARES = [
     "Lugar": "Panah",
     "Pais": "Dimension Alterna",
     "Ciudad": "Panah",
-    "latitud": "",
-    "longitud": "",
+    "latitud": null,
+    "longitud": null,
     "Naturaleza": "Ficticio",
     "tipo_de_lugar": "Especial",
     "Tipo_de_magia": "",
-    "Descripcion_corta": "Dimension alterna fuera de la realidad.",
-    "Imagen": "panah_01.jpg"
+    "Descripcion_corta": "Una cabaña de troncos hecha enteramente de los recuerdos de Kaira: la colcha de la abuela, rosas de Castilla, gardenias, una vista de montaña que nunca pidió pero siempre quiso. Ahí, siendo ella misma la llave, aprendió por fin a confiar en su propia magia.",
+    "Imagen": "panah_02.jpg"
   },
   {
     "ID": "SUI-GIN-02",

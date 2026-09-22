@@ -1,4 +1,4 @@
-// js/mundos.js COMPLETO Y CORREGIDO
+// js/mundos.js COMPLETO Y CORREGIDO (Sin botones duplicados)
 import MundosEstructuraSaga from './datos_mundos.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -60,18 +60,18 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
 
         if (contenedorVolver) {
             const btnVolver = document.createElement("a"); 
-            btnVolver.innerHTML = "← Volver a los Mundos";
+            btnVolver.innerHTML = "← Volver a las realidades";
             btnVolver.className = "btn-volver-mundos"; 
 
             btnVolver.onclick = () => renderizarNivel(MundosEstructuraSaga, false);
             contenedorVolver.appendChild(btnVolver);
         }
     } else {
-        if (txtSubtitulo) txtSubtitulo.innerText = "EXISTEN DIFERENTES MUNDOS CONVIVIENDO";
+        if (txtSubtitulo) txtSubtitulo.innerText = "EXISTEN DIFERENTES REALIDADES CONVIVIENDO EN EL UNIVERSO";
         if (txtTitulo) txtTitulo.innerText = "COMPRENDE EL UNIVERSO";
     }
 
-    // 2. RENDERIZAR TARJETAS
+    // 2. RENDERIZAR TARJETAS CON REGLAS DE DESBLOQUEO
     listaDatos.forEach((item, index) => {
         const tarjeta = document.createElement("div");
         tarjeta.className = `mundo-card estado-nivel-${item.desbloqueado}`;
@@ -126,8 +126,8 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
             tarjeta.innerHTML = `
                 <div class="roman-bg">?</div>
                 <div class="mundo-card-content oculto-total">
-                    <h3>???</h3>
-                    <p>Espacio reservado para un reino secreto en la trama.</p>
+                    <h3>Zona misteriosa</h3>
+                    <p>Información clasificada.</p>
                 </div>
             `;
             tarjeta.style.cursor = "not-allowed";
@@ -163,10 +163,10 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
     const tieneSubRazasObjetos = objeto.sub_razas && objeto.sub_razas.length > 0 && typeof objeto.sub_razas[0] === 'object';
 
-    // 1. NAVEGACIÓN
+    // 1. NAVEGACIÓN SUPERIOR
     if (contenedorVolver) {
         const btnVolverAtras = document.createElement("a"); 
-        btnVolverAtras.innerHTML = objetoPadre ? `← Volver a ${objetoPadre.nombre}` : "← Volver a los Mundos";
+        btnVolverAtras.innerHTML = objetoPadre ? `← Volver a ${objetoPadre.nombre}` : "← Volver a las Realidades";
         btnVolverAtras.className = "btn-volver-mundos"; 
         
         btnVolverAtras.onclick = () => {
@@ -190,7 +190,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
         if (derivaciones && derivaciones.length > 0) {
             const btnExplorar = document.createElement("a");
-            btnExplorar.innerHTML = `Explorar el mundo →`;
+            btnExplorar.innerHTML = `Explorar este plano →`;
             btnExplorar.className = "btn-volver-mundos";
 
             btnExplorar.onclick = () => {
@@ -202,8 +202,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
             contenedorVolver.appendChild(btnExplorar);
         }
-
-        // CAMBIO: Botón superior actualiza su texto a "Pueblos Culturales"
+    // AGREGAR AQUÍ:
         if (tieneSubRazasObjetos) {
             const btnSubRazas = document.createElement("a");
             btnSubRazas.innerHTML = `Explorar Pueblos Culturales →`;
@@ -242,19 +241,16 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
         fichaCompleta.style.background = "linear-gradient(145deg, #130d22 0%, #0a0615 100%)";
     }
 
-    // CAMBIO: Etiquetas en la ficha interna para Pueblos Culturales
     let subrazasHTML = "";
     if (objeto.sub_razas && objeto.sub_razas.length > 0) {
         if (tieneSubRazasObjetos) {
             subrazasHTML = `
                 <div class="subrazas-container" style="text-align: center; margin-top: 30px;">
                     <h4>PUEBLOS CULTURALES REGISTRADOS</h4>
-                    <p style="color: #d1b8e7; font-size: 0.9rem; margin-bottom: 15px;">Esta categoría contiene fichas individuales completas para cada pueblo.</p>
-                    <button id="btn-abrir-subrazas-grid" class="btn-volver-mundos" style="cursor: pointer; padding: 10px 20px; font-size: 0.95rem;">
-                         Ver Tarjetas de Pueblos Culturales →
-                    </button>
+                    <p style="color: #d1b8e7; font-size: 0.9rem;">Esta categoría contiene fichas individuales completas para cada pueblo.</p>
                 </div>
             `;
+            
         } else {
             const tags = objeto.sub_razas.map(raza => `<span class="tag-subraza">${raza}</span>`).join("");
             subrazasHTML = `
@@ -266,7 +262,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
         }
     }
 
-    const subTextoArriba = objetoPadre ? `${objeto.tipo || 'RAZA'} • REINO DE ${objetoPadre.nombre}` : (objeto.tipo || 'MUNDO');
+    const subTextoArriba = objetoPadre ? `${objeto.tipo || 'RAZA'} • EN EL ${objetoPadre.nombre}` : (objeto.tipo || 'MUNDO');
 
     fichaCompleta.innerHTML = `
         <div class="encabezado-tarjeta-expandida" style="text-align: center; margin-bottom: 25px;">
@@ -287,7 +283,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
             <br><br><br>
 
             <div class="seccion-lore-bloque caja-magia-dorada">
-                <h3>✨ REGLAS DE LA MAGIA</h3>
+                <h3>✨ RELACION CON LA MAGIA</h3>
                 <p class="texto-fluido-lore">${objeto.reglas_de_magia || "Flujo energético convencional."}</p>
             </div>
             
@@ -299,17 +295,8 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
     document.getElementById("mundos-container").appendChild(fichaCompleta);
 
-    if (tieneSubRazasObjetos) {
-        const btnSubGrid = document.getElementById("btn-abrir-subrazas-grid");
-        if (btnSubGrid) {
-            btnSubGrid.onclick = () => {
-                renderizarOtrasRazas(objeto.sub_razas, objeto, listaHermanos, objetoPadre);
-            };
-        }
     }
-}
 
-// --- FUNCIÓN QUE RENDERIZA EL GRID DE TARJETAS PARA PUEBLOS CULTURALES ---
 function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPadre) {
     const gridDinamico = document.getElementById("mundos-grid-dinamico");
     const txtSubtitulo = document.getElementById("dinamico-subtitulo");
@@ -323,7 +310,6 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
         txtSubtitulo.innerText = `${(objetoActual.nombre || 'DRIDALYS').toUpperCase()}`;
         txtSubtitulo.style.display = "block";
     }
-    // CAMBIO: Título superior de la sección
     if (txtTitulo) {
         txtTitulo.innerText = "PUEBLOS CULTURALES";
         txtTitulo.style.display = "block";
@@ -346,38 +332,69 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
         contenedorVolver.appendChild(btnVolverFicha);
     }
 
-    // GENERAR TARJETAS
+    // GENERAR TARJETAS CON EVALUACIÓN DE DESBLOQUEO
     listaOtras.forEach((item, index) => {
-        const tarjeta = document.createElement("div");
-        tarjeta.className = "mundo-card sub-card estado-nivel-1";
-
         const esObjeto = typeof item === "object";
+        const estadoDesbloqueo = esObjeto ? (item.desbloqueado !== undefined ? item.desbloqueado : 1) : 1;
+
+        const tarjeta = document.createElement("div");
+        tarjeta.className = `mundo-card sub-card estado-nivel-${estadoDesbloqueo}`;
+
         const nombreRaza = esObjeto ? (item.nombre || item.nombre_visible || item) : item;
         const regionRaza = esObjeto && item.region ? item.region : "";
         const descripcionRaza = esObjeto ? (item.descripcion_breve || item.descripcion) : null;
         const imagenFondo = esObjeto && item.imagen_fondo ? item.imagen_fondo : objetoActual.imagen_fondo;
 
-        if (imagenFondo) {
+        if (imagenFondo && estadoDesbloqueo !== 3) {
             tarjeta.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.88)), url('${imagenFondo}')`;
             tarjeta.style.backgroundSize = "cover";
             tarjeta.style.backgroundPosition = "center";
         }
 
-        tarjeta.innerHTML = `
-            <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
-            <div class="mundo-card-content" style="text-align: center; padding: 25px 15px;">
-                <h3 style="margin-bottom: 8px; font-size: 1.3rem; color: #f5eab7;">${nombreRaza.toUpperCase()}</h3>
-                ${regionRaza ? `<span class="badge-region" style="display: inline-block; margin-bottom: 8px; padding: 4px 12px; background: rgba(197, 160, 89, 0.2); border: 1px solid #c5a059; border-radius: 50px; font-size: 0.78rem; color: #e5c158; text-transform: uppercase; letter-spacing: 1px;">📍 ${regionRaza}</span>` : ''}
-                ${descripcionRaza ? `<p style="font-size: 0.88rem; color: #d1b8e7; margin-top: 5px;">${descripcionRaza}</p>` : ''}
-                ${(esObjeto && item.historia_o_lore) ? '<span class="indicador-accion"><em>(Pulsa para ver lore)</em></span>' : ''}
-            </div>
-        `;
+        if (estadoDesbloqueo === 1) {
+            tarjeta.innerHTML = `
+                <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
+                <div class="mundo-card-content" style="text-align: center; padding: 25px 15px;">
+                    <h3 style="margin-bottom: 8px; font-size: 1.3rem; color: #f5eab7;">${nombreRaza.toUpperCase()}</h3>
+                    ${regionRaza ? `<span class="badge-region" style="display: inline-block; margin-bottom: 8px; padding: 4px 12px; background: rgba(197, 160, 89, 0.2); border: 1px solid #c5a059; border-radius: 50px; font-size: 0.78rem; color: #e5c158; text-transform: uppercase; letter-spacing: 1px;">📍 ${regionRaza}</span>` : ''}
+                    ${descripcionRaza ? `<p style="font-size: 0.88rem; color: #d1b8e7; margin-top: 5px;">${descripcionRaza}</p>` : ''}
+                    ${(esObjeto && item.historia_o_lore) ? '<span class="indicador-accion"><em>(Pulsa para ver lore)</em></span>' : ''}
+                </div>
+            `;
 
-        if (esObjeto && item.historia_o_lore) {
-            tarjeta.style.cursor = "pointer";
-            tarjeta.onclick = () => {
-                mostrarFichaLoreCompleta(item, listaOtras, objetoActual);
-            };
+            if (esObjeto && item.historia_o_lore) {
+                tarjeta.style.cursor = "pointer";
+                tarjeta.onclick = () => {
+                    mostrarFichaLoreCompleta(item, listaOtras, objetoActual);
+                };
+            }
+
+        } else if (estadoDesbloqueo === 2) {
+            const libroAsociado = (item.revelado_en || "").toLowerCase();
+            const esLibroProtegido = libroAsociado.includes("herederos") || libroAsociado.includes("profecía") || libroAsociado.includes("profecia");
+            const textoRevelado = esLibroProtegido 
+                ? "Información protegida hasta el momento adecuado" 
+                : `Se revela en: ${item.revelado_en || 'Siguientes libros'}`;
+
+            tarjeta.innerHTML = `
+                <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
+                <div class="mundo-card-content bloqueado-blur" style="text-align: center; padding: 25px 15px;">
+                    <h3 style="margin-bottom: 8px; font-size: 1.3rem; color: #f5eab7;">${nombreRaza.toUpperCase()}</h3>
+                    <p class="txt-bloqueado">🔒 Contenido Bloqueado</p>
+                    <span class="badge-libro">${textoRevelado}</span>
+                </div>
+            `;
+            tarjeta.style.cursor = "not-allowed";
+
+        } else if (estadoDesbloqueo === 3) {
+            tarjeta.innerHTML = `
+                <div class="roman-bg">?</div>
+                <div class="mundo-card-content oculto-total" style="text-align: center; padding: 25px 15px;">
+                    <h3>Desconocido</h3>
+                    <p>Información clasificada.</p>
+                </div>
+            `;
+            tarjeta.style.cursor = "not-allowed";
         }
 
         gridDinamico.appendChild(tarjeta);

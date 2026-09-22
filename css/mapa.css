@@ -2,32 +2,8 @@
    🎨 EL COMPENDIO ESTÉTICO — ESTILOS GENERALES (css/estilos.css)
    ========================================================================= */
 
-#app { 
-    display: flex; 
-    flex-direction: column; 
-    height: 100vh; 
-}
-
-#body { 
-    display: flex; 
-    flex: 1; 
-    overflow: hidden; 
-    height: 100%; 
-}
-
-#map { 
-    flex: 1; 
-    height: 100%; 
-    width: 100%;
-    position: relative; 
-    transition: filter 0.5s ease, -webkit-filter 0.5s ease;
-
-    /* 🌟 SOLUCIÓN AL PARPADEO: */
-    background-color: var(--ink) !important;
-}
-
 /* -------------------------------------------------------------------------
-   2. CONFIGURACIÓN DEL LIENZO BASE
+   1. CONFIGURACIÓN DEL LIENZO BASE & RESET
 ------------------------------------------------------------------------- */
 * { 
     margin: 0; 
@@ -63,14 +39,16 @@ html, body {
     height: 100%; 
     width: 100%;
     position: relative; 
+    transition: filter 0.5s ease, -webkit-filter 0.5s ease;
+    background-color: var(--ink) !important; /* Prevención de parpadeo */
 }
 
 /* -------------------------------------------------------------------------
-   3. BARRA SUPERIOR (Filtros de Reinos y Ciudades Padre)
+   2. BARRA SUPERIOR (Filtros de Reinos y Ciudades Padre)
 ------------------------------------------------------------------------- */
 #topbar { 
     background: linear-gradient(to bottom, #0c0805, var(--ink2)); 
-    border-bottom: 1px solid rgba(200,168,75,0.2); 
+    border-bottom: 1px solid rgba(200, 168, 75, 0.2); 
     flex-shrink: 0; 
     padding: 10px 0; 
     text-align: center; 
@@ -79,7 +57,7 @@ html, body {
 }
 
 #topbar h1 {
-    font-family: 'Cynzel Decorative', serif;
+    font-family: 'Cinzel Decorative', serif;
 }
 
 /* Contenedor horizontal para los botones de filtrado */
@@ -101,25 +79,25 @@ html, body {
     text-transform: uppercase;
     color: var(--gold);
     cursor: pointer;
-    background: rgba(200,168,75,0.05);
-    border: 1px solid rgba(200,168,75,0.2);
+    background: rgba(200, 168, 75, 0.05);
+    border: 1px solid rgba(200, 168, 75, 0.2);
     border-radius: 4px;
     white-space: nowrap;
     transition: all 0.3s;
 }
 
 .p-item:hover {
-    background: rgba(200,168,75,0.15);
+    background: rgba(200, 168, 75, 0.15);
 }
 
 .active-filter {
-    background: rgba(200,168,75,0.3) !important;
-    box-shadow: 0 0 10px rgba(200,168,75,0.5);
+    background: rgba(200, 168, 75, 0.3) !important;
+    box-shadow: 0 0 10px rgba(200, 168, 75, 0.5);
     border: 1px solid var(--gold) !important;
 }
 
 /* -------------------------------------------------------------------------
-   4. BARRA LATERAL IZQUIERDA (Índice de Ubicaciones)
+   3. BARRA LATERAL IZQUIERDA (Índice de Ubicaciones)
 ------------------------------------------------------------------------- */
 #sidebar { 
     width: var(--sidebar-w); 
@@ -138,8 +116,8 @@ html, body {
     font-size: 0.5rem; 
     letter-spacing: 0.22em; 
     text-transform: uppercase; 
-    color: rgba(200,168,75,0.4); 
-    border-bottom: 1px solid rgba(200,168,75,0.1); 
+    color: rgba(200, 168, 75, 0.4); 
+    border-bottom: 1px solid rgba(200, 168, 75, 0.1); 
     flex-shrink: 0; 
     display: flex; 
     align-items: center; 
@@ -173,38 +151,35 @@ html, body {
 }
 
 #sidebar-list::-webkit-scrollbar-thumb { 
-    background: rgba(200,168,75,0.2); 
+    background: rgba(200, 168, 75, 0.2); 
 }
 
 /* Bloques de la lista lateral (Filas del índice) */
 .si-item { 
     padding: 9px 14px 9px 12px; 
     border-left: 2px solid transparent; 
-    border-bottom: 1px solid rgba(200,168,75,0.06); 
+    border-bottom: 1px solid rgba(200, 168, 75, 0.06); 
     cursor: pointer; 
-    transition: 
-        background 0.25s ease, 
-        border-left-color 0.25s ease, 
-        padding 0.25s ease;
+    transition: background 0.25s ease, border-left-color 0.25s ease, padding 0.25s ease;
     display: flex; 
     gap: 9px; 
     align-items: flex-start; 
 }
 
 .si-item:hover { 
-    background: rgba(200,168,75,0.06); 
-    border-left-color: rgba(200,168,75,0.3); 
+    background: rgba(200, 168, 75, 0.06); 
+    border-left-color: rgba(200, 168, 75, 0.3); 
 }
 
 .si-item.active { 
-    background: rgba(200,168,75,0.1); 
+    background: rgba(200, 168, 75, 0.1); 
     border-left-color: var(--gold); 
 }
 
 .si-num { 
     font-family: 'Cinzel', serif; 
     font-size: 0.58rem; 
-    color: rgba(200,168,75,0.4); 
+    color: rgba(200, 168, 75, 0.4); 
     padding-top: 2px; 
     flex-shrink: 0; 
     min-width: 16px; 
@@ -219,7 +194,7 @@ html, body {
     font-family: 'Cormorant Garamond', serif; 
     font-weight: 600; 
     font-size: 0.88rem; 
-    color: rgba(245,235,210,0.95); 
+    color: rgba(245, 235, 210, 0.95); 
     line-height: 1.2; 
     margin-bottom: 1px; 
     white-space: nowrap; 
@@ -230,7 +205,7 @@ html, body {
 .si-loc { 
     font-size: 0.7rem; 
     font-style: italic; 
-    color: rgba(240,225,195,0.55); 
+    color: rgba(240, 225, 195, 0.55); 
     margin-bottom: 2px; 
     white-space: nowrap; 
     overflow: hidden; 
@@ -253,47 +228,56 @@ html, body {
 }
 
 /* -------------------------------------------------------------------------
-   5. EL LIENZO CARTOGRÁFICO & CONTROLES DE MAPA
+   4. EL LIENZO CARTOGRÁFICO & CONTROLES DE MAPA
 ------------------------------------------------------------------------- */
 /* Tono sepia y contraste místico para el mapa mundi */
 .leaflet-tile-pane {
     filter: sepia(30%) brightness(0.50) contrast(1.4) !important;
 }
 
+/* Transición suave para cuando regrese al plano material */
+.leaflet-pane {
+    transition: filter 0.5s ease, -webkit-filter 0.5s ease;
+}
+
+/* Estado místico: Desenfoque total del mapa */
+.mapa-espiritual .leaflet-pane {
+    filter: blur(8px) !important;
+    -webkit-filter: blur(8px) !important;
+}
+
 /* Botones nativos de Zoom de Leaflet */
 .leaflet-control-zoom { 
-    border: 1px solid rgba(200,168,75,0.25)!important; 
-    border-radius: 2px!important; 
+    border: 1px solid rgba(200, 168, 75, 0.25) !important; 
+    border-radius: 2px !important; 
 }
 
 .leaflet-control-zoom a { 
-    background: rgba(18,14,10,0.9)!important; 
-    color: var(--gold)!important; 
-    border-color: rgba(200,168,75,0.15)!important; 
+    background: rgba(18, 14, 10, 0.9) !important; 
+    color: var(--gold) !important; 
+    border-color: rgba(200, 168, 75, 0.15) !important; 
 }
 
 .leaflet-control-zoom a:hover { 
-    background: rgba(200,168,75,0.12)!important; 
+    background: rgba(200, 168, 75, 0.12) !important; 
 }
 
 /* Créditos del mapa (Esquina inferior) */
 .leaflet-control-attribution { 
-    background: rgba(10,8,6,0.7)!important; 
-    color: rgba(200,168,75,0.25)!important; 
-    font-size: 0.5rem!important; 
+    background: rgba(10, 8, 6, 0.7) !important; 
+    color: rgba(200, 168, 75, 0.25) !important; 
+    font-size: 0.5rem !important; 
 }
 
 /* -------------------------------------------------------------------------
-   6. DISEÑO DE LAS BOLITAS MÁGICAS (Marcadores Numerados)
+   5. MARCADORES MÁGICOS & PINES
 ------------------------------------------------------------------------- */
-/* Contenedor invisible para remover márgenes por defecto de Leaflet */
 .marcador-magico-contenedor {
     background: transparent !important;
     border: none !important;
-    box-shadow: none !important; /* Añadimos esto por si Leaflet pone sombra */
+    box-shadow: none !important;
 }
 
-/* Cuerpo físico del marcador esférico */
 .bolita-magica {
     width: 36px !important;
     height: 36px !important;
@@ -303,9 +287,9 @@ html, body {
     justify-content: center !important;
     position: relative;
     box-shadow: 0 0 0px rgba(255, 255, 255, 0);
-    transition: 
-        transform 0.25s cubic-bezier(0.22,1,0.36,1), 
-        box-shadow 0.25s ease, filter 0.25s ease;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), 
+                box-shadow 0.25s ease, 
+                filter 0.25s ease;
 }
 
 .bolita-magica::after {
@@ -313,16 +297,23 @@ html, body {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: radial-gradient(circle at 38% 32%, rgba(255,255,255,0.28), transparent 55%);
+    background: radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.28), transparent 55%);
     pointer-events: none;
 }
 
-.pin-wrap.active .bolita-magica {
-    filter: brightness(1.3);
-    box-shadow: 0 0 20px currentColor, 0 4px 12px rgba(0,0,0,0.8);
+.bolita-magica:hover {
+    transform: scale(0.70);
+    cursor: pointer;
 }
 
-/* Número de Orden interior */
+.bolita-magica.active, 
+.bolita-magica:active {
+    transform: scale(1.15);
+    box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.8), 0 0 50px 12px rgba(200, 168, 75, 0.4);
+    border-color: var(--gold);
+    background-color: var(--gold) !important;
+}
+
 .bolita-numero {
     color: #1a1208; 
     font-size: 11px;
@@ -331,48 +322,37 @@ html, body {
     text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.8); 
 }
 
-/* Reacción al pasar el cursor sobre la esfera, transform menor numero menor zoom  */
-.bolita-magica:hover {
-    transform: scale(0.70);
-    cursor: pointer;
-}
-
-/* El efecto al "picar" (activar) */
-.bolita-magica.active, .bolita-magica:active {
-    transform: scale(1.15);
-        box-shadow: 0 0 25px 8px 
-        rgba(255, 255, 255, 0.8), 0 0 50px 12px 
-        rgba(200,168,75,0.4);  /* El resplandor */
-
-    border-color: var(--gold);
-    background-color: var(--gold) !important; /* Opcional: que el fondo también se torne dorado */
-}
-
-/* Estilo alternativo / Legado para pines con relieve */
+/* Pines Tradicionales / Legado */
 .pin-wrap { 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     cursor: pointer; 
-    transition: transform 0.25s cubic-bezier(0.22,1,0.36,1); 
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); 
 }
 
 .pin-wrap:hover { 
     transform: translateY(-2px) scale(1.08); 
 }
 
+.pin-wrap.active { 
+    transform: translateY(-3px) scale(1.15); 
+}
+
+.pin-wrap.active .bolita-magica {
+    filter: brightness(1.3);
+    box-shadow: 0 0 20px currentColor, 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
 .pin-stem { 
     width: 2px; 
     height: 7px; 
     margin-top: 1px; 
-    opacity: 0.6; }
-
-.pin-wrap.active { 
-    transform: translateY(-3px) scale(1.15); }
-
+    opacity: 0.6; 
+}
 
 /* -------------------------------------------------------------------------
-   7. EL GRIMORIO: TARJETA FLOTANTE DE DETALLES (Esquina Inferior Derecha)
+   6. EL GRIMORIO: TARJETA FLOTANTE DE DETALLES
 ------------------------------------------------------------------------- */
 #detail { 
     position: absolute; 
@@ -382,23 +362,20 @@ html, body {
     max-height: calc(100% - 48px); 
     z-index: 800; 
     background: var(--parch); 
-    border: 1px solid rgba(200,168,75,0.4); 
+    border: 1px solid rgba(200, 168, 75, 0.4); 
     border-radius: 0px 12px 0px 12px; 
     display: flex; 
     flex-direction: column; 
     opacity: 0; 
     pointer-events: none; 
-
     transform-origin: top right;
     transform: translateY(10px) scale(0.97);
     clip-path: inset(0 0 100% 0);
-    transition: opacity 0.4s ease, transform 0.45s 
-        cubic-bezier(0.22,1,0.36,1), 
-        clip-path 1.2s 
-        cubic-bezier(0.22,1,0.36,1); 
-
+    transition: opacity 0.4s ease, 
+                transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), 
+                clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
     overflow: hidden; 
-    box-shadow: 0 16px 48px rgba(0,0,0,0.75); 
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75); 
 }
 
 #detail.open { 
@@ -408,43 +385,24 @@ html, body {
     clip-path: inset(0 0 0% 0);
 }
 
-#detail::before { 
-    content: ''; 
-    position: relative; 
-    inset: 0; 
-    pointer-events: none; 
-    z-index: 0; 
-    background-image: repeating-linear-gradient(0deg, transparent, transparent 29px, 
-    rgba(180,150,90,0.1) 29px, rgba(180,150,90,0.1) 30px); 
-}
-
-/* Activación por JavaScript (.classList.add('open')) */
-#detail.open { 
-    opacity: 1; 
-    pointer-events: auto; 
-    transform: translateY(0) scale(1); 
-}
-
-/* Efecto de líneas horizontales texturizadas tipo libro antiguo */
+/* Textura de pergamino antiguo con líneas horizontales */
 #detail::before { 
     content: ''; 
     position: absolute; 
     inset: 0; 
     pointer-events: none; 
     z-index: 0; 
-    background-image: repeating-linear-gradient(0deg, transparent, transparent 29px, 
-    rgba(180,150,90,0.1) 29px, rgba(180,150,90,0.1) 30px); 
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(180, 150, 90, 0.1) 29px, rgba(180, 150, 90, 0.1) 30px); 
 }
 
-/* Botón Cruz de Cierre */
 #det-close { 
     position: absolute; 
     top: 9px; 
     right: 9px; 
     width: 24px; 
     height: 24px; 
-    background: rgba(14,11,8,0.7); 
-    border: 1px solid rgba(200,168,75,0.35); 
+    background: rgba(14, 11, 8, 0.7); 
+    border: 1px solid rgba(200, 168, 75, 0.35); 
     border-radius: 50%; 
     color: var(--gold); 
     cursor: pointer; 
@@ -457,10 +415,9 @@ html, body {
 }
 
 #det-close:hover { 
-    background: rgba(200,168,75,0.18); 
+    background: rgba(200, 168, 75, 0.18); 
 }
 
-/* Sección Ilustrativa del Grimorio */
 #det-img-wrap { 
     flex-shrink: 0; 
     position: relative; 
@@ -472,7 +429,7 @@ html, body {
 #det-img { 
     width: 100%; 
     height: 162px; 
-    object-fit: cover; /* Mantiene la proporción de tus ilustraciones sin deformar */
+    object-fit: cover; 
     display: none; 
     transition: transform 0.35s ease; 
 }
@@ -481,23 +438,21 @@ html, body {
     transform: scale(1.04); 
 }
 
-/* Recuadro de carga / Sin foto */
 #det-img-placeholder { 
     width: 100%; 
     height: 162px; 
-    background: rgba(180,150,90,0.07); 
+    background: rgba(180, 150, 90, 0.07); 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     font-style: italic; 
     font-size: 0.7rem; 
-    color: rgba(100,80,40,0.4); 
+    color: rgba(100, 80, 40, 0.4); 
 }
 
-/* Encabezados internos de la tarjeta */
 #det-head { 
     padding: 11px 32px 10px 14px; 
-    border-bottom: 1px solid rgba(180,150,90,0.22); 
+    border-bottom: 1px solid rgba(180, 150, 90, 0.22); 
     flex-shrink: 0; 
     position: relative; 
     z-index: 1; 
@@ -529,18 +484,16 @@ html, body {
     margin-bottom: 7px; 
 }
 
-/* Bloque heráldico del tipo de Magia activa */
 #det-badge { 
     display: inline-block; 
     font-family: 'Cinzel', serif; 
-    font-size: 0.8rem;         /* 🚀 ¡Aumentado! Antes era 0.48rem */
-    font-weight: bold;         /* ✍️ Le da más fuerza heráldica */
-    letter-spacing: 0.08em;    /* Ajustamos un poco el espacio entre letras */
-    padding: 6px 12px;         /* 👑 Le damos más aire al fondo para que no se ahogue el texto */
-    border-radius: 4px;        /* Un toque sutil en las esquinas */
+    font-size: 0.8rem; 
+    font-weight: bold; 
+    letter-spacing: 0.08em; 
+    padding: 6px 12px; 
+    border-radius: 4px; 
 }
 
-/* Cuerpo narrativo de la ubicación */
 #det-body { 
     flex: 1; 
     overflow-y: auto; 
@@ -554,7 +507,7 @@ html, body {
 }
 
 #det-body::-webkit-scrollbar-thumb { 
-    background: rgba(180,150,90,0.3); 
+    background: rgba(180, 150, 90, 0.3); 
 }
 
 #det-desc { 
@@ -565,7 +518,6 @@ html, body {
     margin-bottom: 14px; 
 }
 
-/* Subsecciones adicionales (Hijos / Puntos internos) */
 #det-subs-title { 
     font-family: 'Cinzel', serif; 
     font-size: 0.5rem; 
@@ -574,7 +526,7 @@ html, body {
     color: var(--gold-dim); 
     margin-bottom: 9px; 
     padding-bottom: 5px; 
-    border-bottom: 1px solid rgba(180,150,90,0.2); 
+    border-bottom: 1px solid rgba(180, 150, 90, 0.2); 
 }
 
 #det-subs { 
@@ -583,102 +535,111 @@ html, body {
     gap: 5px; 
 }
 
-/* Imagen en grande */
-#lightbox { 
-    position: fixed; inset: 0; z-index: 9999; 
-    background: rgba(6,4,2,0.95); 
-    display: none; align-items: center; 
-    justify-content: center; cursor: zoom-out; 
-}
-#lightbox.open { display: flex; animation: lbIn 0.22s ease; }
-@keyframes lbIn { from { opacity: 0; transform: scale(0.96) } to { opacity: 1; transform: scale(1) } }
-#lb-img { max-width: 90vw; max-height: 88vh; object-fit: contain; 
-    border: 1px solid rgba(200,168,75,0.25); box-shadow: 0 20px 60px rgba(0,0,0,0.9); }
-
-#lb-caption { 
-    position: absolute; 
-    top: 100px; /* Ajusta la distancia del título moviendo este valor */
-    left: 50%; 
-    transform: translateX(-50%); 
-
-    /* 🔄 CAMBIO AQUÍ: Llamamos a la variante decorativa de la portada */
-    font-family: 'Cinzel Decorative', serif;
-
-    /* font-family: 'IM Fell English', serif; /* Ajustado el fallback por si acaso */
-    color: #c8a84b; /* Dorado 100% sólido y brillante */
-    text-transform: uppercase; 
-    text-align: center; 
-
-    /* 🔄 LOS CAMBIOS MÁGICOS PARA LAS DOS LÍNEAS: */
-    /* 1. Eliminamos white-space: nowrap; (ya no está) */
-    /* 2. Controlamos el ancho para obligar el quiebre simétrico */
-    width: 90%;
-    max-width: 550px; 
-    line-height: 1.3; /* Espacio cómodo entre renglones */
-
-    /* 3. Cambiamos el tamaño: 4vw era enorme para dos líneas, 1.8rem o 2rem es ideal */
-    font-size: 3rem; 
-    letter-spacing: 0.15em; 
-
-    /* 🛡️ ESCUDO DE LEGIBILIDAD REFORZADO (Ideal para Magia Oscura) */
-    text-shadow: 
-        -1.5px -1.5px 0 #000,  
-         1.5px -1.5px 0 #000,
-        -1.5px  1.5px 0 #000,
-         1.5px  1.5px 0 #000,
-         0px  4px 15px rgba(0,0,0,1),  /* Sombra más densa al fondo */
-         0px  0px 25px rgba(0,0,0,0.9);
-}
-
-#lb-close { 
-    position: absolute; top: 16px; right: 20px; 
-    color: rgba(200,168,75,0.6); font-size: 1.4rem; 
-    cursor: pointer; background: none; border: none; 
-}
-
-
 /* -------------------------------------------------------------------------
-   8. VISUALIZADOR DE IMÁGENES COMPLETO (Lightbox)
+   7. VISUALIZADOR DE IMÁGENES (Lightbox)
 ------------------------------------------------------------------------- */
-#lightbox { 
-    position: fixed; 
-    inset: 0; 
-    z-index: 9999; 
-    background: rgba(6,4,2,0.95); 
-    display: none; 
-    align-items: center; 
-    justify-content: center; 
-    cursor: zoom-out; 
+/* Contenedor del Lightbox ocupando pantalla completa */
+#lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 10, 15, 0.95);
+  z-index: 9999;
+  padding: 40px;
+  box-sizing: border-box;
 }
 
-#lightbox.open { 
-    display: flex; 
-    animation: lbIn 0.22s ease; 
+/* Activa la vista de 2 columnas al abrir */
+#lightbox.open {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* Columna 1: La imagen ampliada */
+#lb-img {
+  max-width: 55%;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 1px solid var(--gold, #d4af37);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+}
+
+#lb-caption h2 {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  color: var(--gold, #d4af37);
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+#lb-caption p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  white-space: pre-line; /* Mantiene los saltos de línea del párrafo */
+}
+
+/* Diseño adaptativo para pantallas pequeñas / celulares */
+@media (max-width: 768px) {
+  #lightbox.open {
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  
+  #lb-img, #lb-caption {
+    max-width: 100%;
+    max-height: none;
+  }
 }
 
 @keyframes lbIn { 
-    from { opacity: 0; transform: scale(0.96) } 
-    to { opacity: 1; transform: scale(1) } 
+    from { opacity: 0; transform: scale(0.96); } 
+    to { opacity: 1; transform: scale(1); } 
 }
 
 #lb-img { 
     max-width: 90vw; 
     max-height: 88vh; 
     object-fit: contain; 
-    border: 1px solid rgba(200,168,75,0.6); /* 🌟 Hacemos el borde un poco más visible */
-    
-    /* 🔮 EFECTO DE BRILLO: Mantiene la sombra oscura de fondo y le añade un aura dorada */
-    box-shadow: 0 20px 60px rgba(0,0,0,0.9), 
-                0 0 15px rgba(200,168,75,0.4);    box-shadow: 0 20px 60px rgba(0,0,0,0.9); 
+    border: 1px solid rgba(200, 168, 75, 0.6); 
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 15px rgba(200, 168, 75, 0.4); 
 }
 
-
+#lb-caption { 
+    position: absolute; 
+    top: 100px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    font-family: 'Cinzel Decorative', serif;
+    color: #c8a84b; 
+    text-transform: uppercase; 
+    text-align: center; 
+    width: 90%;
+    max-width: 550px; 
+    line-height: 1.3; 
+    font-size: 3rem; 
+    letter-spacing: 0.15em; 
+    text-shadow: 
+        -1.5px -1.5px 0 #000,  
+         1.5px -1.5px 0 #000,
+        -1.5px  1.5px 0 #000,
+         1.5px  1.5px 0 #000,
+         0px 4px 15px rgba(0, 0, 0, 1), 
+         0px 0px 25px rgba(0, 0, 0, 0.9);
+}
 
 #lb-close { 
     position: absolute; 
     top: 16px; 
     right: 20px; 
-    color: rgba(200,168,75,0.6); 
+    color: rgba(200, 168, 75, 0.6); 
     font-size: 1.4rem; 
     cursor: pointer; 
     background: none; 
@@ -686,19 +647,9 @@ html, body {
     line-height: 1; 
 }
 
-/* Estado místico: Desenfoque total del mapa */
-.mapa-espiritual .leaflet-pane {
-    filter: blur(8px) !important;
-    -webkit-filter: blur(8px) !important;
-    transition: filter 0.5s ease, -webkit-filter 0.5s ease;
-}
-
-/* Transición suave para cuando regrese al plano material */
-.leaflet-pane {
-    transition: filter 0.5s ease, -webkit-filter 0.5s ease;
-}
-
-/* Contenedor inferior para los botones de magia */
+/* -------------------------------------------------------------------------
+   8. COMPONENTES MÁGICOS Y BOTONES PLATEADOS
+------------------------------------------------------------------------- */
 .silver-filter-container {
     display: flex;
     flex-wrap: wrap;
@@ -709,24 +660,20 @@ html, body {
     width: 100%;
 }
 
-/* Botón Plateado */
 .btn-silver {
     background: linear-gradient(135deg, #2a2e35 0%, #1c1f24 100%);
-    border: 1px solid #a6b1c2; /* Brillo plata */
+    border: 1px solid #a6b1c2; 
     color: #d1d5db;
     font-family: 'Cinzel', serif;
-
-    /* ⚡ AJUSTES DE TAMAÑO: Reducimos la letra y el espacio interno */
-    font-size: 0.75rem;       /* Letra un poco más pequeña y elegante */
-    padding: 5px 10px;        /* Menos espacio arriba/abajo y a los lados */
+    font-size: 0.75rem; 
+    padding: 5px 10px; 
     gap: 8px;
-
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.05em;    /* Un espacio de letras más sutil */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    letter-spacing: 0.05em; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .btn-silver:hover {
@@ -735,7 +682,6 @@ html, body {
     box-shadow: 0 0 8px rgba(166, 177, 194, 0.5);
 }
 
-/* Botón de magia activo */
 .btn-silver.active {
     background: linear-gradient(135deg, #a6b1c2 0%, #737f8f 100%);
     color: #0d0a07;
@@ -745,10 +691,10 @@ html, body {
 }
 
 /* -------------------------------------------------------------------------
-    9. OPTIMIZACIÓN DISPOSITIVOS MÓVILES & TOPBAR PC (Ajuste de Rango iPad)
+   9. OPTIMIZACIÓN Y MEDIA QUERIES (PC, Tablets & Móviles)
 ------------------------------------------------------------------------- */
 
-/* 💻 REGLA PARA PC: Ahora solo se activa en pantallas verdaderamente grandes (Más de 1367px) */
+/* 💻 PANTALLAS GRANDES (PC / Desktop > 1366px) */
 @media (min-width: 1367px) {
     #topbar #sidebar-parents {
         display: flex;
@@ -769,9 +715,8 @@ html, body {
     }
 }
 
-/* 🍏 REGLA PARA IPAD Y TABLETS (Cubre iPad Mini, iPad Normal e iPad Pro de pie o acostado) */
+/* 🍏 TABLETS & IPADS (641px - 1366px) */
 @media (min-width: 641px) and (max-width: 1366px) {
-    /* Mantenemos la cabecera delgada para proteger el mapa en horizontal */
     #topbar {
         padding: 6px 10px !important;
     }
@@ -779,18 +724,17 @@ html, body {
     #topbar h1 { font-size: 1.1rem !important; margin: 2px 0 !important; }
     #topbar .tagline { font-size: 0.68rem !important; margin: 0; }
 
-    /* Forzamos UNA SOLA FILA horizontal para que no aplaste el mapa al acostar el dispositivo */
     #topbar #sidebar-parents, 
     div#app .silver-filter-container {
         display: flex !important;
         flex-direction: row !important;
-        flex-wrap: nowrap !important; /* 👈 Prohibido hacer dos filas aquí */
+        flex-wrap: nowrap !important;
         justify-content: flex-start !important; 
-        overflow-x: auto !important; /* Scroll horizontal elástico */
+        overflow-x: auto !important;
         overflow-y: hidden !important;
         width: 100% !important;
         max-width: 100vw !important;
-        max-height: 36px !important; /* 👈 Ultra delgado */
+        max-height: 36px !important;
         box-sizing: border-box;
         padding: 4px 10px !important;
         gap: 6px !important;
@@ -804,21 +748,20 @@ html, body {
 
     #topbar #sidebar-parents .p-item, 
     div#app .silver-filter-container .btn-silver {
-        flex: 0 0 auto !important; /* No se encogen */
+        flex: 0 0 auto !important;
         white-space: nowrap !important;
         font-size: 0.65rem !important;
         padding: 4px 10px !important;
         margin: 0 !important;
     }
 
-    /* Maximizamos el mapa en tablets */
     #map {
-        height: 70vh !important; /* 👈 Le da el 70% del alto total de la pantalla al mapa */
+        height: 70vh !important;
         width: 100% !important;
     }
 }
 
-/* 📱 REGLA PARA CELULARES (Menos de 640px) */
+/* 📱 CELULARES (<= 640px) */
 @media (max-width: 640px) {
     :root { --sidebar-w: 230px; }
     #topbar h1 { font-size: 1.1rem; }
@@ -829,21 +772,19 @@ html, body {
         top: 0; left: 0; bottom: 0; 
         transform: translateX(-100%); 
         transition: transform 0.3s ease; 
-        box-shadow: 4px 0 20px rgba(0,0,0,0.5); 
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5); 
     }
     #sidebar.mob-open { transform: translateX(0); }
     #mob-close-btn { display: block; }
 
-    /* 🚨 ¡AQUÍ ESTÁ LA MAGIA! Forzamos a que aparezcan las tres rayas flotando */
     #sidebar-fab { 
         display: flex !important; 
-        position: fixed !important; /* Cambiado a fixed para que flote siempre sobre el mapa */
+        position: fixed !important;
         bottom: 20px !important; 
         left: 20px !important; 
-        z-index: 1000 !important; /* Por encima de absolutamente todo */
+        z-index: 1000 !important;
     }
 
-    /* Forzamos que la zona de botones no empuje al mapa hacia abajo */
     #topbar #sidebar-parents,
     div#app .silver-filter-container {
         display: flex !important;
@@ -855,8 +796,6 @@ html, body {
         box-sizing: border-box;
         padding: 4px;
         gap: 5px; 
-
-        /* 🛠️ Caja micro-ajustada con scroll vertical hacia abajo */
         max-height: 55px; 
         overflow-y: auto !important; 
         overflow-x: hidden !important;
@@ -873,7 +812,9 @@ html, body {
     }
 }
 
-/* ⏳ Pantalla de carga completa (Se queda intacta abajo) */
+/* -------------------------------------------------------------------------
+   10. PANTALLA DE CARGA
+------------------------------------------------------------------------- */
 #pantalla-carga {
     position: absolute;
     top: 0;
@@ -888,7 +829,6 @@ html, body {
     transition: opacity 0.5s ease, visibility 0.5s ease; 
 }
 
-/* Contenido centrado */
 .contenido-carga {
     text-align: center;
     color: var(--parch);
@@ -907,4 +847,3 @@ html, body {
     font-style: italic;
     opacity: 0.8;
 }
-

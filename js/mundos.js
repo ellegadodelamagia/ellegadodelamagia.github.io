@@ -244,18 +244,13 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
     let subrazasHTML = "";
     if (objeto.sub_razas && objeto.sub_razas.length > 0) {
         if (tieneSubRazasObjetos) {
-            subrazasHTML = `
-                <div class="subrazas-container" style="text-align: center; margin-top: 30px;">
-                    <h4>PUEBLOS CULTURALES REGISTRADOS</h4>
-                    <p style="color: #d1b8e7; font-size: 0.9rem;">Esta categoría contiene fichas individuales completas para cada pueblo.</p>
-                </div>
-            `;
-            
+            // Se deja vacío para no mostrar ninguna leyenda dentro de la ficha
+            subrazasHTML = "";
         } else {
             const tags = objeto.sub_razas.map(raza => `<span class="tag-subraza">${raza}</span>`).join("");
             subrazasHTML = `
                 <div class="subrazas-container">
-                    <h4>PUEBLOS CULTURALES INTEGRADAS</h4>
+                    <h4>PUEBLOS CULTURALES INTEGRADOS</h4>
                     <div class="subrazas-tags">${tags}</div>
                 </div>
             `;

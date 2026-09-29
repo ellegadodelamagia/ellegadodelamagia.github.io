@@ -390,37 +390,120 @@ const MUNDOS_DATA = [
   {
     id: "mundo_secreto",
     nombre: "Dimensión del Vacío",
-    nombre_visible: "Divinidades",
+    nombre_visible: "Panteones culturales",
     tipo: "El reino de los dioses",
     descripcion_breve: "El dominio secreto donde residen las antiguas deidades y fuerzas primigenias de las distintas culturas.",
-    historia_o_lore: "Las divinidades de diferentes culturas existen de forma real, aunque su presencia no es constante ni universal. Son entidades con poder propio, distintas de los seres celestiales: su poder proviene de su esencia divina, una fuerza completamente diferente a la magia vedlys, no clasificable ni medible por los humanos.",
+    historia_o_lore: "Las divinidades de diferentes culturas existen de forma real, aunque su presencia no es constante ni universal. Son entidades con poder propio, distintas de los seres celestiales: su poder proviene de su esencia divina, una fuerza completamente diferente a la magia vedlys, no clasificable ni medible por los humanos. Debido a que la gente dejó de creer en ellos sus poderes fueron mermando, y hoy solo se manifiestan en lugares donde aún se les recuerda. La mayoría de los dioses no interactúa con los humanos, sin embargo algunos sí lo hacen, especialmente aquellos que tienen un vínculo con la muerte y el más allá.",
     reglas_de_magia: "El poder en esta dimensión trasciende las leyes terrenales y responde al dominio conceptual de cada deidad. Las divinidades son neutrales o ambivalentes; no responden a conceptos humanos de bien o mal. Se conocen entre sí y pueden interactuar, especialmente las relacionadas con los mundos de los muertos.",
     imagen_fondo: "imagenes_principal/mundos/locked_bg.jpg",
     desbloqueado: 1, // Nivel 3: Spoiler total hasta el Libro 3
     revelado_en: "Libro 3",
     regiones: [
+      
       {
-        id: "divinidad_inframundo_mexica",
-        nombre: "Mictlantecuhtli",
-        cultura: "Mexica",
-        region: "Mesoamérica (México)",
-        tipo_divinidad: "Dios del Inframundo",
-        descripcion_breve: "Señor del Mictlán y del descanso eterno de las almas.",
-        historia_o_lore: "Gobernante del noveno nivel subterráneo, custodia los huesos de las eras pasadas.",
-        reglas_de_magia: "Su poder se manifests en la transición de las almas y la preservación de los restos mortales.",
-        imagen_fondo: "imagenes_principal/mundos/micu.jpg",
-        desbloqueado: 1
+        id: "panteon_egipcio",
+  nombre: "Panteón Egipcio",
+  region: "Antiguo Egipto",
+  descripcion_breve: "Una civilización que veía la muerte como un viaje, no un final, y llenó su inframundo de pruebas y guardianes.",
+  historia_o_lore: "Los antiguos egipcios creían que el alma, tras morir, cruzaba el Duat, el mundo subterráneo, en una travesía llena de peligros antes de llegar al juicio final. Ahí el corazón del difunto se pesaba contra una pluma: si era más liviano, el alma continuaba su camino; si no, era devorada. De esa idea de la muerte como proceso, más que como fin, nace buena parte de su cultura funeraria: momificación, textos guía para el más allá y tumbas construidas como mapas del otro mundo.",
+  reglas_de_magia: "Para los egipcios, la magia (heka) no era una fuerza aparte de la religión, sino su motor: los mismos rituales que invocaban protección divina también sostenían el orden del cosmos. Los sacerdotes eran, a la vez, magos, médicos y guardianes del conocimiento sagrado, y las palabras escritas o pronunciadas correctamente tenían poder real sobre el mundo y el más allá.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_egipcio.jpg",
+  desbloqueado: 1
       },
+      
+      
+        {
+  id: "panteon_mesoamericano",
+  nombre: "Panteón Mesoamericano",
+  region: "México",
+  descripcion_breve: "Una civilización cuya idea de la muerte y el inframundo sigue muy viva en el imaginario mexicano.",
+  historia_o_lore: "Para las culturas mesoamericanas, el alma del difunto no terminaba su camino al morir: debía descender por los nueve niveles del Mictlán, superando pruebas y obstáculos en cada uno. Al llegar al noveno nivel, el alma alcanzaba por fin el descanso eterno.",
+  reglas_de_magia: "Lo sobrenatural estaba tejido en la vida cotidiana a través de calendarios, rituales y ofrendas. El tiempo se entendía como cíclico, y los actos humanos —sacrificios, ceremonias, ofrendas— servían para mantener el equilibrio entre el mundo de los vivos y el de los dioses.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_mesoamerica.jpg",
+  desbloqueado: 1
+},
+       {
+  id: "panteon_chino",
+  nombre: "Panteón Chino",
+  region: "China",
+  descripcion_breve: "Una cosmovisión donde el inframundo no es un destino final, sino un paso hacia una nueva vida.",
+  historia_o_lore: "El inframundo chino, el Diyu, se compone de diez cortes, cada una presidida por su propio juez, donde las almas son evaluadas según sus actos en vida. Al concluir el recorrido, beben el caldo del olvido, que borra sus recuerdos antes de reencarnarse.",
+  reglas_de_magia: "La idea de un orden cósmico gobierna esta cosmovisión: el bien y el mal se equilibran a través del ciclo de reencarnación, y la conducta de cada vida determina el trato que se recibe en la siguiente.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_chino.jpg",
+  desbloqueado: 1
+},
       {
-        id: "divinidad_trueno_nordico",
-        nombre: "Thor",
-        cultura: "Nórdica",
-        region: "Escandinavia",
-        tipo_divinidad: "Dios del Trueno y la Fuerza",
-        descripcion_breve: "Protector de los reinos y portador del rayo primigenio.",
-        historia_o_lore: "Defensor incansable contra las sombras, cuyo poder resuena en las tormentas del vacío.",
-        desbloqueado: 3
-      }
+  id: "panteon_persa",
+  nombre: "Panteón Persa / Zoroástrico",
+  region: "Antigua Persia",
+  descripcion_breve: "Una religión que entendió la existencia como una lucha constante entre la luz y la oscuridad.",
+  historia_o_lore: "El alma, tras la muerte, debía cruzar el puente Chinvat, el paso entre el mundo de los vivos y el más allá. El puente se ensanchaba para las almas virtuosas, que llegaban al paraíso, y se estrechaba hasta volverse un filo bajo los pies de las almas condenadas, que caían al abismo.",
+  reglas_de_magia: "El zoroastrismo concebía la existencia como un enfrentamiento constante entre dos fuerzas: Ahura Mazda, la luz y la verdad, y Ahriman, la oscuridad y la mentira. Cada pensamiento, palabra y acción de una persona inclinaba la balanza de ese enfrentamiento cósmico.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_persa.jpg",
+  desbloqueado: 1
+},
+
+{
+  id: "panteon_griego",
+  nombre: "Panteón Griego",
+  region: "Antigua Grecia",
+  descripcion_breve: "La cultura que dio nombre al Hades, y con él, a buena parte de la imaginería del inframundo occidental.",
+  historia_o_lore: "Al morir, el alma era guiada hasta el río que separa el mundo de los vivos del Hades, donde el barquero Caronte la cruzaba a cambio de una moneda. Cerbero, el perro de tres cabezas, vigilaba las puertas para que ninguna alma escapara. Una vez dentro, un tribunal decidía su destino: los Campos Elíseos para las almas virtuosas, o el Tártaro para las que habían llevado una mala vida.",
+  reglas_de_magia: "Los griegos entendían lo divino como una fuerza cercana y caprichosa: los dioses intervenían directamente en los asuntos humanos, premiando, castigando o poniendo a prueba a mortales y héroes según sus propios intereses y rivalidades.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_griego.jpg",
+  desbloqueado: 1
+},
+
+{
+  id: "panteon_nordico",
+  nombre: "Panteón Nórdico",
+  region: "Escandinavia",
+  descripcion_breve: "Una mitología que dividía a los muertos según cómo habían vivido, no según cómo habían actuado.",
+  historia_o_lore: "El inframundo nórdico, Hel, era el destino de quienes morían de enfermedad o vejez, gobernado por la diosa que lleva su mismo nombre. Los guerreros caídos en batalla, en cambio, seguían un camino distinto: iban al Valhalla, el salón de Odín.",
+  reglas_de_magia: "El destino, más que la voluntad de los dioses, regía esta cosmovisión: incluso los propios dioses conocían de antemano el Ragnarök, el fin del mundo, y sabían que no podían evitarlo. La escritura rúnica era la forma en que ese conocimiento oculto podía consultarse y usarse.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_nordico.jpg",
+  desbloqueado: 1
+},
+{
+  id: "panteon_hindu",
+  nombre: "Panteón Hindú",
+  region: "India",
+  descripcion_breve: "Una cosmovisión donde ni el castigo ni la recompensa son para siempre.",
+  historia_o_lore: "El Naraka, el inframundo hindú, no es un destino eterno: es una escala temporal en el ciclo de nacer, morir y renacer. Ahí, las almas pagan las culpas de su vida terrenal antes de reencarnarse en un nuevo cuerpo, más alto o más bajo según sus méritos.",
+  reglas_de_magia: "El karma gobierna esta cosmovisión: cada acción tiene una consecuencia que tarde o temprano regresa a quien la cometió, ya sea en esta vida o en la siguiente. Lo sobrenatural no castiga arbitrariamente, sino que devuelve exactamente lo que cada quien sembró.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_hindu.jpg",
+  desbloqueado: 1
+},
+{
+  id: "panteon_incaico",
+  nombre: "Panteón Incaico / Andino",
+  region: "Andes",
+  descripcion_breve: "Una cosmovisión donde el inframundo no es opuesto a la vida, sino su raíz.",
+  historia_o_lore: "El mundo andino se dividía en tres planos conectados entre sí: el Hanan Pacha, el mundo de arriba; el Kay Pacha, el mundo de los vivos; y el Uku Pacha, el mundo de abajo, gobernado por Supay. Lejos de ser solo un lugar de castigo, el Uku Pacha era la tierra de donde brota la vida vegetal y donde descansan los huesos de los ancestros.",
+  reglas_de_magia: "Esta cosmovisión entendía el universo desde la dualidad y la reciprocidad: cada plano dependía de los otros dos, y el equilibrio entre ellos se mantenía a través de rituales y ofrendas, no de la sumisión a una sola fuerza.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_incaico.jpg",
+  desbloqueado: 1
+},
+{
+  id: "panteon_celta",
+  nombre: "Panteón Celta",
+  region: "Gales / Irlanda",
+  descripcion_breve: "Una mitología donde el inframundo no castiga: es un paraíso tan hermoso como peligroso.",
+  historia_o_lore: "El Otro Mundo, conocido en Gales como Annwn, no era un lugar de muerte ni de castigo, sino un reino de juventud eterna donde no existían la enfermedad ni el hambre. Su belleza, sin embargo, escondía peligros reales: quien lo visitaba podía quedar atrapado en su encanto, o enfrentarse a sus guerras y a sus cazadores espectrales.",
+  reglas_de_magia: "Para los celtas, lo sobrenatural convivía cerca del mundo humano, separado apenas por un velo delgado que en ciertos momentos del año se volvía más fácil de cruzar. La magia se expresaba menos como poder personal y más como el propio tejido del Otro Mundo, presente en bosques, pozos y colinas sagradas.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_celta.jpg",
+  desbloqueado: 1
+},
+{
+  id: "panteon_hawaiano",
+  nombre: "Panteón Hawaiano",
+  region: "Hawái",
+  descripcion_breve: "Una mitología donde el alma salta al más allá desde acantilados sagrados, y no todos los espíritus se van.",
+  historia_o_lore: "El alma del difunto descendía al Lua-o-Milu, el inframundo gobernado por Milu, saltando desde ciertos acantilados y valles considerados lugares de paso. No todos los espíritus hacían ese viaje: algunos permanecían en el mundo de los vivos como protectores silenciosos de su propia familia.",
+  reglas_de_magia: "Lo sobrenatural en esta cultura estaba profundamente ligado al linaje y a la naturaleza: ciertos ancestros se convertían en guardianes espirituales de su descendencia, y el mundo natural (volcanes, mar, tierra) era habitado por fuerzas divinas con voluntad propia, capaces de intervenir directamente en la vida de las personas.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_hawaiano.jpg",
+  desbloqueado: 1
+},
     ]
   }
 ];

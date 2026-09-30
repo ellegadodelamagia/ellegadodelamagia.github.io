@@ -1,10 +1,14 @@
+// =========================================================================
+// DATOS DE ESCRITOS 
+// =========================================================================
+
 window.datosEscritos = [
   {
     id: "profecia-principal",
-    titulo: "La Profecía de la triada",
+    titulo: "La Profecía de la Triada",
     categoria: "profecias",
     subtitulo: "Registro enigmático que espera en el oráculo",
-   desbloqueado: 2, // <-- 2 significa Bloqueado / Protegido
+    desbloqueado: 1,
     imagen: "imagenes_principal/escritos/profecia_triada.jpg",
     descripcionCorta: "El verso antiguo que predice el surgimiento de los herederos y el destino de la magia.",
     contenidoCompleto: {
@@ -14,98 +18,105 @@ y la luz primigenia pierda su fulgor,<br>
 resurgirán los lazos del antiguo linaje...<br><br>
 Un heredero despertará la llama,<br>
 mientras el olvido amenaza con consumirlo todo.`,
-      notas: "Texto trascrito a partir de la imagen creada por la prifecía."
+      notas: "Texto transcrito a partir de la imagen creada por la profecía."
     }
   },
   {
-  id: "profecia-recolector",
-  titulo: "La Profecía del Recolector",
-  subtitulo: "Registro antiguo",
-  categoria: "profecias",
-  desbloqueado: 1,
-  imagen: "imagenes_principal/escritos/recolector-bg.jpg",
-  descripcionCorta: "Predicción ancestral de la prueba en un portal sagrado para equilibrar la magia",
-  contenidoCompleto: {
-    origen: "Nemori",
-    texto: `
-      <!-- VISTA 1: Tríptico de miniaturas -->
-      <div id="vista-triptico" class="contenedor-triptico-profecia">
-        <div class="tarjeta-version-profecia" 
-             data-titulo="Profecía original elaborada por los elfos"
-             data-img="imagenes_principal/escritos/profecia_recolector_v1.jpg"
-             data-desc="Escrita en idioma antiguo, se cree que su lectura es por raíces con un sistema de runas y fonemas, sin embargo no se sabe de nadie que pueda leerlo.">
-          <img src="imagenes_principal/escritos/profecia_recolector_v1.jpg" alt="Original" class="img-profecia-miniatura">
-          <span class="label-version">Original</span>
-        </div>
+    id: "profecia-recolector",
+    titulo: "La Profecía del Recolector",
+    subtitulo: "Registro antiguo",
+    categoria: "profecias",
+    desbloqueado: 1,
+    imagen: "imagenes_principal/escritos/recolector-bg.jpg",
+    descripcionCorta: "Predicción ancestral de la prueba en un portal sagrado para equilibrar la magia",
+    contenidoCompleto: {
+      origen: "Nemori",
+      texto: `
+        <!-- VISTA 1: Cuatríptico de miniaturas -->
+        <div id="vista-triptico" class="contenedor-triptico-profecia">
+          <div class="tarjeta-version-profecia" 
+               data-titulo="Profecía original elaborada por los elfos"
+               data-img="imagenes_principal/escritos/profecia_recolector_v1.jpg"
+               data-desc="Escrita en idioma antiguo, se cree que su lectura es por raíces con un sistema de runas y fonemas, sin embargo no se sabe de nadie que pueda leerlo.">
+            <img src="imagenes_principal/escritos/profecia_recolector_v1.jpg" alt="Original" class="img-profecia-miniatura">
+            <span class="label-version">Original</span>
+          </div>
 
-        <div class="tarjeta-version-profecia" 
-             data-titulo="Primera traducción "
-             data-img="imagenes_principal/escritos/profecia_recolector_v2.jpg"
-             data-desc="Se cree que fue elaborada por erudito italiano alrededor de 1700 ya  que usó un registro herméticos/alquímicos de esa época, que mezclaban terminología griega con sintaxis latina. No se sabe si conocía el idioma antiguo.">
-          <img src="imagenes_principal/escritos/profecia_recolector_v2.jpg" alt="Primera traducción" class="img-profecia-miniatura">
-          <span class="label-version">Primera traducción</span>
-        </div>
+          <div class="tarjeta-version-profecia" 
+               data-titulo="Primera traducción"
+               data-img="imagenes_principal/escritos/profecia_recolector_v2.jpg"
+               data-desc="Se cree que fue elaborada por un erudito italiano alrededor de 1700 ya que usó un registro herméticos/alquímicos de esa época, que mezclaban terminología griega con sintaxis latina. No se sabe si conocía el idioma antiguo.">
+            <img src="imagenes_principal/escritos/profecia_recolector_v2.jpg" alt="Primera traducción" class="img-profecia-miniatura">
+            <span class="label-version">Primera traducción</span>
+          </div>
 
-        <div class="tarjeta-version-profecia" 
-             data-titulo="Segunda traducción"
-             data-img="imagenes_principal/escritos/profecia_recolector_v3.jpg"
-             data-desc="Realizada por Stefen, corregida entre Stefen y Jeziel. Utilizada para la prueba de Kaira.">
-          <img src="imagenes_principal/escritos/profecia_recolector_v3.jpg" alt="Segunda traducción" class="img-profecia-miniatura">
-          <span class="label-version">Segunda traducción</span>
-        </div>
-      </div>
+          <div class="tarjeta-version-profecia" 
+               data-titulo="Traducción oficial"
+               data-img="imagenes_principal/escritos/profecia_recolector_v_oficial.jpg"
+               data-desc="La versión canónica y popularmente conocida en el mundo Vedlys. Stefen la descartó al comenzar a examinar los escritos del Maestro de la Magia, pero era la interpretación estándar que todos conocían.">
+            <img src="imagenes_principal/escritos/profecia_recolector_v_oficial.jpg" alt="Traducción Oficial" class="img-profecia-miniatura">
+            <span class="label-version">Traducción oficial</span>
+          </div>
 
-      <!-- VISTA 2: Vista ampliada (Oculta por defecto) -->
-      <div id="vista-ampliada-profecia" class="vista-ampliada-profecia" style="display: none;">
-        <div style="text-align: left; margin-bottom: 1rem;">
-          <button id="btn-volver-triptico" class="btn-volver-triptico">← Volver al Tríptico</button>
-        </div>
-        <div class="contenedor-profecia-foco">
-          <img id="img-profecia-foco" src="" alt="Visión Ampliada" class="img-profecia-grande">
-          <div class="info-profecia-foco">
-            <h3 id="titulo-profecia-foco" class="titulo-foco"></h3>
-            <p id="desc-profecia-foco" class="desc-foco"></p>
+          <div class="tarjeta-version-profecia" 
+               data-titulo="Traducción revisada y corregida"
+               data-img="imagenes_principal/escritos/profecia_recolector_v3.jpg"
+               data-desc="Realizada por Stefen, corregida entre Stefen y Jeziel. Utilizada para la prueba de Kaira.">
+            <img src="imagenes_principal/escritos/profecia_recolector_v3.jpg" alt="Traducción Revisada y Corregida" class="img-profecia-miniatura">
+            <span class="label-version">Traducción revisada y corregida</span>
           </div>
         </div>
-      </div>
-    `,
-    notas: "Haz clic en cualquier versión para examinar el grabado a detalle."
-  }
-},
 
+        <!-- VISTA 2: Vista ampliada (Oculta por defecto) -->
+        <div id="vista-ampliada-profecia" class="vista-ampliada-profecia" style="display: none;">
+          <div style="text-align: left; margin-bottom: 1rem;">
+            <button id="btn-volver-triptico" class="btn-volver-triptico">← Volver a las versiones</button>
+          </div>
+          <div class="contenedor-profecia-foco">
+            <img id="img-profecia-foco" src="" alt="Visión Ampliada" class="img-profecia-grande">
+            <div class="info-profecia-foco">
+              <h3 id="titulo-profecia-foco" class="titulo-foco"></h3>
+              <p id="desc-profecia-foco" class="desc-foco"></p>
+            </div>
+          </div>
+        </div>
+      `,
+      notas: "Haz clic en cualquier versión para examinar el grabado a detalle."
+    }
+  },
   {
-  id: "canto-de-los-libros",
-  titulo: "El Canto de la Saga",
-  subtitulo: "Fragmentos de origen incierto",
-  categoria: "profecias",
-  desbloqueado: 1,
-  imagen: "assets/img/canto-saga-bg.jpg",
-  descripcionCorta: "Una estrofa grabada en el tiempo por cada tomo que compone la historia.",
-  contenidoCompleto: {
-    origen: "Canto continuo registrado en las Crónicas de la Saga",
-    texto: `
-      <div class="canto-saga-contenedor">
-        <p class="verso-tomo link-saga" data-libro="libro-1"><span class="badge-tomo">I</span> "La magia permanece oculta, hasta que una profecía la despierta."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-2"><span class="badge-tomo">II</span> "Lo robado exige ser devuelto, pero en el camino la sombra acecha."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-3"><span class="badge-tomo">III</span> "La aprobación de los antiguos dioses solo llega superando las pruebas."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-4"><span class="badge-tomo">IV</span> "Toda recolección esconde una revelación que no pediste."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-5"><span class="badge-tomo">V</span> "Así como los secretos pueden ser leídos, los elegidos no siempre son los esperadosL."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-6"><span class="badge-tomo">VI</span> "Hay verdades que no se revelan sino hasta que los tres convergen."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-7"><span class="badge-tomo">VII</span> "No toda magia se controla, ni todo lo perdido regresa."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-8"><span class="badge-tomo">VIII</span> "Lo que los antiguos dejaron disperso es lo único que puede detener su regreso."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-9"><span class="badge-tomo">IX</span> "Lo que nadie enseña es lo que hay que aprender antesde la prueba final."</p>
-        <p class="verso-tomo link-saga" data-libro="libro-10"><span class="badge-tomo">X</span> "La sombra y el despertar se enfrentan por primera y última vez."</p>
-      </div>
-    `,
-    notas: "Haz clic en cualquier verso para viajar a su tomo."
-  }
-},
+    id: "canto-de-los-libros",
+    titulo: "El Canto de la Saga",
+    subtitulo: "Fragmentos de origen incierto",
+    categoria: "profecias",
+    desbloqueado: 1,
+    imagen: "assets/img/canto-saga-bg.jpg",
+    descripcionCorta: "Una estrofa grabada en el tiempo por cada tomo que compone la historia.",
+    contenidoCompleto: {
+      origen: "Canto continuo registrado en las Crónicas de la Saga",
+      texto: `
+        <div class="canto-saga-contenedor">
+          <p class="verso-tomo link-saga" data-libro="libro-1"><span class="badge-tomo">I</span> "La magia permanece oculta, hasta que una profecía la despierta."</p>
+          <p class="verso-tomo link-saga" data-libro="libro-2"><span class="badge-tomo">II</span> "Lo robado exige ser devuelto, pero en el camino la sombra acecha."</p>
+          <p class="verso-tomo link-saga" data-libro="libro-3"><span class="badge-tomo">III</span> "La aprobación de los antiguos dioses solo llega superando las pruebas."</p>
+          <p class="verso-tomo link-saga" data-libro="libro-4"><span class="badge-tomo">IV</span> "Toda recolección esconde una revelación que no pediste."</p>
+          <p class="verso-tomo link-saga" data-libro="libro-5"><span class="badge-tomo">V</span> "Así como los secretos pueden ser leídos, los elegidos no siempre son los esperados."</p>
+          <p class="verso-tomo link-saga" data-libro="libro-6"><span class="badge-tomo">VI</span> "Hay verdades que no se revelan sino hasta que los tres convergen."</p>
+          <p class="verso-tomo link-saga" data-libro="libro-7"><span class="badge-tomo">VII</span> "No toda magia se controla, ni todo lo perdido regresa."</p>
+          <p class="verso-tomo link-saga" data-libro="libro-8"><span class="badge-tomo">VIII</span> "Lo que los antiguos dejaron disperso es lo único que puede detener su regreso."</p>
+          <p class="verso-tomo link-saga" data-libro="libro-9"><span class="badge-tomo">IX</span> "Lo que nadie enseña es lo que hay que aprender antes de la prueba final."</p>
+          <p class="verso-tomo link-saga" data-libro="libro-10"><span class="badge-tomo">X</span> "La sombra y el despertar se enfrentan por primera y última vez."</p>
+        </div>
+      `,
+      notas: "Haz clic en cualquier verso para viajar a su tomo."
+    }
+  },
   {
     id: "atlas-del-mundo",
     titulo: "El Atlas del Mundo Vedlys",
     categoria: "compendios",
     subtitulo: "Guía no autorizada de los Consejos Vedlys.",
-    desbloqueado: 1, // <-- 1 significa Desbloqueado y Visible
+    desbloqueado: 1,
     imagen: "imagenes_principal/escritos/atlas.jpg",
     descripcionCorta: "Compendio de mapas y anotaciones de exploradores incógnitos.",
     contenidoCompleto: {
@@ -119,7 +130,7 @@ mientras el olvido amenaza con consumirlo todo.`,
     titulo: "El origen de la Magia",
     categoria: "legado",
     subtitulo: "MAGIA",
-    desbloqueado: 1, // <-- 1 significa Desbloqueado y Visible
+    desbloqueado: 1,
     imagen: "imagenes/escritos/legado_1.jpg",
     descripcionCorta: "Sobre la naturaleza, las leyes y el origen de la magia.",
     contenidoCompleto: {
@@ -133,7 +144,7 @@ mientras el olvido amenaza con consumirlo todo.`,
     titulo: "La memoria del Mundo Oculto",
     categoria: "legado",
     subtitulo: "CONOCIMIENTO",
-    desbloqueado: 1, // <-- 1 significa Desbloqueado y Visible
+    desbloqueado: 1,
     imagen: "imagenes/escritos/legado_2.jpg",
     descripcionCorta: "Compendio del conocimiento acumulado por los guardianes y sabios de todas las eras.",
     contenidoCompleto: {
@@ -144,10 +155,10 @@ mientras el olvido amenaza con consumirlo todo.`,
   },
   {
     id: "legado-3",
-    titulo: "Las fórmulas del Arte Antiguo ",
+    titulo: "Las fórmulas del Arte Antiguo",
     categoria: "legado",
     subtitulo: "PODER",
-    desbloqueado: 1, // <-- 1 significa Desbloqueado y Visible
+    desbloqueado: 1,
     imagen: "imagenes/escritos/legado_3.jpg",
     descripcionCorta: "Hechizos, rituales y palabras del Arte Antiguo capaces de transformar la realidad.",
     contenidoCompleto: {
@@ -161,15 +172,14 @@ mientras el olvido amenaza con consumirlo todo.`,
     titulo: "El Libro de los Herederos",
     categoria: "registros",
     subtitulo: "Crónica de linajes y marcas de sangre",
-    desbloqueado: 2, // <-- 2 significa Bloqueado / Protegido
+    desbloqueado: 1,
     imagen: "imagenes/escritos/libro_herederos.jpg",
     descripcionCorta: "Registro de las familias bendecidas por la magia antigua y sus descendientes legítimos.",
     contenidoCompleto: {
       origen: "Custodiado por los Cronistas de la Dinastía.",
-      texto: "Árboles genealógicos, marcas hereditarias y la sucesión histórica de los guardianes.",
+      texto: "",
       notas: "Contiene pasajes cifrados sobre los herederos perdidos."
     },
-    /* Lista de los 8 elementos/tarjetas internas */
     partesHerederos: [
       { titulo: "I. El Linaje del Fuego", desc: "Guardianes de la llama primigenia y el dominio de la forja de almas." },
       { titulo: "II. El Círculo de las Mareas", desc: "Herederos del flujo vital, guardianes de las aguas profundas." },

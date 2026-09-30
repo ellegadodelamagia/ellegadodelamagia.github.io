@@ -1,3 +1,7 @@
+// =========================================================================
+// ESCRITOS 
+// =========================================================================
+
 document.addEventListener("DOMContentLoaded", () => {
   const listaDatos = window.datosEscritos;
 
@@ -46,7 +50,6 @@ function renderizarEscritos(lista) {
         </button>
       `;
       card.style.cursor = "not-allowed";
-   // 🔓 CASO 2: ESCRITO DISPONIBLE
     } else {
       card.innerHTML = `
         <div>
@@ -84,7 +87,7 @@ function abrirEscrito(id) {
   // Limpiamos imagen de fondo previa
   modalContenido.style.backgroundImage = 'none';
 
-  // Subgrid si es Libro de Herederos (o si trae partesHerederos)
+  // Subgrid si es Libro de Herederos
   let contenidoEspecial = '';
   if (item.partesHerederos && Array.isArray(item.partesHerederos)) {
     const tarjetasHerederos = item.partesHerederos.map(part => `
@@ -102,7 +105,7 @@ function abrirEscrito(id) {
   }
 
   const origenTexto = item.contenidoCompleto && item.contenidoCompleto.origen 
-    ? `<div class="escrito-origen" style="color: #eceba7; font-size: 0.95rem; margin-bottom: 12px; text-shadow: 0 2px 6px rgba(0,0,0,0.9);">
+    ? `<div class="escrito-origen" style="color: #eceba7; font-size: 0.95rem; margin-bottom: 12px; text-shadow: 0 2px 6px rgba(0,0,0,0.9); text-align: center;">
         <strong style="color: var(--gold);">Origen:</strong> ${item.contenidoCompleto.origen}
        </div>` 
     : '';
@@ -112,7 +115,9 @@ function abrirEscrito(id) {
     : '';
 
   const notasTexto = item.contenidoCompleto && item.contenidoCompleto.notas 
-    ? `<em>${item.contenidoCompleto.notas}</em>` 
+    ? `<div class="escrito-notas-limpias" style="margin-top: 1.5rem; text-align: center; font-size: 0.95rem; color: #f5e4bf; font-style: italic;">
+        ${item.contenidoCompleto.notas}
+       </div>` 
     : '';
 
   // EVALUACIÓN FLEXIBLE DE EXCEPCIONES: Detecta cualquier ID que contenga estas palabras clave
@@ -127,7 +132,7 @@ function abrirEscrito(id) {
   let estructuraCuerpo = '';
 
   if (!esExcepcionLayout && item.imagen) {
-    // 📌 LAYOUT 2 COLUMNAS (Solo para escritos comunes con imagen)
+    // 📌 LAYOUT 2 COLUMNAS (Para escritos comunes con imagen)
     estructuraCuerpo = `
       <div class="modal-layout-dos-columnas">
         <div class="columna-imagen-modal">
@@ -144,27 +149,22 @@ function abrirEscrito(id) {
       </div>
     `;
   } else {
-    // 📌 LAYOUT COMPLETO CENTRADO (Para El Canto de la Saga, Recolector y Herederos)
+    // 📌 LAYOUT COMPLETO Y TRANSPARENTE (Para El Canto de la Saga, Recolector y Herederos)
+    const bloqueTextoLibre = cuerpoTexto ? `<div>${cuerpoTexto}</div>` : '';
+
     estructuraCuerpo = `
       <h2 style="font-family:'Cinzel', serif; color:var(--gold); font-size: 2rem; margin-bottom: 5px; text-align:center;">${item.titulo}</h2>
       ${origenTexto}
-      <div class="escrito-cuerpo-texto">
-        ${cuerpoTexto}
-      </div>
+      ${bloqueTextoLibre}
       ${contenidoEspecial}
     `;
   }
 
   // Inyección HTML en el modal
   modalContenido.innerHTML = `
-    <div class="modal-overlay-bg">
+    <div class="modal-overlay-bg" style="background: transparent !important; border: none !important; box-shadow: none !important;">
       ${estructuraCuerpo}
-
-      ${notasTexto ? `
-        <div style="margin-top:20px; text-align:center; font-size:0.9rem; color: #f5e4bf; background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 6px; display: inline-block; width: 100%; box-sizing: border-box;">
-          ${notasTexto}
-        </div>
-      ` : ''}
+      ${notasTexto}
       
       <div style="text-align: center; margin-top: 2.5rem;">
         <button type="button" class="btn-dorado btn-regresar-modal" id="btn-cerrar-lectura">

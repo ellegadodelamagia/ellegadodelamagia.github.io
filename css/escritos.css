@@ -41,7 +41,7 @@
   box-shadow: 0 0 15px rgba(197, 169, 86, 0.4);
 }
 
-/* --- GRILLA DE TARJETAS EN 3 COLUMNAS --- */
+/* --- GRILLA DE TARJETAS PRINCIPALES --- */
 #escritos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
@@ -79,37 +79,32 @@
   box-shadow: 0 12px 30px rgba(197, 169, 86, 0.15);
 }
 
-/* 1. Título principal y Subtítulos dentro de las tarjetas */
 .escrito-card h3 {
-  color: #9b884b !important; /* Dorado claro brillante */
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.2); /* Resplandor dorado suave */
+  color: #9b884b;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
   font-size: 1.4rem;
 }
 
-/* 2. El subtítulo justo debajo del título principal */
 .escrito-card .subtitulo {
-  color: #E2E8F0 !important; /* Blanco hueso brillante */
+  color: #E2E8F0;
   font-weight: 500;
   opacity: 0.95;
 }
 
-/* 3. La descripción corta dentro de la tarjeta */
 .escrito-card .descripcion {
-  color: #CBD5E1 !important; /* Gris claro de alto contraste */
+  color: #CBD5E1;
   line-height: 1.5;
 }
 
-/* 4. Etiqueta / Badge de la categoría arriba del título */
 .escrito-card .badge-categoria {
-  color: #FFE600 !important; /* Amarillo reluciente */
+  color: #FFE600;
   background: rgba(16, 17, 54, 0.6);
   border: 1px solid rgba(255, 230, 0, 0.4);
 }
 
-/* 5. Si te refieres al subtítulo principal de la sección fuera de las tarjetas */
 #escritos .subtitulo-seccion,
 .seccion-escritos p {
-  color: #F1F5F9 !important; /* Blanco brillante */
+  color: #F1F5F9;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
@@ -130,8 +125,30 @@
   font-size: 0.85rem;
 }
 
+/* --- IMAGEN EN TARJETAS DE ESCRITOS --- */
+.escrito-img-container {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(197, 169, 86, 0.25);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.escrito-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.escrito-card:hover .escrito-card-img {
+  transform: scale(1.05);
+}
+
 /* =========================================================================
-   📜 MODAL / VISTA COMPLETA DE LECTURA (LIMPIO)
+   📜 MODAL / VISTA COMPLETA DE LECTURA
    ========================================================================= */
 
 .modal-escrito {
@@ -155,69 +172,44 @@
   display: flex;
 }
 
-/* Contenedor principal del modal con imagen de fondo completa */
-.modal-escrito .modal-contenido {
+/* Ventana principal del Modal */
+.modal-escrito .modal-contenido,
+.modal-escrito-contenido {
   position: relative;
   width: 90%;
-  max-width: 850px;
+  max-width: 950px;
+  max-height: 85vh;
   margin: auto;
-  
-  /* CUBRE TODO EL FOND0 Y NO SE DUPLICA */
   background-size: cover; 
   background-position: center top;
   background-repeat: no-repeat;
-  
   border: 1px solid rgba(197, 169, 86, 0.4);
   border-radius: 8px;
-  overflow: hidden;
+  overflow-y: auto;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
 }
 
-/* Capa de opacidad sobre la imagen de fondo */
 .modal-overlay-bg {
-  /* CAMBIA ESTE VALOR PARA EL BRILLO DE LA IMAGEN DE FONDO:
-     - 0.25 = Imagen muy clara / brillante
-     - 0.40 = Equilibrio
-     - 0.65 = Más oscura para lectura intensa */
-  background: rgba(6, 7, 10, 0.65); 
-  
+  background: rgba(10, 8, 6, 0.45);
   padding: 2.5rem 2rem;
   box-sizing: border-box;
   min-height: 100%;
 }
 
-/* TEXTO MÍSTICO COMPLETAMENTE LIMPIO (Sin recuadros ni línea izquierda) */
-/* Tarjeta de fondo oscuro translúcido SOLO para el texto de la profecía */
-.escrito-cuerpo-texto {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  line-height: 1.3;
-  color: var(--parch);
-  text-align: center;
-  
-  /* FONDO Y BORDE TIPO PERGAMINO OSCURO */
-  background: rgba(6, 16, 36, 0.75); /* Fondo oscuro con opacidad (modifica 0.75 si quieres más o menos transparencia) */
-  border: 1px solid rgba(197, 169, 86, 0.4); /* Borde dorado tenue místico */
-  border-radius: 8px;
-  
-  /* MARGEN Y PADDING */
-  padding: 1.8rem 2rem;
-  margin: 1.5rem auto;
-  max-width: 650px;
-  
-  /* SOMBRA PARA SEPARAR EL TEXTO DEL FONDO DE LA IMAGEN */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 
-              inset 0 0 20px rgba(0, 0, 0, 0.5);
-  
-  /* EFECTO DE DESENFOQUE SUAVE DETRÁS DEL RECUADRO */
-  backdrop-filter: blur(4px);
+#modal-detalle-contenido h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
 }
 
-/* Aclaramos levemente el fondo general del modal para que la imagen se aprecie clara */
-.modal-overlay-bg {
-  background: rgba(10, 8, 6, 0.25); /* Sombra suave general para no oscurecer la imagen */
-  padding: 2.5rem 2rem;
-  box-sizing: border-box;
+/* Cuerpo de texto del modal (Limpiado: sin cuadro oscuro estorboso) */
+.escrito-cuerpo-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--parch);
+  text-align: center;
+  width: 100%;
+  margin: 1rem auto;
 }
 
 .leyenda-escritos {
@@ -227,324 +219,109 @@
   color: rgba(128, 101, 41, 0.75);
   max-width: 680px;
   margin: 0.8rem auto 1.5rem auto;
-  /* 2. ESPACIADO ENTRE RENGLONES:
-     Reduce line-height (ej. 1.3 o 1.4 para juntar los renglones) */
   line-height: 1.3;
   text-align: center;
 }
 
-/* --- SUBGRILLA DE LOS 8 HEREDEROS --- */
-.subgrid-herederos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-@media (max-width: 900px) {
-  .subgrid-herederos { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-  .subgrid-herederos { grid-template-columns: 1fr; }
-}
-
-.heredero-card {
-  background: rgba(16, 13, 9, 0.85);
-  border: 1px solid rgba(197, 169, 86, 0.3);
-  border-radius: 6px;
-  padding: 1.2rem;
-  text-align: left;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.heredero-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--gold);
-}
-
-.heredero-card h4 {
-  font-family: 'Cinzel', serif;
-  color: var(--gold);
-  margin-bottom: 0.4rem;
-  font-size: 1.1rem;
-}
-
-.heredero-card p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem;
-  color: var(--parch);
-  line-height: 1.4;
-}
-
-/* --- IMAGEN EN TARJETAS DE ESCRITOS (INICIALES) --- */
-.escrito-img-container {
+/* --- LAYOUT 2 COLUMNAS (Para escritos estándar) --- */
+.modal-layout-dos-columnas {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
   width: 100%;
-  height: 160px;
-  overflow: hidden;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  border: 1px solid rgba(197, 169, 86, 0.25);
-  background: rgba(0, 0, 0, 0.4);
 }
 
-.escrito-card-img {
+.columna-imagen-modal {
+  flex: 0 0 35%;
+  max-width: 320px;
+}
+
+.img-escrito-lateral {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.escrito-card:hover .escrito-card-img {
-  transform: scale(1.05);
-}
-
-/* --- BOTÓN REGRESAR EN EL MODAL --- */
-.btn-regresar-modal {
-  padding: 0.75rem 2rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-  border-radius: 50px; /* Bordes completamente redondeados / ovalado */
-  
-  /* Fondo oscuro y sólido con borde dorado para garantizar visibilidad sobre la imagen */
-  background: rgba(16, 13, 9, 0.95);
-  border: 1.5px solid var(--gold);
-  color: var(--gold);
-  
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-  transition: all 0.3s ease;
-}
-
-.btn-regresar-modal:hover {
-  background: var(--gold);
-  color: var(--dark-bg);
-  box-shadow: 0 0 20px rgba(197, 169, 86, 0.6);
-  transform: translateY(-2px);
-}
-
-/* Estilo para etiquetas de contenido protegido/bloqueado */
-.badge-libro {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 4px 10px;
-    font-size: 0.75rem;
-    font-style: italic;
-    color: #e5c158;
-    background: rgba(20, 10, 30, 0.6);
-    border: 1px dashed #c5a059;
-    border-radius: 4px;
-    line-height: 1.3;
-}
-
-/* =========================================================================
-   🔮 CAJA DE LA PROFECÍA (UNIFICADA CON TRANSICIÓN FLUIDA)
-   ========================================================================= */
-#profecia-clandestina {
-  /* CAMBIO CLAVE: Quitamos display: none para que la transición pueda existir */
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden; /* Evita que el texto se asome mientras está cerrado */
-  transform: translateY(-10px); /* Mini efecto místico de deslizamiento */
-
-  background: linear-gradient(to bottom, rgba(37, 26, 14, 0.5), rgba(16, 13, 9, 0.8));
-
-  /* 👁️ TRUCO EXTRA: Difumina la imagen de fondo que queda detrás de la caja */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px); /* Soporte para Safari */
-
-  border: 1px solid rgba(200, 168, 75, 0.2);
-  padding: 0 2rem; /* El padding vertical (arriba/abajo) se activa en la clase .mostrar */
-  border-radius: 6px;
-  max-width: 600px;
-  margin: 0 auto; /* El margen superior se maneja abajo para evitar saltos */
-  
-  /* Agregamos max-height y transform a la transición mística */
-  transition: opacity 0.6s ease, max-height 0.6s ease-in-out, transform 0.6s ease, padding 0.6s ease, margin 0.6s ease;
-
-  /* Sombra externa negra para separar la caja del fondo por completo */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-}
-
-#profecia-clandestina.mostrar {
-  opacity: 1;
-  max-height: 1000px; /* Le damos una altura máxima generosa para que se despliegue todo el poema */
-  transform: translateY(0);
-  padding: 3rem 2rem; /* Recuperamos el acolchado suavemente al abrir */
-  margin-top: 2rem; /* El espacio con el botón aparece de forma fluida */
-}
-
-.profecia-poema {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  line-height: 1.7;
-  font-size: 1.15rem;
-  color: #e5dcd3;
-  margin: 0;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 169, 86, 0.4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
   display: block;
 }
 
+.columna-texto-modal {
+  flex: 1;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .modal-layout-dos-columnas {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .columna-imagen-modal {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .columna-texto-modal {
+    text-align: center;
+  }
+}
+
 /* =========================================================================
-   🔮 COLORES MÍSTICOS PARA LAS PALABRAS DE LA PROFECÍA
+   🔮 SUB-TARJETAS DE PROFECÍA (CUATRÍPTICO / MINIATURAS)
    ========================================================================= */
 
-/* Oro místico para el recolector y el heredero */
-.resalto-oro {
-  color: var(--gold) !important;
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(200, 168, 75, 0.4);
-}
-
-/* Verde esmeralda para el albor verde */
-.resalto-verde {
-  color: #67c26d !important; /* Verde bosque antiguo */
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(29, 71, 31, 0.4);
-}
-
-/* ✨ EFECTO PLATEADO MÍSTICO PARA LA PROFECÍA */
-.texto-argento {
-  font-weight: bold; /* Lo hace resaltar un poco más */
-  color: #d1d1cf !important; /* plateado */
-    text-shadow: 0 0 8px rgba(211, 214, 211, 0.4);
-  
-  /* Un sutil brillo plateado de fondo para que resalte sobre el pergamino oscuro */
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-}
-
-/* 🖤 EFECTO DE SOMBRA ABSOLUTA Y OSCURA */
-.resalto-sombra {
-  color: #000000 !important; /* Negro puro para la palabra */
-  font-weight: bold;
-  
-  /* 👁️ Truco mágico: Un resplandor oscuro alrededor para que se note sobre el fondo */
-  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.8);
-  
-  /* Un ligero espaciado para darle un toque más imponente */
-  letter-spacing: 1px;
-}
-
-/* 🌌 CAMBIO DE FONDO DINÁMICO PARA LA PROFECÍA */
-body.modo-profecia {
-  background-image: url('../imagenes_principal/profecia.jpg') !important; 
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  transition: background-image 0.5s ease-in-out; /* Hace que el cambio de fondo sea suave y no de golpe */
-}
-
-/* Estilo místico para el Canto de la Saga */
-.canto-saga-contenedor {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  margin: 1rem 0;
-}
-
-.verso-tomo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
-  line-height: 1.35;
-  color: var(--parch);
-  text-align: center;
-  font-style: italic;
-  margin: 0;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-/* Efecto al pasar el cursor sobre cada verso/tomo */
-.verso-tomo:hover {
-  color: #ffe89e;
-  transform: scale(1.02);
-}
-
-/* Etiqueta opcional para marcar el tomo al que pertenece cada frase */
-.badge-tomo {
-  display: inline-block;
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  font-style: normal;
-  color: var(--gold);
-  background: rgba(197, 169, 86, 0.15);
-  border: 1px solid rgba(197, 169, 86, 0.4);
-  border-radius: 4px;
-  padding: 2px 6px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-.verso-tomo.link-saga {
-  cursor: pointer;
-  transition: all 0.25s ease;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-.verso-tomo.link-saga:hover {
-  background: rgba(197, 169, 86, 0.25);
-  color: #ffe89e;
-  transform: translateX(6px);
-}
-
-@keyframes pulsoTarjetaSaga {
-  0% { box-shadow: 0 0 0px transparent; transform: scale(1); }
-  50% { box-shadow: 0 0 25px var(--gold); transform: scale(1.03); }
-  100% { box-shadow: 0 0 0px transparent; transform: scale(1); }
-}
-
-.resaltar-tarjeta {
-  animation: pulsoTarjetaSaga 1.8s ease-in-out;
-  border-radius: 8px;
-}
-
-/* Layout del Tríptico */
-/* TRÍPTICO (MINIATURAS) */
 .contenedor-triptico-profecia {
-  display: flex !important;
-  flex-direction: row !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.2rem;
   margin: 1.5rem 0;
   width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .tarjeta-version-profecia {
-  flex: 1;
-  max-width: 200px;
+  flex: 1 1 180px;
+  max-width: 210px;
   cursor: pointer;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(197, 169, 86, 0.4);
-  background: rgba(10, 8, 6, 0.8);
+  background: rgba(10, 8, 6, 0.85);
   transition: all 0.3s ease;
-  filter: brightness(0.6);
+  filter: brightness(0.7);
   text-align: center;
+  box-sizing: border-box;
 }
 
 .tarjeta-version-profecia:hover {
   filter: brightness(1);
+  border-color: var(--gold, #c5a956);
   transform: translateY(-4px);
-  border-color: var(--gold, #d4af37);
   box-shadow: 0 0 15px rgba(197, 169, 86, 0.4);
 }
 
 .img-profecia-miniatura {
   width: 100%;
-  height: 180px;
+  height: 170px;
   object-fit: cover;
   display: block;
 }
 
 .label-version {
   display: block;
-  padding: 8px 0;
+  padding: 8px 5px;
   font-family: 'Cinzel', serif;
   font-size: 0.85rem;
   color: var(--parch, #e0d7c6);
   background: rgba(15, 12, 9, 0.9);
 }
 
-/* VISTA AMPLIADA A DETALLE */
+/* Vista ampliada en foco */
 .vista-ampliada-profecia {
   animation: fadeIn 0.3s ease-in-out;
 }
@@ -610,82 +387,189 @@ body.modo-profecia {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* 1. Agrandar la ventana contenedora del modal */
-#escrito-modal .modal-contenido,
-.modal-escrito-contenido {
-  max-width: 950px; /* Incrementado (antes solía estar en 600px o 700px) */
-  width: 90%;
-  max-height: 85vh; /* Ocupa hasta el 85% del alto de la pantalla */
-  padding: 2.5rem;
-  overflow-y: auto; /* Permite scroll interno si el texto es muy largo */
+/* =========================================================================
+   📜 SUBGRILLA DE HEREDEROS
+   ========================================================================= */
+
+.subgrid-herederos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-/* 2. Agrandar la tipografía del cuerpo del texto */
-.escrito-cuerpo-texto {
-  font-size: 1.15rem; /* Texto de lectura más grande y claro */
-  line-height: 1.8;   /* Interlineado más amplio para mejor legibilidad */
-  max-width: 800px;
-  margin: 0 auto 1.5rem auto;
+@media (max-width: 900px) {
+  .subgrid-herederos { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .subgrid-herederos { grid-template-columns: 1fr; }
 }
 
-/* 3. Agrandar el título principal */
-#modal-detalle-contenido h2 {
-  font-size: 2.4rem !important;
-  margin-bottom: 0.8rem !important;
-}
-
-/* 4. Agrandar las miniaturas si usas el tríptico/profecía */
-.tarjeta-version-profecia {
-  min-width: 200px;
-  padding: 12px;
-}
-
-.tarjeta-version-profecia img {
-  max-height: 220px;
-  object-fit: cover;
-}
-
-/* Layout en 2 columnas para modales con imagen lateral */
-.modal-layout-dos-columnas {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 2rem;
-  width: 100%;
-}
-
-.columna-imagen-modal {
-  flex: 0 0 38%; /* Ocupa el 38% del ancho */
-  max-width: 320px;
-}
-
-.img-escrito-lateral {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  border: 1px solid rgba(197, 169, 86, 0.4);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-  display: block;
-}
-
-.columna-texto-modal {
-  flex: 1; /* Ocupa el espacio restante */
+.heredero-card {
+  background: rgba(16, 13, 9, 0.85);
+  border: 1px solid rgba(197, 169, 86, 0.3);
+  border-radius: 6px;
+  padding: 1.2rem;
   text-align: left;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-/* En dispositivos móviles se apila verticalmente */
-@media (max-width: 768px) {
-  .modal-layout-dos-columnas {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .columna-imagen-modal {
-    max-width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  .columna-texto-modal {
-    text-align: center;
-  }
+.heredero-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.heredero-card h4 {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.heredero-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--parch);
+  line-height: 1.4;
+}
+
+/* --- CANTO DE LA SAGA --- */
+.canto-saga-contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.verso-tomo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  color: var(--parch);
+  text-align: center;
+  font-style: italic;
+  margin: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.verso-tomo:hover {
+  color: #ffe89e;
+  transform: scale(1.02);
+}
+
+.badge-tomo {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  color: var(--gold);
+  background: rgba(197, 169, 86, 0.15);
+  border: 1px solid rgba(197, 169, 86, 0.4);
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.verso-tomo.link-saga {
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.verso-tomo.link-saga:hover {
+  background: rgba(197, 169, 86, 0.25);
+  color: #ffe89e;
+  transform: translateX(6px);
+}
+
+/* --- BOTONES Y BADGES VARIADOS --- */
+.btn-regresar-modal {
+  padding: 0.75rem 2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 50px;
+  background: rgba(16, 13, 9, 0.95);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.btn-regresar-modal:hover {
+  background: var(--gold);
+  color: var(--dark-bg);
+  box-shadow: 0 0 20px rgba(197, 169, 86, 0.6);
+  transform: translateY(-2px);
+}
+
+.badge-libro {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #e5c158;
+  background: rgba(20, 10, 30, 0.6);
+  border: 1px dashed #c5a059;
+  border-radius: 4px;
+  line-height: 1.3;
+}
+
+/* --- RESALTOS MÍSTICOS --- */
+.resalto-oro {
+  color: var(--gold);
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(200, 168, 75, 0.4);
+}
+
+.resalto-verde {
+  color: #67c26d;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(29, 71, 31, 0.4);
+}
+
+.texto-argento {
+  font-weight: bold;
+  color: #d1d1cf;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.resalto-sombra {
+  color: #000000;
+  font-weight: bold;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+}
+
+/* =========================================================================
+   LIMPIEZA FORZADA DE FONDOS / CUADROS EN MODAL DE ESCRITOS
+   ========================================================================= */
+
+/* Quita fondo, bordes y sombras del contenedor del modal */
+#modal-detalle-contenido .modal-overlay-bg {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 10px !important;
+}
+
+/* Quita fondo de la caja de texto para las excepciones */
+#modal-detalle-contenido .canto-saga-contenedor,
+#modal-detalle-contenido .subgrid-herederos {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Si las tarjetas de los versos del canto tienen un fondo muy marcado */
+#modal-detalle-contenido .verso-tomo {
+  background: rgba(20, 15, 10, 0.4) !important; /* Opacidad leve para legibilidad */
+  border: 1px solid rgba(197, 169, 86, 0.2) !important;
+  margin-bottom: 8px !important;
+  padding: 10px 15px !important;
+  border-radius: 6px !important;
 }

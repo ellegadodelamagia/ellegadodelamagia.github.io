@@ -60,14 +60,14 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
 
         if (contenedorVolver) {
             const btnVolver = document.createElement("a"); 
-            btnVolver.innerHTML = "← Volver a las realidades";
+            btnVolver.innerHTML = "← Volver a los Mundos";
             btnVolver.className = "btn-volver-mundos"; 
 
             btnVolver.onclick = () => renderizarNivel(MundosEstructuraSaga, false);
             contenedorVolver.appendChild(btnVolver);
         }
     } else {
-        if (txtSubtitulo) txtSubtitulo.innerText = "EXISTEN DIFERENTES REALIDADES CONVIVIENDO EN EL UNIVERSO";
+        if (txtSubtitulo) txtSubtitulo.innerText = "EXISTEN DIFERENTES MUNDOS CONVIVIENDO";
         if (txtTitulo) txtTitulo.innerText = "COMPRENDE EL UNIVERSO";
     }
 
@@ -126,8 +126,8 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
             tarjeta.innerHTML = `
                 <div class="roman-bg">?</div>
                 <div class="mundo-card-content oculto-total">
-                    <h3>Zona misteriosa</h3>
-                    <p>Información clasificada.</p>
+                    <h3>???</h3>
+                    <p>Espacio reservado para un reino secreto en la trama.</p>
                 </div>
             `;
             tarjeta.style.cursor = "not-allowed";
@@ -166,7 +166,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
     // 1. NAVEGACIÓN SUPERIOR
     if (contenedorVolver) {
         const btnVolverAtras = document.createElement("a"); 
-        btnVolverAtras.innerHTML = objetoPadre ? `← Volver a ${objetoPadre.nombre}` : "← Volver a las Realidades";
+        btnVolverAtras.innerHTML = objetoPadre ? `← Volver a ${objetoPadre.nombre}` : "← Volver a los Mundos";
         btnVolverAtras.className = "btn-volver-mundos"; 
         
         btnVolverAtras.onclick = () => {
@@ -190,7 +190,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
         if (derivaciones && derivaciones.length > 0) {
             const btnExplorar = document.createElement("a");
-            btnExplorar.innerHTML = `Explorar este plano →`;
+            btnExplorar.innerHTML = `Explorar el mundo →`;
             btnExplorar.className = "btn-volver-mundos";
 
             btnExplorar.onclick = () => {
@@ -201,18 +201,6 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
             };
 
             contenedorVolver.appendChild(btnExplorar);
-        }
-    // AGREGAR AQUÍ:
-        if (tieneSubRazasObjetos) {
-            const btnSubRazas = document.createElement("a");
-            btnSubRazas.innerHTML = `Explorar Pueblos Culturales →`;
-            btnSubRazas.className = "btn-volver-mundos";
-
-            btnSubRazas.onclick = () => {
-                renderizarOtrasRazas(objeto.sub_razas, objeto, listaHermanos, objetoPadre);
-            };
-
-            contenedorVolver.appendChild(btnSubRazas);
         }
     }
 
@@ -244,20 +232,27 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
     let subrazasHTML = "";
     if (objeto.sub_razas && objeto.sub_razas.length > 0) {
         if (tieneSubRazasObjetos) {
-            // Se deja vacío para no mostrar ninguna leyenda dentro de la ficha
-            subrazasHTML = "";
+            subrazasHTML = `
+                <div class="subrazas-container" style="text-align: center; margin-top: 30px;">
+                    <h4>PUEBLOS CULTURALES REGISTRADOS</h4>
+                    <p style="color: #d1b8e7; font-size: 0.9rem; margin-bottom: 15px;">Esta categoría contiene fichas individuales completas para cada pueblo.</p>
+                    <button id="btn-abrir-subrazas-grid" class="btn-volver-mundos" style="cursor: pointer; padding: 10px 20px; font-size: 0.95rem;">
+                         Ver Tarjetas de Pueblos Culturales →
+                    </button>
+                </div>
+            `;
         } else {
             const tags = objeto.sub_razas.map(raza => `<span class="tag-subraza">${raza}</span>`).join("");
             subrazasHTML = `
                 <div class="subrazas-container">
-                    <h4>PUEBLOS CULTURALES INTEGRADOS</h4>
+                    <h4>PUEBLOS CULTURALES INTEGRADAS</h4>
                     <div class="subrazas-tags">${tags}</div>
                 </div>
             `;
         }
     }
 
-    const subTextoArriba = objetoPadre ? `${objeto.tipo || 'RAZA'} • EN EL ${objetoPadre.nombre}` : (objeto.tipo || 'MUNDO');
+    const subTextoArriba = objetoPadre ? `${objeto.tipo || 'RAZA'} • REINO DE ${objetoPadre.nombre}` : (objeto.tipo || 'MUNDO');
 
     fichaCompleta.innerHTML = `
         <div class="encabezado-tarjeta-expandida" style="text-align: center; margin-bottom: 25px;">
@@ -278,7 +273,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
             <br><br><br>
 
             <div class="seccion-lore-bloque caja-magia-dorada">
-                <h3>✨ RELACION CON LA MAGIA</h3>
+                <h3>✨ REGLAS DE LA MAGIA</h3>
                 <p class="texto-fluido-lore">${objeto.reglas_de_magia || "Flujo energético convencional."}</p>
             </div>
             
@@ -290,7 +285,15 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
     document.getElementById("mundos-container").appendChild(fichaCompleta);
 
+    if (tieneSubRazasObjetos) {
+        const btnSubGrid = document.getElementById("btn-abrir-subrazas-grid");
+        if (btnSubGrid) {
+            btnSubGrid.onclick = () => {
+                renderizarOtrasRazas(objeto.sub_razas, objeto, listaHermanos, objetoPadre);
+            };
+        }
     }
+}
 
 function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPadre) {
     const gridDinamico = document.getElementById("mundos-grid-dinamico");
@@ -385,8 +388,8 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
             tarjeta.innerHTML = `
                 <div class="roman-bg">?</div>
                 <div class="mundo-card-content oculto-total" style="text-align: center; padding: 25px 15px;">
-                    <h3>Desconocido</h3>
-                    <p>Información clasificada.</p>
+                    <h3>???</h3>
+                    <p>Espacio reservado para un pueblo secreto en la trama.</p>
                 </div>
             `;
             tarjeta.style.cursor = "not-allowed";

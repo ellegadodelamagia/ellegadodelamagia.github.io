@@ -215,3 +215,19 @@
 .pueblo-africano .indicador-accion {
   color: #f39c12;
 }
+/* Ataca a la sección del grid y a cualquier contenedor dentro del área dinámica */
+#mundos-container,
+#mundos-grid-dinamico,
+.seccion-mistica {
+    padding-left: 45px !important;
+    padding-right: 45px !important;
+    box-sizing: border-box !important;
+}
+
+/* Y le da un margen interno al marco para que las letras no toquen los bordes */
+#mundos-container > div,
+.seccion-mistica > div {
+    padding: 30px !important;
+    box-sizing: border-box !important;
+}
+

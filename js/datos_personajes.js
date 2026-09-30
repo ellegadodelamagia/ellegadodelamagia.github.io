@@ -84,61 +84,55 @@ const SAGA_PERSONAJES = [
     "id": "kaira",
     "nombre": "Kaira Ferrer",
     "raza": "Humano",
-    "tipo": "",
-    "subtipo": "",
+    "tipo": "Vedlys (anómala)", // PERSONALIZABLE
     "origen": "México",
-    "rol": "Recolectora",
+    "rol": "Protagonista y narradora", // PERSONALIZABLE
     "orden": "1",
     "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"],
     "alias": "Kaira",
-    "descripcion": "Seria y analítica. Apasionada de los viajes.",
+    "descripcion": "Es la única humana capaz de usar la magia antigua. Ordena el caos en listas mentales, traduce lo extraordinario a comparaciones domésticas y se hace en silencio las preguntas que nadie le va a contestar, siempre con ironía suave y humor seco. Pragmática por naturaleza, con un fondo romántico que solo asoma cuando el momento lo pide, vive los lugares que recorre y la historia que guardan como algo propio. Determinada incluso cuando eso la lleva a cruzar sus propios límites, no encaja en ningún lugar del sistema de magia: no puede usar la magia contemporánea, y la antigua se adapta a ella en lugar de someterse. Eso la vuelve tan especial como inestable.", // PERSONALIZABLE
     "desbloqueado": "TRUE",
     "nombre_visible": "TRUE",
     "revelacion_activa": "",
     "es_principal": "TRUE",
-    "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
     "imagen": "kaira.jpg"
   },
   {
     "id": "jeziel",
-    "nombre": "Elaiah Jeziel",
-    "raza": "Celestial",
-    "tipo": "Serafin",
-    "subtipo": "",
-    "origen": "",
-    "rol": "Guía y protector de la recolectora",
-    "orden": "2",
+    "nombre": "Jeziel",
+    "raza": "Celestial", // PERSONALIZABLE
+    "tipo": "Serafín", // PERSONALIZABLE
+    "origen": "Plano Celestial", // PERSONALIZABLE
+    "rol": "Acompañante y protector", // PERSONALIZABLE
+    "orden": "2", // PERSONALIZABLE
     "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"],
-    "alias": "Jeziel",
-    "descripcion": "Enviado para cumplir los deseos de Kaira, con total desconocimiento de las emociones humanas.",
+    "alias": "Elahiah Jeziel", // PERSONALIZABLE
+    "descripcion": "Serio y solemne, habla poco pero con exactitud, casi en monosílabos, sin modismos y con un tono seco. Lo humano lo desconcierta: no comprende del todo sus costumbres, y su moral es más rígida y menos ambigua que la de quienes lo rodean. Sus movimientos son mínimos y exactos, y su presencia se siente antes de notarse. No ve la magia, pero la percibe. Describe lo que ve y lo que hace, pero nunca lo que siente; advierte las contradicciones sin resolverlas, y no detecta las grietas que él mismo tiene. No necesita comer, dormir ni ninguna otra necesidad física, pero aprende a disfrutar los alimentos.", // PERSONALIZABLE
     "desbloqueado": "TRUE",
     "nombre_visible": "TRUE",
     "revelacion_activa": "",
-    "es_principal": "TRUE",
-    "": "",
+    "es_principal": "TRUE", // PERSONALIZABLE
     "libro_revelacion": "",
     "descripcion_revelacion": "",
     "imagen": "jeziel.jpg"
   },
   {
     "id": "stefen",
-    "nombre": "Stefen Hargrove",
+    "nombre": "Stefen", // PERSONALIZABLE
     "raza": "Humano",
     "tipo": "Vedlys",
-    "subtipo": "",
-    "origen": "Nueva Zelanda",
-    "rol": "Maestro",
-    "orden": "3",
-    "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"],
+    "origen": "Nueva Zelanda", // PERSONALIZABLE
+    "rol": "Maestro de magia de Kaira", // PERSONALIZABLE
+    "orden": "3", // PERSONALIZABLE
+    "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"], // PERSONALIZABLE
     "alias": "Stefen",
-    "descripcion": "Designado Maestro de magia de Kaira.",
+    "descripcion": "Altamente competente y un maestro desesperante: explica con precisión técnica y términos especializados, con tono profesoral y un dejo de condescendencia, y usa el sarcasmo como forma de relacionarse. Seguro de sí mismo, mantiene la calma cuando la situación se tensa y toma el mando cuando el peligro aparece. Su sonrisa, poco frecuente, contrasta con lo afilado de sus comentarios. Puede ver la magia antigua, pero no usarla.", // PERSONALIZABLE
     "desbloqueado": "TRUE",
     "nombre_visible": "TRUE",
     "revelacion_activa": "",
     "es_principal": "TRUE",
-    "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
     "imagen": "stefen.jpg"
@@ -154,7 +148,7 @@ const SAGA_PERSONAJES = [
     "orden": "8",
     "libros": ["Libro 1", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"],
     "alias": "Zaha",
-    "descripcion": "Fotografa que viaja por el mundo.",
+    "descripcion": "Siempre fué la defensora de Kaira en el colegio y en la vida, actualmente es una fotografa que viaja por el mundo. Sus ojos de gato le ganaron muchos apodos que a ella no le molestan. Es directa y un poco sarcástica. Se declara completamente antimagia. ",
     "desbloqueado": "TRUE",
     "nombre_visible": "TRUE",
     "revelacion_activa": "",
@@ -166,42 +160,38 @@ const SAGA_PERSONAJES = [
   },
   {
     "id": "daniella",
-    "nombre": "Daniella Montalvo",
+    "nombre": "Daniella", // PERSONALIZABLE
     "raza": "Humano",
     "tipo": "Communia",
-    "subtipo": "",
     "origen": "Argentina",
-    "rol": "Mejor amiga de Kaira desde la Universidad",
-    "orden": "4",
-    "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"],
-    "alias": "Daniella",
-    "descripcion": "Experta cocinera, friki de la tecnología, apasionada de las teorías de conspiración.",
+    "rol": "Mejor amiga de Kaira", // PERSONALIZABLE
+    "orden": "5", // PERSONALIZABLE
+    "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"], // PERSONALIZABLE
+    "alias": "Daniella", // PERSONALIZABLE
+    "descripcion": "Entusiasta y expresiva, celebra con exclamaciones, suelta referencias de cine y cultura popular a cada oportunidad y dice lo que siente sin dramatismos. Su afecto explícito, pero práctico reconforta sin ponerse meloso. Su formación en informática le da una cabeza lógica y una curiosidad que no se apaga, y sabe traducir lo complejo a algo simple, tiene una memoria casi ediética y es fanática de la magia. Leal, pero no ciega, es capaz de cuestionar a quienes quiere. Tranquila por dentro, de gestos abiertos, asiente mientras escucha, inclina la cabeza y se acerca cuando alguien necesita apoyo.", // PERSONALIZABLE
     "desbloqueado": "TRUE",
     "nombre_visible": "TRUE",
     "revelacion_activa": "",
-    "es_principal": "TRUE",
-    "": "",
+    "es_principal": "TRUE", // PERSONALIZABLE
     "libro_revelacion": "",
     "descripcion_revelacion": "",
     "imagen": "daniella.jpg"
   },
   {
     "id": "emrys",
-    "nombre": "Emrys Merlin",
+    "nombre": "Emrys Merlín", // PERSONALIZABLE
     "raza": "Humano",
     "tipo": "Vedlys",
-    "subtipo": "",
-    "origen": "Gran Bretaña",
-    "rol": "Director de la Academia Braeiach",
-    "orden": "5",
-    "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 6", "Libro 7"],
-    "alias": "Emrys",
-    "descripcion": "Descendiente del Gran Mago Merlin.",
+    "origen": "Gran Bretaña", // PERSONALIZABLE
+    "rol": "Director de la Academia Braeiach", // PERSONALIZABLE
+    "orden": "4", // PERSONALIZABLE
+    "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"], // PERSONALIZABLE
+    "alias": "Emrys", // PERSONALIZABLE
+    "descripcion": "Director de la Academia Braeiach, presidente de la Hermandad de Merlín y uno de los nodos políticos del mundo mágico. Poderoso vedlys, estratégico y reservado, conoce verdades que otros no y decide con cuidado cuáles compartir. Habla en parlamentos largos y acumulativos, hechos de enumeraciones que fluyen sin tropiezo; no duda, no se interrumpe y no pierde el hilo. Pasa de lo solemne a lo íntimo y de lo íntimo a lo práctico sin transición, y remata con frases cortas que caen como sentencia. Antes que sus palabras habla su cuerpo y acostumbra cambiar de tema sin aviso.", // PERSONALIZABLE
     "desbloqueado": "TRUE",
     "nombre_visible": "TRUE",
     "revelacion_activa": "",
-    "es_principal": "TRUE",
-    "": "",
+    "es_principal": "TRUE", // PERSONALIZABLE
     "libro_revelacion": "",
     "descripcion_revelacion": "",
     "imagen": "emrys.jpg"
@@ -230,20 +220,18 @@ const SAGA_PERSONAJES = [
   {
     "id": "wilbur",
     "nombre": "Wilbur",
-    "raza": "Nemori",
-    "tipo": "Dridalys",
-    "subtipo": "",
-    "origen": "Gran Bretaña",
-    "rol": "Cuidador mágico de la recolectora",
-    "orden": "6",
-    "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"],
+    "raza": "Nemori", // PERSONALIZABLE
+    "tipo": "Kotole", // PERSONALIZABLE
+    "origen": "Celta", // PERSONALIZABLE
+    "rol": "Enlace con el mundo mágico y compañero de viaje", // PERSONALIZABLE
+    "orden": "6", // PERSONALIZABLE
+    "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"], // PERSONALIZABLE
     "alias": "Wilbur",
-    "descripcion": "Servicial, experto cocinero.",
+    "descripcion": "Es un ser de apenas setenta centímetros y un excelente cocinero, con los batidos mágicos como especialidad. Servicial de verdad y cordial con todos, se siente orgulloso de su oficio. Siempre está haciendo algo útil, preparando, ordenando o sirviendo, y se mueve entre los demás con fluidez, sin interrumpir, anticipándose a lo que van a necesitar. Cortés pero cercano, comenta lo práctico y deja caer un humor suave; su expresión amable y su apariencia acogedora hacen que dondequiera que esté se sienta un poco más a gusto.", // PERSONALIZABLE
     "desbloqueado": "TRUE",
     "nombre_visible": "TRUE",
     "revelacion_activa": "",
-    "es_principal": "TRUE",
-    "": "",
+    "es_principal": "TRUE", // PERSONALIZABLE
     "libro_revelacion": "",
     "descripcion_revelacion": "",
     "imagen": "wilbur.jpg"
@@ -253,18 +241,16 @@ const SAGA_PERSONAJES = [
     "nombre": "Preben",
     "raza": "Nemori",
     "tipo": "Kotole",
-    "subtipo": "",
-    "origen": "Noruega",
-    "rol": "Profesor Geomagia",
+    "origen": "Nórdico",
+    "rol": "Profesor invitado de Geomagia", // PERSONALIZABLE
     "orden": "7",
     "libros": ["Libro 1", "Libro 2", "Libro 3", "Libro 4", "Libro 5", "Libro 6", "Libro 7"],
     "alias": "Preben",
-    "descripcion": "",
+    "descripcion": "Más alto que un dridalys pero claramente no humano. Formal y callado al presentarse, cambia por completo cuando enseña: se entusiasma tanto con rocas y minerales que se olvida del mundo y deja a sus alumnos con dolor de cabeza. Directo al grano y con una autoridad que no admite discusión, es quien toma el control cuando algo sale mal, y se preocupa de verdad por la salud de Kaira, a quien solo llama «Recolectora». Habla en frases cortas, sin muletillas, omitiendo artículos, pronombres y hasta verbos auxiliares; nunca dice «yo». Cuando enumera hechos históricos o técnicos, su ritmo se vuelve casi ritual, y mezcla pasado, presente y condicional sin corregirse. Su humor existe, pero no se anuncia: confirma, constata y sigue adelante.", // PERSONALIZABLE
     "desbloqueado": "TRUE",
     "nombre_visible": "TRUE",
     "revelacion_activa": "",
     "es_principal": "TRUE",
-    "": "",
     "libro_revelacion": "",
     "descripcion_revelacion": "",
     "imagen": "preben.jpg"
@@ -425,7 +411,14 @@ const SAGA_PERSONAJES = [
     "origen": "Hungría",
     "rol": "Guardian de la Biblioteca de Ginebra",
     "orden": "17",
-    "libros": ["Libro 1"],
+      "libros": ["Libro 1"],
+    "desbloqueado": "TRUE",
+    "nombre_visible": "TRUE",
+    "revelacion_activa": "",
+    "es_principal": "FALSE",
+    "": "",
+    "libro_revelacion": "",
+    "descripcion_revelacion": "",
     "alias": "Volkov",
     "descripcion": "",
     "desbloqueado": "TRUE",
@@ -439,18 +432,17 @@ const SAGA_PERSONAJES = [
   },
   {
     "id": "madrina",
-    "nombre": "",
-    "raza": "",
+    "nombre": "Madrina",
+    "raza": "Desconocido",
     "tipo": "",
     "subtipo": "",
-    "origen": "",
-    "rol": "",
+    "origen": "Desconocido",
+    "rol": "Ser imaginario (o no) que escucha a Kaira y le da consejos",
     "orden": "18",
-    "libros": "",
-    "alias": "",
+        "libros": ["Libro 1"],
     "descripcion": "",
-    "desbloqueado": "",
-    "nombre_visible": "",
+    "desbloqueado": "TRUE",
+    "nombre_visible": "TRUE",
     "revelacion_activa": "",
     "es_principal": "FALSE",
     "": "",

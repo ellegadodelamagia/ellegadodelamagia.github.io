@@ -71,3 +71,21 @@ body {
     border-left: 3px solid var(--gold);
     padding: 15px;
 }
+
+/* =========================================================================
+   🔤 NORMALIZACIÓN DE TEXTOS (Minúsculas y Mayúsculas)
+   ========================================================================= */
+.tarjeta-personaje,
+.tarjeta-personaje *,
+.tarjeta-back,
+.tarjeta-back * {
+  text-transform: none !important;
+  font-variant: normal !important;
+}
+/* Asegura que el texto interno use una fuente con minúsculas reales */
+.tarjeta-personaje p,
+.tarjeta-back p {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}

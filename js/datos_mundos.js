@@ -6,7 +6,7 @@ const MUNDOS_DATA = [
     nombre: "Plano Humano",
     nombre_visible: "Humano",
     tipo: "Mundo físico",
-    descripcion_breve: "Los seres humanos, mortales sin capacidades mágicas innatas, que habitan el plano terrenal.",
+    descripcion_breve: "Los seres humanos, mortales que habitan el plano terrenal.",
     historia_o_lore: "El Hacedor de todo creó al ser humano para que la magia desapareciera y los Nemori dejaran de pelear: se suponía que los humanos no tendrían acceso a ella ni llegarían a creer en su existencia. Sin embargo, tras la Primera Guerra Mágica, la magia se concentró en ciertos lugares y algunos humanos adquirieron la capacidad de manejarla.",
     reglas_de_magia: "No todos los tipos de magia están al alcance de todos, y sus manifestaciones son casi siempre sutiles.",
     imagen_fondo: "imagenes_principal/mundos/humano_bg.jpg",
@@ -30,7 +30,7 @@ const MUNDOS_DATA = [
         nombre_visible: "Vedlys",
         tipo: "Mundo físico",
         descripcion_breve: "Humanos capaces de percibir y manipular la magia.",
-        historia_o_lore: "Descienden de los humanos que, tras la Primera Guerra Mágica, quedaron cerca de donde la magia se concentraba y desarrollaron la capacidad de manejarla. Existe una práctica social y cultural no escrita: los vedlys no revelan su naturaleza ni la existencia de la magia a los communia. Se organizan en comunidades locales y globales, reguladas principalmente por gobiernos mágicos nacionales o regionales. Algunos vedlys viven completamente integrados entre communia, ejercerciendo profesiones comunes, mientras que otros se aíslan en comunidades mágicas.",
+        historia_o_lore: "Cuando aparecieron los humanos, la magia antigua se replegó hacia la tierra porque no creían en su existencia. En algunos lugares esa magia replegada se integró al ambiente, y los humanos que tuvieron contacto con esos lugares lograron vincularse a ella: así nacieron los vedlys. Existe una práctica social y cultural no escrita: los vedlys no revelan su naturaleza ni la existencia de la magia a los communia. Algunos vedlys viven completamente integrados entre communia, ejerciendo profesiones comunes, mientras que otros se aíslan en comunidades mágicas.",
         reglas_de_magia: "Utilizan la magia contemporánea, la mayoría la percibe pero no la ve completamente. Son muy pocos los que pueden percibir los demás tipos de magia y aún no se conoce alguien que las pueda utilizar todos. La magia contemporánea es la que se enseña en las escuelas de magia y la que se utiliza en la vida cotidiana. Algunos también pueden manipular la energía ambiental.",
         imagen_fondo: "imagenes_principal/mundos/vedlys.jpg",
         desbloqueado: 1
@@ -52,7 +52,7 @@ const MUNDOS_DATA = [
         nombre_visible: "Achlys",
         tipo: "Mundo físico",
         descripcion_breve: "Humanos seguidores de La Sombra, corrompidos por su magia; coloquialmente conocidos como \"los oscuros\".",
-        historia_o_lore: "Los primeros achlys surgieron cuando algunos humanos con magia accedieron a la magia de la Sombra, a través de libros oscuros, encantamientos, maleficios o el convencimiento de otros seguidores. Con el tiempo se formó una jerarquía similar a la de los vedlys: los maestros, que son quienes más saben, que evitan manejar la magia oscura directamente (prefieren que otros la usen) y que son quienes más en contacto están con La Sombra sin saberlo; y los achlys comunes, que sí la manejan y son los que corren el riesgo de convertirse en golems.",
+        historia_o_lore: "Los primeros achlys surgieron cuando algunos humanos con magia accedieron a la magia de la Sombra a través de libros oscuros, encantamientos, maleficios o el convencimiento de otros seguidores. Con el tiempo se formó una jerarquía similar a la de los vedlys: los maestros, que son quienes más saben, que evitan manejar la magia oscura directamente (prefieren que otros la usen) y que son quienes más en contacto están con La Sombra sin saberlo; y los achlys comunes, que sí la manejan y son los que corren el riesgo de convertirse en golems.",
         reglas_de_magia: "Usan la magia oscura, que se destaca porque apaga el color original de la magia; pueden manipular sin problema la magia contemporánea y la energía ambiental y en algunos casos modificar la magia antigua. Qué tan lejos llega la corrupción depende de cuánto se haya usado: un contacto breve despierta lo peor de cada quien, del egoísmo a la envidia, sin convertir a nadie en Achlys todavía, pero una vez que se cae por completo en las garras de La Sombra es muy difícil salir de ahí.",
         imagen_fondo: "imagenes_principal/mundos/achlys.jpg",
         desbloqueado: 1
@@ -77,7 +77,7 @@ const MUNDOS_DATA = [
     tipo: "Dimensión etérea",
     descripcion_breve: "El reino de las esferas superiores, el orden sagrado y la justicia etérea.",
     historia_o_lore: "Los seres celestiales son subordinados del Hacedor de todo. Al principio no existían diferencias entre ellos; las categorías fueron apareciendo con el tiempo: primero con la creación de los humanos, y después con la corrupción de uno de los suyos, La Sombra.",
-    reglas_de_magia: "No ven la magia pero sí perciben su presencia.",
+    reglas_de_magia: "Por regla general no ven la magia pero sí perciben su presencia. Los nemori detectan inmediatamente su naturaleza celestial. Los humanos los olvidan fácilmente a menos que les den su nombre completo. La magia no les afecta, aunque sí puede causarles dolor.",
     desbloqueado: 1, // Nivel 2: Bloqueado pero identificable
     revelado_en: "Libro 2",
     imagen_fondo: "imagenes_principal/mundos/celestial_bg.jpg",
@@ -88,7 +88,7 @@ const MUNDOS_DATA = [
         nombre_visible: "Serafines", 
         tipo: "Orden Celestial", 
         descripcion_breve: "Enviados al mundo humano por el Hacedor de Todo.",
-        historia_o_lore: "Cuando surgieron las demás categorías (guardianes, querubines, guerreros), los serafines quedaron como los ayudantes generales del Hacedor de todo hacia los humanos, tanto en situaciones difíciles como en la concesión de algún deseo a quienes elHacedor de Todo considera dignos. No suelen relacionarse directamente con las personas. Cuando necesitan estar en el mundo físico, toman prestado el cuerpo de un recipiente: un ser humano con características especiales que de antemano ha dado su consentimiento.", 
+        historia_o_lore: "Cuando surgieron las demás categorías (guardianes, querubines, guerreros), los serafines quedaron como los ayudantes generales del Hacedor de todo hacia los humanos, tanto en situaciones difíciles como en la concesión de algún deseo a quienes elHacedor de Todo considera dignos. No suelen relacionarse directamente con las personas. Cuando necesitan estar en el mundo físico, toman prestado el cuerpo de un recipiente: un ser humano con características especiales que de antemano ha dado su consentimiento. Una de sus principales características es poder escuchar los pensamientos del humano al que le van a conceder los deseos. ", 
         reglas_de_magia: "No soportan la magia activa, y si están en contacto prolongado o intenso con ella, se convierten en polvo cósmico.",
         imagen_fondo: "imagenes_principal/mundos/serafines.jpg", 
         desbloqueado: 1 
@@ -231,28 +231,28 @@ const MUNDOS_DATA = [
         desbloqueado: 1,
         sub_razas: [
           {
-            nombre: "Bóreas",
+            nombre: "Siaurys",
             region: "Norte helado",
             imagen_fondo: "imagenes_principal/mundos/subrazas/elfos_boreas.jpg",
             descripcion_breve: "Custodios de bosques y fauna de climas fríos; los más reservados de las cuatro estirpes.",
             desbloqueado: 1
           },
           {
-            nombre: "Noto",
+            nombre: "Pietys",
             region: "Regiones cálidas y tormentosas",
             imagen_fondo: "imagenes_principal/mundos/subrazas/elfos_noto.jpg",
             descripcion_breve: "Custodios de la vida en climas húmedos y tempestuosos; temperamento intenso, igual que el viento que los nombra.",
             desbloqueado: 1
           },
           {
-            nombre: "Euro",
+            nombre: "Ritys",
             region: "Oriente",
             imagen_fondo: "imagenes_principal/mundos/subrazas/elfos_euro.jpg",
             descripcion_breve: "Custodios de bosques y fauna de Asia; conocidos por su disciplina y su cercanía con las tradiciones más antiguas de los elfos.",
             desbloqueado: 1
           },
           {
-            nombre: "Céfiro",
+            nombre: "Vakarys",
             region: "Regiones templadas",
             imagen_fondo: "imagenes_principal/mundos/subrazas/elfos_cefiro.jpg",
             descripcion_breve: "Custodios de bosques y fauna de climas templados; los más cercanos a los humanos, y por eso los más frecuentes entre los curanderos que asisten a los vedlys.",
@@ -322,7 +322,7 @@ const MUNDOS_DATA = [
           {
             nombre: "Oceánides",
             region: "Mares y oceanos",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/nereidas_pueblo2.jpg",
+            imagen_fondo: "imagenes_principal/mundos/oceanida.jpg",
             descripcion_breve: "Cuidan los mares y arrecifes de coral",
             desbloqueado: 1
           }
@@ -504,6 +504,16 @@ const MUNDOS_DATA = [
   imagen_fondo: "imagenes_principal/mundos/panteon_hawaiano.jpg",
   desbloqueado: 1
 },
+{
+  id: "panteon_mesopotamico",
+  nombre: "Mesopotámica",
+  region: "Mesopotamia",
+  descripcion_breve: "Una de las cosmovisiones más antiguas del mundo, donde la muerte era el mismo destino para todos.",
+  historia_o_lore: "El inframundo mesopotámico, Kur, era 'la tierra sin retorno': un reino oscuro bajo tierra gobernado por la diosa Ereshkigal, al que llegaban por igual reyes y campesinos, héroes y villanos. No existía distinción entre buenos y malos: era simplemente el único destino que esperaba a todo mortal después de la vida.",
+  reglas_de_magia: "A diferencia de otras cosmovisiones, aquí lo sobrenatural no premiaba ni castigaba: el más allá era un hecho ineludible, no una consecuencia moral. Los dioses gobernaban el destino del mundo desde consejos divinos, y el equilibrio entre los reinos —el cielo, la tierra y el inframundo— dependía de que cada uno respetara sus límites.",
+  imagen_fondo: "imagenes_principal/mundos/panteon_mesopotamico.jpg",
+  desbloqueado: 1
+}
     ]
   }
 ];

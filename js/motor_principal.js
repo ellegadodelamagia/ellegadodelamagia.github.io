@@ -27,12 +27,19 @@ function abrirPortal(tipo) {
         btnProceder.textContent = "Desplegar Mapa";
         paginaDestinoGlobal = "mapa.html";
     } else if (tipo === 'recetas') {
-        modalTitulo.textContent = "EL RECETARIO DE DANIELLA";
-        modalDescripcion.textContent = "Adéntrate en los secretos culinarios de Daniella. Descubrirás sus recetas más interesantes y algunas que Wilbur le enseñó.";
-        btnProceder.textContent = "Abrir Recetario";
-        paginaDestinoGlobal = "recetas.html";
-    }
+    modalTitulo.textContent = "EL RECETARIO DE DANIELLA";
+    modalDescripcion.textContent = "Daniella aún está recopilando y transcribiendo las recetas del recorrido de Kaira. ¡Pronto podrás descubrir sus secretos culinarios!";
+    btnProceder.textContent = "Entendido";
+    paginaDestinoGlobal = ""; // Al dejarlo vacío, no navegará a ningún lado
+}
 
+    //} else if (tipo === 'recetas') {
+    //     modalTitulo.textContent = "EL RECETARIO DE DANIELLA";
+    //   modalDescripcion.textContent = "Adéntrate en los secretos culinarios de Daniella. Descubrirás sus recetas más interesantes y algunas que Wilbur le enseñó.";
+    // btnProceder.textContent = "Abrir Recetario";
+    //paginaDestinoGlobal = "recetas.html"; }
+
+    
     // Mostramos el modal aplicando la clase CSS
     modal.classList.add('mostrar');
     

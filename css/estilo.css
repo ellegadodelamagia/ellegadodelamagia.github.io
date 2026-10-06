@@ -580,3 +580,32 @@ section {
     transform: scale(1.03);
   }
 }
+.en-construccion {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    background: #1a1a1a;
+    border: 1px dashed #c5a880;
+    border-radius: 12px;
+    text-align: center;
+    color: #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.icono-construccion {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.en-construccion h3 {
+    color: #c5a880;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.en-construccion p {
+    font-style: italic;
+    color: #b0b0b0;
+    font-size: 1rem;
+    margin: 0;
+}

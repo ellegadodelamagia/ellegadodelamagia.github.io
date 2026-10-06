@@ -164,7 +164,7 @@ const MUNDOS_DATA = [
           {
             nombre: "Brownies (ahora Dridalys)",
             region: "Europa (Celta)",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/brownies.jpg",
+            imagen_fondo: "imagenes_principal/mundos/celta.jpg",
             descripcion_breve: "Protectores del hogar y artesanos de la cocina mística.",
             desbloqueado: 1
           },
@@ -178,42 +178,42 @@ const MUNDOS_DATA = [
           {
             nombre: "Kete",
             region: "África",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/kete.jpg",
+            imagen_fondo: "imagenes_principal/mundos/kete.jpg",
             descripcion_breve: "Espíritus guardianes de las sabanas y las raíces milenarias.",
             desbloqueado: 1
           },
           {
             nombre: "Uchuy",
             region: "Sudamérica",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/uchuy.jpg",
+            imagen_fondo: "imagenes_principal/mundos/uchuy.jpg",
             descripcion_breve: "Moradores de las alturas andinas y guardianes del fuego sagrado.",
             desbloqueado: 1
           },
           {
             nombre: "Qizm",
             region: "Arabia",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/qizm.jpg",
+            imagen_fondo: "imagenes_principal/mundos/qizm.jpg",
             descripcion_breve: "Nómadas de los oasis y guardianes de secretos bajo las arenas.",
             desbloqueado: 1
           },
           {
-            nombre: "Malenkiy",
+            nombre: "Malenky",
             region: "Siberia",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/malenkiy.jpg",
+            imagen_fondo: "imagenes_principal/mundos/malenky.jpg",
             descripcion_breve: "Resistentes al frío eterno, guardianes de los bosques taiga.",
             desbloqueado: 1
           },
           {
             nombre: "Xiao",
             region: "China",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/xiao.jpg",
+            imagen_fondo: "imagenes_principal/mundos/xiao.jpg",
             descripcion_breve: "Orejas más pequeñas y ojos menos saltones que el resto de los dridalys; armoniosos custodios de las montañas sagradas y valles de bambú.",
             desbloqueado: 1
           },
           {
             nombre: "Tanuki",
             region: "Japón",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/tanuki.jpg",
+            imagen_fondo: "imagenes_principal/mundos/tanuki.jpg",
             descripcion_breve: "Humanoides blancos de ojos negros, sin facciones visibles ni manos aparentes; astutos guardianes de la naturaleza urbana y rural.",
             desbloqueado: 1
           }
@@ -233,28 +233,28 @@ const MUNDOS_DATA = [
           {
             nombre: "Siaurys",
             region: "Norte helado",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/elfos_boreas.jpg",
+            imagen_fondo: "imagenes_principal/mundos/siaurys.jpg",
             descripcion_breve: "Custodios de bosques y fauna de climas fríos; los más reservados de las cuatro estirpes.",
             desbloqueado: 1
           },
           {
             nombre: "Pietys",
             region: "Regiones cálidas y tormentosas",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/elfos_noto.jpg",
+            imagen_fondo: "imagenes_principal/mundos/pietys.jpg",
             descripcion_breve: "Custodios de la vida en climas húmedos y tempestuosos; temperamento intenso, igual que el viento que los nombra.",
             desbloqueado: 1
           },
           {
             nombre: "Ritys",
             region: "Oriente",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/elfos_euro.jpg",
+            imagen_fondo: "imagenes_principal/mundos/ritys.jpg",
             descripcion_breve: "Custodios de bosques y fauna de Asia; conocidos por su disciplina y su cercanía con las tradiciones más antiguas de los elfos.",
             desbloqueado: 1
           },
           {
             nombre: "Vakarys",
             region: "Regiones templadas",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/elfos_cefiro.jpg",
+            imagen_fondo: "imagenes_principal/mundos/vakarys.jpg",
             descripcion_breve: "Custodios de bosques y fauna de climas templados; los más cercanos a los humanos, y por eso los más frecuentes entre los curanderos que asisten a los vedlys.",
             desbloqueado: 1
           }
@@ -274,28 +274,28 @@ const MUNDOS_DATA = [
           {
             nombre: "Nórdicos",
             region: "Norte Helado",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/kotole_nordicos.jpg",
+            imagen_fondo: "imagenes_principal/mundos/kotole_nordico.jpg",
             descripcion_breve: "Maestros forjadores de las cumbres más frías, expertos en dar forma a los minerales que extraen.",
             desbloqueado: 1
           },
           {
             nombre: "Asiáticos",
             region: "Vetas de Jade",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/kotole_asiaticos.jpg",
+            imagen_fondo: "imagenes_principal/mundos/kotole_asiatico.jpg",
             descripcion_breve: "Artesanos del equilibrio y la energía fluida, expertos en el moldeado de piedras preciosas.",
             desbloqueado: 1
           },
           {
             nombre: "Americanos",
             region: "Cavernas Sagradas",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/kotole_americanos.jpg",
+            imagen_fondo: "imagenes_principal/mundos/kotole_americano.jpg",
             descripcion_breve: "Guardianes de la tierra ancestral con un lazo espiritual directo con las piedras vivas.",
             desbloqueado: 1
           },
           {
             nombre: "Africanos",
             region: "Cumbres Volcánicas",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/kotole_africanos.jpg",
+            imagen_fondo: "imagenes_principal/mundos/kotole_africano.jpg",
             descripcion_breve: "Sabios de la tierra profunda, maestros en la fundición de metales junto al calor volcánico.",
             desbloqueado: 1
           }
@@ -506,7 +506,7 @@ const MUNDOS_DATA = [
 },
 {
   id: "panteon_mesopotamico",
-  nombre: "Mesopotámica",
+  nombre: "Panteón Mesopotámico",
   region: "Mesopotamia",
   descripcion_breve: "Una de las cosmovisiones más antiguas del mundo, donde la muerte era el mismo destino para todos.",
   historia_o_lore: "El inframundo mesopotámico, Kur, era 'la tierra sin retorno': un reino oscuro bajo tierra gobernado por la diosa Ereshkigal, al que llegaban por igual reyes y campesinos, héroes y villanos. No existía distinción entre buenos y malos: era simplemente el único destino que esperaba a todo mortal después de la vida.",

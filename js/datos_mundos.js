@@ -315,7 +315,7 @@ const MUNDOS_DATA = [
           {
             nombre: "Ondinas",
             region: "Lagos y rios",
-            imagen_fondo: "imagenes_principal/mundos/subrazas/nereidas_pueblo1.jpg",
+            imagen_fondo: "imagenes_principal/mundos/ondinas.jpg",
             descripcion_breve: "Custodian palacios de cristal en los lagos y ríos de agua dulce.",
             desbloqueado: 1
           },

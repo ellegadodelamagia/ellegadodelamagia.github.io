@@ -158,13 +158,13 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(3, 3, 5, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 3000;
-  justify-content: center;
+  background-color: rgba(3, 3, 5, 0.85); /* PERSONALIZABLE: opacidad del fondo (0.95 = casi negro, 0.6 = se ve la página detrás) */
+  backdrop-filter: blur(6px); /*PERSONALIZABLE: desenfoque del fondo (10px = muy borroso, 3px = se leen los títulos) */
+  z-index: 900; /* PERSONALIZABLE: debe ser menor que el z-index de la barra (1000) para que la barra quede por encima y nítida */
+   justify-content: center;
   align-items: flex-start;
   overflow-y: auto;
-  padding: 2rem 1rem;
+  padding: 7rem 2rem 1rem;   /* PERSONALIZABLE: el primer valor (7rem) es el espacio para que el contenido no quede detrás de la barra */
   box-sizing: border-box;
 }
 

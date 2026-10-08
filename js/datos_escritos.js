@@ -52,17 +52,17 @@ mientras el olvido amenaza con consumirlo todo.`,
 
           <div class="tarjeta-version-profecia" 
                data-titulo="Traducción oficial"
-               data-img="imagenes_principal/escritos/profecia_recolector_v_oficial.jpg"
+               data-img="imagenes_principal/escritos/profecia_recolector_v3.jpg"
                data-desc="La versión canónica y popularmente conocida en el mundo Vedlys. Stefen la descartó al comenzar a examinar los escritos del Maestro de la Magia, pero era la interpretación estándar que todos conocían.">
-            <img src="imagenes_principal/escritos/profecia_recolector_v_oficial.jpg" alt="Traducción Oficial" class="img-profecia-miniatura">
+            <img src="imagenes_principal/escritos/profecia_recolector_v3.jpg" alt="Traducción Oficial" class="img-profecia-miniatura">
             <span class="label-version">Traducción oficial</span>
           </div>
 
           <div class="tarjeta-version-profecia" 
                data-titulo="Traducción revisada y corregida"
-               data-img="imagenes_principal/escritos/profecia_recolector_v3.jpg"
+               data-img="imagenes_principal/escritos/profecia_recolector_v4.jpg"
                data-desc="Realizada por Stefen, corregida entre Stefen y Jeziel. Utilizada para la prueba de Kaira.">
-            <img src="imagenes_principal/escritos/profecia_recolector_v3.jpg" alt="Traducción Revisada y Corregida" class="img-profecia-miniatura">
+            <img src="imagenes_principal/escritos/profecia_recolector_v4.jpg" alt="Traducción Revisada y Corregida" class="img-profecia-miniatura">
             <span class="label-version">Traducción revisada y corregida</span>
           </div>
         </div>

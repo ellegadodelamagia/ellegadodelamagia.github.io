@@ -278,4 +278,11 @@ function configurarEventosModal() {
       if (e.target === modal) modal.classList.remove("visible");
     });
   }
+
+  // PERSONALIZABLE: cierra el modal al pulsar cualquier título de la barra de navegación
+  document.querySelectorAll(".barra-navegacion a").forEach(enlace => {
+    enlace.addEventListener("click", () => {
+      if (modal) modal.classList.remove("visible");
+    });
+  });
 }

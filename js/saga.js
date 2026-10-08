@@ -111,6 +111,9 @@ function mostrarGridSaga() {
 /**
  * 4. Vista 3: Detalle del libro seleccionado
  */
+/**
+ * Vista 3: Detalle del libro seleccionado con botón directo a compra/contacto
+ */
 function abrirDetalleLibro(libroId) {
   const datos = window.SAGA_DATA || (typeof SAGA_DATA !== "undefined" ? SAGA_DATA : []);
   const libro = datos.find((item) => item.id === libroId);
@@ -118,6 +121,12 @@ function abrirDetalleLibro(libroId) {
 
   const contenedor = document.getElementById("contenedor-modulo-saga");
   if (!contenedor) return;
+
+  // Actualizar el encabezado de la sección con el título del libro
+  const tituloSub = document.querySelector("#historia .titulo-seccion-sub");
+  const tituloPrincipal = document.querySelector("#historia .titulo-seccion");
+  if (tituloSub) tituloSub.textContent = `LIBRO ${libro.numero}`;
+  if (tituloPrincipal) tituloPrincipal.textContent = libro.titulo;
 
   const esNivel2 = libro.nivelVisibilidad === 2;
   const claseBlurImagen = esNivel2 ? "imagen-blur-protegida" : "";
@@ -160,9 +169,31 @@ function abrirDetalleLibro(libroId) {
             : `<p class="texto-sinopsis">${libro.sinopsis}</p>`
         }
       </div>
+
+      <!-- Botón de acción hacia Detrás de la Magia -->
+      <div class="bloque-accion-compra">
+        <button class="btn-redondeado-saga btn-accion-adquirir" onclick="irADetrasDeLaMagia()">
+          Toca si quieres llevar el libro 📖
+        </button>
+      </div>
     </div>
   `;
 }
+
+/**
+ * Desplaza la pantalla suavemente hacia el bloque de libros en Detrás de la Magia
+ */
+function irADetrasDeLaMagia() {
+  const destino = document.getElementById("grid-libros-saga") || document.querySelector(".bloque-libros");
+  if (destino) {
+    destino.scrollIntoView({ behavior: "smooth", block: "center" });
+  } else {
+    console.warn("Módulo Saga: No se encontró el contenedor #grid-libros-saga.");
+  }
+}
+
+// Hacer pública la función
+window.irADetrasDeLaMagia = irADetrasDeLaMagia;
 
 /**
  * 5. Restaura la vista introductoria

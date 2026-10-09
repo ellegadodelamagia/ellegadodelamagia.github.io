@@ -109,7 +109,7 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
 
             const textoRevelado = esLibroProtegido 
                 ? "Información protegida hasta el momento adecuado" 
-                : `Se revelará en ${item.revelado_en || 'los siguientes libros'}`;
+                : `Se revelará en el momento adecuado`;
 
             tarjeta.innerHTML = `
                 <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
@@ -380,17 +380,15 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
             const esLibroProtegido = libroAsociado.includes("herederos") || libroAsociado.includes("profecía") || libroAsociado.includes("profecia");
             const textoRevelado = esLibroProtegido 
                 ? "Información protegida hasta el momento adecuado" 
-                : `Se revela en: ${item.revelado_en || 'Siguientes libros'}`;
+                : `Se revela en el momento adecuado`;
 
             tarjeta.innerHTML = `
-                <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
-                <div class="mundo-card-content bloqueado-blur" style="text-align: center; padding: 25px 15px;">
-                    <h3 style="filter: blur(5px); user-select: none; margin-bottom: 8px; font-size: 1.3rem; color: #f5eab7;">${nombreReal.toUpperCase()}</h3>
-                    <p class="txt-bloqueado"> El nombre y la información contenidos en esta tarjeta aún no se pueden conocer.</p>
-                    <span class="badge-libro">${textoRevelado}</span>
-                </div>
-            `;
-            tarjeta.style.cursor = "not-allowed";
+        <div class="mundo-card-content">
+            <h3 style="filter: blur(5px); user-select: none;">${nombreMostrar.toUpperCase()}</h3>
+            <p class="txt-bloqueado">El nombre y la información de este tipo de ser es sensible y aún no la puedes conocer.</p>
+        </div>
+         `;
+             tarjeta.style.cursor = "not-allowed";
 
         // ==========================================
         // NIVEL 3: SECRETO TOTAL (CENSURADO AUTOMÁTICAMENTE)

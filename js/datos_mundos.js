@@ -1,5 +1,9 @@
 // js/datos_mundos.js
 
+// Nivel 1: Completamente visible
+// Nivel 2: Bloqueado pero identificable
+// Nivel 3: Totalmente oculto (spoiler)
+
 const MUNDOS_DATA = [
   {
     id: "mundo_humano",
@@ -78,7 +82,7 @@ const MUNDOS_DATA = [
     descripcion_breve: "El reino de las esferas superiores, el orden sagrado y la justicia etérea.",
     historia_o_lore: "Los seres celestiales son subordinados del Hacedor de todo. Al principio no existían diferencias entre ellos; las categorías fueron apareciendo con el tiempo: primero con la creación de los humanos, y después con la corrupción de uno de los suyos, La Sombra.",
     reglas_de_magia: "Por regla general no ven la magia pero sí perciben su presencia. Los nemori detectan inmediatamente su naturaleza celestial. Los humanos los olvidan fácilmente a menos que les den su nombre completo. La magia no les afecta, aunque sí puede causarles dolor.",
-    desbloqueado: 1, // Nivel 2: Bloqueado pero identificable
+    desbloqueado: 1, 
     revelado_en: "Libro 2",
     imagen_fondo: "imagenes_principal/mundos/celestial_bg.jpg",
     regiones: [
@@ -155,8 +159,8 @@ const MUNDOS_DATA = [
         nombre: "Dridalys",
         nombre_visible: "Dridalys",
         tipo: "Raza Ancestral",
-        descripcion_breve: "Guardianes del equilibrio entre razas y elementos.",
-        historia_o_lore: "Encargados de mantener el equilibrio y la paz entre razas y elementos, y mensajeros entre ellas. Por ser comerciantes, con el tiempo elfos y nereidas empezaron a tratarlos como inferiores y a aprovecharse de ellos; como son de muy buen corazón, no se dieron cuenta hasta que la situación ya era insostenible. Cuando estalló la Primera Guerra Mágica, los dridalys procuraron no entrar en ella.",
+        descripcion_breve: "Guardianes del equilibrio.",
+        historia_o_lore: "Encargados de mantener el equilibrio entre elementos, mantener la paz entre razas, y ser mensajeros. Elfos y nereidas, con el paso del tiempo, empezaron a tratarlos como inferiores y a aprovecharse de ellos; como son de muy buen corazón, no se dieron cuenta hasta que la situación ya era insostenible. Cuando estalló la Primera Guerra Mágica, los dridalys procuraron no entrar en ella.",
         reglas_de_magia: "Usan la energía natural del fuego y son cocineros excelentes.",
         imagen_fondo: "imagenes_principal/mundos/dridalys.jpg",
         desbloqueado: 1,
@@ -225,8 +229,8 @@ const MUNDOS_DATA = [
         nombre_visible: "Elfos",
         tipo: "Raza Ancestral",
         descripcion_breve: "Custodios del mundo animal y vegetal sobre la tierra.",
-        historia_o_lore: "Con el tiempo se volvieron soberbios y descuidaron su función original; un grupo fiel a sus raíces eligió el exilio antes que abandonar su propósito. Es la raza Nemori de apariencia más parecida a la humana, y por eso son los curanderos que asisten a los vedlys.",
-        reglas_de_magia: "Usan la energía natural del aire, y son la raza que maneja la magia antigua con mayor facilidad. Los elfos corrompidos por la soberbia perdieron la capacidad de hablar con los animales; los del grupo exiliado conservaron la magia pura, e incluso pueden transformarse en animales.",
+        historia_o_lore: "Con el tiempo se volvieron soberbios y descuidaron su función original; un grupo fiel a sus raíces eligió el exilio antes que abandonar su propósito. Es la raza Nemori de apariencia más parecida a la humana, y por eso son los curanderos que asisten a los vedlys. Los elfos corrompidos por la soberbia perdieron la capacidad de hablar con los animales; los del grupo exiliado conservaron la magia pura, e incluso pueden transformarse en animales.",
+        reglas_de_magia: "Usan la energía natural del aire, y son la raza que maneja la magia antigua con mayor facilidad. ",
         imagen_fondo: "imagenes_principal/mundos/elfos.jpg",
         desbloqueado: 1,
         sub_razas: [
@@ -308,8 +312,8 @@ const MUNDOS_DATA = [
         nombre_visible: "Nereidas",
         tipo: "Raza Ancestral",
         descripcion_breve: "Guardianas de las aguas (ríos, lagos y mares) y de los animales y plantas acuáticos que dependen de ellas.",
-        historia_o_lore: "Su función original es ayudar a esa vida a florecer y expandirse. Con el tiempo, algunas se corrompieron por soberbia y codicia; un grupo fiel a sus raíces eligió el exilio y conservó la pureza de su magia.",
-        reglas_de_magia: "Su magia proviene de la energía natural del agua. Las corrompidas solo pueden obtener magia de las plantas arrancándolas, por lo que procuran no usarla; las del grupo exiliado pueden obtener su esencia sin dañarlas.",
+        historia_o_lore: "Con el tiempo, algunas se corrompieron por soberbia y codicia; un grupo fiel a sus raíces eligió el exilio y conservó la pureza de su magia. Las corrompidas solo pueden obtener magia de las plantas arrancándolas, por lo que procuran no usarla; las del grupo exiliado pueden obtener su esencia sin dañarlas.",
+        reglas_de_magia: "Su magia proviene de la energía natural del agua. Pueden manipularla directamente y son capaces de volverse invisibles.",
         imagen_fondo: "imagenes_principal/mundos/nereidas.jpg",
         desbloqueado: 1,
         sub_razas: [
@@ -317,7 +321,7 @@ const MUNDOS_DATA = [
             nombre: "Ondinas",
             region: "Lagos y rios",
             imagen_fondo: "imagenes_principal/mundos/ondinas.jpg",
-            descripcion_breve: "Custodian palacios de cristal en los lagos y ríos de agua dulce.",
+            descripcion_breve: "Cuidan los lagos y ríos del mundo.",
             desbloqueado: 1
           },
           {

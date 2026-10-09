@@ -573,3 +573,38 @@
   padding: 10px 15px !important;
   border-radius: 6px !important;
 }
+
+/* Estilo complementario para elementos blureados */
+.blur-texto {
+  filter: blur(4px) !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: none !important;
+}
+/* ===================================================
+   DIFERENCIACIÓN DE TARJETAS (Desbloqueadas vs Bloqueadas)
+   =================================================== */
+
+/* 1. Tarjetas DESBLOQUEADAS (Fondo más claro y destacado) */
+.escrito-card:not(.bloqueo-nivel-2) {
+  background: rgba(35, 28, 20, 0.85); /* Fondo más claro que el base oscuro */
+  border: 1px solid rgba(197, 169, 86, 0.5); /* Borde dorado más visible */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 0 12px rgba(197, 169, 86, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Efecto hover suave para las tarjetas desbloqueadas */
+.escrito-card:not(.bloqueo-nivel-2):hover {
+  background: rgba(45, 36, 25, 0.92); /* Un tono todavía más claro al pasar el ratón */
+  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow: 0 6px 20px rgba(197, 169, 86, 0.2);
+  transform: translateY(-3px);
+}
+
+/* 2. Tarjetas CON BLOQUEO (Nivel 1 y Nivel 2: Opacas y oscuras) */
+.escrito-card.bloqueo-nivel-2 {
+  background: rgba(41, 33, 25, 0.9) !important; /* Fondo muy oscuro */
+  border: 1px solid rgba(80, 70, 50, 0.3) !important; /* Borde apagado */
+  box-shadow: none !important;
+  opacity: 0.75;
+}

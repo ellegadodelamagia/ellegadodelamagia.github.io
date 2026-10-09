@@ -35,9 +35,34 @@ function renderizarEscritos(lista) {
     const card = document.createElement("article");
     card.className = "escrito-card";
 
-    const esBloqueado = Number(escrito.desbloqueado) === 2 || escrito.bloqueado === true;
+    // Evaluación del nivel de bloqueo
+    const nivelBloqueo = Number(escrito.desbloqueado) === 2 || escrito.nivelBloqueo === 2 || escrito.bloqueado === 2
+      ? 2 
+      : (escrito.bloqueado === true ? 1 : 0);
 
-    if (esBloqueado) {
+    if (nivelBloqueo === 2) {
+      // 📌 BLOQUEO NIVEL 2:
+      // 1. No se puede ampliar (no lleva botón de explorar ni evento click)
+      // 2. Categoría y Subtítulo blureados
+      // 3. Muestra la descripción corta real
+      // 4. Botón con mensaje de localización por Kaira
+      card.classList.add("bloqueo-nivel-2");
+      card.style.cursor = "not-allowed";
+
+      card.innerHTML = `
+        <div>
+          <span class="badge-categoria blur-texto" style="filter: blur(4px); user-select: none; display: inline-block;">${obtenerNombreCategoria(escrito.categoria)}</span>
+          <h3 style="color: rgba(245, 228, 191, 0.6); margin-top: 8px;"> ${escrito.titulo}</h3>
+          <p class="subtitulo blur-texto" style="filter: blur(4px); user-select: none;">${escrito.subtitulo || 'Subtítulo protegido'}</p>
+          <p class="descripcion" style="opacity: 0.85; font-style: italic; margin-top: 10px;">${escrito.descripcionCorta || ''}</p>
+        </div>
+        <button type="button" class="btn-dorado" disabled style="opacity: 0.6; cursor: not-allowed; background: rgba(20, 15, 10, 0.85); border-color: rgba(197, 169, 86, 0.3); color: #aaa; width: 100%; margin-top: 15px; font-size: 0.85rem; padding: 8px 5px;">
+          Documento perdido en espera de ser localizado por Kaira
+        </button>
+      `;
+    } else if (nivelBloqueo === 1) {
+      // 📌 BLOQUEO NIVEL 1: Bloqueado estándar
+      card.style.cursor = "not-allowed";
       card.innerHTML = `
         <div>
           <span class="badge-categoria">${obtenerNombreCategoria(escrito.categoria)}</span>
@@ -45,12 +70,12 @@ function renderizarEscritos(lista) {
           <p class="subtitulo">${escrito.subtitulo || ''}</p>
           <p class="descripcion" style="opacity: 0.8; font-style: italic;">Contenido oculto hasta el momento adecuado.</p>
         </div>
-        <button type="button" class="btn-dorado" disabled style="opacity: 0.5; cursor: not-allowed; background: rgba(20, 15, 10, 0.8); border-color: rgba(197, 169, 86, 0.3); color: #888;">
-          🔒 Contenido protegido 
+        <button type="button" class="btn-dorado" disabled style="opacity: 0.5; cursor: not-allowed; background: rgba(20, 15, 10, 0.8); border-color: rgba(197, 169, 86, 0.3); color: #888; width: 100%; margin-top: 15px;">
+          Contenido protegido 
         </button>
       `;
-      card.style.cursor = "not-allowed";
     } else {
+      // 📌 DESBLOQUEADO
       card.innerHTML = `
         <div>
           <span class="badge-categoria">${obtenerNombreCategoria(escrito.categoria)}</span>
@@ -77,7 +102,11 @@ function abrirEscrito(id) {
 
   const item = listaDatos.find(e => e.id === id);
 
-  if (!item || item.desbloqueado === 2) return;
+  // 🛡️ Cancela la apertura si no existe o si es Nivel 2 de bloqueo
+  if (!item || Number(item.desbloqueado) === 2 || item.nivelBloqueo === 2 || item.bloqueado === 2) {
+    console.warn(`⛔ Acceso denegado: El escrito con ID "${id}" tiene un bloqueo de Nivel 2.`);
+    return;
+  }
 
   const modal = document.getElementById("escrito-modal");
   const modalContenido = document.getElementById("modal-detalle-contenido");
@@ -120,7 +149,7 @@ function abrirEscrito(id) {
        </div>` 
     : '';
 
-  // EVALUACIÓN FLEXIBLE DE EXCEPCIONES: Detecta cualquier ID que contenga estas palabras clave
+  // EVALUACIÓN FLEXIBLE DE EXCEPCIONES
   const idMinusculas = (item.id || '').toLowerCase();
   const esExcepcionLayout = 
     idMinusculas.includes('canto') || 
@@ -132,7 +161,7 @@ function abrirEscrito(id) {
   let estructuraCuerpo = '';
 
   if (!esExcepcionLayout && item.imagen) {
-    // 📌 LAYOUT 2 COLUMNAS (Para escritos comunes con imagen)
+    // LAYOUT 2 COLUMNAS (Para escritos comunes con imagen)
     estructuraCuerpo = `
       <div class="modal-layout-dos-columnas">
         <div class="columna-imagen-modal">
@@ -149,7 +178,7 @@ function abrirEscrito(id) {
       </div>
     `;
   } else {
-    // 📌 LAYOUT COMPLETO Y TRANSPARENTE (Para El Canto de la Saga, Recolector y Herederos)
+    // LAYOUT COMPLETO Y TRANSPARENTE (El Canto de la Saga, Recolector y Herederos)
     const bloqueTextoLibre = cuerpoTexto ? `<div>${cuerpoTexto}</div>` : '';
 
     estructuraCuerpo = `
@@ -174,13 +203,13 @@ function abrirEscrito(id) {
     </div>
   `;
 
-  // 1. Evento de cerrar modal
+  // Evento de cerrar modal
   const btnRegresar = document.getElementById("btn-cerrar-lectura");
   if (btnRegresar) {
     btnRegresar.addEventListener("click", () => modal.classList.remove("visible"));
   }
 
-  // 2. LÓGICA DE AMPLIACIÓN (Tríptico / Profecía del Recolector)
+  // Lógica de ampliación para Profecía del Recolector
   const triptico = modalContenido.querySelector("#vista-triptico");
   const vistaAmpliada = modalContenido.querySelector("#vista-ampliada-profecia");
   const btnVolver = modalContenido.querySelector("#btn-volver-triptico");
@@ -215,7 +244,7 @@ function abrirEscrito(id) {
     }
   }
 
-  // 3. NAVEGACIÓN A SAGA (Desde el Canto de los Libros)
+  // Navegación a Saga desde el Canto
   const enlacesSaga = modalContenido.querySelectorAll(".link-saga");
   enlacesSaga.forEach(enlace => {
     enlace.style.cursor = "pointer";
@@ -241,7 +270,6 @@ function abrirEscrito(id) {
     });
   });
 
-  // Mostrar el modal
   modal.classList.add("visible");
 }
 
@@ -279,7 +307,6 @@ function configurarEventosModal() {
     });
   }
 
-  // PERSONALIZABLE: cierra el modal al pulsar cualquier título de la barra de navegación
   document.querySelectorAll(".barra-navegacion a").forEach(enlace => {
     enlace.addEventListener("click", () => {
       if (modal) modal.classList.remove("visible");

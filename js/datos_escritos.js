@@ -115,7 +115,7 @@ window.datosEscritos = [
     titulo: "El origen de la Magia",
     categoria: "legado",
     subtitulo: "MAGIA",
-    desbloqueado: 1,
+    desbloqueado: 2,
     imagen: "imagenes/escritos/legado_1.jpg",
     descripcionCorta: "Sobre la naturaleza, las leyes y el origen de la magia.",
     contenidoCompleto: {
@@ -129,7 +129,7 @@ window.datosEscritos = [
     titulo: "La memoria del Mundo Oculto",
     categoria: "legado",
     subtitulo: "CONOCIMIENTO",
-    desbloqueado: 1,
+    desbloqueado: 2,
     imagen: "imagenes/escritos/legado_2.jpg",
     descripcionCorta: "Compendio del conocimiento acumulado por los guardianes y sabios de todas las eras.",
     contenidoCompleto: {
@@ -143,7 +143,7 @@ window.datosEscritos = [
     titulo: "Las fórmulas del Arte Antiguo",
     categoria: "legado",
     subtitulo: "PODER",
-    desbloqueado: 1,
+    desbloqueado: 2,
     imagen: "imagenes/escritos/legado_3.jpg",
     descripcionCorta: "Hechizos, rituales y palabras del Arte Antiguo capaces de transformar la realidad.",
     contenidoCompleto: {
@@ -157,7 +157,7 @@ window.datosEscritos = [
     titulo: "La Profecía de la Triada",
     categoria: "profecias",
     subtitulo: "Registro enigmático que espera en el oráculo",
-    desbloqueado: 1,
+    desbloqueado: 2,
     imagen: "imagenes_principal/escritos/profecia_triada.jpg",
     descripcionCorta: "El verso antiguo que predice el surgimiento de los herederos y el destino de la magia.",
     contenidoCompleto: {
@@ -170,19 +170,19 @@ mientras el olvido amenaza con consumirlo todo.`,
       notas: "Texto transcrito a partir de la imagen creada por la profecía."
     }
   },
-  
+
   {
     id: "libro-herederos",
     titulo: "El Libro de los Herederos",
     categoria: "registros",
-    subtitulo: "Crónica de linajes y marcas de sangre",
-    desbloqueado: 1,
+    subtitulo: "El plan de la triada",
+    desbloqueado: 2,
     imagen: "imagenes/escritos/libro_herederos.jpg",
-    descripcionCorta: "Registro de las familias bendecidas por la magia antigua y sus descendientes legítimos.",
+    descripcionCorta: "Desconocido",
     contenidoCompleto: {
-      origen: "Custodiado por los Cronistas de la Dinastía.",
-      texto: "",
-      notas: "Contiene pasajes cifrados sobre los herederos perdidos."
+      origen: "Elaborado por los dioses para guiar a los herederos en su camino para doblegar a la sombra",
+      texto: "Contiene instrucciones para localizar a los maestros de la magia que les enseñarán a utilizar la energía ambiental y asi lograr realizar los rituales necesarios para someter a la sombra. El libro está dividido en siete secciones.",
+      notas: "Contiene pasajes cifrados."
     },
     partesHerederos: [
       { titulo: "I. El Linaje del Fuego", desc: "Guardianes de la llama primigenia y el dominio de la forja de almas." },
@@ -192,7 +192,7 @@ mientras el olvido amenaza con consumirlo todo.`,
       { titulo: "V. Los Tejedores de Luz", desc: "Portadores del resplandor primario y la magia de consagración." },
       { titulo: "VI. La Estirpe Umbría", desc: "Guardianes del velo de la sombra, guardianes del juicio nocturno." },
       { titulo: "VII. La Marca del Cristal", desc: "Manipuladores de la geometría sagrada y la resonancia arcana." },
-      { titulo: "VIII. El Heredero Olvidado", desc: "Fragmentos del registro perdido cuya presencia aún no se manifiesta." }
+     
     ]
   }
 ];

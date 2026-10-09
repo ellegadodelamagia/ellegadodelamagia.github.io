@@ -105,7 +105,7 @@ function renderizarPersonajes() {
 function filtrarPorLibro(nombreLibro, botonPresionado) {
     libroActual = nombreLibro;
     
-    const librosBloqueados = ['Libro 2', 'Libro 3', 'Libro 4', 'Libro 5', 'Libro 6', 'Libro 7'];
+    const librosBloqueados = ['Libro 2', 'Libro 3', 'Libro 4', 'Libro 5', 'Libro 6', 'Libro 7', 'Libro 8', 'Libro 9', 'Libro 10'];
     const avisoElem = document.getElementById('aviso-pergamino');
     const textoElem = document.getElementById('texto-pergamino');
     const gridElem = document.getElementById('contenedor-personajes-grid');

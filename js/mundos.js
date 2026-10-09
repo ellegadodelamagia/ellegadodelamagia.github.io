@@ -1,4 +1,4 @@
-// js/mundos.js COMPLETO Y CORREGIDO (Sin botones duplicados)
+// js/mundos.js COMPLETO Y CORREGIDO
 import MundosEstructuraSaga from './datos_mundos.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Cargar la vista inicial de los 3 Grandes Mundos
+    // Cargar la vista inicial de los 4 Grandes Mundos
     renderizarNivel(MundosEstructuraSaga, false);
 });
 
 function obtenerNumeroRomano(num) {
     const romanos = ["I", "II", "III", "IV", "V", "VI", "VII"];
-    return romanos[num] || num;
+    return romanos[num] || (num + 1);
 }
 
 function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
@@ -44,7 +44,7 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
     if (txtSubtitulo) txtSubtitulo.style.display = "block";
     if (txtTitulo) txtTitulo.style.display = "block";
     gridDinamico.style.display = "grid";
-    
+
     const fichaExistente = document.getElementById("ficha-lore-pantalla-completa");
     if (fichaExistente) fichaExistente.remove();
 
@@ -71,7 +71,7 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
         if (txtTitulo) txtTitulo.innerText = "COMPRENDE EL UNIVERSO";
     }
 
-    // 2. RENDERIZAR TARJETAS CON REGLAS DE DESBLOQUEO
+    // 2. RENDERIZAR TARJETAS GENERALES
     listaDatos.forEach((item, index) => {
         const tarjeta = document.createElement("div");
         tarjeta.className = `mundo-card estado-nivel-${item.desbloqueado}`;
@@ -104,19 +104,18 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
 
         } else if (item.desbloqueado === 2) {
             const nombreMostrar = item.nombre_visible || item.nombre || "";
-            
             const libroAsociado = (item.revelado_en || "").toLowerCase();
             const esLibroProtegido = libroAsociado.includes("herederos") || libroAsociado.includes("profecía") || libroAsociado.includes("profecia");
 
             const textoRevelado = esLibroProtegido 
                 ? "Información protegida hasta el momento adecuado" 
-                : `Se revela en: ${item.revelado_en || 'Siguientes libros'}`;
+                : `Se revelará en ${item.revelado_en || 'los siguientes libros'}`;
 
             tarjeta.innerHTML = `
                 <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
-                <div class="mundo-card-content bloqueado-blur">
-                    <h3>${nombreMostrar.toUpperCase()}</h3>
-                    <p class="txt-bloqueado">🔒 Contenido Bloqueado</p>
+                <div class="mundo-card-content">
+                    <h3 style="filter: blur(5px); user-select: none;">${nombreMostrar.toUpperCase()}</h3>
+                    <p class="txt-bloqueado">El nombre y la información de este tipo de ser es sensible y aún no la puedes conocer.</p>
                     <span class="badge-libro">${textoRevelado}</span>
                 </div>
             `;
@@ -126,8 +125,8 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
             tarjeta.innerHTML = `
                 <div class="roman-bg">?</div>
                 <div class="mundo-card-content oculto-total">
-                    <h3>???</h3>
-                    <p>Espacio reservado para un reino secreto en la trama.</p>
+                    <h3>PUEBLO DESCONOCIDO</h3>
+                    <p>Contenido protegido por secreto ancestral.</p>
                 </div>
             `;
             tarjeta.style.cursor = "not-allowed";
@@ -245,14 +244,14 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
             const tags = objeto.sub_razas.map(raza => `<span class="tag-subraza">${raza}</span>`).join("");
             subrazasHTML = `
                 <div class="subrazas-container">
-                    <h4>PUEBLOS CULTURALES INTEGRADAS</h4>
+                    <h4>PUEBLOS CULTURALES INTEGRADOS</h4>
                     <div class="subrazas-tags">${tags}</div>
                 </div>
             `;
         }
     }
 
-    const subTextoArriba = objetoPadre ? `${objeto.tipo || 'RAZA'} • REINO DE ${objetoPadre.nombre}` : (objeto.tipo || 'MUNDO');
+    const subTextoArriba = objetoPadre ? `${objeto.tipo || 'RAZA'} REINO DE ${objetoPadre.nombre}` : (objeto.tipo || 'MUNDO');
 
     fichaCompleta.innerHTML = `
         <div class="encabezado-tarjeta-expandida" style="text-align: center; margin-bottom: 25px;">
@@ -314,9 +313,10 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
     }
 
     gridDinamico.style.display = "grid";
+    gridDinamico.className = listaOtras.length > 6 ? "grid-detalle grid-cuatro" : "grid-detalle";
     gridDinamico.innerHTML = "";
 
-    // BOTÓN DE RETORNO A LA FICHA
+    // BOTÓN DE RETORNO A LA FICHA DE LA RAZA PADRE
     if (contenedorVolver) {
         contenedorVolver.innerHTML = "";
         const btnVolverFicha = document.createElement("a");
@@ -330,7 +330,7 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
         contenedorVolver.appendChild(btnVolverFicha);
     }
 
-    // GENERAR TARJETAS CON EVALUACIÓN DE DESBLOQUEO
+    // GENERAR TARJETAS EVALUANDO EL NIVEL DE DESBLOQUEO REAL
     listaOtras.forEach((item, index) => {
         const esObjeto = typeof item === "object";
         const estadoDesbloqueo = esObjeto ? (item.desbloqueado !== undefined ? item.desbloqueado : 1) : 1;
@@ -338,22 +338,27 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
         const tarjeta = document.createElement("div");
         tarjeta.className = `mundo-card sub-card estado-nivel-${estadoDesbloqueo}`;
 
-        const nombreRaza = esObjeto ? (item.nombre || item.nombre_visible || item) : item;
+        // Extraer los datos reales del objeto en datos_mundos.js
+        const nombreReal = esObjeto ? (item.nombre || item.nombre_visible || item) : item;
         const regionRaza = esObjeto && item.region ? item.region : "";
         const descripcionRaza = esObjeto ? (item.descripcion_breve || item.descripcion) : null;
         const imagenFondo = esObjeto && item.imagen_fondo ? item.imagen_fondo : objetoActual.imagen_fondo;
 
+        // Cargar imagen de fondo si no es Nivel 3
         if (imagenFondo && estadoDesbloqueo !== 3) {
             tarjeta.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.88)), url('${imagenFondo}')`;
             tarjeta.style.backgroundSize = "cover";
             tarjeta.style.backgroundPosition = "center";
         }
 
+        // ==========================================
+        // NIVEL 1: TOTALMENTE VISIBLE Y EXPLORABLE
+        // ==========================================
         if (estadoDesbloqueo === 1) {
             tarjeta.innerHTML = `
                 <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
                 <div class="mundo-card-content" style="text-align: center; padding: 25px 15px;">
-                    <h3 style="margin-bottom: 8px; font-size: 1.3rem; color: #f5eab7;">${nombreRaza.toUpperCase()}</h3>
+                    <h3 style="margin-bottom: 8px; font-size: 1.3rem; color: #f5eab7;">${nombreReal.toUpperCase()}</h3>
                     ${regionRaza ? `<span class="badge-region" style="display: inline-block; margin-bottom: 8px; padding: 4px 12px; background: rgba(197, 160, 89, 0.2); border: 1px solid #c5a059; border-radius: 50px; font-size: 0.78rem; color: #e5c158; text-transform: uppercase; letter-spacing: 1px;">📍 ${regionRaza}</span>` : ''}
                     ${descripcionRaza ? `<p style="font-size: 0.88rem; color: #d1b8e7; margin-top: 5px;">${descripcionRaza}</p>` : ''}
                     ${(esObjeto && item.historia_o_lore) ? '<span class="indicador-accion"><em>(Pulsa para ver lore)</em></span>' : ''}
@@ -367,6 +372,9 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
                 };
             }
 
+        // ==========================================
+        // NIVEL 2: PARCIALMENTE OCULTO (SPOILER LIBRO)
+        // ==========================================
         } else if (estadoDesbloqueo === 2) {
             const libroAsociado = (item.revelado_en || "").toLowerCase();
             const esLibroProtegido = libroAsociado.includes("herederos") || libroAsociado.includes("profecía") || libroAsociado.includes("profecia");
@@ -377,19 +385,22 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
             tarjeta.innerHTML = `
                 <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
                 <div class="mundo-card-content bloqueado-blur" style="text-align: center; padding: 25px 15px;">
-                    <h3 style="margin-bottom: 8px; font-size: 1.3rem; color: #f5eab7;">${nombreRaza.toUpperCase()}</h3>
-                    <p class="txt-bloqueado">🔒 Contenido Bloqueado</p>
+                    <h3 style="filter: blur(5px); user-select: none; margin-bottom: 8px; font-size: 1.3rem; color: #f5eab7;">${nombreReal.toUpperCase()}</h3>
+                    <p class="txt-bloqueado"> El nombre y la información contenidos en esta tarjeta aún no se pueden conocer.</p>
                     <span class="badge-libro">${textoRevelado}</span>
                 </div>
             `;
             tarjeta.style.cursor = "not-allowed";
 
+        // ==========================================
+        // NIVEL 3: SECRETO TOTAL (CENSURADO AUTOMÁTICAMENTE)
+        // ==========================================
         } else if (estadoDesbloqueo === 3) {
             tarjeta.innerHTML = `
-                <div class="roman-bg">?</div>
+                <div class="roman-bg">*</div>
                 <div class="mundo-card-content oculto-total" style="text-align: center; padding: 25px 15px;">
-                    <h3>???</h3>
-                    <p>Espacio reservado para un pueblo secreto en la trama.</p>
+                    <h3 style="color: #f5eab7; font-size: 1.3rem; margin-bottom: 8px;">INFORMACION DESCONOCIDA</h3>
+                    <p style="font-size: 0.88rem; color: #a192be;">La existencia y detalles de esta cultura están protegidos por secreto.</p>
                 </div>
             `;
             tarjeta.style.cursor = "not-allowed";

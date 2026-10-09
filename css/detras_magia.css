@@ -218,21 +218,6 @@
   margin-bottom: 10px;
 }
 
-.divisor-mistico {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 15px 0;
-}
-
-.divisor-mistico::before,
-.divisor-mistico::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: rgba(212, 175, 55, 0.3);
-}
-
 .rombo {
   width: 8px;
   height: 8px;

@@ -44,7 +44,7 @@ const MUNDOS_DATA = [
         historia_o_lore: "Cuando se organizó la custodia de La Sombra, un grupo de humanos con magia fue quien proveyó a sus guardianes, y para cumplir esa función debían permanecer puros. Por eso se apartaron de la magia contemporánea y formaron un pueblo aparte. Solo después, cuando los dioses armaron el plan de la Tríada, se les hizo saber lo que se avecinaba. Hoy siguen existiendo en Escandinavia , al norte del Báltico.",
         reglas_de_magia: "Solo usan la energía ambiental y la poca energía natural que los Nemori les permiten conocer; no utilizan la magia contemporánea.",
         imagen_fondo: "imagenes_principal/mundos/vedlys_naturales.jpg",
-        desbloqueado: 1
+        desbloqueado: 2
       },
       {
         id: "achlys",
@@ -55,7 +55,7 @@ const MUNDOS_DATA = [
         historia_o_lore: "Los primeros achlys surgieron cuando algunos humanos con magia accedieron a la magia de la Sombra a través de libros oscuros, encantamientos, maleficios o el convencimiento de otros seguidores. Con el tiempo se formó una jerarquía similar a la de los vedlys: los maestros, que son quienes más saben, que evitan manejar la magia oscura directamente (prefieren que otros la usen) y que son quienes más en contacto están con La Sombra sin saberlo; y los achlys comunes, que sí la manejan y son los que corren el riesgo de convertirse en golems.",
         reglas_de_magia: "Usan la magia oscura, que se destaca porque apaga el color original de la magia; pueden manipular sin problema la magia contemporánea y la energía ambiental y en algunos casos modificar la magia antigua. Qué tan lejos llega la corrupción depende de cuánto se haya usado: un contacto breve despierta lo peor de cada quien, del egoísmo a la envidia, sin convertir a nadie en Achlys todavía, pero una vez que se cae por completo en las garras de La Sombra es muy difícil salir de ahí.",
         imagen_fondo: "imagenes_principal/mundos/achlys.jpg",
-        desbloqueado: 1
+        desbloqueado: 2
       },
       {
         id: "golems",
@@ -66,7 +66,7 @@ const MUNDOS_DATA = [
         historia_o_lore: "Un vedlys se convierte en golem al matar a su ángel guardián (algo que no es fácil) perdiendo el alma en el proceso. Los achlys más poderosos convencen a sus seguidores de hacerlo prometiéndoles más poder, sin revelarles las consecuencias reales. Al no tener alma, un golem no puede durar mucho tiempo con vida.",
         reglas_de_magia: "Pueden hablar y razonar, pero carecen de voluntad propia: actúan por completo al servicio de quien los controla. Conservan la magia contemporánea y la energía ambiental que tenían como vedlys, pero a un nivel mucho más básico.",
         imagen_fondo: "imagenes_principal/mundos/golems.jpg",
-        desbloqueado: 1
+        desbloqueado: 2
       }
     ]
   },
@@ -102,7 +102,7 @@ const MUNDOS_DATA = [
         historia_o_lore: "Al darse cuenta de todo el poder que había dentro del planeta, un ángel del reino celestial quiso apropiárselo y bajó al plano humano. Por hacerlo desde el egoísmo, su propia energía se fue oscureciendo. Miguel lo derrotó y lo encerró en una fortaleza en las entrañas de la Tierra, pero encerrarlo no bastó para contener su influencia: su poder sigue corrompiendo la energía ambiental a su alrededor, y de esa corrupción nació la magia oscura, la misma que dio origen a los Achlys.",
         reglas_de_magia: "Es la fuente de la magia oscura. Corrompe el ambiente a través de magia entretejida y residual oscura, y de escritos que él mismo dejó. Un círculo de protección mantiene a los demás alejados de esa influencia, pero vedlys y communia atraídos por lo desconocido a veces lo burlan y caen gradualmente en sus garras. Cuanto más poder acumula, más amplia se vuelve su esfera de corrupción.",
         imagen_fondo: "imagenes_principal/mundos/la_sombra.jpg",
-        desbloqueado: 1
+        desbloqueado: 2
       }, 
       { 
         id: "angeles_guardianes", 
@@ -113,7 +113,7 @@ const MUNDOS_DATA = [
         historia_o_lore: "Son creados y enviados cada vez que nace una persona, por lo que toda su existencia transcurre en la Tierra. Sus poderes son limitados y no tienen permitido alejarse de su humano. Tienen una conexión completa con el ser que cuidan: cuando este se encuentra en peligro pueden influir parcialmente en sus decisiones, dentro de los límites del libre albedrío.",
         reglas_de_magia: "La magia no los afecta. No tienen permitido aparecer ante los humanos.",
         imagen_fondo: "imagenes_principal/mundos/guardianes.jpg", 
-        desbloqueado: 1 
+        desbloqueado: 2 
       },
       { 
         id: "querubines", 
@@ -124,7 +124,7 @@ const MUNDOS_DATA = [
         historia_o_lore: "Observan,analizan y registran todos acontecimientos del mundo humano. Guardias del conocimiento ancestral y observadores del tejido espacio-temporal.", 
         reglas_de_magia: "No están en contacto con la magia por lo que se desconoce si los afecta.",
         imagen_fondo: "imagenes_principal/mundos/querubines.jpg", 
-        desbloqueado: 1 
+        desbloqueado: 2 
       },
       { 
         id: "guerreros", 
@@ -135,7 +135,7 @@ const MUNDOS_DATA = [
         historia_o_lore: "El Hacedor de todo designó esta categoría cuando La Sombra corrompió su naturaleza y hubo que enfrentarla. Su líder recibió el título de Arcángel: Miguel.", 
         reglas_de_magia: "La magia los afecta menos que a los serafines, aunque si les causa dolor.",
         imagen_fondo: "imagenes_principal/mundos/guerreros.jpg", 
-        desbloqueado: 1 
+        desbloqueado: 2 
       }
     ]
   },
@@ -173,49 +173,49 @@ const MUNDOS_DATA = [
             region: "México",
             imagen_fondo: "imagenes_principal/mundos/aluxes.jpg",
             descripcion_breve: "Cuidadores de la selva y antiguos santuarios del plano mesoamericano. Su apariencia varía según quien los vea.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Kete",
             region: "África",
             imagen_fondo: "imagenes_principal/mundos/kete.jpg",
             descripcion_breve: "Espíritus guardianes de las sabanas y las raíces milenarias.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Uchuy",
             region: "Sudamérica",
             imagen_fondo: "imagenes_principal/mundos/uchuy.jpg",
             descripcion_breve: "Moradores de las alturas andinas y guardianes del fuego sagrado.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Qizm",
             region: "Arabia",
             imagen_fondo: "imagenes_principal/mundos/qizm.jpg",
             descripcion_breve: "Nómadas de los oasis y guardianes de secretos bajo las arenas.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Malenky",
             region: "Siberia",
             imagen_fondo: "imagenes_principal/mundos/malenky.jpg",
             descripcion_breve: "Resistentes al frío eterno, guardianes de los bosques taiga.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Xiao",
             region: "China",
             imagen_fondo: "imagenes_principal/mundos/xiao.jpg",
             descripcion_breve: "Orejas más pequeñas y ojos menos saltones que el resto de los dridalys; armoniosos custodios de las montañas sagradas y valles de bambú.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Tanuki",
             region: "Japón",
             imagen_fondo: "imagenes_principal/mundos/tanuki.jpg",
             descripcion_breve: "Humanoides blancos de ojos negros, sin facciones visibles ni manos aparentes; astutos guardianes de la naturaleza urbana y rural.",
-            desbloqueado: 1
+            desbloqueado: 3
           }
         ]
       },
@@ -231,33 +231,34 @@ const MUNDOS_DATA = [
         desbloqueado: 1,
         sub_razas: [
           {
+            nombre: "Vakarys",
+            region: "Regiones templadas",
+            imagen_fondo: "imagenes_principal/mundos/vakarys.jpg",
+            descripcion_breve: "Custodios de bosques y fauna de climas templados; los más cercanos a los humanos, y por eso los más frecuentes entre los curanderos que asisten a los vedlys.",
+            desbloqueado: 1
+          },
+          {
             nombre: "Siaurys",
             region: "Norte helado",
             imagen_fondo: "imagenes_principal/mundos/siaurys.jpg",
             descripcion_breve: "Custodios de bosques y fauna de climas fríos; los más reservados de las cuatro estirpes.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Pietys",
             region: "Regiones cálidas y tormentosas",
             imagen_fondo: "imagenes_principal/mundos/pietys.jpg",
             descripcion_breve: "Custodios de la vida en climas húmedos y tempestuosos; temperamento intenso, igual que el viento que los nombra.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Ritys",
             region: "Oriente",
             imagen_fondo: "imagenes_principal/mundos/ritys.jpg",
             descripcion_breve: "Custodios de bosques y fauna de Asia; conocidos por su disciplina y su cercanía con las tradiciones más antiguas de los elfos.",
-            desbloqueado: 1
-          },
-          {
-            nombre: "Vakarys",
-            region: "Regiones templadas",
-            imagen_fondo: "imagenes_principal/mundos/vakarys.jpg",
-            descripcion_breve: "Custodios de bosques y fauna de climas templados; los más cercanos a los humanos, y por eso los más frecuentes entre los curanderos que asisten a los vedlys.",
-            desbloqueado: 1
+            desbloqueado: 3
           }
+          
         ]
       },
       {
@@ -283,21 +284,21 @@ const MUNDOS_DATA = [
             region: "Vetas de Jade",
             imagen_fondo: "imagenes_principal/mundos/kotole_asiatico.jpg",
             descripcion_breve: "Artesanos del equilibrio y la energía fluida, expertos en el moldeado de piedras preciosas.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Americanos",
             region: "Cavernas Sagradas",
             imagen_fondo: "imagenes_principal/mundos/kotole_americano.jpg",
             descripcion_breve: "Guardianes de la tierra ancestral con un lazo espiritual directo con las piedras vivas.",
-            desbloqueado: 1
+            desbloqueado: 3
           },
           {
             nombre: "Africanos",
             region: "Cumbres Volcánicas",
             imagen_fondo: "imagenes_principal/mundos/kotole_africano.jpg",
             descripcion_breve: "Sabios de la tierra profunda, maestros en la fundición de metales junto al calor volcánico.",
-            desbloqueado: 1
+            desbloqueado: 3
           }
         ]
       },
@@ -324,7 +325,7 @@ const MUNDOS_DATA = [
             region: "Mares y oceanos",
             imagen_fondo: "imagenes_principal/mundos/oceanida.jpg",
             descripcion_breve: "Cuidan los mares y arrecifes de coral",
-            desbloqueado: 1
+            desbloqueado: 3
           }
         ]
       },
@@ -359,7 +360,7 @@ const MUNDOS_DATA = [
   historia_o_lore: "Nacieron tras la Segunda Guerra Mágica que casi estalló. Suelen rondar manantiales, cuevas y otros rincones donde la energía ambiental es más fuerte.",
   reglas_de_magia: "Su magia proviene de la energía natural del fuego y el aire.",
   imagen_fondo: "imagenes_principal/mundos/bizuhur.jpg",
-  desbloqueado: 1
+  desbloqueado: 2
           },
           {
             id: "farlo",
@@ -370,7 +371,7 @@ const MUNDOS_DATA = [
   historia_o_lore: "Nacieron tras la Segunda Guerra Mágica que casi estalló. Desconfían de los vedlys comunes, pero hacen una excepción con los vedlys naturales, a quienes sí respetan.",
   reglas_de_magia: "Su magia proviene de la energía natural del agua y el aire.",
   imagen_fondo: "imagenes_principal/mundos/farlo.jpg",
-  desbloqueado: 1
+  desbloqueado: 2
           }
         ]
       },
@@ -383,7 +384,7 @@ const MUNDOS_DATA = [
         historia_o_lore: "Existen desde tiempos remotos, surgidos mientras los cinco elementos daban forma al planeta. Cuando parte de las cuatro razas originales se exilió a las cuevas kársticas tras la Primera Guerra Mágica, convivieron con los trodls y les enseñaron el uso de la magia; desde entonces se consideran parte de los Nemori.",
         reglas_de_magia: "Su magia proviene de la energía natural de la tierra y el fuego, más afines a esos dos por ser seres físicos de esos elementos. Resistencia física extrema, mimetismo con la piedra y capacidad de trasladarse rápidamente por redes de túneles subterráneos.",
         imagen_fondo: "imagenes_principal/mundos/trdlls.jpg",
-        desbloqueado: 1
+        desbloqueado: 2
       }
     ]
   },

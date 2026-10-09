@@ -72,7 +72,7 @@
 
     <div id="contenedor-modulo-saga" class="historia-container">
       <p class="sinopsis-texto">
-        Un libro y un deseo, y ahí empieza todo... 
+        Un libro, un deseo. Y ahí empieza todo... 
       </p>
     
       <p class="sinopsis-texto">
@@ -142,6 +142,16 @@
       <button class="btn-filtro" onclick="filtrarPorLibro('Libro 4', this)">Libro 4</button>
       <button class="btn-filtro" onclick="filtrarPorLibro('Libro 5', this)">Libro 5</button>
     </div>
+
+ 
+ <!-- 📜 AVISO DE PERGAMINO PARA LIBROS BLOQUEADOS -->
+<div id="aviso-pergamino" class="aviso-pergamino d-none">
+  <div class="contenido-pergamino">
+    <span class="icono-pergamino">📜</span>
+    <p id="texto-pergamino"></p>
+    <button class="btn-cerrar-pergamino" onclick="cerrarPergamino()">✕</button>
+  </div>
+</div>
 
     <div id="contenedor-personajes-grid" class="personajes-grid"></div>
   </section>

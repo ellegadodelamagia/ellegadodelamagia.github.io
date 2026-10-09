@@ -93,8 +93,8 @@ const tiposDeMagiaData = [
      id: "magia_entretejida",
     nombre: "Magia Entretejida",
     imagenFondo: "imagenes/imagenes_tipos_magia/elemental.png",
-    colorMarco: "#b8895a",       // Color para el borde/brillo frontal
-    colorFondoReverso: "#5c3d1f",// Color de fondo al dar vuelta
+    colorMarco: "#8a5a3b",       // Color para el borde/brillo frontal
+    colorFondoReverso: "#3f2616",// Color de fondo al dar vuelta
     origenMundo: "Cobriza",
     clasificacionCelestial: "Pasiva ",
     efectoCelestial: "Repele ligeramente, sin ningún otro efecto.",

@@ -3,22 +3,19 @@
 // =========================================================================
 
 window.datosEscritos = [
+  
   {
-    id: "profecia-principal",
-    titulo: "La Profecía de la Triada",
-    categoria: "profecias",
-    subtitulo: "Registro enigmático que espera en el oráculo",
+    id: "atlas-del-mundo",
+    titulo: "El Atlas del Mundo Vedlys",
+    categoria: "compendios",
+    subtitulo: "Guía no autorizada de los Consejos Vedlys.",
     desbloqueado: 1,
-    imagen: "imagenes_principal/escritos/profecia_triada.jpg",
-    descripcionCorta: "El verso antiguo que predice el surgimiento de los herederos y el destino de la magia.",
+    imagen: "imagenes_principal/escritos/atlas.jpg",
+    descripcionCorta: "Compendio de mapas y anotaciones de exploradores incógnitos.",
     contenidoCompleto: {
-      origen: "Desconocido",
-      texto: `Cuando las sombras reclamen los confines de la tierra,<br>
-y la luz primigenia pierda su fulgor,<br>
-resurgirán los lazos del antiguo linaje...<br><br>
-Un heredero despertará la llama,<br>
-mientras el olvido amenaza con consumirlo todo.`,
-      notas: "Texto transcrito a partir de la imagen creada por la profecía."
+      origen: "Solo se sabe que Zaha lo encontró en un pueblo perdido en España.",
+      texto: "La comunidad Vedlys internacional no reconoce oficialmente la existencia de esta obra. Aun así, es la referencia más completa sobre los Consejos Vedlys del mundo.",
+      notas: "Incluye ubicaciones aproximadas de Consejos pertenecientes a la Hermandad de Merlín."
     }
   },
   {
@@ -111,20 +108,8 @@ mientras el olvido amenaza con consumirlo todo.`,
       notas: "Haz clic en cualquier verso para viajar a su tomo."
     }
   },
-  {
-    id: "atlas-del-mundo",
-    titulo: "El Atlas del Mundo Vedlys",
-    categoria: "compendios",
-    subtitulo: "Guía no autorizada de los Consejos Vedlys.",
-    desbloqueado: 1,
-    imagen: "imagenes_principal/escritos/atlas.jpg",
-    descripcionCorta: "Compendio de mapas y anotaciones de exploradores incógnitos.",
-    contenidoCompleto: {
-      origen: "Solo se sabe que Zaha lo encontró en un pueblo perdido en España.",
-      texto: "La comunidad Vedlys internacional no reconoce oficialmente la existencia de esta obra. Aun así, es la referencia más completa sobre los Consejos Vedlys del mundo.",
-      notas: "Incluye ubicaciones aproximadas de Consejos pertenecientes a la Hermandad de Merlín."
-    }
-  },
+  
+  
   {
     id: "legado-1",
     titulo: "El origen de la Magia",
@@ -167,6 +152,25 @@ mientras el olvido amenaza con consumirlo todo.`,
       notas: "Toda palabra pronunciada sin sabiduría reclama un precio."
     }
   },
+  {
+    id: "profecia-principal",
+    titulo: "La Profecía de la Triada",
+    categoria: "profecias",
+    subtitulo: "Registro enigmático que espera en el oráculo",
+    desbloqueado: 1,
+    imagen: "imagenes_principal/escritos/profecia_triada.jpg",
+    descripcionCorta: "El verso antiguo que predice el surgimiento de los herederos y el destino de la magia.",
+    contenidoCompleto: {
+      origen: "Desconocido",
+      texto: `Cuando las sombras reclamen los confines de la tierra,<br>
+y la luz primigenia pierda su fulgor,<br>
+resurgirán los lazos del antiguo linaje...<br><br>
+Un heredero despertará la llama,<br>
+mientras el olvido amenaza con consumirlo todo.`,
+      notas: "Texto transcrito a partir de la imagen creada por la profecía."
+    }
+  },
+  
   {
     id: "libro-herederos",
     titulo: "El Libro de los Herederos",

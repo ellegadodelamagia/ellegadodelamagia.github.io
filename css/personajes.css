@@ -310,3 +310,76 @@
     box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
 }
 
+.d-none {
+  display: none !important;
+}
+
+/* ==========================================
+   📜 ESTILO DEL PERGAMINO DE ADVERTENCIA
+   ========================================== */
+
+/* Clase para forzar el ocultamiento */
+.d-none {
+  display: none !important;
+}
+
+/* Caja principal del pergamino místico */
+.aviso-pergamino {
+  background: #1a1612;
+  border: 1px solid #c5a059;
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.25), inset 0 0 15px rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.2rem 1.8rem;
+  text-align: center;
+}
+
+.contenido-pergamino {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  color: #e0d5c1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+}
+
+.icono-pergamino {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.5));
+}
+
+.contenido-pergamino p {
+  margin: 0;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.contenido-pergamino strong {
+  color: #c5a059;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.btn-cerrar-pergamino {
+  background: transparent;
+  border: 1px solid #c5a059;
+  color: #c5a059;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-cerrar-pergamino:hover {
+  background: #c5a059;
+  color: #1a1612;
+}

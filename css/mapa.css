@@ -309,9 +309,14 @@ html, body {
 .bolita-magica.active, 
 .bolita-magica:active {
     transform: scale(1.15);
-    box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.8), 0 0 50px 12px rgba(200, 168, 75, 0.4);
-    border-color: var(--gold);
-    background-color: var(--gold) !important;
+    /* PERSONALIZABLE: color del aro exterior (tinta oscura sobre el pergamino) */
+    border-color: #3b2a1a;
+     /* PERSONALIZABLE: brillo blanco difuso en dos capas.
+       El 3er número es el desenfoque (más alto = más borroso),
+       el 4º es cuánto se extiende (más alto = halo más grande) */
+    box-shadow: 0 0 14px 5px rgba(255, 255, 255, 0.85),
+                0 0 28px 8px rgba(255, 255, 255, 0.35);
+    /* Sin background-color: así conserva su color de categoría */
 }
 
 .bolita-numero {

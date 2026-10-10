@@ -116,7 +116,7 @@ function filtrarPorLibro(nombreLibro, botonPresionado) {
     // 2. Control de visibilidad del pergamino vs parrilla
     if (librosBloqueados.includes(nombreLibro)) {
         if (avisoElem && textoElem) {
-            textoElem.innerHTML = `<strong>¡No seas curioso!</strong> Espérate a que salga el libro antes de ver quiénes acompañan a Kaira en la continuación de su viaje.`;
+            textoElem.innerHTML = `<strong>¡No seas curioso!</strong> Espera a que salga el libro antes de ver quiénes acompañan a Kaira en la continuación de su viaje.`;
             
             // Removemos la clase oculta y aplicamos display block
             avisoElem.classList.remove('d-none');

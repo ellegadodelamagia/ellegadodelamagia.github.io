@@ -201,6 +201,9 @@ const REDES_CONTACTO = {
   instagram: "https://www.instagram.com/irene.nacher/",
   facebook: "https://www.facebook.com/irene.nacher/",
   email: "irenenacher@yahoo.com.mx"
+  /*Despuesd e FB antes de email, poner amazon: "link de amazon"*/
+
+
 };
 
 function cargarLibrosSaga() {
@@ -243,6 +246,9 @@ function cargarLibrosSaga() {
     const imagenAMostrar = esDisponible ? libro.portada : libro.imagen;
 
     const htmlAcciones = esDisponible ? `
+    
+    
+
       <div class="acciones-compra">
         <a href="${REDES_CONTACTO.instagram}" target="_blank" rel="noopener" class="btn-compra btn-ig">Instagram</a>
         <a href="${REDES_CONTACTO.facebook}" target="_blank" rel="noopener" class="btn-compra btn-fb">Facebook</a>
@@ -253,6 +259,8 @@ function cargarLibrosSaga() {
         <p>✨ ${textoMensaje}</p>
       </div>
     `;
+
+/* despues de linea 254 agregar const REDES_CONTACTO = {amazon...*/
 
     return `
       <div class="card-libro ${claseBadge}">

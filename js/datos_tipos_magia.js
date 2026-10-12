@@ -2,7 +2,7 @@ const tiposDeMagiaData = [
   {
     id: "energia_natural",
     nombre: "Energía Natural",
-    imagenFondo: "imagenes_principal/imagenes_tipos_magia/natural.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/natural.jpg",
     colorMarco: "#0b692f",
     colorFondoReverso: "#08ac10",
     origenMundo: "Sin color",
@@ -15,7 +15,7 @@ const tiposDeMagiaData = [
   {
     id: "energia_amiental",
     nombre: "Energía Ambiental",
-    imagenFondo: "imagenes_principal/imagenes_tipos_magia/ambiental.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/ambiental.jpg",
     colorMarco: "#4de8c8",
     colorFondoReverso: "#0d7d6c",
     origenMundo: "Sin color",
@@ -28,7 +28,7 @@ const tiposDeMagiaData = [
   {
     id: "magia_antigua",
     nombre: "Magia Antigua",
-    imagenFondo: "imagenes_principal/imagenes_tipos_magia/antigua.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/antigua.jpg",
     colorMarco: "#C0C0C8",
     colorFondoReverso: "#6f7175",
     origenMundo: "Hebras Platinadas",
@@ -40,7 +40,7 @@ const tiposDeMagiaData = [
   {
     id: "magia_contemporanea",
     nombre: "Magia Contemporanea",
-    imagenFondo: "imagenes_principal/imagenes_tipos_magia/actual.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/actual.jpg",
     colorMarco: "#e4e28c",       // Color para el borde/brillo frontal
     colorFondoReverso: "#7a711c",// Color de fondo al dar vuelta
     origenMundo: "Serpentinas Doradas",
@@ -53,7 +53,7 @@ const tiposDeMagiaData = [
   {
     id: "magia_obscura",
     nombre: "Magia Oscura",
-    imagenFondo: "imagenes/imagenes_tipos_magia/elemental.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/oscura.jpg",
     colorMarco: "#030a35",       // Color para el borde/brillo frontal
     colorFondoReverso: "#080613",// Color de fondo al dar vuelta
     origenMundo: "Apaga el color original.",
@@ -66,7 +66,7 @@ const tiposDeMagiaData = [
   {
      id: "magia_perdida",
     nombre: "Magia Perdida",
-    imagenFondo: "imagenes/imagenes_tipos_magia/elemental.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/perdida.jpg",
     colorMarco: "#d735ff",       // Color para el borde/brillo frontal
     colorFondoReverso: "#77086e",// Color de fondo al dar vuelta
     origenMundo: "Motas de colores",
@@ -79,7 +79,7 @@ const tiposDeMagiaData = [
   {
      id: "magia_residual",
     nombre: "Magia Residual",
-    imagenFondo: "imagenes/imagenes_tipos_magia/elemental.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/residual.jpg",
     colorMarco: "#c24a1f",       // Color para el borde/brillo frontal
     colorFondoReverso: "#582e17",// Color de fondo al dar vuelta
     origenMundo: "Adopta el color de el lugar en donde está impregnada.",
@@ -92,7 +92,7 @@ const tiposDeMagiaData = [
   {
      id: "magia_entretejida",
     nombre: "Magia Entretejida",
-    imagenFondo: "imagenes/imagenes_tipos_magia/elemental.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/entretejida.jpg",
     colorMarco: "#8a5a3b",       // Color para el borde/brillo frontal
     colorFondoReverso: "#3f2616",// Color de fondo al dar vuelta
     origenMundo: "Cobriza",
@@ -105,7 +105,7 @@ const tiposDeMagiaData = [
   {
      id: "vortice_de_magia",
     nombre: "Vortice de Magia",
-    imagenFondo: "imagenes_principal/imagenes_tipos_magia/vortice.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/vortice.jpg",
     colorMarco: "#8a32dd",       // Color para el borde/brillo frontal
     colorFondoReverso: "#381468",// Color de fondo al dar vuelta
     origenMundo: "Platinada y Dorada",
@@ -118,7 +118,7 @@ const tiposDeMagiaData = [
   {
      id: "poder_celestia;",
     nombre: "Poder Celestial",
-    imagenFondo: "imagenes_principal/imagenes_tipos_magia/celestial.png",
+    imagenFondo: "imagenes_principal/imagenes_tipos_magia/celestial.jpg",
     colorMarco: "#f7f3f2",       // Color para el borde/brillo frontal
     colorFondoReverso: "#a4a7a7",// Color de fondo al dar vuelta
     origenMundo: "Blanca",

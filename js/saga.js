@@ -75,10 +75,10 @@ function mostrarGridSaga() {
     let deshabilitado = "";
 
     if (esNivel2) {
-      textoBoton = "Contenido restringido";
+      textoBoton = "Creando el libro";
       deshabilitado = "disabled";
     } else if (esNivel3) {
-      textoBoton = "Bloqueado 🔒";
+      textoBoton = "Planificando el libro";
       deshabilitado = "disabled";
     }
 

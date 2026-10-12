@@ -57,9 +57,9 @@ window.datosEscritos = [
 
           <div class="tarjeta-version-profecia" 
                data-titulo="Traducción revisada y corregida"
-               data-img="imagenes_principal/escritos/profecia_recolector_v4.jpg"
+               data-img="imagenes_principal/escritos/traduccion3.jpeg"
                data-desc="Realizada por Stefen, corregida entre Stefen y Jeziel. Utilizada para la prueba de Kaira.">
-            <img src="imagenes_principal/escritos/profecia_recolector_v4.jpg" alt="Traducción Revisada y Corregida" class="img-profecia-miniatura">
+            <img src="imagenes_principal/escritos/traduccion3.jpeg" alt="Traducción Revisada y Corregida" class="img-profecia-miniatura">
             <span class="label-version">Traducción revisada y corregida</span>
           </div>
         </div>

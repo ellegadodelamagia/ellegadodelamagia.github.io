@@ -1,132 +1,83 @@
 /* ==========================================================================
    ESTRUCTURA DE GRID (SIN IMPORTANT)
    ========================================================================== */
-
-#mundos-container {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* Aplicamos las 4 columnas tanto al ID como a la clase de tu HTML */
-#mundos-grid-dinamico,
-.mundos-grid-layout {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    width: 100%;
-    margin: 0 auto 40px auto;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-/* Tarjeta individual ajustada al ancho exacto de su columna */
-.mundo-card {
-    position: relative;
-    height: 380px;
-    width: 100%;
-    border-radius: 14px;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-    background-color: #120b20;
-    box-sizing: border-box;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Responsivo */
-@media (max-width: 1024px) {
-    #mundos-grid-dinamico, .mundos-grid-layout {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    #mundos-grid-dinamico, .mundos-grid-layout {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* ==========================================================================
-   ESTILIZADO DE TARJETAS INDIVIDUALES
+   CONTENEDOR GENERAL
    ========================================================================== */
 
-/* Limpiamos la tarjeta de anchos fijos para que el Grid controle el tamaño */
-.mundo-card {
-    position: relative;
-    height: 380px;
-    width: 100%;
-    border-radius: 14px;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-    background-color: #120b20;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-}
-
-/* Eliminamos la sobreescritura de #mundos-grid-dinamico .mundo-card que tenía max-width: 350px */
-
-/* Ajuste Responsivo Limpio (para pantallas pequeñas) */
-@media (max-width: 1024px) {
-    #mundos-container #mundos-grid-dinamico {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    #mundos-container #mundos-grid-dinamico {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Borrar de estilo.css y meter en tu CSS de mundos */
 #mundos-container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1280px;                 /* PERSONALIZABLE: ancho máximo de toda la sección */
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
 }
 
+
+/* ==========================================================================
+   GRIDS
+   ========================================================================== */
+
+/* Pantalla principal: los 4 mundos en 2 columnas x 2 filas */
+.grid-mundos,
 #mundos-grid-dinamico,
 .mundos-grid-layout,
 .mundos-grid {
-    display: grid;
-    /* auto-fit con minmax para que las columnas se adapten según la cantidad de tarjetas */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
-    /* Centra la cuadrícula entera dentro del contenedor */
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    margin: 0 auto 40px auto;
-    padding: 10px 0;
-    box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* PERSONALIZABLE: columnas de la pantalla principal */
+  gap: 20px;                               /* PERSONALIZABLE: espacio entre tarjetas */
+  max-width: 900px;                        /* PERSONALIZABLE: ancho total de las 4 tarjetas */
+  width: 100%;
+  margin: 0 auto 40px auto;
+  padding: 10px 0;
+  box-sizing: border-box;
 }
 
-.mundo-card {
-    position: relative;
-    height: 380px;
-    width: 100%;
-    border-radius: 14px;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-    background-color: #120b20;
-    box-sizing: border-box;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+/* Dentro de cada plano: 2 columnas por defecto */
+.grid-detalle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* PERSONALIZABLE: columnas por defecto dentro de cada plano */
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto 40px auto;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
 
-    /* 🎯 Alineación y centrado interno total */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra el contenido verticalmente */
-    align-items: center;     /* Centra el contenido horizontalmente */
-    text-align: center;      /* Centra los textos de varias líneas */
-    padding: 20px;           /* Margen interno para que el texto no toque los bordes */
+/* Listas largas (dridalys, panteones): 4 columnas */
+.grid-detalle.grid-cuatro {
+  grid-template-columns: repeat(4, 1fr);   /* PERSONALIZABLE: columnas para listas largas */
+}
+
+.grid-cuatro .mundo-card {
+  height: 340px;                           /* PERSONALIZABLE: alto de tarjeta en listas largas */
+}
+
+
+/* ==========================================================================
+   TARJETA INDIVIDUAL
+   ========================================================================== */
+
+.mundo-card {
+  position: relative;
+  height: 380px;                           /* PERSONALIZABLE: alto de las tarjetas */
+  width: 100%;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  background-color: #120b20;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+  /* Centrado interno del contenido */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
 }
 
 .mundo-card:hover {
@@ -135,6 +86,7 @@
   box-shadow: 0 15px 35px rgba(200, 168, 75, 0.15);
 }
 
+/* Número romano de fondo (el "IV" de Divinidades) */
 .roman-bg {
   position: absolute;
   top: -10px;
@@ -146,6 +98,7 @@
   pointer-events: none;
 }
 
+/* Texto "Pulsa para explorar →" */
 .indicador-accion {
   display: inline-block;
   margin-top: 12px;
@@ -154,7 +107,7 @@
   font-weight: 600;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: #c5a059;
+  color: #c5a059;                          /* PERSONALIZABLE: color del texto de acción */
   opacity: 0.85;
   transition: all 0.3s ease;
 }
@@ -166,68 +119,106 @@
   transform: translateX(4px);
 }
 
-@media (max-width: 1024px) {
-  #mundos-grid-dinamico, .mundos-grid-layout, .mundos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media (max-width: 600px) {
-  #mundos-grid-dinamico, .mundos-grid-layout, .mundos-grid {
-    grid-template-columns: 1fr;
-  }
-}
+/* ==========================================================================
+   COLORES POR PUEBLO (resplandor al pasar el cursor)
+   ========================================================================== */
 
-/* Color del borde o resplandor al pasar el cursor para cada pueblo */
-
-/* Nórdicos: Tonos fríos, azulados y plateados */
+/* Nórdicos: fríos, azulados y plateados */
 .mundo-card.pueblo-nordico:hover {
   border-color: #8ab4f8;
   box-shadow: 0 15px 35px rgba(138, 180, 248, 0.25);
 }
-.pueblo-nordico .indicador-accion {
-  color: #aecdff;
-}
+.pueblo-nordico .indicador-accion { color: #aecdff; }
 
-/* Asiáticos: Tonos místicos, jade o flor de cerezo/rojo dorado */
+/* Asiáticos: jade */
 .mundo-card.pueblo-asiatico:hover {
   border-color: #5cdb95;
   box-shadow: 0 15px 35px rgba(92, 219, 149, 0.25);
 }
-.pueblo-asiatico .indicador-accion {
-  color: #8ee4af;
-}
+.pueblo-asiatico .indicador-accion { color: #8ee4af; }
 
-/* Americanos: Tonos ámbar, turquesa o verde selva */
+/* Americanos: turquesa */
 .mundo-card.pueblo-americano:hover {
   border-color: #40e0d0;
   box-shadow: 0 15px 35px rgba(64, 224, 208, 0.25);
 }
-.pueblo-americano .indicador-accion {
-  color: #7fffd4;
-}
+.pueblo-americano .indicador-accion { color: #7fffd4; }
 
-/* Africanos: Tonos cálidos, sol, oro y fuego */
+/* Africanos: cálidos, sol y fuego */
 .mundo-card.pueblo-africano:hover {
   border-color: #e67e22;
   box-shadow: 0 15px 35px rgba(230, 126, 34, 0.25);
 }
-.pueblo-africano .indicador-accion {
-  color: #f39c12;
+.pueblo-africano .indicador-accion { color: #f39c12; }
+
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .grid-detalle.grid-cuatro { grid-template-columns: repeat(2, 1fr); }
 }
-/* Ataca a la sección del grid y a cualquier contenedor dentro del área dinámica */
+
+@media (max-width: 600px) {
+  .grid-mundos,
+  .grid-detalle,
+  .grid-detalle.grid-cuatro { grid-template-columns: 1fr; }
+}
+
+
+/* ==========================================================================
+   MÁRGENES INTERNOS DEL MARCO (se conservan con !important porque
+   sobreescriben otros estilos de la página)
+   ========================================================================== */
+
 #mundos-container,
 #mundos-grid-dinamico,
 .seccion-mistica {
-    padding-left: 45px !important;
-    padding-right: 45px !important;
-    box-sizing: border-box !important;
+  padding-left: 45px !important;
+  padding-right: 45px !important;
+  box-sizing: border-box !important;
 }
 
-/* Y le da un margen interno al marco para que las letras no toquen los bordes */
 #mundos-container > div,
 .seccion-mistica > div {
-    padding: 30px !important;
-    box-sizing: border-box !important;
+  padding: 30px !important;
+  box-sizing: border-box !important;
 }
 
+/* Para tarjetas totalmente bloqueadas */
+.tarjeta-bloqueada {
+    opacity: 0.85; /* Un toque levemente apagado para indicar que no es interactiva */
+    pointer-events: none; /* Desactiva todos los eventos de hover/clic en los elementos internos */
+    user-select: none; /* Nadie puede seleccionar texto ni arrastrar la imagen */
+}
+
+.mundo-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==========================================
+   ESTADO NIVEL 3: EFECO DE BRUMA MÍSTICA
+   ========================================== */
+.mundo-card.estado-nivel-3 {
+    position: relative;
+    overflow: hidden;
+    /* Fondo brumoso con tonos violeta y azul profundo */
+    background: linear-gradient(135deg, #0f1707 0%, #1a102f 50%, #0d061a 100%);
+    border: 1px solid rgba(86, 16, 224, 0.3);
+}
+
+
+/* Sombra interior de misterio en los bordes */
+.mundo-card.estado-nivel-3::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 25px rgba(149, 111, 224, 0.9);
+    pointer-events: none;
+}

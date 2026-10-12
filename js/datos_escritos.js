@@ -3,22 +3,19 @@
 // =========================================================================
 
 window.datosEscritos = [
+  
   {
-    id: "profecia-principal",
-    titulo: "La Profecía de la Triada",
-    categoria: "profecias",
-    subtitulo: "Registro enigmático que espera en el oráculo",
+    id: "atlas-del-mundo",
+    titulo: "El Atlas del Mundo Vedlys",
+    categoria: "compendios",
+    subtitulo: "Guía no autorizada de los Consejos Vedlys.",
     desbloqueado: 1,
-    imagen: "imagenes_principal/escritos/profecia_triada.jpg",
-    descripcionCorta: "El verso antiguo que predice el surgimiento de los herederos y el destino de la magia.",
+    imagen: "imagenes_principal/escritos/atlas.jpg",
+    descripcionCorta: "Compendio de mapas y anotaciones de exploradores incógnitos.",
     contenidoCompleto: {
-      origen: "Desconocido",
-      texto: `Cuando las sombras reclamen los confines de la tierra,<br>
-y la luz primigenia pierda su fulgor,<br>
-resurgirán los lazos del antiguo linaje...<br><br>
-Un heredero despertará la llama,<br>
-mientras el olvido amenaza con consumirlo todo.`,
-      notas: "Texto transcrito a partir de la imagen creada por la profecía."
+      origen: "Solo se sabe que Zaha lo encontró en un pueblo perdido en España.",
+      texto: "La comunidad Vedlys internacional no reconoce oficialmente la existencia de esta obra. Aun así, es la referencia más completa sobre los Consejos Vedlys del mundo.",
+      notas: "Incluye ubicaciones aproximadas de Consejos pertenecientes a la Hermandad de Merlín."
     }
   },
   {
@@ -44,25 +41,25 @@ mientras el olvido amenaza con consumirlo todo.`,
 
           <div class="tarjeta-version-profecia" 
                data-titulo="Primera traducción"
-               data-img="imagenes_principal/escritos/profecia_recolector_v2.jpg"
+               data-img="imagenes_principal/escritos/traduccion1.jpg"
                data-desc="Se cree que fue elaborada por un erudito italiano alrededor de 1700 ya que usó un registro herméticos/alquímicos de esa época, que mezclaban terminología griega con sintaxis latina. No se sabe si conocía el idioma antiguo.">
-            <img src="imagenes_principal/escritos/profecia_recolector_v2.jpg" alt="Primera traducción" class="img-profecia-miniatura">
+            <img src="imagenes_principal/escritos/traduccion1.jpg" alt="Primera traducción" class="img-profecia-miniatura">
             <span class="label-version">Primera traducción</span>
           </div>
 
           <div class="tarjeta-version-profecia" 
                data-titulo="Traducción oficial"
-               data-img="imagenes_principal/escritos/profecia_recolector_v_oficial.jpg"
+               data-img="imagenes_principal/escritos/profecia_recolector_v3.jpg"
                data-desc="La versión canónica y popularmente conocida en el mundo Vedlys. Stefen la descartó al comenzar a examinar los escritos del Maestro de la Magia, pero era la interpretación estándar que todos conocían.">
-            <img src="imagenes_principal/escritos/profecia_recolector_v_oficial.jpg" alt="Traducción Oficial" class="img-profecia-miniatura">
+            <img src="imagenes_principal/escritos/profecia_recolector_v3.jpg" alt="Traducción Oficial" class="img-profecia-miniatura">
             <span class="label-version">Traducción oficial</span>
           </div>
 
           <div class="tarjeta-version-profecia" 
                data-titulo="Traducción revisada y corregida"
-               data-img="imagenes_principal/escritos/profecia_recolector_v3.jpg"
+               data-img="imagenes_principal/escritos/profecia_recolector_v4.jpg"
                data-desc="Realizada por Stefen, corregida entre Stefen y Jeziel. Utilizada para la prueba de Kaira.">
-            <img src="imagenes_principal/escritos/profecia_recolector_v3.jpg" alt="Traducción Revisada y Corregida" class="img-profecia-miniatura">
+            <img src="imagenes_principal/escritos/profecia_recolector_v4.jpg" alt="Traducción Revisada y Corregida" class="img-profecia-miniatura">
             <span class="label-version">Traducción revisada y corregida</span>
           </div>
         </div>
@@ -90,7 +87,7 @@ mientras el olvido amenaza con consumirlo todo.`,
     subtitulo: "Fragmentos de origen incierto",
     categoria: "profecias",
     desbloqueado: 1,
-    imagen: "assets/img/canto-saga-bg.jpg",
+    imagen: "imagenes_principal/escritos/canto1.jpg",
     descripcionCorta: "Una estrofa grabada en el tiempo por cada tomo que compone la historia.",
     contenidoCompleto: {
       origen: "Canto continuo registrado en las Crónicas de la Saga",
@@ -111,26 +108,14 @@ mientras el olvido amenaza con consumirlo todo.`,
       notas: "Haz clic en cualquier verso para viajar a su tomo."
     }
   },
-  {
-    id: "atlas-del-mundo",
-    titulo: "El Atlas del Mundo Vedlys",
-    categoria: "compendios",
-    subtitulo: "Guía no autorizada de los Consejos Vedlys.",
-    desbloqueado: 1,
-    imagen: "imagenes_principal/escritos/atlas.jpg",
-    descripcionCorta: "Compendio de mapas y anotaciones de exploradores incógnitos.",
-    contenidoCompleto: {
-      origen: "Solo se sabe que Zaha lo encontró en un pueblo perdido en España.",
-      texto: "La comunidad Vedlys internacional no reconoce oficialmente la existencia de esta obra. Aun así, es la referencia más completa sobre los Consejos Vedlys del mundo.",
-      notas: "Incluye ubicaciones aproximadas de Consejos pertenecientes a la Hermandad de Merlín."
-    }
-  },
+  
+  
   {
     id: "legado-1",
     titulo: "El origen de la Magia",
     categoria: "legado",
     subtitulo: "MAGIA",
-    desbloqueado: 1,
+    desbloqueado: 2,
     imagen: "imagenes/escritos/legado_1.jpg",
     descripcionCorta: "Sobre la naturaleza, las leyes y el origen de la magia.",
     contenidoCompleto: {
@@ -144,7 +129,7 @@ mientras el olvido amenaza con consumirlo todo.`,
     titulo: "La memoria del Mundo Oculto",
     categoria: "legado",
     subtitulo: "CONOCIMIENTO",
-    desbloqueado: 1,
+    desbloqueado: 2,
     imagen: "imagenes/escritos/legado_2.jpg",
     descripcionCorta: "Compendio del conocimiento acumulado por los guardianes y sabios de todas las eras.",
     contenidoCompleto: {
@@ -158,7 +143,7 @@ mientras el olvido amenaza con consumirlo todo.`,
     titulo: "Las fórmulas del Arte Antiguo",
     categoria: "legado",
     subtitulo: "PODER",
-    desbloqueado: 1,
+    desbloqueado: 2,
     imagen: "imagenes/escritos/legado_3.jpg",
     descripcionCorta: "Hechizos, rituales y palabras del Arte Antiguo capaces de transformar la realidad.",
     contenidoCompleto: {
@@ -168,17 +153,36 @@ mientras el olvido amenaza con consumirlo todo.`,
     }
   },
   {
+    id: "profecia-principal",
+    titulo: "La Profecía de la Triada",
+    categoria: "profecias",
+    subtitulo: "Registro enigmático que espera en el oráculo",
+    desbloqueado: 2,
+    imagen: "imagenes_principal/escritos/profecia_triada.jpg",
+    descripcionCorta: "El verso antiguo que predice el surgimiento de los herederos y el destino de la magia.",
+    contenidoCompleto: {
+      origen: "Desconocido",
+      texto: `Cuando las sombras reclamen los confines de la tierra,<br>
+y la luz primigenia pierda su fulgor,<br>
+resurgirán los lazos del antiguo linaje...<br><br>
+Un heredero despertará la llama,<br>
+mientras el olvido amenaza con consumirlo todo.`,
+      notas: "Texto transcrito a partir de la imagen creada por la profecía."
+    }
+  },
+
+  {
     id: "libro-herederos",
     titulo: "El Libro de los Herederos",
     categoria: "registros",
-    subtitulo: "Crónica de linajes y marcas de sangre",
-    desbloqueado: 1,
+    subtitulo: "El plan de la triada",
+    desbloqueado: 2,
     imagen: "imagenes/escritos/libro_herederos.jpg",
-    descripcionCorta: "Registro de las familias bendecidas por la magia antigua y sus descendientes legítimos.",
+    descripcionCorta: "Desconocido",
     contenidoCompleto: {
-      origen: "Custodiado por los Cronistas de la Dinastía.",
-      texto: "",
-      notas: "Contiene pasajes cifrados sobre los herederos perdidos."
+      origen: "Elaborado por los dioses para guiar a los herederos en su camino para doblegar a la sombra",
+      texto: "Contiene instrucciones para localizar a los maestros de la magia que les enseñarán a utilizar la energía ambiental y asi lograr realizar los rituales necesarios para someter a la sombra. El libro está dividido en siete secciones.",
+      notas: "Contiene pasajes cifrados."
     },
     partesHerederos: [
       { titulo: "I. El Linaje del Fuego", desc: "Guardianes de la llama primigenia y el dominio de la forja de almas." },
@@ -188,7 +192,7 @@ mientras el olvido amenaza con consumirlo todo.`,
       { titulo: "V. Los Tejedores de Luz", desc: "Portadores del resplandor primario y la magia de consagración." },
       { titulo: "VI. La Estirpe Umbría", desc: "Guardianes del velo de la sombra, guardianes del juicio nocturno." },
       { titulo: "VII. La Marca del Cristal", desc: "Manipuladores de la geometría sagrada y la resonancia arcana." },
-      { titulo: "VIII. El Heredero Olvidado", desc: "Fragmentos del registro perdido cuya presencia aún no se manifiesta." }
+     
     ]
   }
 ];

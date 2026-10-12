@@ -1,5 +1,26 @@
 /* =========================================================================
-   📜 SECCIÓN ESCRITOS Y MANUSCRITOS ANCESTRALES
+   📜 ESCRITOS Y MANUSCRITOS ANCESTRALES  ·  escritos.css
+   =========================================================================
+
+   GUÍA RÁPIDA: ¿DÓNDE CAMBIO QUÉ?
+   -------------------------------------------------------------------------
+   1. SECCIÓN Y FILTROS ........ título de la sección, botones de categoría
+   2. TARJETAS ................. la grilla y las tarjetas (desbloqueadas / bloqueadas)
+   3. MODAL (GENERAL) .......... fondo oscuro, ventana, título, origen, notas, botón regresar
+   4. LAYOUT 2 COLUMNAS ........ escritos normales con imagen a un lado
+   5. PROFECÍA DEL RECOLECTOR .. miniaturas y vista ampliada
+   6. LIBRO DE HEREDEROS ....... subgrilla de tarjetas
+   7. EL CANTO DE LA SAGA ...... versos + MODO MARCO (imagen clara con el texto encima)
+   8. RESALTOS MÍSTICOS ........ colores de palabras destacadas dentro de los textos
+   9. UTILIDADES ............... texto borroso
+
+   REGLA DE ORO: no uso !important. Si algo no cambia, casi siempre es porque
+   otra regla más específica (con # o con más clases) le gana. Edita esa regla.
+   ========================================================================= */
+
+
+/* =========================================================================
+   1. SECCIÓN Y FILTROS
    ========================================================================= */
 
 .escritos-section {
@@ -9,7 +30,13 @@
   color: var(--parch);
 }
 
-/* --- FILTROS DE CATEGORÍA --- */
+#escritos .subtitulo-seccion,
+.seccion-escritos p {
+  color: #F1F5F9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* --- Botones de filtro por categoría --- */
 .filtros-escritos {
   display: flex;
   justify-content: center;
@@ -41,44 +68,59 @@
   box-shadow: 0 0 15px rgba(197, 169, 86, 0.4);
 }
 
-/* --- GRILLA DE TARJETAS PRINCIPALES --- */
+
+/* =========================================================================
+   2. TARJETAS
+   ========================================================================= */
+
+/* --- Grilla: 3 columnas en escritorio, 2 en tablet, 1 en celular --- */
 #escritos-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr); /* PERSONALIZABLE: número de columnas */
   gap: 2rem;
   margin-top: 2rem;
 }
 
 @media (max-width: 1024px) {
-  #escritos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  #escritos-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
-  #escritos-grid {
-    grid-template-columns: 1fr;
-  }
+  #escritos-grid { grid-template-columns: 1fr; }
 }
 
+/* --- Tarjeta DESBLOQUEADA (es el estilo base de todas las tarjetas) --- */
 .escrito-card {
-  background: linear-gradient(135deg, rgba(16, 26, 41, 0.7) 0%, rgba(6, 19, 31, 0.95) 100%);
-  border: 1px solid rgba(197, 169, 86, 0.5);
-  border-radius: 6px;
-  padding: 1.8rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  padding: 1.8rem;
+  border-radius: 6px;
+  background: rgba(35, 28, 20, 0.85);                      /* PERSONALIZABLE: fondo */
+  border: 1px solid rgba(197, 169, 86, 0.5);               /* PERSONALIZABLE: borde dorado */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 0 12px rgba(197, 169, 86, 0.08);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .escrito-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--gold);
-  box-shadow: 0 12px 30px rgba(197, 169, 86, 0.15);
+  background: rgba(45, 36, 25, 0.92);
+  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow: 0 6px 20px rgba(197, 169, 86, 0.2);
+  transform: translateY(-3px);
 }
 
+/* --- Tarjeta BLOQUEADA nivel 2 (la clase la pone el JS) --- */
+/* Va después del hover de arriba para que, al pasar el cursor, no cambie ni se levante */
+.escrito-card.bloqueo-nivel-2,
+.escrito-card.bloqueo-nivel-2:hover {
+  background: rgba(41, 33, 25, 0.9);
+  border: 1px solid rgba(80, 70, 50, 0.3);
+  box-shadow: none;
+  transform: none;
+  opacity: 0.75;
+}
+
+/* --- Textos de la tarjeta --- */
 .escrito-card h3 {
   color: #9b884b;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
@@ -96,18 +138,15 @@
   line-height: 1.5;
 }
 
-.escrito-card .badge-categoria {
-  color: #FFE600;
-  background: rgba(16, 17, 54, 0.6);
-  border: 1px solid rgba(255, 230, 0, 0.4);
+.escrito-card .btn-dorado {
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
 }
 
-#escritos .subtitulo-seccion,
-.seccion-escritos p {
-  color: #F1F5F9;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-}
-
+/* --- Etiqueta de categoría (Profecía, Atlas, Códice...) --- */
 .badge-categoria {
   display: inline-block;
   font-size: 0.75rem;
@@ -117,15 +156,13 @@
   opacity: 0.8;
 }
 
-.escrito-card .btn-dorado {
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
-  padding: 0.7rem 1rem;
-  font-size: 0.85rem;
+.escrito-card .badge-categoria {
+  color: #FFE600;
+  background: rgba(16, 17, 54, 0.6);
+  border: 1px solid rgba(255, 230, 0, 0.4);
 }
 
-/* --- IMAGEN EN TARJETAS DE ESCRITOS --- */
+/* --- Imagen dentro de la tarjeta (el JS actual no la usa; queda por si la activas) --- */
 .escrito-img-container {
   width: 100%;
   height: 160px;
@@ -147,10 +184,12 @@
   transform: scale(1.05);
 }
 
+
 /* =========================================================================
-   📜 MODAL / VISTA COMPLETA DE LECTURA
+   3. MODAL (GENERAL: lo que comparten todos los escritos)
    ========================================================================= */
 
+/* --- Capa oscura a pantalla completa. ESTA es la que hace scroll de la página --- */
 .modal-escrito {
   display: none;
   position: fixed;
@@ -158,13 +197,15 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(3, 3, 5, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 3000;
+  background-color: rgba(3, 3, 5, 0.85); /* PERSONALIZABLE: opacidad (0.95 = casi negro, 0.6 = se ve la página detrás) */
+  backdrop-filter: blur(6px);            /* PERSONALIZABLE: desenfoque (10px = muy borroso, 3px = se leen los títulos) */
+  z-index: 900;                          /* PERSONALIZABLE: debe ser menor que el z-index de la barra (1000) */
   justify-content: center;
   align-items: flex-start;
+  overflow-x: hidden;                    /* evita scroll horizontal por los efectos hover */
   overflow-y: auto;
-  padding: 2rem 1rem;
+  scrollbar-gutter: stable;              /* reserva el espacio de la barra para que el contenido no "brinque" */
+  padding: 7rem 2rem 1rem;               /* PERSONALIZABLE: 7rem = espacio para que no quede detrás de la barra */
   box-sizing: border-box;
 }
 
@@ -172,15 +213,15 @@
   display: flex;
 }
 
-/* Ventana principal del Modal */
+/* --- Ventana del modal (#modal-detalle-contenido). Escritos normales: caja con scroll propio --- */
 .modal-escrito .modal-contenido,
 .modal-escrito-contenido {
   position: relative;
   width: 90%;
-  max-width: 950px;
-  max-height: 85vh;
+  max-width: 950px;                      /* PERSONALIZABLE: ancho máximo */
+  max-height: 85vh;                      /* PERSONALIZABLE: alto máximo antes de que aparezca scroll */
   margin: auto;
-  background-size: cover; 
+  background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
   border: 1px solid rgba(197, 169, 86, 0.4);
@@ -189,19 +230,53 @@
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
 }
 
+/* --- Contenedor interno de los escritos normales (el Canto con marco NO lo usa) --- */
 .modal-overlay-bg {
-  background: rgba(10, 8, 6, 0.45);
-  padding: 2.5rem 2rem;
+  background: transparent;               /* PERSONALIZABLE: para un velo oscuro detrás del texto usa rgba(10, 8, 6, 0.45) */
+  padding: 10px;                         /* PERSONALIZABLE: espacio interior */
   box-sizing: border-box;
   min-height: 100%;
 }
 
-#modal-detalle-contenido h2 {
-  font-size: 2.2rem;
-  margin-bottom: 0.8rem;
+/* --- Título del escrito (h2) --- */
+.escrito-titulo {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 2rem;                       /* PERSONALIZABLE */
+  margin-bottom: 5px;
+  text-align: center;
 }
 
-/* Cuerpo de texto del modal (Limpiado: sin cuadro oscuro estorboso) */
+/* Variante cuando el título va en la columna de texto (layout 2 columnas) */
+.escrito-titulo--lateral {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  text-align: inherit;
+}
+
+/* --- "Origen:" debajo del título --- */
+.escrito-origen {
+  color: #eceba7;                        /* PERSONALIZABLE: color */
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+
+.escrito-origen strong {
+  color: var(--gold);
+}
+
+/* --- Notas al final del escrito --- */
+.escrito-notas-limpias {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #f5e4bf;                        /* PERSONALIZABLE: color */
+  font-style: italic;
+}
+
+/* --- Cuerpo de texto --- */
 .escrito-cuerpo-texto {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem;
@@ -223,7 +298,52 @@
   text-align: center;
 }
 
-/* --- LAYOUT 2 COLUMNAS (Para escritos estándar) --- */
+/* --- Botón "← Regresar a Escritos" --- */
+.zona-boton-regresar {
+  text-align: center;
+  margin-top: 2.5rem;                    /* PERSONALIZABLE: espacio sobre el botón */
+}
+
+.btn-regresar-modal {
+  padding: 0.75rem 2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 50px;
+  background: rgba(16, 13, 9, 0.95);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.btn-regresar-modal:hover {
+  background: var(--gold);
+  color: var(--dark-bg);
+  box-shadow: 0 0 20px rgba(197, 169, 86, 0.6);
+  transform: translateY(-2px);
+}
+
+/* --- Etiqueta de libro (se usa dentro de los textos) --- */
+.badge-libro {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #e5c158;
+  background: rgba(20, 10, 30, 0.6);
+  border: 1px dashed #c5a059;
+  border-radius: 4px;
+  line-height: 1.3;
+}
+
+
+/* =========================================================================
+   4. LAYOUT 2 COLUMNAS (escritos normales con imagen)
+   ========================================================================= */
+
 .modal-layout-dos-columnas {
   display: flex;
   flex-direction: row;
@@ -233,7 +353,7 @@
 }
 
 .columna-imagen-modal {
-  flex: 0 0 35%;
+  flex: 0 0 35%;                         /* PERSONALIZABLE: ancho de la columna de la imagen */
   max-width: 320px;
 }
 
@@ -256,19 +376,20 @@
     flex-direction: column;
     align-items: center;
   }
-  
+
   .columna-imagen-modal {
     max-width: 100%;
     margin-bottom: 1rem;
   }
-  
+
   .columna-texto-modal {
     text-align: center;
   }
 }
 
+
 /* =========================================================================
-   🔮 SUB-TARJETAS DE PROFECÍA (CUATRÍPTICO / MINIATURAS)
+   5. PROFECÍA DEL RECOLECTOR (miniaturas + vista ampliada)
    ========================================================================= */
 
 .contenedor-triptico-profecia {
@@ -293,7 +414,7 @@
   border: 1px solid rgba(197, 169, 86, 0.4);
   background: rgba(10, 8, 6, 0.85);
   transition: all 0.3s ease;
-  filter: brightness(0.7);
+  filter: brightness(0.7);               /* PERSONALIZABLE: qué tan apagadas se ven (1 = normal) */
   text-align: center;
   box-sizing: border-box;
 }
@@ -321,7 +442,7 @@
   background: rgba(15, 12, 9, 0.9);
 }
 
-/* Vista ampliada en foco */
+/* --- Vista ampliada --- */
 .vista-ampliada-profecia {
   animation: fadeIn 0.3s ease-in-out;
 }
@@ -384,16 +505,17 @@
 
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
+
 /* =========================================================================
-   📜 SUBGRILLA DE HEREDEROS
+   6. LIBRO DE HEREDEROS (subgrilla)
    ========================================================================= */
 
 .subgrid-herederos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* PERSONALIZABLE: columnas */
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -401,6 +523,7 @@
 @media (max-width: 900px) {
   .subgrid-herederos { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 600px) {
   .subgrid-herederos { grid-template-columns: 1fr; }
 }
@@ -433,7 +556,19 @@
   line-height: 1.4;
 }
 
-/* --- CANTO DE LA SAGA --- */
+
+/* =========================================================================
+   7. EL CANTO DE LA SAGA
+   =========================================================================
+   Tiene dos partes:
+   7A. Versos y etiquetas de tomo (se ven igual con o sin imagen)
+   7B. MODO MARCO: la imagen clara es el "papel" y el texto va encima, dentro
+       del recuadro de la imagen. El modal se ajusta solo al tamaño de la imagen,
+       así que NO hay recuadro con scroll.
+   ========================================================================= */
+
+/* ---------- 7A. VERSOS Y ETIQUETAS ---------- */
+
 .canto-saga-contenedor {
   display: flex;
   flex-direction: column;
@@ -449,14 +584,28 @@
   text-align: center;
   font-style: italic;
   margin: 0;
-  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 10px 15px;
+  border-radius: 6px;
+  background: rgba(20, 15, 10, 0.1);
+  border: 1px solid rgba(197, 169, 86, 0.2);
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .verso-tomo:hover {
   color: #ffe89e;
-  transform: scale(1.02);
 }
 
+/* Versos que llevan a un libro (el JS les pone cursor y clic) */
+.verso-tomo.link-saga {
+  cursor: pointer;
+}
+
+.verso-tomo.link-saga:hover {
+  background: rgba(197, 169, 86, 0.25);
+  color: #ffe89e;
+}
+
+/* Etiqueta "Tomo I", "Tomo II"... */
 .badge-tomo {
   display: inline-block;
   font-family: 'Cinzel', serif;
@@ -471,55 +620,164 @@
   vertical-align: middle;
 }
 
-.verso-tomo.link-saga {
-  cursor: pointer;
-  transition: all 0.25s ease;
-  padding: 4px 8px;
-  border-radius: 4px;
+
+/* ---------- 7B. MODO MARCO (imagen clara con texto encima) ---------- */
+
+/* ★★★ AQUÍ ESTÁN TODOS LOS AJUSTES DEL CANTO ★★★
+   Cambia solo estos valores; el resto del bloque no hace falta tocarlo. */
+#modal-detalle-contenido.modo-canto {
+
+  /* --- TAMAÑO DEL MARCO --- */
+  /* PERSONALIZABLE (importante): proporción de tu imagen = ancho ÷ alto.
+     Ej.: imagen de 1200 × 1600 px → 0.75 ; imagen de 1000 × 1000 → 1 ; de 1600 × 1200 → 1.33
+     Con esto el marco siempre cabe en la pantalla sin hacer scroll. */
+  --canto-proporcion: 0.75;
+  --canto-ancho-max: 760px;         /* PERSONALIZABLE: ancho máximo del marco en pantallas grandes */
+  --canto-reserva-vertical: 13rem;  /* PERSONALIZABLE: espacio que se deja arriba/abajo (barra + botón). Si aparece scroll, súbelo */
+
+  /* --- ZONA DEL TEXTO DENTRO DEL MARCO (en % de la imagen) --- */
+  /* PERSONALIZABLE: hazlos más grandes si el texto se sale del recuadro de tu imagen */
+  --canto-margen-sup: 14%;
+  --canto-margen-inf: 14%;
+  --canto-margen-lat: 15%;
+
+  /* --- TAMAÑOS DE LETRA (cqw = % del ancho del marco, así todo escala junto con la imagen) --- */
+  --canto-tam-titulo: 4.2cqw;       /* PERSONALIZABLE */
+  --canto-tam-verso: 2.6cqw;        /* PERSONALIZABLE: si el texto no cabe en el marco, bájalo (ej. 2.2cqw) */
+  --canto-tam-origen: 2cqw;
+  --canto-tam-notas: 2cqw;
+  --canto-tam-tomo: 1.8cqw;
+  --canto-espacio-versos: 1cqw;     /* PERSONALIZABLE: separación entre versos */
+
+  /* --- COLORES --- */
+  --canto-color-texto: #000000;     /* PERSONALIZABLE: versos (#1a1208 = negro cálido suave) */
+  --canto-color-titulo: #000000;    /* PERSONALIZABLE: título */
+  --canto-color-hover: #5a3d00;     /* PERSONALIZABLE: color de un verso al pasar el cursor */
+  --canto-color-tomo: #5a4210;      /* PERSONALIZABLE: letras de la etiqueta "Tomo" */
+  --canto-fondo-tomo: rgba(120, 90, 20, 0.12);
+  --canto-borde-tomo: rgba(90, 66, 16, 0.45);
+
+  /* --- La ventana del modal pasa a ser invisible: no caja, no borde, no scroll propio --- */
+  max-height: none;
+  overflow: visible;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
-.verso-tomo.link-saga:hover {
-  background: rgba(197, 169, 86, 0.25);
-  color: #ffe89e;
-  transform: translateX(6px);
+/* Contenedor interno del Canto */
+.contenido-canto {
+  padding: 0;
 }
 
-/* --- BOTONES Y BADGES VARIADOS --- */
-.btn-regresar-modal {
-  padding: 0.75rem 2rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-  border-radius: 50px;
-  background: rgba(16, 13, 9, 0.95);
-  border: 1.5px solid var(--gold);
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-  transition: all 0.3s ease;
+/* El marco: mide lo mismo que la imagen y sirve de referencia para las letras (cqw) */
+.canto-marco {
+  position: relative;
+  container-type: inline-size;
+  margin: 0 auto;
+  /* Primera línea = respaldo para navegadores viejos; la segunda ajusta también al alto de la pantalla */
+  width: min(100%, var(--canto-ancho-max));
+  width: min(100%, var(--canto-ancho-max), calc((100dvh - var(--canto-reserva-vertical)) * var(--canto-proporcion)));
 }
 
-.btn-regresar-modal:hover {
-  background: var(--gold);
-  color: var(--dark-bg);
-  box-shadow: 0 0 20px rgba(197, 169, 86, 0.6);
-  transform: translateY(-2px);
+.canto-marco-img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.badge-libro {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  font-style: italic;
-  color: #e5c158;
-  background: rgba(20, 10, 30, 0.6);
-  border: 1px dashed #c5a059;
-  border-radius: 4px;
-  line-height: 1.3;
+/* El texto va encima de la imagen, centrado dentro de las márgenes */
+.canto-marco-texto {
+  position: absolute;
+  top: var(--canto-margen-sup);
+  bottom: var(--canto-margen-inf);
+  left: var(--canto-margen-lat);
+  right: var(--canto-margen-lat);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;               /* PERSONALIZABLE: flex-start = texto pegado arriba */
+  color: var(--canto-color-texto);
 }
 
-/* --- RESALTOS MÍSTICOS --- */
+/* Título */
+.canto-marco-texto .escrito-titulo {
+  color: var(--canto-color-titulo);
+  font-size: var(--canto-tam-titulo);
+  margin: 0 0 1.5cqw;
+}
+
+/* Origen y notas */
+.canto-marco-texto .escrito-origen,
+.canto-marco-texto .escrito-notas-limpias {
+  color: var(--canto-color-texto);
+  text-shadow: none;
+}
+
+.canto-marco-texto .escrito-origen {
+  font-size: var(--canto-tam-origen);
+}
+
+.canto-marco-texto .escrito-origen strong {
+  color: var(--canto-color-texto);
+}
+
+.canto-marco-texto .escrito-notas-limpias {
+  font-size: var(--canto-tam-notas);
+  margin-top: 1.5cqw;
+}
+
+/* Versos: sin caja, solo texto; el hover cambia color y un velo muy suave (sin moverse) */
+.canto-marco-texto .canto-saga-contenedor {
+  gap: var(--canto-espacio-versos);
+  margin: 0;
+}
+
+.canto-marco-texto .verso-tomo {
+  font-size: var(--canto-tam-verso);
+  color: var(--canto-color-texto);
+  background: none;
+  border: none;
+  padding: 0.6cqw 1.5cqw;
+}
+
+.canto-marco-texto .verso-tomo:hover,
+.canto-marco-texto .verso-tomo.link-saga:hover {
+  color: var(--canto-color-hover);
+  background: rgba(0, 0, 0, 0.06);       /* PERSONALIZABLE: velo al pasar el cursor (0 = ninguno) */
+}
+
+/* Etiqueta "Tomo" */
+.canto-marco-texto .badge-tomo {
+  font-size: var(--canto-tam-tomo);
+  color: var(--canto-color-tomo);
+  background: var(--canto-fondo-tomo);
+  border-color: var(--canto-borde-tomo);
+}
+
+/* Botón de regresar: queda debajo del marco, sobre la capa oscura */
+.contenido-canto .zona-boton-regresar {
+  margin-top: 1rem;
+}
+
+/* Celulares: el marco es chico, así que la letra se ve pequeña. Aquí se agranda un poco. */
+@media (max-width: 600px) {
+  #modal-detalle-contenido.modo-canto {
+    --canto-margen-sup: 11%;             /* PERSONALIZABLE */
+    --canto-margen-inf: 11%;
+    --canto-margen-lat: 12%;
+    --canto-tam-titulo: 5cqw;
+    --canto-tam-verso: 3.4cqw;
+    --canto-tam-origen: 3cqw;
+    --canto-tam-notas: 3cqw;
+    --canto-tam-tomo: 2.8cqw;
+  }
+}
+
+
+/* =========================================================================
+   8. RESALTOS MÍSTICOS (palabras destacadas dentro de los textos)
+   ========================================================================= */
+
 .resalto-oro {
   color: var(--gold);
   font-weight: bold;
@@ -545,31 +803,15 @@
   letter-spacing: 1px;
 }
 
+
 /* =========================================================================
-   LIMPIEZA FORZADA DE FONDOS / CUADROS EN MODAL DE ESCRITOS
+   9. UTILIDADES
    ========================================================================= */
 
-/* Quita fondo, bordes y sombras del contenedor del modal */
-#modal-detalle-contenido .modal-overlay-bg {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 10px !important;
-}
-
-/* Quita fondo de la caja de texto para las excepciones */
-#modal-detalle-contenido .canto-saga-contenedor,
-#modal-detalle-contenido .subgrid-herederos {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Si las tarjetas de los versos del canto tienen un fondo muy marcado */
-#modal-detalle-contenido .verso-tomo {
-  background: rgba(20, 15, 10, 0.4) !important; /* Opacidad leve para legibilidad */
-  border: 1px solid rgba(197, 169, 86, 0.2) !important;
-  margin-bottom: 8px !important;
-  padding: 10px 15px !important;
-  border-radius: 6px !important;
+/* Texto borroso (tarjetas bloqueadas nivel 2) */
+.blur-texto {
+  filter: blur(4px);
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 }

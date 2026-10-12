@@ -20,18 +20,19 @@
     --c-Suiza: #50a080;
     --c-Italia: #c05838;
 
-    /* Hilos de Magia por Tipo */
+   /* Hilos de Magia por Tipo */
 --c-default: #0633c7;             /* Azul oscuro para registros Padre */
---c-magia-ancestral: #535252;     /* Gris muy oscuro */
---c-poder-celestial: #f3f6f8;     /* Blanco celestial */
---c-magia-contemporanea: #929420; /* Amarillo contemporánea */
---c-magia-oscura: #08023f;        /* Negro para magia oscura */
+/* PERSONALIZABLE: todos los colores de abajo son el color del MARCO de su tarjeta */
+--c-magia-ancestral: #6f7175;     /* Plata clara (antigua) */
+--c-poder-celestial: #f7f3f2;     /* Blanco perla */
+--c-magia-contemporanea: #7a711c; /* Dorado pálido */
+--c-magia-oscura: #030a35;        /* Azul casi negro */
 
---c-sin-magia: #2b582b;           /* Beige muy claro y plano — "vacío", casi como papel */
---c-magia-residual: #e73f83;      /* Rosa-vino apagado — visible pero "gastado" */
---c-vortice-de-magia: #490886;    /* Púrpura intenso — caos/inestable */
---c-magia-perdida: #8f1620;       /* Verde bosque apagado — color BASE del patrón de motas */
---c-magia-entretejida: #8e7cc3;    /* Verde absoluto */
+--c-sin-magia: #2b582b;           /* Verde bosque (sin cambio) */
+--c-magia-residual: #c24a1f;      /* Óxido */
+--c-vortice-de-magia: #8a32dd;    /* Púrpura */
+--c-magia-perdida: #d735ff;       /* Magenta */
+--c-magia-entretejida: #8a5a3b;   /* Café terroso */
 }  
 
 /* Reset básico para evitar márgenes extraños */

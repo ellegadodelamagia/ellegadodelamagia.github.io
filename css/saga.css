@@ -1,23 +1,59 @@
-/* css/saga.css - Módulo Saga */
+/* ==========================================================================
+   css/saga.css — Módulo "Descubre la historia y la Saga"
+   --------------------------------------------------------------------------
+   ÍNDICE (busca el número para saltar a cada parte)
+   1. Contenedor principal
+   2. Botones (Conoce la saga / Volver / Toca si quieres llevar el libro)
+   3. Vista GRID: tarjetas de libros
+   4. Estados de visibilidad (nivel 2 y 3: borroso)
+   5. Vista DETALLE de un libro
+   6. Responsive (tablet y celular)
 
-/* --- Botón Redondeado Inicial --- */
+   NOTAS DE REVISIÓN
+   - Antes había dos versiones de cada regla del grid; aquí queda UNA sola,
+     con los valores de la segunda versión ("Ajustes de diseño y amplitud").
+   - CAMBIO VISIBLE: en 3. .tarjeta-imagen-box ya no lleva height: 240px.
+     Antes ese height (de la primera versión) seguía mandando y el
+     aspect-ratio nunca se aplicaba. Ahora las portadas salen en proporción
+     de libro (2/3). Si prefieres el look anterior, ver la nota en ese bloque.
+   - Los media queries se unificaron en 992px y 640px (antes había 900/600
+     y 992/640 mezclados).
+   - Colores: dorado = #d4af37. Si lo cambias, búscalo y reemplázalo en todo
+     el archivo.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. CONTENEDOR PRINCIPAL
+   ========================================================================== */
+#contenedor-modulo-saga {
+  max-width: 1100px;   /* PERSONALIZABLE: ancho máximo de todo el módulo */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+
+/* ==========================================================================
+   2. BOTONES
+   ========================================================================== */
+
+/* --- 2a. Botón redondeado: "Conoce la saga" y "Toca si quieres llevar el libro" --- */
 .btn-redondeado-saga {
-  /* Estado normal: Sobrio y elegante con borde dorado sutil */
   background: rgba(15, 15, 25, 0.8);
   color: #d4af37;
   border: 1.5px solid #d4af37;
   font-family: 'Cinzel', serif;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.1rem;           /* PERSONALIZABLE */
   letter-spacing: 1px;
-  padding: 0.9rem 2.5rem;
+  padding: 0.9rem 2.5rem;      /* PERSONALIZABLE: alto y ancho del botón */
   border-radius: 50px;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   transition: all 0.35s ease;
 }
 
-/* Estado Hover: Se llena de dorado brillante al pasar el cursor */
+/* Hover: se llena de dorado */
 .btn-redondeado-saga:hover {
   background: linear-gradient(135deg, #d4af37, #aa820a);
   color: #0d0d18;
@@ -26,7 +62,13 @@
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
 }
 
-/* --- Botón de Retorno --- */
+/* --- 2b. Bloque que envuelve "Toca si quieres llevar el libro" (antes sin estilos) --- */
+.bloque-accion-compra {
+  text-align: center;
+  margin-top: 2rem;            /* PERSONALIZABLE: separación con la sinopsis */
+}
+
+/* --- 2c. Botón "← Volver" --- */
 .btn-volver-historia {
   background: transparent;
   border: 1px solid #d4af37;
@@ -43,215 +85,21 @@
   color: #ffffff;
 }
 
-/* --- Grid de 3 Columnas --- */
+
+/* ==========================================================================
+   3. VISTA GRID: TARJETAS DE LIBROS
+   ========================================================================== */
+
+/* --- 3a. Grid de 3 columnas --- */
 .grid-saga-tres {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.tarjeta-saga-item {
-  background: rgba(6, 6, 32, 0.85);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.tarjeta-saga-item:hover {
-  transform: translateY(-5px);
-  border-color: rgba(212, 175, 55, 0.6);
-}
-
-.tarjeta-imagen-box {
-  width: 100%;
-  height: 240px;
-  overflow: hidden;
-  background: #0a0a0a;
-}
-
-.imagen-portada-grid {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.tarjeta-cuerpo-box {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
-}
-
-.numero-libro-tag {
-  color: #d4af37;
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-}
-
-.titulo-libro-grid {
-  font-family: 'Cinzel Decorative', 'Cinzel', serif;
-  color: #ffffff;
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-}
-
-.frase-libro-grid {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  color: #a0a0b0;
-  font-size: 0.95rem;
-  margin-bottom: 1.2rem;
-}
-
-.btn-conoce-libro {
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid #d4af37;
-  color: #d4af37;
-  font-family: 'Cinzel', serif;
-  padding: 0.6rem;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 100%;
-  transition: all 0.2s ease;
-}
-
-.btn-conoce-libro:hover:not(:disabled) {
-  background: #d4af37;
-  color: #0d0d18;
-}
-
-.btn-conoce-libro:disabled {
-  border-color: #555;
-  color: #777;
-  background: rgba(255, 255, 255, 0.05);
-  cursor: not-allowed;
-}
-
-/* --- Niveles de Visibilidad 2 y 3 --- */
-.titulo-borroso {
-  filter: blur(5px);
-  user-select: none;
-}
-
-.imagen-blur-protegida {
-  filter: blur(12px) grayscale(70%);
-  user-select: none;
-}
-
-/* --- Vista Detalle Limpia --- */
-.tarjeta-volteada-detalle {
-  max-width: 800px;
-  margin: 0 auto;
-  background: rgba(18, 18, 30, 0.95);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  border-radius: 16px;
-  padding: 2.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-}
-
-.encabezado-detalle {
-  text-align: center;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  padding-bottom: 1rem;
-}
-
-.titulo-libro-detalle {
-  font-family: 'Cinzel Decorative', 'Cinzel', serif;
-  color: #d4af37;
-  font-size: 2rem;
-  margin-top: 0.3rem;
-}
-
-.galeria-portadas-detalle {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.marco-imagen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.marco-imagen img {
-  width: 180px;
-  height: 270px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-.label-portada {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: #888;
-  text-transform: uppercase;
-}
-
-.cuerpo-sinopsis-detalle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: #e0e0e0;
-  text-align: justify;
-}
-
-.mensaje-desbloqueo-box {
-  text-align: center;
-  padding: 2rem;
-  background: rgba(231, 76, 60, 0.1);
-  border: 1px dashed #e74c3c;
-  border-radius: 8px;
-  color: #e74c3c;
-}
-
-/* --- Responsive --- */
-@media (max-width: 900px) {
-  .grid-saga-tres {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .grid-saga-tres {
-    grid-template-columns: 1fr;
-  }
-  
-  .galeria-portadas-detalle {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-/* css/saga.css - Ajustes de diseño y amplitud */
-
-/* 1. Ampliamos el contenedor principal para dar espacio al grid */
-#contenedor-modulo-saga {
-  max-width: 1100px; /* Ancho amplio para que las 3 columnas respiren */
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* 2. Grid de 3 columnas bien proporcionado */
-.grid-saga-tres {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem; /* Mayor espacio entre tarjetas */
+  gap: 2.5rem;                 /* PERSONALIZABLE: espacio entre tarjetas */
   margin-top: 2rem;
   align-items: stretch;
 }
 
-/* 3. Tarjetas de Libro: RobUSTAS Y ELEGANTES */
+/* --- 3b. Tarjeta --- */
 .tarjeta-saga-item {
   background: linear-gradient(180deg, rgba(20, 20, 35, 0.95), rgba(10, 10, 20, 0.98));
   border: 1px solid rgba(212, 175, 55, 0.35);
@@ -260,8 +108,8 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
-              border-color 0.3s ease, 
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+              border-color 0.3s ease,
               box-shadow 0.3s ease;
 }
 
@@ -271,11 +119,13 @@
   box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
 }
 
-/* 4. Contenedor de la Imagen / Portada */
+/* --- 3c. Contenedor de la portada --- */
 .tarjeta-imagen-box {
   width: 100%;
-  aspect-ratio: 2 / 3; /* Proporción estándar de libro */
-  max-height: 380px; /* Altura imponente */
+  aspect-ratio: 2 / 3;         /* PERSONALIZABLE: proporción de libro */
+  max-height: 380px;           /* PERSONALIZABLE: altura máxima de la portada */
+  /* Para volver al look anterior (portada baja y recortada), cambia las dos
+     líneas de arriba por:  height: 240px;  */
   overflow: hidden;
   background: #080810;
   position: relative;
@@ -285,15 +135,15 @@
 .imagen-portada-grid {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que la portada llene el espacio sin deformarse */
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 
 .tarjeta-saga-item:hover .imagen-portada-grid {
-  transform: scale(1.05); /* Zoom sutil al pasar el mouse */
+  transform: scale(1.05);
 }
 
-/* 5. Cuerpo de la tarjeta */
+/* --- 3d. Cuerpo de la tarjeta (número, título, frase, botón) --- */
 .tarjeta-cuerpo-box {
   padding: 1.8rem 1.5rem;
   display: flex;
@@ -331,7 +181,7 @@
   flex-grow: 1;
 }
 
-/* 6. Botones dentro de las tarjetas */
+/* --- 3e. Botón dentro de la tarjeta ("Conoce el libro" / "Creando..." / "Planificando...") --- */
 .btn-conoce-libro {
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
   border: 1px solid #d4af37;
@@ -360,19 +210,144 @@
   cursor: not-allowed;
 }
 
-/* 7. Adaptabilidad para pantallas medianas y móviles */
+
+/* ==========================================================================
+   4. ESTADOS DE VISIBILIDAD
+   Nivel 1 = libro abierto · Nivel 2 = portada borrosa · Nivel 3 = título borroso
+   ========================================================================== */
+.titulo-borroso {
+  filter: blur(5px);           /* PERSONALIZABLE: qué tan borroso el título */
+  user-select: none;
+}
+
+.imagen-blur-protegida {
+  filter: blur(12px) grayscale(70%);   /* PERSONALIZABLE */
+  user-select: none;
+}
+
+
+/* ==========================================================================
+   5. VISTA DETALLE DE UN LIBRO
+   ========================================================================== */
+.tarjeta-volteada-detalle {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(18, 18, 30, 0.95);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.encabezado-detalle {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 1rem;
+}
+
+.titulo-libro-detalle {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  color: #d4af37;
+  font-size: 2rem;
+  margin-top: 0.3rem;
+}
+
+/* --- Portada y contraportada --- */
+.galeria-portadas-detalle {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.marco-imagen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marco-imagen img {
+  width: 180px;                /* PERSONALIZABLE: tamaño de portada en el detalle */
+  height: 270px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.label-portada {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+}
+
+/* --- Sinopsis --- */
+.cuerpo-sinopsis-detalle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #e0e0e0;
+  text-align: justify;
+}
+
+/* --- Aviso de contenido restringido (libros nivel 2) --- */
+.mensaje-desbloqueo-box {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px dashed #e74c3c;
+  border-radius: 8px;
+  color: #e74c3c;
+}
+
+
+/* ==========================================================================
+   6. RESPONSIVE
+   ========================================================================== */
+
+/* --- Tablets: 2 columnas --- */
 @media (max-width: 992px) {
   .grid-saga-tres {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
 }
 
+/* --- Celulares: 1 columna --- */
 @media (max-width: 640px) {
   .grid-saga-tres {
-    grid-template-columns: 1fr; /* 1 columna bien ancha en celulares */
+    grid-template-columns: 1fr;
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* Portada y contraportada una debajo de la otra */
+  .galeria-portadas-detalle {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* NUEVO (celular): menos relleno y texto alineado a la izquierda
+     para que la sinopsis no se vea con huecos al justificar */
+  .tarjeta-volteada-detalle {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .cuerpo-sinopsis-detalle {
+    text-align: left;
+  }
+
+  .titulo-libro-detalle {
+    font-size: 1.5rem;
+  }
+
+  /* NUEVO (celular): el botón "Toca si quieres llevar el libro" es largo;
+     con menos relleno cabe sin salirse de la pantalla */
+  .btn-redondeado-saga {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
   }
 }

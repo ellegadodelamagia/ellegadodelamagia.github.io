@@ -33,7 +33,7 @@ const tiposDeMagiaData = [
     colorFondoReverso: "#6f7175",
     origenMundo: "Hebras Platinadas",
     clasificacionCelestial: "Activa",
-    efectoCelestial: "Variable: A mayor concentración presente, mayor es el efecto sobre un celestial.",
+    efectoCelestial: "Variable dependiendo de la intensidad.",
     descripcion: "Magia surgida de la adaptación de la energía natural para los primeros seres mágicos.",
     caracteristicas: "Fue la primera en aparecer: cuando surgieron los seres mágicos, la energía natural se adaptó para que pudieran utilizarla con mayor facilidad. Es la magia propia de los nemori, y hoy coexiste con la magia contemporánea, que es la que usan los vedlys. Se cree que drena la energía vital de quien la utiliza, aunque no existen registros confirmados, ya que no se conoce a ningún humano que haya logrado usarla..",
   }, 
@@ -45,7 +45,7 @@ const tiposDeMagiaData = [
     colorFondoReverso: "#7a711c",// Color de fondo al dar vuelta
     origenMundo: "Serpentinas Doradas",
     clasificacionCelestial: "Activa",
-    efectoCelestial: "Variable: A mayor concentración presente, mayor es el efecto sobre un celestial.",
+    efectoCelestial: "Variable dependiendo de la intensidad.",
     descripcion: "Magia surgida de la adaptación de la magia antigua a las formas humanas.",
     caracteristicas: "Cuando aparecieron los humanos, la magia antigua se replegó hacia la tierra porque los humanos no creían en ella. En algunos lugares esa magia replegada se integró al ambiente, y los humanos que tuvieron contacto con esos lugares lograron vincularse a ella, dando origen a la magia contemporánea. Es estable y canalizada principalmente con varitas.",
    },
@@ -58,7 +58,7 @@ const tiposDeMagiaData = [
     colorFondoReverso: "#080613",// Color de fondo al dar vuelta
     origenMundo: "Apaga el color original.",
     clasificacionCelestial: "Activa",
-    efectoCelestial: "Variable aunque siempre grave: A mayor concentración presente, mayor es el efecto sobre un celestial.",
+    efectoCelestial: "Variable aunque siempre grave.",
     descripcion: "Magia que la Sombra dejó sembrada en el mundo; apaga el color de la magia que toca.",
     caracteristicas: "Coexiste con la magia antigua y la contemporánea, corrompiéndolas cuando quien las emplea ya ha usado magia oscura antes. No es resultado de una elección: va oscureciendo progresivamente a quien la porta, hasta que ya no le es posible utilizar ninguna otra magia, convirtiéndolo (sin quererlo) en súbdito de la Sombra.",
   },
@@ -71,7 +71,7 @@ const tiposDeMagiaData = [
     colorFondoReverso: "#77086e",// Color de fondo al dar vuelta
     origenMundo: "Motas de colores",
     clasificacionCelestial: "Activa",
-    efectoCelestial: "Variable: A mayor concentración presente, mayor es el efecto sobre un celestial.",
+    efectoCelestial: "Variable dependiendo de la intensidad.",
     descripcion: "MMotas de magia dispersa, acumuladas en distintos lugares del mundo.",
     caracteristicas: "Es producto de los desequilibrios generados por las guerras mágicas, el exceso de uso y otras causas similares. Se presenta de formas distintas según el lugar donde se acumula.",
   },
@@ -84,7 +84,7 @@ const tiposDeMagiaData = [
     colorFondoReverso: "#582e17",// Color de fondo al dar vuelta
     origenMundo: "Adopta el color de el lugar en donde está impregnada.",
     clasificacionCelestial: "Pasiva (en concentraciones bajas)",
-    efectoCelestial: "Variable: en concentraciones medias a altas su efecto es igual al de la magia perdida.",
+    efectoCelestial: "Variable dependiendo de la intensidad.",
     descripcion: "Destellos mágicos provenientes de personas u objetos, que quedan impregnados con el paso del tiempo.",
     caracteristicas: "Flota libre en el aire (a veces)",
   },

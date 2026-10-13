@@ -1,20 +1,62 @@
-// js/detras_magia.js
+// ============================================================================
+// js/detras_magia.js — Sección "Detrás de la magia"
+// ----------------------------------------------------------------------------
+// ÍNDICE (busca el número para saltar a cada parte)
+//   0. CONFIGURACIÓN (redes y fecha de lanzamiento)
+//   1. Arranque (qué se ejecuta al cargar la página)
+//   2. HTML base de la sección (biografía, proceso, libros, stats, formulario)
+//   3. Proceso creativo (tarjetas y modal)
+//   4. Libros de la saga
+//   5. Utilidades (ir al formulario, contadores)
+//   6. Funciones globales
+//
+// NOTAS DE REVISIÓN
+//   - CAMBIO IMPORTANTE: cada tarjeta de libro ahora lleva
+//     data-libro="${libro.id}". Con eso, el botón "Toca si quieres llevar el
+//     libro" de saga.js encuentra la tarjeta exacta del libro y te lleva
+//     directo a ella (saga.js ya busca "[data-libro='{id}']").
+//   - Las redes y la fecha de lanzamiento quedaron juntas en la parte 0, para que no tengas que buscarlos entre el código.
+//   - Si saga.js está cargado, "Enviar Correo" usa su scroll (que ya cuenta
+//     la barra fija en escritorio); si no, usa el scroll normal.
+//   - La lógica no cambió; solo se ordenó y se comentó.
+// ============================================================================
 
-/* ==========================================================================
-   1. INICIALIZACIÓN (Punto de entrada al cargar la página)
-   ========================================================================== */
+
+// ============================================================================
+// 0. CONFIGURACIÓN
+// ============================================================================
+
+// Redes y correo de los botones de los libros disponibles
+const REDES_CONTACTO = {
+  instagram: "https://www.instagram.com/irene.nacher/",   // PERSONALIZABLE
+  facebook: "https://www.facebook.com/irene.nacher/",     // PERSONALIZABLE
+  email: "irenenacher@yahoo.com.mx"                       // PERSONALIZABLE
+};
+
+// Contador de días del viaje de Kaira
+// PERSONALIZABLE: fecha de lanzamiento (año, mes, día).
+// OJO: los meses empiezan en 0 (enero = 0, noviembre = 10)
+const FECHA_INICIO_VIAJE = new Date(2026, 10, 14);
+
+// NOTA: el contador de visitas se quitó porque CounterAPI v1 (el servicio que
+// usaba) dejó de funcionar el 7 de agosto de 2026.
+
+
+// ============================================================================
+// 1. ARRANQUE
+// ============================================================================
 document.addEventListener("DOMContentLoaded", () => {
-  renderizarEstructuraHTML(); // Inyecta el contenedor HTML base
-  cargarTarjetasProceso();    // Dibuja las tarjetas del Proceso Creativo
-  cargarLibrosSaga();         // Dibuja los libros desde window.SAGA_DATA
-  inicializarContadores();    // Calcula y muestra las estadísticas
-  configurarEventosModalProceso(); // Configura eventos de cierre aislados
+  renderizarEstructuraHTML();        // Inyecta el HTML base
+  cargarTarjetasProceso();           // Dibuja las tarjetas del Proceso Creativo
+  cargarLibrosSaga();                // Dibuja los libros desde window.SAGA_DATA
+  inicializarContadores();           // Calcula y muestra las estadísticas
+  configurarEventosModalProceso();   // Cierre del modal (clic afuera y Escape)
 });
 
 
-/* ==========================================================================
-   2. INYECCIÓN DEL HTML BASE (Estructura general de la sección)
-   ========================================================================== */
+// ============================================================================
+// 2. HTML BASE DE LA SECCIÓN
+// ============================================================================
 function renderizarEstructuraHTML() {
   const contenedor = document.getElementById("contenedor-detras-magia");
   if (!contenedor) return;
@@ -22,11 +64,12 @@ function renderizarEstructuraHTML() {
   contenedor.innerHTML = `
     <!-- BLOQUE 1: BIOGRAFÍA -->
     <article class="bloque-biografia card-magica">
+      <!-- El título va afuera de la foto y del texto para que ocupe todo el ancho, igual que en las otras tarjetas -->
+      <h3>Sobre la Autora</h3>
       <div class="bio-imagen">
         <img src="imagenes_principal/detras_magia/foto.jpeg" alt="Retrato de la autora" loading="lazy">
       </div>
       <div class="bio-texto">
-        <h3>Sobre la Autora</h3>
         <p>¡Hola! Soy Irene, la autora de lo que estás viendo en esta página, que es el resultado de toda la saga de <em>El legado de la magia</em>.</p>
         <p>Cada historia ha salido de algún recuerdo de mi vida:</p>
         <p>Leyendo libros en la gran biblioteca del abuelo, con sillones cómodos donde mis hermanos y yo nos tirábamos a leer alguno de los cientos de libros que vivían en grandes libreros, cada uno de nosotros con su tema favorito. El mío, por supuesto, la fantasía que contuviera magia. Esa biblioteca también era mágica, tenía un pequeño jardín atrás con una gran araucaria que siempre mantenía la tierra húmeda. Quizá por eso, cuando decidimos hacer una fogata, no quemamos la casa entera.</p>
@@ -38,19 +81,19 @@ function renderizarEstructuraHTML() {
       </div>
     </article>
 
-    <!-- BLOQUE 2: PROCESO CREATIVO (Galería dinámica) -->
+    <!-- BLOQUE 2: PROCESO CREATIVO (galería dinámica) -->
     <article class="bloque-proceso card-magica">
       <h3>El proceso creativo</h3>
       <p class="instrucciones-proceso">Toca cada tarjeta para asomarte a los secretos que se esconden más allá de lo que lees.</p>
       <div id="grid-proceso-creativo" class="grid-proceso-miniaturas"></div>
     </article>
 
-   <!-- VENTANA EMERGENTE (MODAL) PARA EL PROCESO CREATIVO -->
+    <!-- VENTANA EMERGENTE (MODAL) DEL PROCESO CREATIVO -->
     <div id="modal-proceso" class="modal-proceso-creativo">
       <div id="modal-proceso-contenido" class="modal-contenido"></div>
     </div>
 
-    <!-- BLOQUE 3: LIBROS DE LA SAGA (Cargados desde window.SAGA_DATA) -->
+    <!-- BLOQUE 3: LIBROS DE LA SAGA (se llenan desde window.SAGA_DATA) -->
     <article class="bloque-libros card-magica">
       <h3>Lleva los libros contigo</h3>
       <p class="instrucciones-compra">Escríbeme por mis redes y te cuento cómo conseguir tu ejemplar.</p>
@@ -62,10 +105,6 @@ function renderizarEstructuraHTML() {
       <h3>Estadísticas del Viaje</h3>
       <div class="grid-stats">
         <div class="stat-item">
-          <span class="stat-numero" id="contador-visitas">...</span>
-          <span class="stat-etiqueta">Viajeros que han visitado este mundo</span>
-        </div>
-        <div class="stat-item">
           <span class="stat-numero" id="contador-dias">--</span>
           <span class="stat-etiqueta" id="etiqueta-dias">Días que han pasado desde que Kaira comenzó su viaje</span>
         </div>
@@ -75,9 +114,9 @@ function renderizarEstructuraHTML() {
     <!-- BLOQUE 5: FORMULARIO DE CONTACTO -->
     <article id="seccion-contacto-form" class="bloque-contacto card-magica">
       <h3>Escríbeme un Mensaje</h3>
-      
+
       <form action="https://formspree.io/f/xnpjpgoz" method="POST" id="form-contacto-magico" class="form-magico">
-        
+
         <div class="grupo-campo">
           <label for="nombre">Tu Nombre:</label>
           <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
@@ -110,12 +149,13 @@ function renderizarEstructuraHTML() {
 }
 
 
-/* ==========================================================================
-   3. PROCESO CREATIVO (Lee datos de window.datosProcesoCreativo)
-   ========================================================================== */
+// ============================================================================
+// 3. PROCESO CREATIVO (lee datos de window.datosProcesoCreativo)
+// ============================================================================
 function cargarTarjetasProceso() {
   const contenedor = document.getElementById("grid-proceso-creativo");
 
+  // Si los datos todavía no cargaron, vuelve a intentar en 0.1 segundos
   if (typeof window.datosProcesoCreativo === "undefined" || !Array.isArray(window.datosProcesoCreativo)) {
     setTimeout(cargarTarjetasProceso, 100);
     return;
@@ -133,6 +173,7 @@ function cargarTarjetasProceso() {
     </div>
   `).join('');
 
+  // Al hacer clic en una tarjeta se abre su modal
   const tarjetas = contenedor.querySelectorAll(".tarjeta-proceso-mini");
   tarjetas.forEach(tarjeta => {
     tarjeta.addEventListener("click", () => {
@@ -160,12 +201,25 @@ function abrirModalProceso(id) {
       <div class="divisor-mistico"><div class="rombo"></div></div>
       <p class="texto-modal-proceso">${item.descripcion}</p>
     </div>
-  `;
 
-  // Asignar evento al botón de cerrar dinámico
+    <!-- Botón de salida pensado para celular: siempre queda visible abajo -->
+    <div class="cierre-modal-proceso">
+      <button type="button" class="btn-regresar-proceso" id="btn-regresar-proceso">
+        ← Regresa al proceso creativo
+      </button>
+    </div>
+  `;
+  // PERSONALIZABLE: el texto del botón de arriba ("← Regresa al proceso creativo")
+
+  // Los botones se crean cada vez, así que sus eventos se asignan aquí
   const btnCerrar = document.getElementById("btn-cerrar-modal-proceso");
   if (btnCerrar) {
     btnCerrar.addEventListener("click", cerrarModalProceso);
+  }
+
+  const btnRegresar = document.getElementById("btn-regresar-proceso");
+  if (btnRegresar) {
+    btnRegresar.addEventListener("click", cerrarModalProceso);
   }
 
   modal.classList.add("activo");
@@ -177,7 +231,7 @@ function cerrarModalProceso() {
 }
 
 function configurarEventosModalProceso() {
-  // Evento aislado únicamente si el modal de Proceso está abierto y se hace clic en él
+  // Clic en el fondo oscuro (fuera de la caja) cierra el modal
   document.addEventListener("click", (e) => {
     const modal = document.getElementById("modal-proceso");
     if (modal && e.target === modal) {
@@ -185,6 +239,7 @@ function configurarEventosModalProceso() {
     }
   });
 
+  // La tecla Escape también lo cierra
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       cerrarModalProceso();
@@ -193,19 +248,18 @@ function configurarEventosModalProceso() {
 }
 
 
-/* ==========================================================================
-   4. SECCIÓN LIBROS DE LA SAGA (Lee datos de window.SAGA_DATA)
-   ========================================================================== */
-
-const REDES_CONTACTO = {
-  instagram: "https://www.instagram.com/irene.nacher/",
-  facebook: "https://www.facebook.com/irene.nacher/",
-  email: "irenenacher@yahoo.com.mx"
-};
-
+// ============================================================================
+// 4. LIBROS DE LA SAGA (lee datos de window.SAGA_DATA, el mismo de saga.js)
+// ----------------------------------------------------------------------------
+// Campo "estado" de cada libro en datos_saga.js:
+//   "disponible"       → portada, título, botones de contacto
+//   "medio_disponible" → etiqueta "En Creación", portada con blur
+//   "no_disponible"    → etiqueta "Próximamente"
+// ============================================================================
 function cargarLibrosSaga() {
   const contenedor = document.getElementById("grid-libros-saga");
 
+  // Si los datos todavía no cargaron, vuelve a intentar en 0.1 segundos
   if (typeof window.SAGA_DATA === "undefined" || !Array.isArray(window.SAGA_DATA)) {
     setTimeout(cargarLibrosSaga, 100);
     return;
@@ -220,21 +274,21 @@ function cargarLibrosSaga() {
 
     switch (libro.estado) {
       case "disponible":
-        textoBadge = "Disponible";
+        textoBadge = "Disponible";                         // PERSONALIZABLE
         claseBadge = "disponible";
         break;
 
       case "medio_disponible":
-        textoBadge = "En Creación";
+        textoBadge = "En Creación";                        // PERSONALIZABLE
         claseBadge = "en-creacion";
-        textoMensaje = "Imaginando y escribiendo...";
+        textoMensaje = "Imaginando y escribiendo...";      // PERSONALIZABLE
         break;
 
       case "no_disponible":
       default:
-        textoBadge = "Próximamente";
+        textoBadge = "Próximamente";                       // PERSONALIZABLE
         claseBadge = "no-disponible";
-        textoMensaje = "En planificación...";
+        textoMensaje = "En planificación...";              // PERSONALIZABLE
         break;
     }
 
@@ -254,8 +308,10 @@ function cargarLibrosSaga() {
       </div>
     `;
 
+    // data-libro="${libro.id}" es lo que permite que el botón de saga.js
+    // ("Toca si quieres llevar el libro") encuentre esta tarjeta.
     return `
-      <div class="card-libro ${claseBadge}">
+      <div class="card-libro ${claseBadge}" data-libro="${libro.id}">
         <span class="badge-estado ${claseBadge}">${textoBadge}</span>
         <div class="portada-container">
           <img src="${imagenAMostrar}" alt="${tituloAMostrar}" loading="lazy">
@@ -271,10 +327,11 @@ function cargarLibrosSaga() {
 }
 
 
-/* ==========================================================================
-   5. UTILIDADES SECUNDARIAS (Estadísticas reales y desplazamiento)
-   ========================================================================== */
+// ============================================================================
+// 5. UTILIDADES (ir al formulario y contadores)
+// ============================================================================
 
+/** "Enviar Correo": lleva al formulario y lo deja listo para pedir el libro */
 function desplazarAFormulario(tituloLibro = '') {
   const form = document.getElementById("seccion-contacto-form");
   const selectAsunto = document.getElementById("asunto-contacto");
@@ -284,27 +341,32 @@ function desplazarAFormulario(tituloLibro = '') {
     selectAsunto.value = "adquirir";
   }
 
+  // Si el mensaje está vacío, lo pre-llena con el libro elegido
   if (tituloLibro && campoMensaje && !campoMensaje.value) {
-    campoMensaje.value = `¡Hola Irene! Me gustaría adquirir un ejemplar de "${tituloLibro}". `;
+    campoMensaje.value = `¡Hola Irene! Me gustaría adquirir un ejemplar de "${tituloLibro}". `;   // PERSONALIZABLE
   }
 
   if (form) {
-    form.scrollIntoView({ behavior: "smooth" });
+    // Si saga.js está cargado, usamos su scroll (cuenta la barra fija);
+    // si no, el scroll normal del navegador.
+    if (typeof window.scrollAElemento === "function") {
+      window.scrollAElemento(form);
+    } else {
+      form.scrollIntoView({ behavior: "smooth" });
+    }
   }
 }
 
-// Inicialización de contadores de días y visitas REALES GLOBALES
+/** Calcula los días del viaje (cuenta regresiva antes del lanzamiento, días transcurridos después) */
 async function inicializarContadores() {
-  //A) Contador de días del viaje de Kaira
+
+  // --- Contador de días del viaje de Kaira ---
   const elDias = document.getElementById("contador-dias");
   const elEtiquetaDias = document.getElementById("etiqueta-dias");
   if (elDias && elEtiquetaDias) {
-    // PERSONALIZABLE: fecha de inicio (año, mes, día). OJO: los meses empiezan en 0 (enero = 0, noviembre = 10)
-    const fechaInicio = new Date(2026, 10, 14);
-
     const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0); // compara días completos, sin horas
-    const dias = Math.round((hoy - fechaInicio) / (1000 * 60 * 60 * 24));
+    hoy.setHours(0, 0, 0, 0);   // compara días completos, sin horas
+    const dias = Math.round((hoy - FECHA_INICIO_VIAJE) / (1000 * 60 * 60 * 24));
 
     if (dias < 0) {
       // Antes del lanzamiento: cuenta regresiva
@@ -312,62 +374,30 @@ async function inicializarContadores() {
       elDias.innerText = faltan.toLocaleString();
       // PERSONALIZABLE: textos de la cuenta regresiva
       elEtiquetaDias.innerText = faltan === 1
-        ? "Día para que Kaira comience su viaje"
-        : "Días para que Kaira comience su viaje";
+        ? "Día para que comience la aventura de Kaira"
+        : "Días para que comience la aventura de Kaira";
     } else if (dias === 0) {
       // El día del lanzamiento
       // PERSONALIZABLE: textos del día del lanzamiento
       elDias.innerText = "¡Hoy!";
-      elEtiquetaDias.innerText = "Kaira comienza su viaje";
+      elEtiquetaDias.innerText = "La aventura de Kaira comienza hoy";
     } else {
       // Después del lanzamiento: días transcurridos
       elDias.innerText = dias.toLocaleString();
       // PERSONALIZABLE: textos de días transcurridos
       elEtiquetaDias.innerText = dias === 1
-        ? "Día que ha pasado desde que Kaira comenzó su viaje"
-        : "Días que han pasado desde que Kaira comenzó su viaje";
-    }
-  }
-    // B) Contador de visitas
-  const elVisitas = document.getElementById("contador-visitas");
-  if (elVisitas) {
-    // PERSONALIZABLE: visitas REALES contadas antes de este contador (si no hay, déjalo en 0)
-    const BASE_INICIAL = 0;
-
-    // PERSONALIZABLE: identificador de tu proyecto y nombre del contador
-    // (cuando termines de probar, cambia "visitas" por "visitas-lanzamiento" para empezar desde cero)
-    const NAMESPACE = "el-legado-de-la-magia-saga";
-    const NOMBRE_CONTADOR = "visitas";
-
-    try {
-      // Si este navegador ya visitó antes, solo LEE el número; si es nuevo, SUMA una visita
-      const yaVisito = localStorage.getItem("ya_visito_el_mundo");
-      const accion = yaVisito ? "" : "/up";
-
-      const respuesta = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${NOMBRE_CONTADOR}${accion}`);
-      if (!respuesta.ok) {
-        throw new Error(`Estado HTTP: ${respuesta.status}`);
-      }
-
-      const datos = await respuesta.json();
-      const total = (datos.count || 0) + BASE_INICIAL;
-
-      localStorage.setItem("ya_visito_el_mundo", "si");
-      localStorage.setItem("ultima_cifra_global", total.toString());
-      elVisitas.innerText = total.toLocaleString();
-
-    } catch (error) {
-      // Si falla la red o AdBlock bloquea el servicio: última cifra guardada, o un guion
-      const ultimaCifra = localStorage.getItem("ultima_cifra_global");
-      elVisitas.innerText = ultimaCifra ? parseInt(ultimaCifra, 10).toLocaleString() : "—";
+        ? "Día que ha pasado desde que Kaira inició su aventura"
+        : "Días que han pasado desde que Kaira inició su aventura";
     }
   }
 }
 
 
-/* ==========================================================================
-   6. EXPOSICIÓN GLOBAL
-   ========================================================================== */
+// ============================================================================
+// 6. FUNCIONES GLOBALES
+// (necesarias porque el HTML generado usa onclick="..." y otros archivos
+// llaman a estas funciones)
+// ============================================================================
 window.cargarTarjetasProceso = cargarTarjetasProceso;
 window.abrirModalProceso = abrirModalProceso;
 window.cerrarModalProceso = cerrarModalProceso;

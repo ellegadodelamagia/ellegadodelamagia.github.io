@@ -45,6 +45,11 @@
 /* Configuración del lienzo general (Unificado con la fuente correcta) */
 html {
     scroll-behavior: smooth;
+
+    /* ⭐ NUEVO: evita que el iPhone/Android agrande el texto por su cuenta
+       al girar el celular (eso desacomodaba el menú y la portada). */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body { 

@@ -1,49 +1,82 @@
-/* 1. Contenedor flexible centrado para 3 columnas */
+/* =====================================================================
+   SECCIÓN: TIPOS DE MAGIA (tarjetas flip)
+   Estructura:
+     1. Contenedor de la cuadrícula
+     2. Tarjeta exterior (tamaño y proporción)
+     3. Contenedor giratorio
+     4. Caras (base compartida)
+     5. Cara frontal
+     6. Cara trasera (fondo nebulosa)
+     7. Textos del dorso
+     8. Panel celestial
+     9. Badges de efecto celestial
+    10. Texto de características (scroll)
+    11. Responsive móvil
+   ===================================================================== */
+
+
+/* =====================================================================
+   1. CONTENEDOR DE LA CUADRÍCULA
+   CAMBIO: max-width sube a 1300px para que quepan 4 tarjetas por fila.
+   CAMBIO: se quitaron min-height y perspective-origin (no hacían nada).
+   Con 10 tarjetas: 4 + 4 + 2 (la última fila queda centrada).
+   ===================================================================== */
 section#tipos_magia div#contenedor_tipos_magia {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: center;   /* centra la última fila incompleta */
+  gap: 2rem;                 /* PERSONALIZABLE: espacio entre tarjetas */
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;         /* PERSONALIZABLE: antes 1200px */
   margin: 0 auto;
   padding: 2rem 1rem;
   box-sizing: border-box;
-  min-height: 450px;
-  perspective-origin: center center;
 }
 
-/* 2. Estructura exterior de la Flip-Card */
+
+/* =====================================================================
+   2. TARJETA EXTERIOR (tamaño y proporción)
+   Alto fijo de 435px (igual que tu versión original, que sí hacía scroll).
+   La proporción 2/3 es la que deben tener tus imágenes
+   (recomendado 800 x 1200 px, WebP calidad ~80).
+   ===================================================================== */
 .tarjeta-magia-flip {
   background-color: transparent;
-  width: calc(33.333% - 1.4rem);
-  min-width: 280px;
-  max-width: 360px;
-  height: 420px;
+  width: calc(25% - 1.5rem);  /* PERSONALIZABLE: 25% = 4 por fila (33.333% = 3 por fila) */
+  min-width: 260px;           /* PERSONALIZABLE: antes 280px */
+  max-width: 290px;           /* PERSONALIZABLE: antes 360px */
+  height: 435px;              /* PERSONALIZABLE: alto fijo (290 x 435 = proporción 2:3 de tus imágenes) */
   perspective: 1500px;
   cursor: pointer;
   position: relative;
 }
 
-/* 3. Contenedor interno giratorio */
+
+/* =====================================================================
+   3. CONTENEDOR INTERNO GIRATORIO
+   ===================================================================== */
 .tarjeta-magia-inner {
   position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);  /* PERSONALIZABLE: velocidad del giro (0.8s) */
   transform-style: preserve-3d;
   border-radius: 12px;
   transform-origin: center center;
 }
 
-/* Estado girado */
+/* Estado girado (lo activa el JS al hacer clic) */
 .tarjeta-magia-flip.rotada .tarjeta-magia-inner {
   transform: rotateY(180deg);
 }
 
-/* 4. Caras de la tarjeta */
-.tarjeta-frente, 
+
+/* =====================================================================
+   4. CARAS DE LA TARJETA (base compartida por frente y dorso)
+   CAMBIO: se quitaron los z-index de las caras; backface-visibility basta.
+   ===================================================================== */
+.tarjeta-frente,
 .tarjeta-dorso {
   position: absolute;
   top: 0;
@@ -58,64 +91,102 @@ section#tipos_magia div#contenedor_tipos_magia {
   box-sizing: border-box;
 }
 
-/* --- CARA FRONTAL --- */
+
+/* =====================================================================
+   5. CARA FRONTAL
+   La imagen de fondo la pone el JS (imagenFondo en tu data).
+   CAMBIO: borde de 3px igual al dorso.
+   ===================================================================== */
 .tarjeta-frente {
-  background-size: cover;
-  background-position: center;
+  position: absolute;           /* Necesario para el flip */
+  inset: 0;                     /* Ocupa todo el alto y ancho de la tarjeta */
+  display: flex;                /* <--- FALTABA ESTO para que alineen los elementos */
+  flex-direction: column;       /* Organiza de arriba a abajo */
+  justify-content: flex-end;    /* Empuja el contenido hacia abajo */
+  align-items: center;          /* CENTRA HORIZONTALMENTE el título */
+  
+  background-size: cover;       /* Escala la imagen para cubrir el espacio sin deformarla */
+  background-position: center;  /* Centra la imagen para que no se recorte solo una esquina */
   background-repeat: no-repeat;
+  
   border: 3px solid var(--color-marco, #8a2be2);
   box-shadow: 0 0 15px var(--color-marco, rgba(138, 43, 226, 0.4));
-  align-items: flex-end;
-  justify-content: center;
   padding: 1.5rem;
-  z-index: 2;
+  z-index: 2;                   
+  overflow: hidden;             /* Evita que cualquier exceso de imagen rompa el diseño */
 }
 
+/* Degradado oscuro para que se lea el título (cubre ~40% inferior) */
 .overlay-frente {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 15%, rgba(0, 0, 0, 0.2) 60%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 15%, rgba(0, 0, 0, 0.2) 60%); 
   z-index: 1;
 }
 
 .titulo-magia-frente {
   position: relative;
-  z-index: 2;
+  z-index: 2;                   /* Título sobre el degradado */
   color: #ffffff;
-  font-size: 1.4rem;
+  font-size: 1.4rem;            
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
   margin: 0;
   font-family: inherit;
+  text-align: center;           /* Asegura que si el título es largo, el texto también esté centrado */
+  width: 100%;                  
 }
 
-/* --- CARA TRASERA (NEBULOSA & ESTRELLAS) --- */
+
+/* =====================================================================
+   6. CARA TRASERA (nebulosa y estrellas)
+   Las estrellas son radial-gradient posicionados; puedes agregar o
+   quitar líneas de la "Capa 1".
+   CAMBIO: borde de 3px igual al frente.
+   ===================================================================== */
 .tarjeta-dorso {
-  background-image: 
-    /* Capa 1: Estrellas asimétricas */
+  background-image:
+    /* Capa 1: estrellas (tamaño at posición X Y, opacidad) */
     radial-gradient(1.5px 1.5px at 20px 30px, rgba(255, 255, 255, 0.9), rgba(0,0,0,0)),
     radial-gradient(1.5px 1.5px at 150px 80px, rgba(255, 255, 255, 0.7), rgba(0,0,0,0)),
     radial-gradient(2px 2px at 80px 220px, rgba(255, 255, 255, 0.85), rgba(0,0,0,0)),
     radial-gradient(1px 1px at 240px 170px, rgba(255, 255, 255, 0.6), rgba(0,0,0,0)),
     radial-gradient(2px 2px at 190px 300px, rgba(255, 255, 255, 0.8), rgba(0,0,0,0)),
     radial-gradient(1.5px 1.5px at 40px 320px, rgba(255, 255, 255, 0.75), rgba(0,0,0,0)),
-    /* Capa 2: Resplandor de nebulosa */
+    /* Capa 2: resplandor de nebulosa (color viene de colorFondoReverso en tu data) */
     radial-gradient(circle at 50% 30%, var(--color-fondo-reverso, #4c1d95) 0%, transparent 70%),
-    /* Capa 3: Fondo base */
+    /* Capa 3: fondo base oscuro */
     radial-gradient(circle at 50% 50%, #12101d 0%, #05040a 100%);
 
-  border: 2px solid var(--color-marco, #8a2be2);
+  border: 3px solid var(--color-marco, #8a2be2);
   color: #ffffff;
-  transform: rotateY(180deg);
-  padding: 1.2rem;
+  transform: rotateY(180deg);   /* no tocar: es lo que lo deja "de espaldas" */
+  padding: 1.2rem;              /* PERSONALIZABLE: margen interno del dorso */
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8);
-  z-index: 1;
+  z-index: 1;                  /* CAMBIO: restaurado (lo había quitado y rompía el scroll) */
 }
 
+
+/* ---------------------------------------------------------------------
+   CAMBIO: la cara que no se ve no debe recibir el mouse ni el dedo.
+   Sin esto, el degradado del frente tapaba el texto del dorso y
+   el scroll no funcionaba al estar la tarjeta girada.
+   --------------------------------------------------------------------- */
+.tarjeta-magia-flip.rotada .tarjeta-frente {
+  pointer-events: none;
+}
+.tarjeta-magia-flip:not(.rotada) .tarjeta-dorso {
+  pointer-events: none;
+}
+
+
+/* =====================================================================
+   7. TEXTOS DEL DORSO (título, origen, descripción)
+   ===================================================================== */
 .titulo-magia-dorso {
-  font-size: 1.2rem;
+  font-size: 1.2rem;           /* PERSONALIZABLE: tamaño del título trasero */
   margin: 0 0 0.2rem 0;
   color: #ffffff;
 }
@@ -131,14 +202,17 @@ section#tipos_magia div#contenedor_tipos_magia {
 }
 
 .descripcion-magia {
-  font-size: 0.82rem;
+  font-size: 0.78rem;          /* PERSONALIZABLE: CAMBIO, antes 0.82rem */
   line-height: 1.3;
   margin: 0.6rem 0 0.4rem 0;
   color: #e2e2e8;
   font-style: italic;
 }
 
-/* --- PANEL CELESTIAL --- */
+
+/* =====================================================================
+   8. PANEL CELESTIAL (Clasificación + Efecto)
+   ===================================================================== */
 .datos-celestiales {
   display: flex;
   justify-content: space-between;
@@ -174,7 +248,12 @@ section#tipos_magia div#contenedor_tipos_magia {
   color: #ffffff;
 }
 
-/* Estilos de badges para el Efecto Celestial */
+
+/* =====================================================================
+   9. BADGES DE EFECTO CELESTIAL
+   El JS elige la clase según el texto de efectoCelestial.
+   Para cambiar colores, edita solo el color y los rgba de cada una.
+   ===================================================================== */
 .badge-efecto {
   display: inline-block;
   padding: 2px 8px;
@@ -184,47 +263,68 @@ section#tipos_magia div#contenedor_tipos_magia {
   text-align: center;
 }
 
+/* severo / alto / mortal */
 .efecto-severo {
-  color: #ff4d4d;
+  color: #ff4d4d;                              /* PERSONALIZABLE */
   background: rgba(255, 77, 77, 0.15);
   border: 1px solid rgba(255, 77, 77, 0.4);
   box-shadow: 0 0 6px rgba(255, 77, 77, 0.25);
 }
 
+/* moderado / medio */
 .efecto-moderado {
-  color: #ffb703;
+  color: #ffb703;                              /* PERSONALIZABLE */
   background: rgba(255, 183, 3, 0.15);
   border: 1px solid rgba(255, 183, 3, 0.4);
   box-shadow: 0 0 6px rgba(255, 183, 3, 0.2);
 }
 
+/* ligero / bajo / nulo */
 .efecto-ligero {
-  color: #2ec4b6;
+  color: #2ec4b6;                              /* PERSONALIZABLE */
   background: rgba(46, 196, 182, 0.15);
   border: 1px solid rgba(46, 196, 182, 0.4);
   box-shadow: 0 0 6px rgba(46, 196, 182, 0.2);
 }
 
+/* cualquier otro valor (variable, ninguno, etc.) */
 .efecto-variable {
-  color: #c77dff;
+  color: #c77dff;                              /* PERSONALIZABLE */
   background: rgba(199, 125, 255, 0.15);
   border: 1px solid rgba(199, 125, 255, 0.4);
   box-shadow: 0 0 6px rgba(199, 125, 255, 0.2);
 }
 
-/* --- BLOQUE DE TEXTO EXTENSO --- */
+
+/* =====================================================================
+   10. TEXTO DE CARACTERÍSTICAS (con scroll interno)
+   Vuelve al max-height fijo, que es lo que hacía funcionar el scroll.
+   ===================================================================== */
 .texto-caracteristicas {
-  font-size: 0.8rem;
+  width: 100%;
+  font-size: 0.8rem;           /* PERSONALIZABLE: tamaño del texto largo */
   line-height: 1.35;
   color: #d1d1d6;
   text-align: justify;
   margin-top: 0.4rem;
-  overflow-y: auto;
-  max-height: 150px;
+  overflow-y: auto;            /* aquí ocurre el scroll */
+  max-height: 170px;           /* PERSONALIZABLE: alto máximo antes de hacer scroll (subir = más texto visible) */
   padding-right: 4px;
+  box-sizing: border-box;
 }
 
-/* Barra de scroll discreta para el texto */
+/* CAMBIO: estilos para cuando "caracteristicas" es un arreglo (lista) */
+.lista-caracteristicas {
+  margin: 0;
+  padding-left: 1.1rem;
+  text-align: left;
+}
+
+.texto-caracteristicas p {
+  margin: 0 0 0.4rem 0;
+}
+
+/* Barra de scroll discreta */
 .texto-caracteristicas::-webkit-scrollbar {
   width: 4px;
 }
@@ -233,11 +333,20 @@ section#tipos_magia div#contenedor_tipos_magia {
   border-radius: 4px;
 }
 
-/* Responsive para dispositivos móviles */
+
+/* =====================================================================
+   11. RESPONSIVE MÓVIL
+   En móvil la tarjeta es más ancha y alta (340 x 500), proporción ~2:3.
+   ===================================================================== */
 @media (max-width: 768px) {
   .tarjeta-magia-flip {
     width: 100%;
-    max-width: 340px;
-    height: 400px;
+    max-width: 340px;          /* PERSONALIZABLE */
+    min-width: 0;
+    height: 500px;             /* PERSONALIZABLE: alto en móvil (340 x 500 ≈ 2:3) */
+  }
+
+  .texto-caracteristicas {
+    max-height: 230px;         /* PERSONALIZABLE: en móvil la tarjeta es más alta, cabe más texto */
   }
 }

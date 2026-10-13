@@ -1,9 +1,45 @@
-// js/mundos.js COMPLETO Y CORREGIDO
+// ============================================================================
+// js/mundos.js  ·  COMPRENDE EL UNIVERSO  (COMPLETO Y CORREGIDO)
+// ----------------------------------------------------------------------------
+// ÍNDICE
+//   0. IMPORTACIÓN Y AJUSTES
+//   1. ARRANQUE (cuando carga la página)
+//   2. FUNCIONES AUXILIARES (números romanos y clase de la grilla)
+//   3. renderizarNivel()           -> las 4 realidades y los niveles internos
+//   4. mostrarFichaLoreCompleta()  -> la ficha grande con historia y magia
+//   5. renderizarOtrasRazas()      -> tarjetas de pueblos culturales
+//
+// CAMBIOS DE ESTA VERSIÓN (busca "CAMBIO" para encontrarlos):
+//   1. Nueva función aplicarClaseGrid(): le pone a la grilla la clase correcta
+//      (grid-mundos / grid-detalle / grid-detalle grid-cuatro). Antes la
+//      grilla se quedaba con la clase de la pantalla anterior y el CSS la
+//      forzaba a 2 columnas en celular.
+//   2. Error corregido en renderizarOtrasRazas (nivel 2): usaba la variable
+//      "nombreMostrar" que no existía y eso rompía el dibujo de las tarjetas.
+//   3. Si una tarjeta no trae "desbloqueado", se toma como 1 (visible) en
+//      lugar de quedar vacía.
+//   4. Nombre de la tarjeta (nombreReal) protegido por si el objeto no trae
+//      "nombre" ni "nombre_visible".
+// ============================================================================
+
+
+// ============================================================================
+// 0. IMPORTACIÓN Y AJUSTES
+// ============================================================================
 import MundosEstructuraSaga from './datos_mundos.js';
 
+// PERSONALIZABLE: si un nivel tiene MÁS de este número de tarjetas, se usan
+// 4 columnas (grid-cuatro); si tiene este número o menos, se usan 3.
+// (Cuántas columnas son 3 y 4 en cada pantalla se cambia en mundos.css, sección 0.)
+const LIMITE_PARA_COLUMNAS_LARGAS = 6;
+
+
+// ============================================================================
+// 1. ARRANQUE
+// ============================================================================
 document.addEventListener("DOMContentLoaded", () => {
     const gridDinamico = document.getElementById("mundos-grid-dinamico");
-    
+
     if (!gridDinamico) {
         console.error("Error: No se encontró el contenedor '#mundos-grid-dinamico'.");
         return;
@@ -13,11 +49,34 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarNivel(MundosEstructuraSaga, false);
 });
 
+
+// ============================================================================
+// 2. FUNCIONES AUXILIARES
+// ============================================================================
 function obtenerNumeroRomano(num) {
     const romanos = ["I", "II", "III", "IV", "V", "VI", "VII"];
     return romanos[num] || (num + 1);
 }
 
+// CAMBIO 1: nueva función.
+// Decide qué clase lleva la grilla según lo que se va a mostrar:
+//   - "principal": las 4 realidades        -> grid-mundos (2x2, también en celular)
+//   - "detalle":   contenidos internos     -> grid-detalle (3 columnas)
+//                  con más de 6 tarjetas   -> grid-detalle grid-cuatro (4 columnas)
+function aplicarClaseGrid(gridDinamico, tipo, cantidad) {
+    if (tipo === "principal") {
+        gridDinamico.className = "grid-mundos";
+    } else if (cantidad > LIMITE_PARA_COLUMNAS_LARGAS) {
+        gridDinamico.className = "grid-detalle grid-cuatro";
+    } else {
+        gridDinamico.className = "grid-detalle";
+    }
+}
+
+
+// ============================================================================
+// 3. renderizarNivel()  ·  LAS 4 REALIDADES Y LOS NIVELES INTERNOS
+// ============================================================================
 function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
     const gridDinamico = document.getElementById("mundos-grid-dinamico");
     const txtSubtitulo = document.getElementById("dinamico-subtitulo");
@@ -37,7 +96,7 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
             seccionMundo.style.transition = "background 0.5s ease";
         } else {
             seccionMundo.style.backgroundImage = "none";
-            seccionMundo.style.backgroundColor = ""; 
+            seccionMundo.style.backgroundColor = "";
         }
     }
 
@@ -45,13 +104,18 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
     if (txtTitulo) txtTitulo.style.display = "block";
     gridDinamico.style.display = "grid";
 
+    // CAMBIO 1: se asigna la clase correcta a la grilla en cada pantalla
+    aplicarClaseGrid(gridDinamico, esSubNivel ? "detalle" : "principal", listaDatos.length);
+
     const fichaExistente = document.getElementById("ficha-lore-pantalla-completa");
     if (fichaExistente) fichaExistente.remove();
 
     gridDinamico.innerHTML = "";
     if (contenedorVolver) contenedorVolver.innerHTML = "";
 
-    // 1. CONFIGURAR CABECERAS Y BOTÓN VOLVER
+    // ------------------------------------------------------------------------
+    // 3.1 CABECERAS Y BOTÓN VOLVER
+    // ------------------------------------------------------------------------
     if (esSubNivel && objetoPadre) {
         if (txtSubtitulo) txtSubtitulo.innerText = objetoPadre.nombre ? objetoPadre.nombre.toUpperCase() : "REGIONES";
         if (txtTitulo) {
@@ -59,9 +123,9 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
         }
 
         if (contenedorVolver) {
-            const btnVolver = document.createElement("a"); 
+            const btnVolver = document.createElement("a");
             btnVolver.innerHTML = "← Volver a los Mundos";
-            btnVolver.className = "btn-volver-mundos"; 
+            btnVolver.className = "btn-volver-mundos";
 
             btnVolver.onclick = () => renderizarNivel(MundosEstructuraSaga, false);
             contenedorVolver.appendChild(btnVolver);
@@ -71,19 +135,25 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
         if (txtTitulo) txtTitulo.innerText = "COMPRENDE EL UNIVERSO";
     }
 
-    // 2. RENDERIZAR TARJETAS GENERALES
+    // ------------------------------------------------------------------------
+    // 3.2 TARJETAS GENERALES
+    // ------------------------------------------------------------------------
     listaDatos.forEach((item, index) => {
+        // CAMBIO 3: si la tarjeta no trae "desbloqueado", se toma como 1 (visible)
+        const estado = item.desbloqueado !== undefined ? item.desbloqueado : 1;
+
         const tarjeta = document.createElement("div");
-        tarjeta.className = `mundo-card estado-nivel-${item.desbloqueado}`;
+        tarjeta.className = `mundo-card estado-nivel-${estado}`;
         if (esSubNivel) tarjeta.classList.add("sub-card");
 
-        if (item.imagen_fondo && item.desbloqueado !== 3) {
+        if (item.imagen_fondo && estado !== 3) {
             tarjeta.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.75)), url('${item.imagen_fondo}')`;
             tarjeta.style.backgroundSize = "cover";
             tarjeta.style.backgroundPosition = "center";
         }
 
-        if (item.desbloqueado === 1) {
+        // ---- NIVEL 1: VISIBLE Y EXPLORABLE ----
+        if (estado === 1) {
             const nombreMostrar = item.nombre_visible || item.nombre || "";
             tarjeta.innerHTML = `
                 <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
@@ -102,13 +172,14 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
                 }
             };
 
-        } else if (item.desbloqueado === 2) {
+        // ---- NIVEL 2: NOMBRE DESENFOCADO (SPOILER) ----
+        } else if (estado === 2) {
             const nombreMostrar = item.nombre_visible || item.nombre || "";
             const libroAsociado = (item.revelado_en || "").toLowerCase();
             const esLibroProtegido = libroAsociado.includes("herederos") || libroAsociado.includes("profecía") || libroAsociado.includes("profecia");
 
-            const textoRevelado = esLibroProtegido 
-                ? "Información protegida hasta el momento adecuado" 
+            const textoRevelado = esLibroProtegido
+                ? "Información protegida hasta el momento adecuado"
                 : `Se revelará en el momento adecuado`;
 
             tarjeta.innerHTML = `
@@ -121,7 +192,8 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
             `;
             tarjeta.style.cursor = "not-allowed";
 
-        } else if (item.desbloqueado === 3) {
+        // ---- NIVEL 3: SECRETO TOTAL ----
+        } else if (estado === 3) {
             tarjeta.innerHTML = `
                 <div class="roman-bg">?</div>
                 <div class="mundo-card-content oculto-total">
@@ -136,17 +208,21 @@ function renderizarNivel(listaDatos, esSubNivel = false, objetoPadre = null) {
     });
 }
 
+
+// ============================================================================
+// 4. mostrarFichaLoreCompleta()  ·  FICHA GRANDE (HISTORIA + MAGIA)
+// ============================================================================
 function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
     const gridDinamico = document.getElementById("mundos-grid-dinamico");
     const txtSubtitulo = document.getElementById("dinamico-subtitulo");
     const txtTitulo = document.getElementById("dinamico-titulo");
     const contenedorVolver = document.getElementById("contenedor-boton-volver");
-    
+
     const seccionMundo = gridDinamico ? gridDinamico.parentElement : null;
     const urlImagenFondo = objeto.imagen_fondo || (objetoPadre ? objetoPadre.imagen_fondo : null);
 
     if (seccionMundo && urlImagenFondo) {
-        seccionMundo.style.backgroundColor = "transparent"; 
+        seccionMundo.style.backgroundColor = "transparent";
         seccionMundo.style.backgroundImage = `linear-gradient(rgba(12, 7, 24, 0.50), rgba(12, 7, 24, 0.95)), url('${urlImagenFondo}')`;
         seccionMundo.style.backgroundSize = "cover";
         seccionMundo.style.backgroundPosition = "center";
@@ -162,21 +238,23 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
 
     const tieneSubRazasObjetos = objeto.sub_razas && objeto.sub_razas.length > 0 && typeof objeto.sub_razas[0] === 'object';
 
-    // 1. NAVEGACIÓN SUPERIOR
+    // ------------------------------------------------------------------------
+    // 4.1 NAVEGACIÓN SUPERIOR (botones volver / explorar)
+    // ------------------------------------------------------------------------
     if (contenedorVolver) {
-        const btnVolverAtras = document.createElement("a"); 
+        const btnVolverAtras = document.createElement("a");
         btnVolverAtras.innerHTML = objetoPadre ? `← Volver a ${objetoPadre.nombre}` : "← Volver a los Mundos";
-        btnVolverAtras.className = "btn-volver-mundos"; 
-        
+        btnVolverAtras.className = "btn-volver-mundos";
+
         btnVolverAtras.onclick = () => {
             if (txtSubtitulo) txtSubtitulo.style.display = "block";
-            if (txtTitulo) txtTitulo.style.display = "block"; 
-            
+            if (txtTitulo) txtTitulo.style.display = "block";
+
             if (seccionMundo) {
                 seccionMundo.style.backgroundImage = "none";
-                seccionMundo.style.backgroundColor = ""; 
+                seccionMundo.style.backgroundColor = "";
             }
-            
+
             if (objetoPadre) {
                 renderizarNivel(listaHermanos, true, objetoPadre);
             } else {
@@ -203,7 +281,9 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
         }
     }
 
-    // 2. CONSTRUCCIÓN FICHA EXPANDIDA
+    // ------------------------------------------------------------------------
+    // 4.2 CONSTRUCCIÓN DE LA FICHA EXPANDIDA
+    // ------------------------------------------------------------------------
     const fichaExistente = document.getElementById("ficha-lore-pantalla-completa");
     if (fichaExistente) fichaExistente.remove();
 
@@ -212,14 +292,14 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
     fichaCompleta.className = "tarjeta-lore-expandida marco-dorado-ancestral";
 
     fichaCompleta.style.display = "block";
-    fichaCompleta.style.width = "92%";
-    fichaCompleta.style.maxWidth = "700px";        
+    fichaCompleta.style.width = "92%";                 // PERSONALIZABLE: ancho de la ficha
+    fichaCompleta.style.maxWidth = "700px";            // PERSONALIZABLE: ancho máximo de la ficha
     fichaCompleta.style.margin = "20px auto";
     fichaCompleta.style.boxSizing = "border-box";
     fichaCompleta.style.borderWidth = "4px";
     fichaCompleta.style.borderStyle = "solid";
     fichaCompleta.style.borderImage = "linear-gradient(135deg, #c5a059 0%, #f5eab7 50%, #b38f43 100%) 1";
-    
+
     if (objeto.imagen_fondo) {
         fichaCompleta.style.backgroundImage = `linear-gradient(rgba(43, 40, 49, 0.45), rgba(10, 6, 21, 0.95)), url('${objeto.imagen_fondo}')`;
         fichaCompleta.style.backgroundSize = "cover";
@@ -228,6 +308,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
         fichaCompleta.style.background = "linear-gradient(145deg, #130d22 0%, #0a0615 100%)";
     }
 
+    // ---- Bloque de pueblos culturales dentro de la ficha ----
     let subrazasHTML = "";
     if (objeto.sub_razas && objeto.sub_razas.length > 0) {
         if (tieneSubRazasObjetos) {
@@ -260,7 +341,7 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
             <div class="divisor-mistico" style="margin: 0 auto 20px auto;"><div class="rombo"></div></div>
             <p class="extracto-breve" style="font-style: italic; color: #d1b8e7; font-size: 1.1rem; text-align: center; line-height: 1.6; margin: 0 auto; max-width: 100%;">“ ${objeto.descripcion_breve || ''} ”</p>
         </div>
-        
+
         <br>
 
         <div class="cuerpo-tarjeta-expandida">
@@ -268,14 +349,14 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
                 <h3>📜 HISTORIA</h3>
                 <p class="texto-fluido-lore">${objeto.historia_o_lore || "El archivo histórico se actualizará pronto..."}</p>
             </div>
-            
+
             <br><br><br>
 
             <div class="seccion-lore-bloque caja-magia-dorada">
                 <h3>✨ REGLAS DE LA MAGIA</h3>
                 <p class="texto-fluido-lore">${objeto.reglas_de_magia || "Flujo energético convencional."}</p>
             </div>
-            
+
             <br><br><br>
 
             ${subrazasHTML}
@@ -294,6 +375,10 @@ function mostrarFichaLoreCompleta(objeto, listaHermanos, objetoPadre) {
     }
 }
 
+
+// ============================================================================
+// 5. renderizarOtrasRazas()  ·  TARJETAS DE PUEBLOS CULTURALES
+// ============================================================================
 function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPadre) {
     const gridDinamico = document.getElementById("mundos-grid-dinamico");
     const txtSubtitulo = document.getElementById("dinamico-subtitulo");
@@ -313,10 +398,13 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
     }
 
     gridDinamico.style.display = "grid";
-    gridDinamico.className = listaOtras.length > 6 ? "grid-detalle grid-cuatro" : "grid-detalle";
+
+    // CAMBIO 1: antes era gridDinamico.className = listaOtras.length > 6 ? ... (se repetía aquí)
+    aplicarClaseGrid(gridDinamico, "detalle", listaOtras.length);
+
     gridDinamico.innerHTML = "";
 
-    // BOTÓN DE RETORNO A LA FICHA DE LA RAZA PADRE
+    // ---- BOTÓN DE RETORNO A LA FICHA DE LA RAZA PADRE ----
     if (contenedorVolver) {
         contenedorVolver.innerHTML = "";
         const btnVolverFicha = document.createElement("a");
@@ -330,7 +418,7 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
         contenedorVolver.appendChild(btnVolverFicha);
     }
 
-    // GENERAR TARJETAS EVALUANDO EL NIVEL DE DESBLOQUEO REAL
+    // ---- GENERAR TARJETAS EVALUANDO EL NIVEL DE DESBLOQUEO REAL ----
     listaOtras.forEach((item, index) => {
         const esObjeto = typeof item === "object";
         const estadoDesbloqueo = esObjeto ? (item.desbloqueado !== undefined ? item.desbloqueado : 1) : 1;
@@ -338,13 +426,14 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
         const tarjeta = document.createElement("div");
         tarjeta.className = `mundo-card sub-card estado-nivel-${estadoDesbloqueo}`;
 
-        // Extraer los datos reales del objeto en datos_mundos.js
-        const nombreReal = esObjeto ? (item.nombre || item.nombre_visible || item) : item;
+        // Datos reales del objeto en datos_mundos.js
+        // CAMBIO 4: si el objeto no trae nombre, queda vacío en lugar de romper el código
+        const nombreReal = esObjeto ? (item.nombre || item.nombre_visible || "") : item;
         const regionRaza = esObjeto && item.region ? item.region : "";
         const descripcionRaza = esObjeto ? (item.descripcion_breve || item.descripcion) : null;
         const imagenFondo = esObjeto && item.imagen_fondo ? item.imagen_fondo : objetoActual.imagen_fondo;
 
-        // Cargar imagen de fondo si no es Nivel 3
+        // Imagen de fondo si no es Nivel 3
         if (imagenFondo && estadoDesbloqueo !== 3) {
             tarjeta.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.88)), url('${imagenFondo}')`;
             tarjeta.style.backgroundSize = "cover";
@@ -376,19 +465,25 @@ function renderizarOtrasRazas(listaOtras, objetoActual, listaHermanos, objetoPad
         // NIVEL 2: PARCIALMENTE OCULTO (SPOILER LIBRO)
         // ==========================================
         } else if (estadoDesbloqueo === 2) {
-            const libroAsociado = (item.revelado_en || "").toLowerCase();
+            // CAMBIO 2: aquí faltaba definir "nombreMostrar" y eso causaba el error
+            const nombreMostrar = esObjeto ? (item.nombre_visible || item.nombre || "") : "";
+            const libroAsociado = ((esObjeto && item.revelado_en) || "").toLowerCase();
             const esLibroProtegido = libroAsociado.includes("herederos") || libroAsociado.includes("profecía") || libroAsociado.includes("profecia");
-            const textoRevelado = esLibroProtegido 
-                ? "Información protegida hasta el momento adecuado" 
+            const textoRevelado = esLibroProtegido
+                ? "Información protegida hasta el momento adecuado"
                 : `Se revela en el momento adecuado`;
 
+            // Ahora esta tarjeta también muestra el número romano y la leyenda (textoRevelado),
+            // igual que las del nivel principal. Si no la quieres, borra el <span class="badge-libro">.
             tarjeta.innerHTML = `
-        <div class="mundo-card-content">
-            <h3 style="filter: blur(5px); user-select: none;">${nombreMostrar.toUpperCase()}</h3>
-            <p class="txt-bloqueado">El nombre y la información de este tipo de ser es sensible y aún no la puedes conocer.</p>
-        </div>
-         `;
-             tarjeta.style.cursor = "not-allowed";
+                <div class="roman-bg">${obtenerNumeroRomano(index)}</div>
+                <div class="mundo-card-content">
+                    <h3 style="filter: blur(5px); user-select: none;">${nombreMostrar.toUpperCase()}</h3>
+                    <p class="txt-bloqueado">El nombre y la información de este tipo de ser es sensible y aún no la puedes conocer.</p>
+                    <span class="badge-libro">${textoRevelado}</span>
+                </div>
+            `;
+            tarjeta.style.cursor = "not-allowed";
 
         // ==========================================
         // NIVEL 3: SECRETO TOTAL (CENSURADO AUTOMÁTICAMENTE)

@@ -1,13 +1,58 @@
 /* ==========================================================================
-   ESTRUCTURA DE GRID (SIN IMPORTANT)
+   COMPRENDE EL UNIVERSO  ·  mundos.css  (COMPLETO Y CORREGIDO)
+   --------------------------------------------------------------------------
+   ÍNDICE
+   0. PANEL DE CONTROL (variables: aquí cambias casi todo)
+   1. CONTENEDOR GENERAL
+   2. GRILLAS (4 realidades / contenidos internos)
+   3. TARJETA INDIVIDUAL
+   4. COLORES POR PUEBLO
+   5. ESTADOS DE BLOQUEO (nivel 2 y 3)
+   6. MÁRGENES INTERNOS DEL MARCO (con !important)
+   7. RESPONSIVO: TABLET
+   8. RESPONSIVO: CELULAR
+   --------------------------------------------------------------------------
+   QUÉ SE CORRIGIÓ (para que sepas dónde estaba el problema):
+   - El id #mundos-grid-dinamico estaba junto con .grid-mundos, así que SIEMPRE
+     forzaba 2 columnas y, como un id pesa más que una clase, los @media de
+     celular y la regla de 4 columnas nunca le ganaban.
+     Ahora el JS le pone la clase correcta a la grilla (grid-mundos,
+     grid-detalle o grid-detalle grid-cuatro) y el CSS solo usa clases.
+   - Los márgenes con !important (45px + 30px + 20px...) se comían casi todo
+     el ancho del celular. Ahora usan variables y se reducen en celular.
    ========================================================================== */
+
+
 /* ==========================================================================
-   CONTENEDOR GENERAL
+   0. PANEL DE CONTROL  (todo lo PERSONALIZABLE junto)
+   ========================================================================== */
+
+:root {
+  /* ----- COLUMNAS ----- */
+  --mundos-cols-principal: 2;            /* PERSONALIZABLE: las 4 realidades (2x2, también en celular) */
+  --mundos-cols-detalle: 3;              /* PERSONALIZABLE: contenidos internos, pantalla grande */
+  --mundos-cols-largas: 4;               /* PERSONALIZABLE: listas largas (más de 6 tarjetas), pantalla grande */
+
+  /* ----- ESPACIOS ----- */
+  --mundos-gap: 20px;                    /* PERSONALIZABLE: espacio entre tarjetas */
+  --mundos-margen-contenedor: 45px;      /* PERSONALIZABLE: margen izq/der del marco general */
+  --mundos-margen-interno: 30px;         /* PERSONALIZABLE: relleno de los bloques dentro del contenedor */
+  --mundos-margen-grid: 45px;            /* PERSONALIZABLE: margen izq/der de la grilla */
+
+  /* ----- ALTO DE TARJETAS ----- */
+  --mundos-alto-principal: 380px;        /* PERSONALIZABLE: alto de las 4 realidades */
+  --mundos-alto-detalle: 380px;          /* PERSONALIZABLE: alto de tarjetas de contenido */
+  --mundos-alto-largas: 340px;           /* PERSONALIZABLE: alto en listas largas */
+}
+
+
+/* ==========================================================================
+   1. CONTENEDOR GENERAL
    ========================================================================== */
 
 #mundos-container {
   width: 100%;
-  max-width: 1280px;                 /* PERSONALIZABLE: ancho máximo de toda la sección */
+  max-width: 1280px;                     /* PERSONALIZABLE: ancho máximo de toda la sección */
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -15,53 +60,54 @@
 
 
 /* ==========================================================================
-   GRIDS
+   2. GRILLAS
    ========================================================================== */
 
-/* Pantalla principal: los 4 mundos en 2 columnas x 2 filas */
+/* --- 2A. PANTALLA PRINCIPAL: las 4 realidades (2 columnas x 2 filas) ---
+   El JS pone la clase "grid-mundos" cuando muestra las 4 realidades.
+   minmax(0, 1fr) evita que un texto largo estire la columna y se salga. */
 .grid-mundos,
-#mundos-grid-dinamico,
 .mundos-grid-layout,
 .mundos-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);   /* PERSONALIZABLE: columnas de la pantalla principal */
-  gap: 20px;                               /* PERSONALIZABLE: espacio entre tarjetas */
-  max-width: 900px;                        /* PERSONALIZABLE: ancho total de las 4 tarjetas */
+  grid-template-columns: repeat(var(--mundos-cols-principal), minmax(0, 1fr));
+  gap: var(--mundos-gap);
+  max-width: 900px;                      /* PERSONALIZABLE: ancho total de las 4 tarjetas */
   width: 100%;
   margin: 0 auto 40px auto;
   padding: 10px 0;
   box-sizing: border-box;
 }
 
-/* Dentro de cada plano: 2 columnas por defecto */
+/* --- 2B. DENTRO DE CADA PLANO: contenidos (pueblos, regiones, razas...) ---
+   El JS pone "grid-detalle" (3 columnas). */
 .grid-detalle {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);   /* PERSONALIZABLE: columnas por defecto dentro de cada plano */
-  gap: 20px;
+  grid-template-columns: repeat(var(--mundos-cols-detalle), minmax(0, 1fr));
+  gap: var(--mundos-gap);
   width: 100%;
   margin: 0 auto 40px auto;
   padding: 10px 0;
   box-sizing: border-box;
 }
 
-/* Listas largas (dridalys, panteones): 4 columnas */
+/* --- 2C. LISTAS LARGAS (dridalys, panteones...) ---
+   El JS agrega "grid-cuatro" cuando hay más de 6 tarjetas (4 columnas).
+   El límite de 6 se cambia en mundos.js (LIMITE_PARA_COLUMNAS_LARGAS). */
 .grid-detalle.grid-cuatro {
-  grid-template-columns: repeat(4, 1fr);   /* PERSONALIZABLE: columnas para listas largas */
-}
-
-.grid-cuatro .mundo-card {
-  height: 340px;                           /* PERSONALIZABLE: alto de tarjeta en listas largas */
+  grid-template-columns: repeat(var(--mundos-cols-largas), minmax(0, 1fr));
 }
 
 
 /* ==========================================================================
-   TARJETA INDIVIDUAL
+   3. TARJETA INDIVIDUAL
    ========================================================================== */
 
 .mundo-card {
   position: relative;
-  height: 380px;                           /* PERSONALIZABLE: alto de las tarjetas */
+  height: var(--mundos-alto-detalle);    /* el alto se cambia arriba, en el PANEL DE CONTROL */
   width: 100%;
+  min-width: 0;
   border-radius: 14px;
   background-size: cover;
   background-position: center;
@@ -77,12 +123,30 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 20px;                         /* PERSONALIZABLE: relleno interno de la tarjeta */
+}
+
+/* Altos específicos según el tipo de grilla */
+.grid-mundos .mundo-card {
+  height: var(--mundos-alto-principal);
+}
+
+.grid-cuatro .mundo-card {
+  height: var(--mundos-alto-largas);
+}
+
+.mundo-card-content {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.mundo-card-content h3 {
+  overflow-wrap: anywhere;               /* evita que nombres largos se salgan de la tarjeta */
 }
 
 .mundo-card:hover {
   transform: translateY(-5px);
-  border-color: var(--gold);
+  border-color: var(--gold, #c8a84b);
   box-shadow: 0 15px 35px rgba(200, 168, 75, 0.15);
 }
 
@@ -91,7 +155,7 @@
   position: absolute;
   top: -10px;
   right: 10px;
-  font-size: 6rem;
+  font-size: 6rem;                       /* PERSONALIZABLE: tamaño del número romano */
   font-family: 'Cinzel', serif;
   color: rgba(200, 168, 75, 0.05);
   font-weight: bold;
@@ -107,7 +171,7 @@
   font-weight: 600;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: #c5a059;                          /* PERSONALIZABLE: color del texto de acción */
+  color: #c5a059;                        /* PERSONALIZABLE: color del texto de acción */
   opacity: 0.85;
   transition: all 0.3s ease;
 }
@@ -119,9 +183,19 @@
   transform: translateX(4px);
 }
 
+/* Imagen suelta dentro de una tarjeta */
+.mundo-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
 
 /* ==========================================================================
-   COLORES POR PUEBLO (resplandor al pasar el cursor)
+   4. COLORES POR PUEBLO (resplandor al pasar el cursor)
+   NOTA: estas clases solo funcionan si el JS se las agrega a la tarjeta.
    ========================================================================== */
 
 /* Nórdicos: fríos, azulados y plateados */
@@ -154,71 +228,145 @@
 
 
 /* ==========================================================================
-   RESPONSIVO
+   5. ESTADOS DE BLOQUEO
    ========================================================================== */
 
-@media (max-width: 1024px) {
-  .grid-detalle.grid-cuatro { grid-template-columns: repeat(2, 1fr); }
+/* Para tarjetas totalmente bloqueadas */
+.tarjeta-bloqueada {
+  opacity: 0.85;                         /* un toque apagado para indicar que no es interactiva */
+  pointer-events: none;                  /* desactiva hover/clic en los elementos internos */
+  user-select: none;                     /* nadie puede seleccionar texto ni arrastrar la imagen */
 }
 
-@media (max-width: 600px) {
-  .grid-mundos,
-  .grid-detalle,
-  .grid-detalle.grid-cuatro { grid-template-columns: 1fr; }
+/* --- NIVEL 3: EFECTO DE BRUMA MÍSTICA --- */
+.mundo-card.estado-nivel-3 {
+  position: relative;
+  overflow: hidden;
+  /* Fondo brumoso con tonos violeta y azul profundo */
+  background: linear-gradient(135deg, #0f1707 0%, #1a102f 50%, #0d061a 100%);
+  border: 1px solid rgba(86, 16, 224, 0.3);
+}
+
+/* Sombra interior de misterio en los bordes */
+.mundo-card.estado-nivel-3::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 25px rgba(149, 111, 224, 0.9);
+  pointer-events: none;
 }
 
 
 /* ==========================================================================
-   MÁRGENES INTERNOS DEL MARCO (se conservan con !important porque
-   sobreescriben otros estilos de la página)
+   6. MÁRGENES INTERNOS DEL MARCO
+   Se conservan con !important porque sobreescriben otros estilos de la
+   página, pero ahora leen variables: así en celular solo cambian las
+   variables (secciones 7 y 8) y no hay que pelear con !important.
    ========================================================================== */
 
 #mundos-container,
-#mundos-grid-dinamico,
 .seccion-mistica {
-  padding-left: 45px !important;
-  padding-right: 45px !important;
+  padding-left: var(--mundos-margen-contenedor) !important;
+  padding-right: var(--mundos-margen-contenedor) !important;
+  box-sizing: border-box !important;
+}
+
+#mundos-grid-dinamico {
+  padding-left: var(--mundos-margen-grid) !important;
+  padding-right: var(--mundos-margen-grid) !important;
   box-sizing: border-box !important;
 }
 
 #mundos-container > div,
 .seccion-mistica > div {
-  padding: 30px !important;
+  padding: var(--mundos-margen-interno) !important;
   box-sizing: border-box !important;
 }
 
-/* Para tarjetas totalmente bloqueadas */
-.tarjeta-bloqueada {
-    opacity: 0.85; /* Un toque levemente apagado para indicar que no es interactiva */
-    pointer-events: none; /* Desactiva todos los eventos de hover/clic en los elementos internos */
-    user-select: none; /* Nadie puede seleccionar texto ni arrastrar la imagen */
+
+/* ==========================================================================
+   7. RESPONSIVO: TABLET (hasta 1024px)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  :root {
+    --mundos-cols-detalle: 2;            /* PERSONALIZABLE: contenidos en tablet */
+    --mundos-cols-largas: 3;             /* PERSONALIZABLE: listas largas en tablet */
+    --mundos-margen-contenedor: 30px;
+    --mundos-margen-interno: 22px;
+    --mundos-margen-grid: 20px;
+    --mundos-alto-detalle: 340px;
+    --mundos-alto-largas: 320px;
+  }
 }
 
-.mundo-img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    display: block;
-}
 
-/* ==========================================
-   ESTADO NIVEL 3: EFECO DE BRUMA MÍSTICA
-   ========================================== */
-.mundo-card.estado-nivel-3 {
-    position: relative;
+/* ==========================================================================
+   8. RESPONSIVO: CELULAR (hasta 600px)
+   Las 4 realidades SE QUEDAN EN 2 COLUMNAS (2x2), pero más compactas.
+   Los contenidos internos pasan a 1 columna (cámbialo abajo si prefieres 2).
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  :root {
+    --mundos-cols-principal: 2;          /* PERSONALIZABLE: las 4 realidades se quedan 2x2 */
+    --mundos-cols-detalle: 1;            /* PERSONALIZABLE: pon 2 si quieres dos columnas en celular */
+    --mundos-cols-largas: 1;             /* PERSONALIZABLE: pon 2 si quieres dos columnas en celular */
+
+    --mundos-gap: 12px;                  /* PERSONALIZABLE: espacio entre tarjetas en celular */
+    --mundos-margen-contenedor: 12px;    /* PERSONALIZABLE: margen del marco en celular */
+    --mundos-margen-interno: 14px;
+    --mundos-margen-grid: 0px;
+
+    --mundos-alto-principal: 240px;      /* PERSONALIZABLE: alto de las 4 realidades en celular */
+    --mundos-alto-detalle: 280px;        /* PERSONALIZABLE: alto de tarjetas de contenido en celular */
+    --mundos-alto-largas: 260px;
+  }
+
+  /* Tarjeta más compacta */
+  .mundo-card {
+    padding: 12px;                       /* PERSONALIZABLE */
+  }
+
+  .roman-bg {
+    font-size: 3.5rem;                   /* PERSONALIZABLE: número romano más pequeño */
+  }
+
+  /* Texto de las 4 realidades (tarjetas angostas: letra más chica) */
+  .grid-mundos .mundo-card .mundo-card-content h3 {
+    font-size: 0.95rem;                  /* PERSONALIZABLE: título de cada realidad en celular */
+    letter-spacing: 1px;
+    line-height: 1.25;
+  }
+
+  .grid-mundos .mundo-card .mundo-card-content p {
+    font-size: 0.72rem;                  /* PERSONALIZABLE: descripción breve en celular */
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;               /* PERSONALIZABLE: máximo de renglones visibles (el resto se corta con ...) */
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    /* Fondo brumoso con tonos violeta y azul profundo */
-    background: linear-gradient(135deg, #0f1707 0%, #1a102f 50%, #0d061a 100%);
-    border: 1px solid rgba(86, 16, 224, 0.3);
+  }
+
+  .grid-mundos .indicador-accion {
+    font-size: 0.65rem;
+    letter-spacing: 0.6px;
+    margin-top: 8px;
+  }
 }
 
 
-/* Sombra interior de misterio en los bordes */
-.mundo-card.estado-nivel-3::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    box-shadow: inset 0 0 25px rgba(149, 111, 224, 0.9);
-    pointer-events: none;
+/* ==========================================================================
+   9. TÁCTIL: en celular/tablet no hay "hover", así que se quita el
+      salto de la tarjeta para que no se quede pegado después de tocar.
+   ========================================================================== */
+
+@media (hover: none) {
+  .mundo-card:hover {
+    transform: none;
+  }
+  .mundo-card:hover .indicador-accion {
+    transform: none;
+  }
 }

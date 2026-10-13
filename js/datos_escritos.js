@@ -10,7 +10,7 @@ window.datosEscritos = [
     categoria: "compendios",
     subtitulo: "Guía no autorizada de los Consejos Vedlys.",
     desbloqueado: 1,
-    imagen: "imagenes_principal/escritos/atlas.jpg",
+    imagen: "imagenes_principal/escritos/atlas_vedlys.jpg",
     descripcionCorta: "Compendio de mapas y anotaciones de exploradores incógnitos.",
     contenidoCompleto: {
       origen: "Solo se sabe que Zaha lo encontró en un pueblo perdido en España.",
@@ -33,9 +33,9 @@ window.datosEscritos = [
         <div id="vista-triptico" class="contenedor-triptico-profecia">
           <div class="tarjeta-version-profecia" 
                data-titulo="Profecía original elaborada por los elfos"
-               data-img="imagenes_principal/escritos/profecia_recolector_v1.jpg"
+               data-img="imagenes_principal/escritos/original.jpg"
                data-desc="Escrita en idioma antiguo, se cree que su lectura es por raíces con un sistema de runas y fonemas, sin embargo no se sabe de nadie que pueda leerlo.">
-            <img src="imagenes_principal/escritos/profecia_recolector_v1.jpg" alt="Original" class="img-profecia-miniatura">
+            <img src="imagenes_principal/escritos/original.jpg" alt="Original" class="img-profecia-miniatura">
             <span class="label-version">Original</span>
           </div>
 
@@ -49,9 +49,9 @@ window.datosEscritos = [
 
           <div class="tarjeta-version-profecia" 
                data-titulo="Traducción oficial"
-               data-img="imagenes_principal/escritos/profecia_recolector_v3.jpg"
+               data-img="imagenes_principal/escritos/traduccion2.jpg"
                data-desc="La versión canónica y popularmente conocida en el mundo Vedlys. Stefen la descartó al comenzar a examinar los escritos del Maestro de la Magia, pero era la interpretación estándar que todos conocían.">
-            <img src="imagenes_principal/escritos/profecia_recolector_v3.jpg" alt="Traducción Oficial" class="img-profecia-miniatura">
+            <img src="imagenes_principal/escritos/traduccion2.jpg" alt="Traducción Oficial" class="img-profecia-miniatura">
             <span class="label-version">Traducción oficial</span>
           </div>
 

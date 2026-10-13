@@ -1,5 +1,14 @@
 /* =========================================================================
    🔮 ESTILOS GENERALES Y ATMÓSFERA MÍSTICA
+   -------------------------------------------------------------------------
+   ÍNDICE RÁPIDO (busca estas etiquetas con Ctrl+F):
+     🔮 ESTILOS GENERALES ........ variables, body, brillitos
+     🌅 SECCIÓN 1: LA PORTADA ..... #hero (⚠️ CAMBIADO para celulares)
+     📖 SECCIÓN 2: LA HISTORIA
+     🗂️ MENÚ Y NAVEGACIÓN ......... barra fija de arriba
+     🌌 VENTANA MODAL
+     🔘 BOTONES DE RETORNO Y LEYENDAS / footer
+     📱 AJUSTES PARA CELULARES .... ⭐ NUEVO: menú deslizable + portada (al final del archivo)
    ========================================================================= */
 
 :root {
@@ -59,6 +68,8 @@ body::before {
    Secciones: transparentes para dejar ver los brillitos
    ------------------------------------------------------------------------- */
 section {
+  /* PERSONALIZABLE: espacio que deja el menú fijo arriba al saltar a una sección.
+     Debe ser igual o un poco mayor que la altura del menú. */
   scroll-margin-top: 80px;
 }
 
@@ -153,15 +164,34 @@ section {
 
 /* =========================================================================
    🌅 SECCIÓN 1: LA PORTADA (HERO)
+   -------------------------------------------------------------------------
+   ⚠️ CAMBIADO: antes tenía "height: 100vh" (altura fija). En el celular
+   eso cortaba el contenido: el título y la cita no cabían y el
+   "overflow: hidden" los recortaba. Ahora la portada mide AL MENOS una
+   pantalla, pero puede crecer si el contenido lo necesita.
    ========================================================================= */
 #hero {
   position: relative;
-  height: 100vh;
+
+  /* PERSONALIZABLE: altura mínima de la portada.
+     100vh = pantalla completa. Las dos líneas siguientes corrigen el
+     problema de la barra del navegador en celulares (Safari/Chrome móvil):
+     si el navegador entiende "dvh", usa esa medida (la real y visible). */
+  min-height: 100vh;
+  min-height: 100dvh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  /* ⭐ NUEVO: aire arriba (para que el menú fijo no tape el título),
+     a los lados y abajo (para que el footer fijo no tape la cita).
+     PERSONALIZABLE: sube o baja estos valores si ves muy pegado el contenido. */
+  padding: 5.5rem 1.5rem 4.5rem;
+  box-sizing: border-box;
+
   background-image: url('../imagenes_principal/fuente_merlin.jpg');
   background-size: cover;
   background-position: center;
@@ -182,6 +212,7 @@ section {
 .hero-content {
   position: relative;
   z-index: 2;
+  max-width: 100%;            /* ⭐ NUEVO: que nunca se salga de la pantalla */
   animation: vueloMistico 2.5s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
   opacity: 0;
 }
@@ -199,7 +230,7 @@ section {
 
 .hero-title {
   font-family: 'Cinzel', serif;
-  font-size: 4.2rem;
+  font-size: 4.2rem;          /* PERSONALIZABLE: tamaño del título en PC (en celular se ajusta abajo) */
   font-weight: 700;
   letter-spacing: 0.15em;
   color: #96862a;
@@ -210,7 +241,7 @@ section {
 
 .hero-title .letra-magica {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 5rem;
+  font-size: 5rem;            /* PERSONALIZABLE: tamaño de las letras decoradas en PC */
   color: #96862a;
   text-shadow: 2px 2px 6px #000000, 0px 0px 22px rgba(0, 0, 0, 0.95);
   font-variant-ligatures: discretionary-ligatures;
@@ -329,6 +360,11 @@ section#historia.seccion-mistica::before {
   transform: scale(1.02);
 }
 
+/* -------------------------------------------------------------------------
+   📌 BARRA DE NAVEGACIÓN FIJA (la de arriba, con "Inicio", "Personajes"...)
+   En PC y iPad se queda como siempre. Para celulares, mira la sección
+   "📱 AJUSTES PARA CELULARES" al final de este archivo.
+   ------------------------------------------------------------------------- */
 nav.barra-navegacion {
   position: fixed;
   top: 0;
@@ -350,17 +386,22 @@ nav.barra-navegacion .btn-navegacion {
   text-decoration: none;
   font-size: 0.85rem;
   letter-spacing: 0.12em;
-  padding: 0.5rem 0.8rem;
-  margin: 0 0.5rem;
-  border: none;
-  background: none;
+  padding: 0.6rem 1rem; /* Ligeramente más espacio para que luzca bien el recuadro */
+  margin: 0 0.4rem;
+  border: 1px solid transparent; /* Borde transparente por defecto para que no brinque al aparecer */
+  background: transparent;
+  border-radius: 4px; /* Esquinas ligeramente redondeadas estilo fantasía/clásico */
   box-shadow: none;
   transition: all 0.3s ease;
 }
 
 nav.barra-navegacion .btn-navegacion:hover {
   color: var(--gold);
+  background: rgba(200, 168, 75, 0.12); /* Fondo sutil dorado translúcido */
+  border-color: rgba(200, 168, 75, 0.6); /* Borde dorado elegante */
+  box-shadow: 0 0 12px rgba(200, 168, 75, 0.35), inset 0 0 8px rgba(200, 168, 75, 0.15); /* Efecto glow exterior e interior */
   text-shadow: 0 0 8px rgba(200, 168, 75, 0.6);
+  transform: translateY(-1px); /* Sutil elevación para dar sensación de interactividad */
 }
 
 .scroll-indicator {
@@ -547,4 +588,143 @@ footer p {
   font-family: 'Cinzel', serif;
   font-size: 0.85rem;
   letter-spacing: 1.5px;
+}
+
+
+/* =========================================================================
+   📱 AJUSTES PARA CELULARES  ⭐ NUEVO
+   -------------------------------------------------------------------------
+   Todo lo de abajo SOLO se aplica en pantallas de 768px de ancho o menos
+   (celulares). En PC y iPad no cambia nada.
+
+   ¿Por qué no funcionaba el menú en el celular?
+   Eran 10 enlaces en una sola fila, y la barra es "fixed" (fija). Una barra
+   fija no se mueve con el scroll de la página, así que lo que no cabía en
+   la pantalla quedaba fuera, sin forma de llegar a ello.
+   Solución: la barra ahora se desliza de lado con el dedo (como las pestañas
+   de una app). Sin JavaScript, solo CSS.
+
+   PERSONALIZABLE: si quieres que el menú también se deslice en iPad vertical,
+   cambia 768px por 1024px (aquí y en cualquier otro @media de abajo).
+   ========================================================================= */
+@media (max-width: 768px) {
+
+  /* ---------------------------------------------------------------------
+     📌 MENÚ FIJO DESLIZABLE
+     --------------------------------------------------------------------- */
+  nav.barra-navegacion {
+    /* Alinear al inicio: con "center" los primeros enlaces quedan
+       cortados a la izquierda y no se pueden alcanzar. */
+    justify-content: flex-start;
+
+    /* ⭐ La clave: permite deslizar la barra con el dedo, de lado */
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;   /* deslizado suave en iPhone */
+    overscroll-behavior-x: contain;      /* no "jala" la página al llegar al borde */
+
+    /* Esconde la barrita de scroll (sigue funcionando el deslizado) */
+    scrollbar-width: none;               /* Firefox */
+    -ms-overflow-style: none;            /* Edge antiguo */
+
+    /* PERSONALIZABLE: grosor de la barra en celular (menos = más compacta) */
+    padding: 0.6rem 0.6rem;
+  }
+
+  /* Esconde la barrita de scroll en Chrome / Safari */
+  nav.barra-navegacion::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav.barra-navegacion .btn-navegacion {
+    flex: 0 0 auto;           /* cada enlace conserva su tamaño, no se aplasta */
+    white-space: nowrap;      /* el texto de cada enlace va en una sola línea */
+
+    /* PERSONALIZABLE: tamaño del texto del menú en celular */
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+
+    /* PERSONALIZABLE: área táctil de cada enlace (que sea fácil de tocar con el dedo) */
+    padding: 0.7rem 0.8rem;
+    margin: 0 0.15rem;
+  }
+
+  /* ---------------------------------------------------------------------
+     🌅 PORTADA (HERO) EN CELULAR
+     --------------------------------------------------------------------- */
+  #hero {
+    /* PERSONALIZABLE: espacio arriba/lados/abajo de la portada en celular */
+    padding: 5rem 1rem 4rem;
+  }
+
+  .hero-title {
+    /* clamp(mínimo, ideal, máximo): se ajusta solo al ancho de la pantalla.
+       PERSONALIZABLE: si el título se ve muy chico o muy grande, cambia el
+       número del medio (9vw) o el máximo (2.8rem). */
+    font-size: clamp(1.7rem, 9vw, 2.8rem);
+    letter-spacing: 0.06em;
+    overflow-wrap: break-word;
+  }
+
+  .hero-title .letra-magica {
+    /* PERSONALIZABLE: letras decoradas (E, L, D, L, M) en celular */
+    font-size: clamp(2.1rem, 11vw, 3.4rem);
+  }
+
+  .hero-quote {
+    /* PERSONALIZABLE: cita de la portada en celular */
+    font-size: 1rem;
+    margin: 1.5rem auto;
+    padding: 0 0.5rem;
+  }
+
+  /* ---------------------------------------------------------------------
+     🧱 EXTRAS PARA CELULAR
+     --------------------------------------------------------------------- */
+  .seccion-mistica {
+    /* PERSONALIZABLE: relleno de las secciones en celular */
+    padding: 4rem 1rem;
+  }
+
+  .titulo-seccion {
+    /* PERSONALIZABLE: títulos de sección en celular */
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .titulo-seccion-sub {
+    letter-spacing: 0.15em;
+  }
+
+  .sinopsis-texto {
+    font-size: 1.15rem;
+  }
+
+  .historia-container {
+    padding: 1rem;
+  }
+
+  /* El footer fijo es más delgado y no tapa el final de la página */
+  footer {
+    padding: 0.5rem 0;
+  }
+
+  footer p {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  body {
+    padding-bottom: 2.5rem;   /* PERSONALIZABLE: espacio para que el footer no tape el último contenido */
+  }
+
+  /* Los botones del modal se apilan para que quepan */
+  .modal-botones {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .modal-contenido {
+    padding: 2rem 1.2rem;
+  }
 }

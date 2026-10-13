@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/escritos.css">
   <link rel="stylesheet" href="css/saga.css">
   <link rel="stylesheet" href="css/detras_magia.css">
+  <link rel="stylesheet" href="css/objetos.css">
 
   <link rel="icon" href="data:,">
 
@@ -144,29 +145,25 @@
       <button class="btn-filtro" onclick="filtrarPorLibro('Libro 5', this)">Libro 5</button>
     </div>
 
- 
- <!-- 📜 AVISO DE PERGAMINO PARA LIBROS BLOQUEADOS -->
-<div id="aviso-pergamino" class="aviso-pergamino d-none">
-  <div class="contenido-pergamino">
-    <span class="icono-pergamino">📜</span>
-    <p id="texto-pergamino"></p>
-    <button class="btn-cerrar-pergamino" onclick="cerrarPergamino()">✕</button>
-  </div>
-</div>
+    <!-- 📜 AVISO DE PERGAMINO PARA LIBROS BLOQUEADOS -->
+    <div id="aviso-pergamino" class="aviso-pergamino d-none">
+      <div class="contenido-pergamino">
+        <span class="icono-pergamino">📜</span>
+        <p id="texto-pergamino"></p>
+        <button class="btn-cerrar-pergamino" onclick="cerrarPergamino()">✕</button>
+      </div>
+    </div>
 
     <div id="contenedor-personajes-grid" class="personajes-grid"></div>
   </section>
 
-  <!-- SECCIÓN CORREGIDA CON ID OBJETOS -->
+  <!-- SECCIÓN DE OBJETOS CORREGIDA CON ID Y CLASE MÍSTICA -->
   <section id="objetos" class="seccion-mistica seccion-objetos">
-    <h2 class="titulo-seccion">ARTEFACTOS MÁGICOS</h2>
+    <p class="titulo-seccion-sub">RELIQUIAS Y ARTEFACTOS</p>
+    <h2 class="titulo-seccion">Objetos que pueden o no ser mágicos pero tienen relevancia dentro de la saga</h2>
     <div class="divisor-mistico"><div class="rombo"></div></div>
-    
-    <div class="en-construccion">
-        <div class="icono-construccion">📜🖋️</div>
-        <h3>Sección en Construcción</h3>
-        <p>Wilbur está haciendo el registro de los objetos mágicos.</p>
-    </div>
+
+    <div id="contenedor-objetos" class="grid-objetos"></div>
   </section>
 
   <section id="tipos_magia" class="seccion-mistica">
@@ -197,19 +194,18 @@
   </div>
 
   <!-- Modal de Escritos en index.html -->
-<!-- PERSONALIZABLE: las clases deben coincidir con escritos.css (modal-escrito, modal-escrito-contenido) y los ids con escritos.js -->
-<div id="escrito-modal" class="modal-escrito">
-  <div class="modal-escrito-contenido">
-    <button type="button" class="btn-cerrar-modal" id="btn-cerrar-escrito">&times;</button>
-    <div id="modal-detalle-contenido"></div>
+  <div id="escrito-modal" class="modal-escrito">
+    <div class="modal-escrito-contenido">
+      <button type="button" class="btn-cerrar-modal" id="btn-cerrar-escrito">&times;</button>
+      <div id="modal-detalle-contenido"></div>
+    </div>
   </div>
-</div>
 
   <footer>
     <p>&copy; 2026 El Despertar de la Magia</p>
   </footer>
 
-  <!-- SCRIPTS EN ORDEN CORRECTO CON DEFER CONSECUENTE -->
+  <!-- SCRIPTS EN ORDEN CORRECTO -->
   <script src="js/datos_personajes.js"></script>
   <script src="js/personajes.js"></script>
   <script type="module" src="js/mundos.js"></script>
@@ -222,6 +218,8 @@
   <script src="js/saga.js" defer></script>
   <script src="js/datos_detras_magia.js" defer></script>
   <script src="js/detras_magia.js" defer></script>
+  <script src="js/datos_objetos.js"></script>
+  <script src="js/objetos.js"></script>
 
 </body>
 </html>

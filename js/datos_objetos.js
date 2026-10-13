@@ -1,59 +1,64 @@
 const datosObjetos = [
     {
         id: 1,
-        nombre: "Mascada de la abuela",
-        caracteristicas: " Aunque inicialmente parece un objeto común que Kaira se amarra al cuello o usa para taparse los ojos en su ritual del claro, actúa como un elemento detonador o de conexión emocional y rutina antes de hablar con la madrina.",
-        propietario_actual: "Kaira Ferrer",
-        origen: "Presumiblemente Communia",
-        imagen: "imagenes_principal/objetos/mascada.jpg"
+    nombre: "Mascada de la abuela",
+    caracteristicas: "Regalo de la abuela de Kaira. Parece un objeto común, y Kaira ignora si tiene algún poder, pero debe ponérsela cada vez que va al campo del as hadas a hablar con la madrina: se la amarra al cuello y cuando llega, se cubre los ojos con ella. Más que un objeto mágico, es un vínculo emocional y una rutina que la prepara para ese encuentro.",
+    propietario_actual: "Kaira Ferrer",
+    origen: "Communia, según Kaira",
+    imagen: "imagenes_principal/objetos/mascada.jpg"
     },
     {
-        id: 2,
-        nombre: "Cajas de envíos",
-        caracteristicas: "Caja elaborada por vedlys especialistas en transferencia de materiales. Solo hay que colocar el nombre del destinatario y la caja o lleva directamente el contenido o se enlaza con la caja del destinatario.",
-        propietario_actual: "Cualquier vedlys (y Daniella)",
-        origen: "Vedlys",
-        imagen: "imagenes_principal/objetos/cajas_envios.jpg"
-    },
+    id: 2,
+    nombre: "Cajas de envíos",
+    caracteristicas: "Cajas elaboradas por vedlys especialistas en transferencia de materiales. Basta escribir el nombre del destinatario para que la caja lleve su contenido hasta él. Si no hay quien lo reciba, la caja se queda en el destino hasta que su dueño la necesite de nuevo. Los communia no tienen permitido tenerlas; Daniella es la excepción, porque el profesor Emrys se la envía.",
+    propietario_actual: "Cualquier vedlys (y Daniella)",
+    origen: "Vedlys",
+    imagen: "imagenes_principal/objetos/cajas_envios.jpg"
+    // PERSONALIZABLE: ampliar cuando la novela explique cómo funciona el envío entre cajas
+},
     {
-        id: 3,
-        nombre: "Libros sensoriales",
-        caracteristicas: "Ediciones especiales empastadas en pasta dura muy detallada. Al abrirlos desprenden efectos ambientales mágicos: olor, sonido, temperatura y sensación táctil. Son libros de estudio para los estudiantes de la Academia Braeiach.",
-        propietario_actual: "Accesibles a cualquier estudiante de la Academia Braeiach",
-        origen: "Vedlys",
-        imagen: "imagenes_principal/objetos/libros_sensoriales.jpg"
-    },
+    id: 3,
+    nombre: "Libros sensoriales",
+    caracteristicas: "Ediciones especiales de pasta dura, finamente detalladas, que se guardan en la biblioteca de la Academia Braeiach. Al abrirlos liberan efectos ambientales mágicos (olor, sonido, temperatura y sensación táctil) que hacen sentir la historia. Entre ellos hay relatos communia, como los de Verne: al profesor Emrys le gusta que la biblioteca tenga cosas communia para ampliar los horizontes de los alumnos.",
+    propietario_actual: "Biblioteca de la Academia Braeiach (acceso para todos los estudiantes)",
+    origen: "Vedlys",
+    imagen: "imagenes_principal/objetos/libros_sensoriales.jpg"
+},
     {
         id: 4,
-        nombre: "Varita mágica de Kaira Ferrer",
-        caracteristicas: "Aunque no se menciona que sea de manufactura especial, la varita cantó mientras se acercaba a Kaira, lo cual de por sí ya es una característica especial.",
-        propietario_actual: "Kaira Ferrer",
-        origen: "Vedlys",
-        imagen: "imagenes_principal/objetos/varita_kaira.jpg"
+    nombre: "Varita mágica de Kaira Ferrer",
+    caracteristicas: "Una varita de apariencia común, pero que cantó al acercarse a Kaira, como si fuera la indicada para ella.",
+    propietario_actual: "Kaira Ferrer",
+    origen: "Vedlys",
+    imagen: "imagenes_principal/objetos/varita_kaira.jpg"
     },
     {
-        id: 5,
-        nombre: "Fuente de Merlin",
-        caracteristicas: "Tiene la estatua de Merlín apuntando al cielo, y de su vara brota agua cristalina que genera arcoíris flotantes y suspendidos.",
-        propietario_actual: "Cualquier poblado perteneciente a la Hermandad de Merlín",
-        origen: "Vedlys/Nemori",
-        imagen: "imagenes_principal/objetos/fuente_merlin.jpg"
+       id: 5,
+    nombre: "Fuente de Merlín",
+    caracteristicas: "Estatua de Merlín con la vara apuntando al cielo. De la vara brota agua cristalina que forma arcoíris flotantes y suspendidos en el aire.",
+    propietario_actual: "Poblados de la Hermandad de Merlín",
+    origen: "Vedlys",
+    imagen: "imagenes_principal/objetos/fuente_merlin.jpg"
+
+    // PERSONALIZABLE: actualizar al publicar el libro 3 (runas del idioma antiguo, poder nemori, traslado)
     },
     {
-        id: 6,
-        nombre: "Manta anti magia",
-        caracteristicas: "Una manta delgada de telas casi transparente, utilizada para aliviar los excesos de magia contemporánea. Aparentemente reacciona de forma adversa con la magia antigua.",
-        propietario_actual: "Academia Braeiach",
-        origen: "Vedlys",
-        imagen: "imagenes_principal/objetos/manta_anti_magia.jpg"
-    },
+    id: 6,
+    nombre: "Manta antimagia",
+    caracteristicas: "Manta delgada de tela casi transparente que se usa para aliviar los excesos de magia contemporánea. Con la magia antigua no funciona igual: cuando se la pusieron a Kaira, en lugar de absorberla empezó a destellar magia antigua por todos lados y tuvieron que quitársela, porque la magia antigua y la contemporánea no se llevan bien.",
+    propietario_actual: "Academia Braeiach",
+    origen: "Vedlys",
+    imagen: "imagenes_principal/objetos/manta_anti_magia.jpg"
+},
     {
-        id: 7,
-        nombre: "Dije del recolector",
-        caracteristicas: "La joya descrita en la profecía del recolector que le es otorgada formalmente a Kaira después de la prueba. Según las deducciones de Stefen, el dije sirve como un canalizador o contenedor; su función es recibir directamente la magia que Kaira recolecte para que su cuerpo no se agote ni sufra daños.",
-        propietario_actual: "Kaira Ferrer",
-        origen: "Nemori",
-        imagen: "imagenes_principal/objetos/dije_recolector.jpg"
-    }
+        
+    id: 7,
+    nombre: "Dije del recolector",
+    caracteristicas: "La joya descrita en la profecía del recolector, entregada formalmente a Kaira después de la prueba. Preben explica su origen, pero ni él sabe cómo funciona. Stefen deduce que es un canalizador: recibiría directamente la magia que Kaira recolecta para que su cuerpo no se agote ni sufra daños.",
+    propietario_actual: "Kaira Ferrer",
+    origen: "Nemori",
+    imagen: "imagenes_principal/objetos/dije_recolector.jpg"
+}
+    
 
 ];

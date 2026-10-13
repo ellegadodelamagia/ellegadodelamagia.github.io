@@ -106,7 +106,9 @@ function renderizarElementos(listaDeLugares) {
     // 2. Clasificación de categorías
     const padres = datosFiltradosPorLibro.filter(i => i.tipo_de_registro === "Padre" && !i.Lugar.toLowerCase().includes('panah'));
     const hijos = datosFiltradosPorLibro.filter(i => i.tipo_de_registro !== "Padre");
-    const ocultos = datosFiltradosPorLibro.filter(i => i.Lugar.toLowerCase().includes('panah') || (i.tipo_de_registro !== "Padre" && (!i.latitud || !i.longitud)));
+    // PERSONALIZABLE: lugares que viven en el plano oculto (Panah o sin coordenadas).
+// Los registros "Padre" nunca entran a la lista lateral.
+const ocultos = datosFiltradosPorLibro.filter(i => i.tipo_de_registro !== "Padre" && (i.Lugar.toLowerCase().includes('panah') || !i.latitud || !i.longitud));
 
     padres.sort((a, b) => (a.Orden || 999) - (b.Orden || 999));
 

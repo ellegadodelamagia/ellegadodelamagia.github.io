@@ -86,6 +86,15 @@ function renderizarEstructuraHTML() {
       <h3>El proceso creativo</h3>
       <p class="instrucciones-proceso">Toca cada tarjeta para asomarte a los secretos que se esconden más allá de lo que lees.</p>
       <div id="grid-proceso-creativo" class="grid-proceso-miniaturas"></div>
+
+    <!-- INVITACIÓN AL BLOG (solo si BLOG_ACTIVO = true) -->
+      ${BLOG_ACTIVO ? `
+      <div class="invitacion-blog">
+        <p class="texto-invitacion-blog">${BLOG_TEXTO_INVITACION}</p>
+        <a href="${BLOG_URL}" class="btn-blog">${BLOG_TEXTO_BOTON}</a>
+      </div>
+      ` : ''}
+
     </article>
 
     <!-- VENTANA EMERGENTE (MODAL) DEL PROCESO CREATIVO -->
@@ -391,6 +400,11 @@ async function inicializarContadores() {
     }
   }
 }
+// Botón al blog (aparece al final del "Proceso creativo")
+const BLOG_ACTIVO = true;            // PERSONALIZABLE: cámbialo a true cuando el blog ya esté subido
+const BLOG_URL = "blog.html";         // PERSONALIZABLE: ruta de la página del blog
+const BLOG_TEXTO_INVITACION = "¿Quieres seguir asomándote? En el blog cuento más historias de detrás de la magia.";   // PERSONALIZABLE
+const BLOG_TEXTO_BOTON = "Sigue leyendo en el blog →";   // PERSONALIZABLE
 
 
 // ============================================================================

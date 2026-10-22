@@ -30,7 +30,7 @@ const datosObjetos = [
     caracteristicas: "Una varita de apariencia común, pero que cantó al acercarse a Kaira, como si fuera la indicada para ella.",
     propietario_actual: "Kaira Ferrer",
     origen: "Vedlys",
-    imagen: "imagenes_principal/objetos/varita_kaira.jpg"
+    imagen: "imagenes_principal/objetos/varita.jpg"
     },
     {
        id: 5,
@@ -38,7 +38,7 @@ const datosObjetos = [
     caracteristicas: "Estatua de Merlín con la vara apuntando al cielo. De la vara brota agua cristalina que forma arcoíris flotantes y suspendidos en el aire.",
     propietario_actual: "Poblados de la Hermandad de Merlín",
     origen: "Vedlys",
-    imagen: "imagenes_principal/objetos/fuente_merlin.jpg"
+    imagen: "imagenes_principal/objetos/fuente.jpg"
 
     // PERSONALIZABLE: actualizar al publicar el libro 3 (runas del idioma antiguo, poder nemori, traslado)
     },
@@ -58,6 +58,14 @@ const datosObjetos = [
     propietario_actual: "Kaira Ferrer",
     origen: "Nemori",
     imagen: "imagenes_principal/objetos/dije_recolector.jpg"
+},
+{
+    id: 8,
+    nombre: "Reloj maldito",
+    caracteristicas: "Reloj de pie de caoba oscura, con adornos de oro y filigrana fina, en perfecto funcionamiento. Sus campanas suenan casi celestiales, y esa belleza es parte del maleficio: provoca a quien lo ve acercarse y lo atrapa. Stefen cuenta que el sonido de las campanas son en realidad los gritos de las almas atrapadas dentro. Para resistirlo hay que no mirarlo directamente, sino de reojo. Se guarda aparte, tras puertas de un material parecido al cristal, en el almacén del museo donde van los objetos que no pueden exhibirse.",
+    propietario_actual: "Familia vedlys relojera (Museo del Reloj, Ginebra)",
+    origen: "Desconocido (maleficio atribuido a los oscuros)",
+    imagen: "imagenes_principal/objetos/reloj_maldito.jpg"
 }
     
 

@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h3 class="titulo-magia-dorso">${magia.nombre}</h3>
             <span class="origen-tag">${magia.origenMundo}</span>
 
-            <p class="descripcion-magia">${magia.descripcion}</p>
+           <p class="descripcion-magia">${magia.descripcion}</p>
 
             <!-- PANEL CELESTIAL -->
             <div class="datos-celestiales">

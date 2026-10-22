@@ -221,7 +221,7 @@ const SAGA_PERSONAJES = [
     "id": "wilbur",
     "nombre": "Wilbur",
     "raza": "Nemori", // PERSONALIZABLE
-    "tipo": "Kotole", // PERSONALIZABLE
+    "tipo": "Dridalys", // PERSONALIZABLE
     "origen": "Celta", // PERSONALIZABLE
     "rol": "Enlace con el mundo mágico y compañero de viaje", // PERSONALIZABLE
     "orden": "6", // PERSONALIZABLE

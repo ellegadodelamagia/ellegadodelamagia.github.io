@@ -72,7 +72,7 @@ const tiposDeMagiaData = [
     origenMundo: "Motas de colores",
     clasificacionCelestial: "Activa",
     efectoCelestial: "Variable dependiendo de la intensidad.",
-    descripcion: "MMotas de magia dispersa, acumuladas en distintos lugares del mundo.",
+    descripcion: "Motas de magia dispersa, acumuladas en distintos lugares del mundo.",
     caracteristicas: "Es producto de los desequilibrios generados por las guerras mágicas, el exceso de uso y otras causas similares. Se presenta de formas distintas según el lugar donde se acumula.",
   },
 

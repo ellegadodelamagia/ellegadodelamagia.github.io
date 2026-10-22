@@ -1,0 +1,280 @@
+/* ==========================================================================
+   css/blog.css — Blog (índice y entradas)
+   --------------------------------------------------------------------------
+   ÍNDICE
+   1. Ajustes de página (espacio bajo la barra de menú)
+   2. Cabecera del blog
+   3. Índice: tarjetas de entradas
+   4. Entrada individual
+   5. Responsive (celular)
+   Usa las variables de globales.css (--gold, --gold-dim, --ink, --parch).
+   ========================================================================== */
+
+/* ==========================================================================
+   1. AJUSTES DE PÁGINA
+   ========================================================================== */
+.blog-pagina {
+  /* PERSONALIZABLE: espacio bajo la barra de menú fija (la barra mide unos 5rem
+     en PC). Si la barra tapa el título del blog, sube este número. */
+  padding-top: 6.5rem;
+  /* Espacio abajo para que el pie de página fijo no tape el final del texto */
+  padding-bottom: 4rem;
+}
+
+.blog-contenedor {
+  max-width: 1100px;           /* PERSONALIZABLE: ancho del índice */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ==========================================================================
+   2. CABECERA DEL BLOG
+   ========================================================================== */
+.blog-cabecera {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.blog-sub {
+  color: rgba(228, 210, 171, 0.6);
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.blog-titulo {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.blog-intro {
+  max-width: 620px;
+  margin: 0 auto 15px auto;
+  color: rgba(245, 235, 213, 0.85);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.blog-enlace {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200, 168, 75, 0.4);
+}
+
+.blog-enlace:hover,
+.blog-enlace:focus-visible {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+/* Divisor con rombo (propio del blog, no depende de otros CSS) */
+.blog-divisor {
+  height: 1px;
+  background: rgba(200, 168, 75, 0.3);
+  margin: 20px auto;
+  max-width: 300px;
+  position: relative;
+}
+
+.blog-divisor::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   3. ÍNDICE: TARJETAS DE ENTRADAS
+   ========================================================================== */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  /* PERSONALIZABLE: ancho mínimo de cada tarjeta */
+  gap: 25px;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(20, 20, 30, 0.75);
+  border: 1px solid rgba(200, 168, 75, 0.3);
+  border-radius: 12px;
+  padding: 22px;
+  text-decoration: none;
+  color: #e0e0e0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover,
+.blog-card:focus-visible {
+  border-color: var(--gold);
+  box-shadow: 0 5px 15px rgba(200, 168, 75, 0.3);
+}
+
+/* Imagen de portada opcional de la tarjeta */
+.blog-card-img {
+  width: 100%;
+  height: 160px;               /* PERSONALIZABLE: alto de la imagen */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.blog-card-seccion {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.blog-card h2 {
+  color: #ffffff;
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.blog-fecha {
+  color: var(--gold-dim);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.blog-card p {
+  color: rgba(245, 235, 213, 0.75);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.blog-leer {
+  margin-top: 14px;
+  color: var(--gold);
+  font-size: 0.95rem;
+}
+
+/* Etiqueta de spoilers (tarjeta y entrada) */
+.blog-spoiler {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 10px;
+  padding: 3px 10px;
+  border: 1px solid #b04040;
+  border-radius: 12px;
+  color: #e08a8a;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   4. ENTRADA INDIVIDUAL
+   ========================================================================== */
+.blog-entrada {
+  max-width: 700px;            /* PERSONALIZABLE: ancho del texto */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.blog-entrada h1 {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  text-shadow: 0 0 12px rgba(197, 169, 86, 0.4);
+}
+
+.blog-entrada .blog-fecha {
+  margin-bottom: 20px;
+}
+
+.blog-aviso {
+  background: rgba(176, 64, 64, 0.12);
+  border: 1px solid #b04040;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  color: #e8b0b0;
+}
+
+.blog-imagen {
+  margin: 0 0 22px 0;
+}
+
+.blog-imagen img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(200, 168, 75, 0.3);
+}
+
+.blog-imagen figcaption {
+  color: var(--gold-dim);
+  font-size: 0.9rem;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.blog-texto p {
+  margin-bottom: 1.1em;
+  color: rgba(245, 235, 213, 0.9);
+  font-family: 'Cormorant Garamond', serif;   /* PERSONALIZABLE: misma letra que la sinopsis de la historia */
+  font-size: 1.3rem;                          /* PERSONALIZABLE: tamaño del texto */
+  line-height: 1.7;
+}
+
+.blog-texto .blog-pregunta {
+  color: var(--parch);
+  font-style: italic;
+}
+
+.blog-firma {
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(200, 168, 75, 0.2);
+  text-align: center;
+}
+
+.blog-pie {
+  margin-top: 30px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE (celular)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .blog-pagina {
+    padding-top: 5.5rem;       /* PERSONALIZABLE: en celular el menú también es fijo; si lo tapa, sube este número */
+  }
+
+  .blog-texto p {
+    font-size: 1.15rem;
+  }
+
+  .blog-titulo,
+  .blog-entrada h1 {
+    font-size: 1.6rem;
+  }
+
+  .blog-entrada {
+    padding: 15px;
+  }
+}

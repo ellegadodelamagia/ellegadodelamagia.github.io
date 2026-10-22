@@ -148,9 +148,9 @@ const MUNDOS_DATA = [
     nombre: "Plano Nemori",
     nombre_visible: "Nemori",
     tipo: "Fenrasa Ancestral",
-    descripcion_breve: "El conjunto de todos los seres mágicos pensantes del mundo. La cuna de la magia de la naturaleza, espíritus elementales y razas antiguas.",
+    descripcion_breve: "El conjunto de todos los seres mágicos no humanos del mundo. La cuna de la magia de la naturaleza, espíritus elementales y razas antiguas.",
     historia_o_lore: "El Hacedor de todo creó a los Nemori; cuatro razas originales, para que cuidaran su creación: cada una con la capacidad de transformar un elemento de la energía natural y usarlo para distintos fines. Con el tiempo se distribuyeron por el mundo, y de ahí surgieron los distintos pueblos culturales de cada raza. Tras la Primera Guerra Mágica y los desequilibrios que esta generó, aparecieron nuevas razas.",
-    reglas_de_magia: "Cada raza nemori extrae su poder únicamente de una parte de la energía natural, nunca de toda (aire, agua, tierra o fuego). Su magia fluye libremente: no necesita catalizadores, sino que se moldea con la voluntad y el respeto a la naturaleza.",
+    reglas_de_magia: "Cada raza nemori original extrae su poder únicamente de una parte de la energía natural, nunca de toda (aire, agua, tierra o fuego). Su magia fluye libremente: no necesita catalizadores, sino que se moldea con la voluntad y el respeto a la naturaleza.",
     imagen_fondo: "imagenes_principal/mundos/nemori_bg.jpg",
     desbloqueado: 1,
     regiones: [

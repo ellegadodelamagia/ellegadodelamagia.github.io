@@ -1,42 +1,95 @@
-/* Contenedor con diseño orgánico y fluido */
+/* =====================================================================
+   OBJETOS — TARJETAS CON GIRO 3D
+   Archivo completo. Reemplaza todo el CSS anterior de las tarjetas de objetos.
+
+   NOTA: todas las clases llevan el prefijo "obj-" para que NO choquen con
+   las de otras secciones (personajes, mundos, etc.). Antes se llamaban
+   .tarjeta-frente, .contenedor-img, .nombre-frontal... y probablemente otro
+   CSS las estaba pisando (por eso en la web se veía con márgenes extra).
+
+   ÍNDICE
+   0. Colores y medidas (lo que más vas a querer cambiar)
+   1. Grilla de tarjetas
+   2. Tarjeta (tamaño y giro)
+   3. Caras de la tarjeta
+   4. Frente: imagen
+   5. Frente: nombre
+   6. Reverso: detalles
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   0. COLORES Y MEDIDAS
+   --------------------------------------------------------------------- */
+:root {
+    /* PERSONALIZABLE: alto de cada tarjeta */
+    --obj-alto-tarjeta: 380px;
+
+    /* PERSONALIZABLE: ancho mínimo de cada tarjeta (define cuántas caben por fila) */
+    --obj-ancho-minimo: 260px;
+
+    /* PERSONALIZABLE: color que se ve alrededor de la imagen si no llena todo el cuadro.
+       Blanco combina con la mayoría de tus acuarelas; prueba #f3ead7 (pergamino) si prefieres */
+    --obj-fondo-imagen: #1e1a27;
+
+    /* PERSONALIZABLE: colores de las caras */
+    --obj-fondo-frente: #1e1e1e;
+    --obj-fondo-nombre: #1a1a1a;
+    --obj-fondo-reverso: #121212;
+    --obj-dorado: #c5a880;
+}
+
+
+/* ---------------------------------------------------------------------
+   1. GRILLA DE TARJETAS
+   Aplica al contenedor que crea el JS (id="contenedor-objetos"),
+   y también a la clase .grid-objetos por si la usas en el HTML.
+   --------------------------------------------------------------------- */
+#contenedor-objetos,
 .grid-objetos {
     display: grid;
-    /* minmax(260px, 1fr) asegura que cada tarjeta mida al menos 260px. 
-       Con el max-width del contenedor, se limitarán orgánicamente a máximo 4 por fila. */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(var(--obj-ancho-minimo), 1fr));
+    gap: 30px;                 /* PERSONALIZABLE: espacio entre tarjetas */
     padding: 20px;
     perspective: 1000px;
-    max-width: 1200px; /* Evita que se estiren demasiado en pantallas gigantes */
+    max-width: 1200px;         /* PERSONALIZABLE: ancho máximo de toda la grilla (máx. 4 por fila) */
     margin: 0 auto;
 }
 
-/* Base de la tarjeta externa */
-.tarjeta-objeto-wrapper {
+
+/* ---------------------------------------------------------------------
+   2. TARJETA (TAMAÑO Y GIRO)
+   --------------------------------------------------------------------- */
+.obj-wrapper {
     width: 100%;
-    height: 380px;
+    height: var(--obj-alto-tarjeta);
     cursor: pointer;
 }
 
-/* Contenedor interno que rota sobre sí mismo */
-.tarjeta-objeto-interna {
+.obj-interna {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);  /* PERSONALIZABLE: 0.6s = velocidad del giro */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border-radius: 12px;
 }
 
-/* Activador del giro */
-.tarjeta-objeto-interna.volteada {
+/* Esta clase la agrega el JS al hacer clic */
+.obj-interna.obj-volteada {
     transform: rotateY(180deg);
 }
 
-/* Caras de la Tarjeta */
-.tarjeta-frente, .tarjeta-reverso {
+
+/* ---------------------------------------------------------------------
+   3. CARAS DE LA TARJETA (frente y reverso)
+   --------------------------------------------------------------------- */
+.obj-frente,
+.obj-reverso {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
@@ -45,67 +98,86 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    background: #1e1e1e;
+    margin: 0;
+    padding: 0;
+    background: var(--obj-fondo-frente);
     border: 1px solid #333;
 }
 
-.tarjeta-reverso {
+.obj-reverso {
     transform: rotateY(180deg);
-    background: #121212;
-    border: 1px solid #c5a880;
-    padding: 20px;
+    background: var(--obj-fondo-reverso);
+    border: 1px solid var(--obj-dorado);
+    padding: 20px;             /* PERSONALIZABLE: margen interno del texto del reverso */
     color: #e0e0e0;
-    overflow-y: auto;
+    overflow-y: auto;          /* si el texto es largo, se puede desplazar */
 }
 
-/* Elementos Visuales del Frente */
-.contenedor-img {
+
+/* ---------------------------------------------------------------------
+   4. FRENTE: IMAGEN
+   La imagen se ve COMPLETA (object-fit: contain), sin recortarse.
+   Lo que sobre alrededor se rellena con --obj-fondo-imagen.
+   --------------------------------------------------------------------- */
+.obj-img {
     width: 100%;
-    height: 78%;
+    height: 78%;               /* PERSONALIZABLE: qué parte de la tarjeta ocupa la imagen (el resto es el nombre) */
+    background: var(--obj-fondo-imagen);
     overflow: hidden;
-    background: #000;
+    padding: 0;                /* PERSONALIZABLE: pon 8px para dejar un marco de aire alrededor */
+    box-sizing: border-box;
+    margin: 0;
 }
 
-.contenedor-img img {
+.obj-img img {
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;       /* contain = se ve completa. cover = llena pero recorta */
 }
 
-.nombre-frontal {
-    height: 22%;
+
+/* ---------------------------------------------------------------------
+   5. FRENTE: NOMBRE
+   --------------------------------------------------------------------- */
+.obj-nombre {
+    height: 22%;               /* PERSONALIZABLE: debe sumar 100% con la altura de la imagen */
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     color: #fff;
-    background: #1a1a1a;
+    background: var(--obj-fondo-nombre);
     text-align: center;
     padding: 10px;
-    font-size: 1.05rem;
+    margin: 0;
+    font-size: 1.05rem;        /* PERSONALIZABLE: tamaño del nombre */
     box-sizing: border-box;
 }
 
-/* Estilos de los detalles (Reverso) */
-.detalles-objeto h3 {
+
+/* ---------------------------------------------------------------------
+   6. REVERSO: DETALLES
+   --------------------------------------------------------------------- */
+.obj-detalles h3 {
     margin-top: 0;
-    color: #c5a880;
-    border-bottom: 1px solid #c5a880;
+    color: var(--obj-dorado);
+    border-bottom: 1px solid var(--obj-dorado);
     padding-bottom: 8px;
-    font-size: 1.15rem;
+    font-size: 1.15rem;        /* PERSONALIZABLE: tamaño del título */
 }
 
-.detalles-objeto p {
+.obj-detalles p {
     margin: 10px 0;
-    font-size: 0.9rem;
+    font-size: 0.9rem;         /* PERSONALIZABLE: tamaño del texto (bájalo a 0.85rem si una ficha es muy larga) */
     line-height: 1.4;
 }
 
-.detalles-objeto p strong {
+.obj-detalles p strong {
     color: #b0b0b0;
 }
 
-.detalles-objeto .desc {
+.obj-detalles .obj-desc {
     margin-top: 12px;
     font-style: italic;
     color: #ccc;

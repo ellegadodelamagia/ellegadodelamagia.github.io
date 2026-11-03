@@ -3,16 +3,17 @@
 window.SAGA_DATA = [
   {
     id: "libro-1",
-    numero: 1,
-    titulo: "El Despertar de la Magia",
-    frase: "La magia permanece oculta, hasta que una profecía la despierta.",
-    imagen: "imagenes_principal/saga/libro1_banner.jpg",
-    portada: "imagenes_principal/saga/libro1_portada.jpg",
-    contraportada: "imagenes_principal/saga/libro1_contraportada.jpg",
-    sinopsis: "Kaira siempre deseó tener magia, pero nunca imaginó que fuera real. Un viaje inesperado la lleva a descubrir una verdad imposible.",
-    estado: "disponible", // "disponible", "medio_disponible", "no_disponible"
-    nivelVisibilidad: 1, // 1: Visible, 2: Bloqueado (borroso), 3: Oculto (Spoiler)
-    desbloqueoEn: null
+  numero: 1,
+  titulo: "El Despertar de la Magia",
+  frase: "La magia permanece oculta, hasta que una profecía la despierta.",
+  imagen: "imagenes_principal/saga/libro1_banner.jpg",
+  portada: "imagenes_principal/saga/libro1_portada.jpg",
+  contraportada: "imagenes_principal/saga/libro1_contraportada.jpg",
+  sinopsis: "Kaira siempre deseó tener magia, pero nunca imaginó que fuera real. Un viaje inesperado la lleva a descubrir una verdad imposible.",
+  estado: "disponible", // "disponible", "medio_disponible", "no_disponible"
+  nivelVisibilidad: 1, // 1: Visible, 2: Bloqueado (borroso), 3: Oculto (Spoiler)
+  desbloqueoEn: null,
+  precio: "$350 MXN (mas envío)" // <--- Nueva propiedad añadida
   },
   {
     id: "libro-2",
@@ -25,7 +26,8 @@ window.SAGA_DATA = [
     sinopsis: "La magia de Whitby ha sido robada y el equilibrio del mundo mágico está en riesgo. Kaira deberá encontrar la forma de retornarla.",
     estado: "medio_disponible",
     nivelVisibilidad: 2,
-    desbloqueoEn: "Se descubre en el Libro 2"
+    desbloqueoEn: "Se descubre en el Libro 2",
+    precio: "$350 MXN (mas envío)" // <--- Nueva propiedad añadida
   },
   {
     id: "libro-3",
@@ -38,7 +40,8 @@ window.SAGA_DATA = [
     sinopsis: "Antes de continuar su camino, Kaira debe superar las pruebas que le imponen. Solo quien las supere podrá recibir lo que le falta.",
     estado: "medio_disponible",
     nivelVisibilidad: 3,
-    desbloqueoEn: "Se descubre en el Libro 3"
+    desbloqueoEn: "Se descubre en el Libro 3",
+    precio: "$350 MXN (mas envío)" // <--- Nueva propiedad añadida  
   },
   {
     id: "libro-4",
@@ -51,7 +54,8 @@ window.SAGA_DATA = [
     sinopsis: "Un mandato lleva a Kaira y su grupo hasta Estados Unidos, donde deberán cumplir tareas que ponen a prueba lo aprendido. Hay seres que no deberían existir.",
     estado: "no_disponible",
     nivelVisibilidad: 3,
-    desbloqueoEn: "Se descubre en el Libro 4"
+    desbloqueoEn: "Se descubre en el Libro 4",
+    precio: "$350 MXN (mas envío)" // <--- Nueva propiedad añadida
   },
   {
     id: "libro-5",
@@ -64,7 +68,8 @@ window.SAGA_DATA = [
     sinopsis: "Un descubrimiento inesperado revela que hay más personas ligadas al destino de la magia de lo que Kaira creía. Nada volverá a verse de la misma forma.",
     estado: "no_disponible",
     nivelVisibilidad: 3,
-    desbloqueoEn: "Se descubre en el Libro 5"
+    desbloqueoEn: "Se descubre en el Libro 5",
+    precio: "$350 MXN (mas envío)" // <--- Nueva propiedad añadida  
   },
 {
   id: "libro-6",

@@ -42,7 +42,7 @@ window.datosEscritos = [
           <div class="tarjeta-version-profecia" 
                data-titulo="Primera traducción"
                data-img="imagenes_principal/escritos/traduccion1.jpg"
-               data-desc="Se cree que fue elaborada por un erudito italiano alrededor de 1700 ya que usó un registro herméticos/alquímicos de esa época, que mezclaban terminología griega con sintaxis latina. No se sabe si conocía el idioma antiguo.">
+               data-desc="Se cree que fue elaborada por un erudito italiano alrededor de 1700 ya que usó un registro hermético/alquímico de esa época, que mezclaba terminología griega con sintaxis latina. No se sabe si conocía el idioma antiguo.">
             <img src="imagenes_principal/escritos/traduccion1.jpg" alt="Primera traducción" class="img-profecia-miniatura">
             <span class="label-version">Primera traducción</span>
           </div>

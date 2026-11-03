@@ -23,7 +23,7 @@ const MUNDOS_DATA = [
         nombre_visible: "Communia",
         tipo: "Mundo físico",
         descripcion_breve: "Los communia constituyen la población general: personas ajenas al mundo mágico, que viven su vida cotidiana sin saber que la magia existe.",
-        historia_o_lore: "Son la mayoría de los humanos: aquellos en quienes nunca se manifestó la capacidad mágica, y que siguen siendo, tal como los concibió el Hacedor, ajenos a la magia y a la idea de que existe. Cuando un communia la descubre, la reacción del mundo vedlys depende de las circunstancias: puede ser vigilado, puede borrarsele la memoria o puede ser integrado en la comunidad mágica.",
+        historia_o_lore: "Son la mayoría de los humanos: aquellos en quienes nunca se manifestó la capacidad mágica y que siguen siendo, tal como los concibió el Hacedor, ajenos a la magia y a la idea de que existe. Cuando un communia la descubre, la reacción del mundo vedlys depende de las circunstancias: puede ser vigilado, puede borrarsele la memoria o puede ser integrado en la comunidad mágica.",
         reglas_de_magia: "La mayoría no detecta la magia en absoluto, lo cual facilita mantener el secreto. Es excepcional que un communia tenga conocimiento parcial de ella, y suele darse por un vínculo cercano con algún vedlys.",
         imagen_fondo: "imagenes_principal/mundos/communia.jpg",
         desbloqueado: 1
@@ -35,7 +35,7 @@ const MUNDOS_DATA = [
         tipo: "Mundo físico",
         descripcion_breve: "Humanos capaces de percibir y manipular la magia.",
         historia_o_lore: "Cuando aparecieron los humanos, la magia antigua se replegó hacia la tierra porque no creían en su existencia. En algunos lugares esa magia replegada se integró al ambiente, y los humanos que tuvieron contacto con esos lugares lograron vincularse a ella: así nacieron los vedlys. Existe una práctica social y cultural no escrita: los vedlys no revelan su naturaleza ni la existencia de la magia a los communia. Algunos vedlys viven completamente integrados entre communia, ejerciendo profesiones comunes, mientras que otros se aíslan en comunidades mágicas.",
-        reglas_de_magia: "Utilizan la magia contemporánea, la mayoría la percibe pero no la ve completamente. Son muy pocos los que pueden percibir los demás tipos de magia y aún no se conoce alguien que las pueda utilizar todos. La magia contemporánea es la que se enseña en las escuelas de magia y la que se utiliza en la vida cotidiana. Algunos también pueden manipular la energía ambiental.",
+        reglas_de_magia: "Utilizan la magia contemporánea, la mayoría la percibe pero no la ve completamente. Son muy pocos los que pueden percibir los demás tipos de magia y aún no se conoce alguien que las pueda utilizar todos. La magia contemporánea es la que se enseña en las escuelas vedlys y la que se utiliza en la vida cotidiana. Algunos también pueden manipular la energía ambiental.",
         imagen_fondo: "imagenes_principal/mundos/vedlys.jpg",
         desbloqueado: 1
       },
@@ -80,7 +80,7 @@ const MUNDOS_DATA = [
     nombre_visible: "Celestial",
     tipo: "Dimensión etérea",
     descripcion_breve: "El reino de las esferas superiores, el orden sagrado y la justicia etérea.",
-    historia_o_lore: "Los seres celestiales son subordinados del Hacedor de todo. Al principio no existían diferencias entre ellos; las categorías fueron apareciendo con el tiempo: primero con la creación de los humanos, y después con la corrupción de uno de los suyos, La Sombra.",
+    historia_o_lore: "Los seres celestiales son subordinados del Hacedor de todo. Al principio no existían diferencias entre ellos; las categorías fueron apareciendo con el tiempo: primero con la creación de los humanos, y después con la corrupción de uno de los suyos: Itzal.",
     reglas_de_magia: "Por regla general no ven la magia pero sí perciben su presencia. Los nemori detectan inmediatamente su naturaleza celestial. Los humanos los olvidan fácilmente a menos que les den su nombre completo. La magia no les afecta, aunque sí puede causarles dolor.",
     desbloqueado: 1, 
     revelado_en: "Libro 2",
@@ -92,7 +92,7 @@ const MUNDOS_DATA = [
         nombre_visible: "Serafines", 
         tipo: "Orden Celestial", 
         descripcion_breve: "Enviados al mundo humano por el Hacedor de Todo.",
-        historia_o_lore: "Cuando surgieron las demás categorías (guardianes, querubines, guerreros), los serafines quedaron como los ayudantes generales del Hacedor de todo hacia los humanos, tanto en situaciones difíciles como en la concesión de algún deseo a quienes elHacedor de Todo considera dignos. No suelen relacionarse directamente con las personas. Cuando necesitan estar en el mundo físico, toman prestado el cuerpo de un recipiente: un ser humano con características especiales que de antemano ha dado su consentimiento. Una de sus principales características es poder escuchar los pensamientos del humano al que le van a conceder los deseos. ", 
+        historia_o_lore: "Cuando surgieron las demás categorías, los serafines quedaron como los ayudantes generales del Hacedor de Todo para el mundo humano: tanto en situaciones difíciles como en la concesión de algún deseo. No suelen relacionarse directamente con las personas. Cuando necesitan estar en el mundo físico, toman prestado el cuerpo de un recipiente: un ser humano con características especiales que de antemano ha dado su consentimiento. Una de sus principales características es poder escuchar los pensamientos del humano al que le van a conceder los deseos. ", 
         reglas_de_magia: "No soportan la magia activa, y si están en contacto prolongado o intenso con ella, se convierten en polvo cósmico.",
         imagen_fondo: "imagenes_principal/mundos/serafines.jpg", 
         desbloqueado: 1 
@@ -103,7 +103,7 @@ const MUNDOS_DATA = [
         nombre_visible: "La Sombra",
         tipo: "Ser Celestial Corrompido",
         descripcion_breve: "De origen celestial, corrompido por intentar apropiarse de la energía del mundo.",
-        historia_o_lore: "Al darse cuenta de todo el poder que había dentro del planeta, un ángel del reino celestial quiso apropiárselo y bajó al plano humano. Por hacerlo desde el egoísmo, su propia energía se fue oscureciendo. Miguel lo derrotó y lo encerró en una fortaleza en las entrañas de la Tierra, pero encerrarlo no bastó para contener su influencia: su poder sigue corrompiendo la energía ambiental a su alrededor, y de esa corrupción nació la magia oscura, la misma que dio origen a los Achlys.",
+        historia_o_lore: "Al darse cuenta de todo el poder que había dentro del planeta, un ángel del reino celestial quiso apropiárselo y bajó al plano humano, su nombre era Itzal. Por hacerlo desde el egoísmo, su propia energía se fue oscureciendo. Miguel lo derrotó y lo encerró en una fortaleza en las entrañas de la Tierra, pero encerrarlo no bastó para contener su influencia: su poder sigue corrompiendo la energía ambiental a su alrededor, y de esa corrupción nació la magia oscura, la misma que dio origen a los Achlys.",
         reglas_de_magia: "Es la fuente de la magia oscura. Corrompe el ambiente a través de magia entretejida y residual oscura, y de escritos que él mismo dejó. Un círculo de protección mantiene a los demás alejados de esa influencia, pero vedlys y communia atraídos por lo desconocido a veces lo burlan y caen gradualmente en sus garras. Cuanto más poder acumula, más amplia se vuelve su esfera de corrupción.",
         imagen_fondo: "imagenes_principal/mundos/la_sombra.jpg",
         desbloqueado: 2
@@ -149,7 +149,7 @@ const MUNDOS_DATA = [
     nombre_visible: "Nemori",
     tipo: "Fenrasa Ancestral",
     descripcion_breve: "El conjunto de todos los seres mágicos no humanos del mundo. La cuna de la magia de la naturaleza, espíritus elementales y razas antiguas.",
-    historia_o_lore: "El Hacedor de todo creó a los Nemori; cuatro razas originales, para que cuidaran su creación: cada una con la capacidad de transformar un elemento de la energía natural y usarlo para distintos fines. Con el tiempo se distribuyeron por el mundo, y de ahí surgieron los distintos pueblos culturales de cada raza. Tras la Primera Guerra Mágica y los desequilibrios que esta generó, aparecieron nuevas razas.",
+    historia_o_lore: "El Hacedor de todo creó a los Nemori: cuatro razas originales, para que cuidaran su creación. Cada una con la capacidad de transformar un elemento de la energía natural y usarlo para distintos fines. Con el tiempo se distribuyeron por el mundo, y de ahí surgieron los diferentes pueblos culturales de cada raza. Tras la Primera Guerra Mágica y los desequilibrios que esta generó, aparecieron nuevas razas.",
     reglas_de_magia: "Cada raza nemori original extrae su poder únicamente de una parte de la energía natural, nunca de toda (aire, agua, tierra o fuego). Su magia fluye libremente: no necesita catalizadores, sino que se moldea con la voluntad y el respeto a la naturaleza.",
     imagen_fondo: "imagenes_principal/mundos/nemori_bg.jpg",
     desbloqueado: 1,
@@ -169,7 +169,7 @@ const MUNDOS_DATA = [
             nombre: "Brownies (ahora Dridalys)",
             region: "Europa (Celta)",
             imagen_fondo: "imagenes_principal/mundos/celta.jpg",
-            descripcion_breve: "Protectores del hogar y artesanos de la cocina mística.",
+            descripcion_breve: "Protectores del hogar y artesanos de la cocina.",
             desbloqueado: 1
           },
           {
@@ -271,7 +271,7 @@ const MUNDOS_DATA = [
         nombre_visible: "Kotole",
         tipo: "Raza Ancestral",
         descripcion_breve: "Dedicados al cuidado y trabajo del subsuelo.",
-        historia_o_lore: "Encargados de extraer los minerales necesarios para la vida, su profundo conocimiento de la tierra los convirtió en maestros artesanos. Un grupo exiliado mantiene esta tradición en el mundo subterráneo. Fabrican armas y objetos para contener la magia muy codiciados.",
+        historia_o_lore: "Encargados de extraer los minerales necesarios para la vida, su profundo conocimiento de la tierra los convirtió en maestros artesanos. Un grupo exiliado mantiene esta tradición en el mundo subterráneo. Las armas y objetos para contener la magia que fabrican sonmuy codiciados.",
         reglas_de_magia: "Su magia proviene de la energía natural de la tierra. Aunque su especialidad es fabricar objetos mágicos, también son capaces de manipular la magia de forma directa.",
         imagen_fondo: "imagenes_principal/mundos/kotole.jpg",
         desbloqueado: 1,
@@ -340,7 +340,7 @@ const MUNDOS_DATA = [
         tipo: "Razas Secundarias",
         descripcion_breve: "Criaturas y clanes independientes que habitan el mundo.",
         historia_o_lore: "Razas que fueron apareciendo progresivamente tras los eventos desestabilizadores de la primera guerra mágica.",
-        reglas_de_magia: "Poseen magias físicas o elementales híbridas con características únicas según su estirpe.",
+        reglas_de_magia: "Utilizan magia elemental híbrida con características únicas según su estirpe.",
         imagen_fondo: "imagenes_principal/mundos/otras_razas.jpg",
         desbloqueado: 1,
         regiones: [
@@ -398,7 +398,7 @@ const MUNDOS_DATA = [
     nombre_visible: "Panteones culturales",
     tipo: "El reino de los dioses",
     descripcion_breve: "El dominio secreto donde residen las antiguas deidades y fuerzas primigenias de las distintas culturas.",
-    historia_o_lore: "Las divinidades de diferentes culturas existen de forma real, aunque su presencia no es constante ni universal. Son entidades con poder propio, distintas de los seres celestiales: su poder proviene de su esencia divina, una fuerza completamente diferente a la magia vedlys, no clasificable ni medible por los humanos. Debido a que la gente dejó de creer en ellos sus poderes fueron mermando, y hoy solo se manifiestan en lugares donde aún se les recuerda. La mayoría de los dioses no interactúa con los humanos, sin embargo algunos sí lo hacen, especialmente aquellos que tienen un vínculo con la muerte y el más allá.",
+    historia_o_lore: "Las divinidades de diferentes culturas existen de forma real, aunque su presencia no es constante ni universal. Son entidades con poder propio, distintas de los seres celestiales: su poder proviene de su esencia divina, una fuerza completamente diferente a la magia vedlys, no clasificable ni medible por los humanos. Debido a que la gente dejó de creer en ellos sus poderes fueron mermando, y hoy solo se manifiestan en lugares donde aún se les recuerda. La mayoría de los dioses no interactúa con los humanos. Los que si lo hacen son principalmente aquellos que tienen un vínculo con la muerte y el más allá.",
     reglas_de_magia: "El poder en esta dimensión trasciende las leyes terrenales y responde al dominio conceptual de cada deidad. Las divinidades son neutrales o ambivalentes; no responden a conceptos humanos de bien o mal. Se conocen entre sí y pueden interactuar, especialmente las relacionadas con los mundos de los muertos.",
     imagen_fondo: "imagenes_principal/mundos/locked_bg.jpg",
     desbloqueado: 1, // Nivel 3: Spoiler total hasta el Libro 3
@@ -423,7 +423,7 @@ const MUNDOS_DATA = [
   region: "México",
   descripcion_breve: "Una civilización cuya idea de la muerte y el inframundo sigue muy viva en el imaginario mexicano.",
   historia_o_lore: "Para las culturas mesoamericanas, el alma del difunto no terminaba su camino al morir: debía descender por los nueve niveles del Mictlán, superando pruebas y obstáculos en cada uno. Al llegar al noveno nivel, el alma alcanzaba por fin el descanso eterno.",
-  reglas_de_magia: "Lo sobrenatural estaba tejido en la vida cotidiana a través de calendarios, rituales y ofrendas. El tiempo se entendía como cíclico, y los actos humanos —sacrificios, ceremonias, ofrendas— servían para mantener el equilibrio entre el mundo de los vivos y el de los dioses.",
+  reglas_de_magia: "Lo sobrenatural estaba tejido en la vida cotidiana a través de calendarios, rituales y ofrendas. El tiempo se entendía como cíclico, y los actos humanos (sacrificios, ceremonias, ofrendas) servían para mantener el equilibrio entre el mundo de los vivos y el de los dioses.",
   imagen_fondo: "imagenes_principal/mundos/panteon_mesoamerica.jpg",
   desbloqueado: 1
 },
@@ -515,7 +515,7 @@ const MUNDOS_DATA = [
   region: "Mesopotamia",
   descripcion_breve: "Una de las cosmovisiones más antiguas del mundo, donde la muerte era el mismo destino para todos.",
   historia_o_lore: "El inframundo mesopotámico, Kur, era 'la tierra sin retorno': un reino oscuro bajo tierra gobernado por la diosa Ereshkigal, al que llegaban por igual reyes y campesinos, héroes y villanos. No existía distinción entre buenos y malos: era simplemente el único destino que esperaba a todo mortal después de la vida.",
-  reglas_de_magia: "A diferencia de otras cosmovisiones, aquí lo sobrenatural no premiaba ni castigaba: el más allá era un hecho ineludible, no una consecuencia moral. Los dioses gobernaban el destino del mundo desde consejos divinos, y el equilibrio entre los reinos —el cielo, la tierra y el inframundo— dependía de que cada uno respetara sus límites.",
+  reglas_de_magia: "A diferencia de otras cosmovisiones, aquí lo sobrenatural no premiaba ni castigaba: el más allá era un hecho ineludible, no una consecuencia moral. Los dioses gobernaban el destino del mundo desde consejos divinos, y el equilibrio entre los reinos (el cielo, la tierra y el inframundo) dependía de que cada uno respetara sus límites.",
   imagen_fondo: "imagenes_principal/mundos/panteon_mesopotamico.jpg",
   desbloqueado: 1
 }

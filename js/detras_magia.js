@@ -329,6 +329,7 @@ function cargarLibrosSaga() {
         <h4>${tituloAMostrar}</h4>
         ${esDisponible ? `<p class="volumen">Volumen ${libro.numero}</p>` : ''}
         <p class="sinopsis-corta">${libro.frase || ''}</p>
+        ${esDisponible && libro.precio ? `<p class="precio-libro">${libro.precio}</p>` : ''}
         ${htmlAcciones}
       </div>
     `;

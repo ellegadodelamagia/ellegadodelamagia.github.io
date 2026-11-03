@@ -641,3 +641,10 @@
     padding: 20px;
   }
 }
+
+.precio-libro {
+  color: #424b53; /* El color que prefieras */
+  font-size: 0.8rem; /* Prueba con valores entre 0.8rem y 0.95rem según lo pequeño que lo quieras */
+  font-weight: 600; /* Un grosor medio para que no pierda legibilidad */
+  margin: 6px 0;
+}

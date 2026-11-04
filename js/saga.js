@@ -194,41 +194,42 @@ function mostrarGridSaga() {
     <div class="grid-saga-tres">
   `;
 
-  datos.forEach((libro) => {
-    const esNivel1 = libro.nivelVisibilidad === 1;
-    const esNivel2 = libro.nivelVisibilidad === 2;
-    const esNivel3 = libro.nivelVisibilidad === 3;
+  // CAMBIO: los libros de nivel 3 no se generan (no aparecen en la página)
+  // PERSONALIZABLE: si algún día quieres volver a mostrar el nivel 3, quita este filter
+  datos
+    .filter((libro) => libro.nivelVisibilidad !== 3)
+    .forEach((libro) => {
+      const esNivel1 = libro.nivelVisibilidad === 1;
+      const esNivel2 = libro.nivelVisibilidad === 2;
 
-    // Texto y estado del botón según el nivel
-    let textoBoton = "Conoce el libro";        // PERSONALIZABLE
-    let deshabilitado = "";
-    if (esNivel2) { textoBoton = "Creando el libro";      deshabilitado = "disabled"; }  // PERSONALIZABLE
-    if (esNivel3) { textoBoton = "Planificando el libro"; deshabilitado = "disabled"; }  // PERSONALIZABLE
+      // Texto y estado del botón según el nivel
+      let textoBoton = "Conoce el libro";   // PERSONALIZABLE (nivel 1: completo)
+      let deshabilitado = "";
+      if (esNivel2) { textoBoton = "Creando el libro"; deshabilitado = "disabled"; }  // PERSONALIZABLE (nivel 2: borroso)
 
-    const claseTitulo = esNivel3 ? "titulo-borroso" : "";
-    const claseImagen = esNivel2 ? "imagen-blur-protegida" : "";
+      const claseImagen = esNivel2 ? "imagen-blur-protegida" : "";
 
-    htmlGrid += `
-      <article class="tarjeta-saga-item nivel-${libro.nivelVisibilidad}">
-        <div class="tarjeta-imagen-box">
-          <img src="${libro.imagen}" alt="${libro.titulo}"
-               class="imagen-portada-grid ${claseImagen}"
-               onerror="this.src='${SAGA_CONFIG.respaldoGrid}'">
-        </div>
-        <div class="tarjeta-cuerpo-box">
-          <span class="numero-libro-tag">Libro ${libro.numero}</span>
-          <h3 class="titulo-libro-grid ${claseTitulo}">${libro.titulo}</h3>
-          <p class="frase-libro-grid">"${libro.frase}"</p>
-          <button
-            class="btn-conoce-libro ${esNivel2 ? "btn-restringido" : ""}"
-            ${deshabilitado}
-            ${esNivel1 ? `onclick="abrirDetalleLibro('${libro.id}')"` : ""}>
-            ${textoBoton}
-          </button>
-        </div>
-      </article>
-    `;
-  });
+      htmlGrid += `
+        <article class="tarjeta-saga-item nivel-${libro.nivelVisibilidad}">
+          <div class="tarjeta-imagen-box">
+            <img src="${libro.imagen}" alt="${libro.titulo}"
+                 class="imagen-portada-grid ${claseImagen}"
+                 onerror="this.src='${SAGA_CONFIG.respaldoGrid}'">
+          </div>
+          <div class="tarjeta-cuerpo-box">
+            <span class="numero-libro-tag">Libro ${libro.numero}</span>
+            <h3 class="titulo-libro-grid">${libro.titulo}</h3>
+            <p class="frase-libro-grid">"${libro.frase}"</p>
+            <button
+              class="btn-conoce-libro ${esNivel2 ? "btn-restringido" : ""}"
+              ${deshabilitado}
+              ${esNivel1 ? `onclick="abrirDetalleLibro('${libro.id}')"` : ""}>
+              ${textoBoton}
+            </button>
+          </div>
+        </article>
+      `;
+    });
 
   htmlGrid += `</div>`;
   contenedor.innerHTML = htmlGrid;

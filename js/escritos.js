@@ -378,17 +378,28 @@ function abrirEscrito(id) {
         seccionDestino.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
-      setTimeout(() => {
-        if (typeof window.abrirDetalleLibro === "function") {
-          window.abrirDetalleLibro(libroId);
-        }
-      }, 350);
+      // CAMBIO: buscamos el libro en los datos y solo abrimos su detalle si es nivel 1
+      // (nivel 2 = borroso y sin botón; nivel 3 = no aparece). Si no, se queda en el grid.
+      const datosSaga = (typeof window.obtenerDatosSaga === "function")
+        ? window.obtenerDatosSaga()
+        : window.SAGA_DATA;                                  // PERSONALIZABLE: respaldo si no se encuentra la función
+      const libro = Array.isArray(datosSaga)
+        ? datosSaga.find(l => l.id === libroId)
+        : null;
+      const detalleDisponible = libro && libro.nivelVisibilidad === 1;   // PERSONALIZABLE: niveles que sí abren detalle
+
+      if (detalleDisponible) {
+        setTimeout(() => {
+          if (typeof window.abrirDetalleLibro === "function") {
+            window.abrirDetalleLibro(libroId);
+          }
+        }, 350);
+      }
     });
   });
 
   modal.classList.add("visible");
 }
-
 
 // =========================================================================
 // 6. FILTROS

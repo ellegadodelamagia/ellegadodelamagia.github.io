@@ -60,7 +60,23 @@ const datosObjetos = [
     imagen: "imagenes_principal/objetos/dije_recolector.jpg"
 },
 {
-    id: 8,
+ id: 8,
+    nombre: "Escrileta",
+    caracteristicas: "Libreta que solo se abre si tienes una pluma en la mano. Wilbur no sabe explicar su funcionamiento ya que es de origen vedlys.",
+    propietario_actual: "Cualquier vedlys que compre una",
+    origen: "Vedlys",
+    imagen: "imagenes_principal/objetos/escrileta.jpg"
+},
+{
+    id: 9,
+    nombre: "Cristales ambientales",
+    caracteristicas: "Cristales que Kaira fabrica utilizando la energía ambiental. Resultan útiles cuando necesita marcar líneas de magia.",
+    propietario_actual: "Cualquier vedlys que logre fabricarlos",
+    origen: "Ambiental",
+    imagen: "imagenes_principal/objetos/cristales.jpg"
+},
+{
+    id: 10,
     nombre: "Reloj maldito",
     caracteristicas: "Reloj de pie extremadamente hermoso y con sonido celestial. Tiene un maleficio que hace que quien lo vea y escuche se acerque lo suficiente para quedar atrapado.",
     propietario_actual: "Familia vedlys relojera (Museo del Reloj, Ginebra)",

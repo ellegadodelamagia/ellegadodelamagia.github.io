@@ -257,6 +257,84 @@
   justify-content: center;
 }
 
+/* --- Ficha de datos de un evento (entradas de "Presentaciones") --- */
+.blog-evento {
+  background: rgba(20, 20, 30, 0.75);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 0 0 22px 0;
+  box-shadow: 0 0 15px rgba(200, 168, 75, 0.15);
+}
+
+.blog-evento dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 18px;
+  margin: 0;
+}
+
+.blog-evento dt {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-top: 4px;
+}
+
+.blog-evento dd {
+  margin: 0;
+  color: rgba(245, 235, 213, 0.95);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+}
+
+/* Cartel o invitación (imagen alta): que no ocupe todo el ancho */
+.blog-cartel img {
+  display: block;
+  max-width: 420px;            /* PERSONALIZABLE: ancho máximo del cartel */
+  margin: 0 auto;
+}
+
+/* --- Letrero grande del día del evento ("¡ES HOY!") --- */
+.blog-hoy {
+  margin: 0 0 22px 0;
+  padding: 14px 0;
+  border-top: 1px solid rgba(200, 168, 75, 0.4);
+  border-bottom: 1px solid rgba(200, 168, 75, 0.4);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;             /* PERSONALIZABLE: tamaño del letrero */
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-shadow: 0 0 12px rgba(197, 169, 86, 0.5), 0 0 25px rgba(138, 43, 226, 0.3);
+}
+
+/* --- Comentario de un asistente (entradas de resultados) --- */
+.blog-comentario {
+  margin: 0 0 22px 0;
+  padding: 4px 0 4px 18px;
+  border-left: 3px solid var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: rgba(245, 235, 213, 0.9);
+}
+
+.blog-comentario footer {
+  position: static;            /* anula el pie fijo del sitio solo aquí */
+  background: none;
+  backdrop-filter: none;
+  border: none;
+  padding: 0;
+  margin-top: 6px;
+  font-style: normal;
+  font-size: 0.95rem;
+  color: var(--gold-dim);
+}
+
 /* ==========================================================================
    5. RESPONSIVE (celular)
    ========================================================================== */
@@ -276,5 +354,18 @@
 
   .blog-entrada {
     padding: 15px;
+  }
+
+  .blog-hoy {
+    font-size: 2.2rem;
+  }
+
+  .blog-evento dl {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .blog-evento dd {
+    margin-bottom: 10px;
   }
 }

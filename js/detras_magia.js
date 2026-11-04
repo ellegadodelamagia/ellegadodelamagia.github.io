@@ -263,7 +263,7 @@ function configurarEventosModalProceso() {
 // Campo "estado" de cada libro en datos_saga.js:
 //   "disponible"       → portada, título, botones de contacto
 //   "medio_disponible" → etiqueta "En Creación", portada con blur
-//   "no_disponible"    → etiqueta "Próximamente"
+//   "no_disponible"    → NO APARECE (se filtra más abajo)
 // ============================================================================
 function cargarLibrosSaga() {
   const contenedor = document.getElementById("grid-libros-saga");
@@ -276,7 +276,11 @@ function cargarLibrosSaga() {
 
   if (!contenedor) return;
 
-  contenedor.innerHTML = window.SAGA_DATA.map(libro => {
+  // CAMBIO: los libros "no_disponible" (nivel 3) no se generan
+  // PERSONALIZABLE: si algún día quieres volver a mostrarlos como "Próximamente", quita este filter
+  const librosVisibles = window.SAGA_DATA.filter(libro => libro.estado !== "no_disponible");
+
+  contenedor.innerHTML = librosVisibles.map(libro => {
     let textoBadge = "";
     let claseBadge = "";
     let textoMensaje = "";
@@ -293,8 +297,8 @@ function cargarLibrosSaga() {
         textoMensaje = "Imaginando y escribiendo...";      // PERSONALIZABLE
         break;
 
-      case "no_disponible":
       default:
+        // Respaldo: si un libro no trae "estado" o trae uno desconocido, se muestra como próximamente
         textoBadge = "Próximamente";                       // PERSONALIZABLE
         claseBadge = "no-disponible";
         textoMensaje = "En planificación...";              // PERSONALIZABLE
@@ -335,7 +339,6 @@ function cargarLibrosSaga() {
     `;
   }).join('');
 }
-
 
 // ============================================================================
 // 5. UTILIDADES (ir al formulario y contadores)

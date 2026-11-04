@@ -39,7 +39,7 @@ window.SAGA_DATA = [
     contraportada: "",
     sinopsis: "Antes de continuar su camino, Kaira debe superar las pruebas que le imponen. Solo quien las supere podrá recibir lo que le falta.",
     estado: "medio_disponible",
-    nivelVisibilidad: 3,
+    nivelVisibilidad: 2,
     desbloqueoEn: "Se descubre en el Libro 3",
     precio: "$350 MXN (mas envío)" // <--- Nueva propiedad añadida  
   },

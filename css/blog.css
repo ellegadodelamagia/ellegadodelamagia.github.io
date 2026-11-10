@@ -335,6 +335,38 @@
   color: var(--gold-dim);
 }
 
+/* --- Lista anidada tipo matrioska (entradas de "La fantasía") --- */
+.blog-cajas,
+.blog-cajas ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-cajas {
+  margin: 0 0 22px 0;
+}
+
+.blog-cajas ul {
+  margin: 4px 0 0 16px;
+  padding-left: 16px;
+  border-left: 1px solid rgba(200, 168, 75, 0.4);
+}
+
+.blog-cajas span {
+  display: block;
+  padding: 4px 0;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.blog-cajas .blog-cajas-final {
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(197, 169, 86, 0.5);
+}
+
 /* ==========================================================================
    5. RESPONSIVE (celular)
    ========================================================================== */

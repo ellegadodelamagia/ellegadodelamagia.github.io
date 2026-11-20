@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="css/saga.css">
   <link rel="stylesheet" href="css/detras_magia.css">
   <link rel="stylesheet" href="css/objetos.css">
+  <!-- ⭐ NUEVO: menú de tarjetas para celular. Debe ir SIEMPRE el último de los CSS -->
+  <link rel="stylesheet" href="css/menu_movil.css">
 
   <link rel="icon" href="data:,">
 
@@ -64,6 +66,137 @@
         <a href="#detras_magia" class="enlace-saga">🧙‍♂️ Detrás de la magia</a>
       </div>
     </div>
+  </section>
+
+  <!-- =====================================================================
+       ⭐ NUEVO: MENÚ DE TARJETAS (SOLO SE VE EN CELULAR)
+       En PC este bloque está escondido por css/menu_movil.css.
+       Estructura:
+         1) grid de 4 tarjetas grandes   (.mm-grid)
+         2) 4 paneles con sus subtarjetas (.mm-panel), uno por tarjeta grande
+       Cada tarjeta es un enlace: href="#grupo-..." abre un panel,
+       href="#historia" (etc.) abre la sección completa.
+       ===================================================================== -->
+  <section id="menu-movil">
+
+    <div class="mm-encabezado">
+      <!-- PERSONALIZABLE: título y subtítulo del menú -->
+      <p class="titulo-seccion-sub">EL LEGADO DE LA MAGIA</p>
+      <h2 class="titulo-seccion">Elige tu camino</h2>
+      <div class="divisor-mistico"><div class="rombo"></div></div>
+    </div>
+
+    <!-- 1) LAS 4 TARJETAS GRANDES -->
+    <div class="mm-grid">
+
+      <!-- PERSONALIZABLE: la runa (imagen), el nombre y la frasecita de cada tarjeta.
+           Las imágenes van en imagenes_principal/runas/ con nombre runa_<tarjeta>.png
+           (si usas JPG, cambia ".png" por ".jpg" en las 14 imágenes). -->
+      <a href="#grupo-historia" class="mm-tarjeta">
+        <img class="mm-runa" src="imagenes_principal/runas/runa_historia.png" alt="" onerror="this.style.visibility='hidden'">
+        <span class="mm-titulo">La Historia</span>
+        <span class="mm-detalle">Cómo inició todo</span>
+      </a>
+
+      <a href="#grupo-archivos" class="mm-tarjeta">
+        <img class="mm-runa" src="imagenes_principal/runas/runa_archivos.png" alt="" onerror="this.style.visibility='hidden'">
+        <span class="mm-titulo">Los Archivos</span>
+        <span class="mm-detalle">Personajes, objetos y más</span>
+      </a>
+
+      <a href="#grupo-viajes" class="mm-tarjeta">
+        <img class="mm-runa" src="imagenes_principal/runas/runa_viajes.png" alt="" onerror="this.style.visibility='hidden'">
+        <span class="mm-titulo">Los Viajes</span>
+        <span class="mm-detalle">Mapa y recetario</span>
+      </a>
+
+      <a href="#grupo-detras" class="mm-tarjeta">
+        <img class="mm-runa" src="imagenes_principal/runas/runa_detras.png" alt="" onerror="this.style.visibility='hidden'">
+        <span class="mm-titulo">Detrás de la Magia</span>
+        <span class="mm-detalle">La autora y tu mensaje</span>
+      </a>
+
+    </div>
+
+    <!-- 2) PANEL: LA HISTORIA (historia y saga, universo) -->
+    <div id="grupo-historia" class="mm-panel">
+      <h3 class="mm-panel-titulo">La Historia</h3>
+      <div class="divisor-mistico"><div class="rombo"></div></div>
+      <div class="mm-subgrid">
+        <a href="#historia" class="mm-tarjeta">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_historia_saga.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Historia y Saga</span>
+        </a>
+        <a href="#mundo" class="mm-tarjeta">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_universo.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Universo</span>
+        </a>
+      </div>
+      <a href="#menu-movil" class="mm-btn-volver">← Volver</a>
+    </div>
+
+    <!-- 2) PANEL: LOS ARCHIVOS (personajes, objetos, escritos, tipos de magia) -->
+    <div id="grupo-archivos" class="mm-panel">
+      <h3 class="mm-panel-titulo">Los Archivos</h3>
+      <div class="divisor-mistico"><div class="rombo"></div></div>
+      <div class="mm-subgrid">
+        <a href="#personajes" class="mm-tarjeta">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_personajes.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Personajes</span>
+        </a>
+        <a href="#objetos" class="mm-tarjeta">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_objetos.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Objetos</span>
+        </a>
+        <a href="#escritos" class="mm-tarjeta">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_escritos.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Escritos</span>
+        </a>
+        <a href="#tipos_magia" class="mm-tarjeta">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_tipos_magia.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Tipos de magia</span>
+        </a>
+      </div>
+      <a href="#menu-movil" class="mm-btn-volver">← Volver</a>
+    </div>
+
+    <!-- 2) PANEL: LOS VIAJES (mapa y recetas)
+         Estos dos enlaces abren los portales igual que el menú de arriba -->
+    <div id="grupo-viajes" class="mm-panel">
+      <h3 class="mm-panel-titulo">Los Viajes</h3>
+      <div class="divisor-mistico"><div class="rombo"></div></div>
+      <div class="mm-subgrid">
+        <a href="mapa.html" class="mm-tarjeta" onclick="return abrirPortal('mapa')">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_mapa.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Viaje de Kaira</span>
+        </a>
+        <a href="recetas.html" class="mm-tarjeta" onclick="return abrirPortal('recetas')">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_recetario.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Recetario de Daniella</span>
+        </a>
+      </div>
+      <a href="#menu-movil" class="mm-btn-volver">← Volver</a>
+    </div>
+
+    <!-- 2) PANEL: DETRÁS DE LA MAGIA (y contacto)
+         "Contacto" lleva directo al bloque "Escríbeme un mensaje"
+         (id="seccion-contacto-form", que crea detras_magia.js). -->
+    <div id="grupo-detras" class="mm-panel">
+      <h3 class="mm-panel-titulo">Detrás de la Magia</h3>
+      <div class="divisor-mistico"><div class="rombo"></div></div>
+      <div class="mm-subgrid">
+        <a href="#detras_magia" class="mm-tarjeta">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_detras_magia.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Detrás de la Magia</span>
+        </a>
+        <a href="#seccion-contacto-form" class="mm-tarjeta">
+          <img class="mm-runa" src="imagenes_principal/runas/runa_contacto.png" alt="" onerror="this.style.visibility='hidden'">
+          <span class="mm-titulo">Contacto</span>
+        </a>
+      </div>
+      <a href="#menu-movil" class="mm-btn-volver">← Volver</a>
+    </div>
+
   </section>
 
   <section id="historia" class="seccion-mistica">
@@ -180,6 +313,23 @@
 
     <div id="contenedor-detras-magia"></div>
   </section>
+
+  <!-- =====================================================================
+       ⭐ NUEVO: BOTONES FLOTANTES "← VOLVER" (SOLO CELULAR)
+       Deben ir DESPUÉS de todas las secciones (así el CSS sabe cuál mostrar).
+       Cada uno aparece solo cuando su sección está abierta.
+       PERSONALIZABLE: el href decide a qué panel regresa. El tamaño y la flecha
+       se cambian en menu_movil.css (punto 2.6).
+       ===================================================================== -->
+  <div class="mm-volver-contenedor">
+    <a href="#grupo-historia" class="mm-volver mm-volver-historia" aria-label="Volver">←</a>
+    <a href="#grupo-historia" class="mm-volver mm-volver-mundo" aria-label="Volver">←</a>
+    <a href="#grupo-archivos" class="mm-volver mm-volver-escritos" aria-label="Volver">←</a>
+    <a href="#grupo-archivos" class="mm-volver mm-volver-personajes" aria-label="Volver">←</a>
+    <a href="#grupo-archivos" class="mm-volver mm-volver-objetos" aria-label="Volver">←</a>
+    <a href="#grupo-archivos" class="mm-volver mm-volver-tipos_magia" aria-label="Volver">←</a>
+    <a href="#grupo-detras" class="mm-volver mm-volver-detras_magia" aria-label="Volver">←</a>
+  </div>
 
   <!-- Modal Global de Portal -->
   <div id="modal-portal">

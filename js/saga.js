@@ -3,7 +3,7 @@
 // ----------------------------------------------------------------------------
 // ÍNDICE (busca el número para saltar a cada parte)
 //   1. CONFIGURACIÓN (lo que más probablemente vas a mover)
-//   2. UTILIDADES (scroll y títulos)
+//   2. UTILIDADES (scroll, títulos y abrir secciones ocultas en celular)
 //   3. VISTA 1: Introducción + botón "Conoce la saga"
 //   4. VISTA 2: Grid de libros
 //   5. VISTA 3: Detalle de un libro
@@ -11,6 +11,13 @@
 //   7. Funciones globales y arranque
 //
 // NOTAS DE REVISIÓN
+//   - ⭐ NUEVO (menú de tarjetas en celular): en celular, la sección
+//     "Detrás de la magia" está oculta hasta que se abre desde el menú.
+//     Un elemento oculto no se puede alcanzar con scroll, por eso el botón
+//     "Toca si quieres llevar el libro" no hacía nada. Ahora, antes de
+//     hacer scroll, se abre esa sección (función abrirSeccionSiEstaOculta,
+//     parte 2) y después se baja hasta la tarjeta del libro.
+//     En PC no cambia nada: la sección ya está visible y ese paso se salta.
 //   - FIX CELULAR: al cambiar de vista ahora se hace scroll al inicio de la
 //     sección #historia, descontando la altura de la barra fija (se mide sola,
 //     aunque en celular la barra ocupe varias filas).
@@ -23,8 +30,8 @@
 //     id, numero, titulo, frase, imagen (grid), portada (detalle),
 //     contraportada (opcional), sinopsis, nivelVisibilidad (1, 2 o 3),
 //     desbloqueoEn (solo nivel 2).
-//   - PENDIENTE: el destino exacto de "Toca si quieres llevar el libro"
-//     depende del HTML que genera detras_magia.js (ver parte 6).
+//   - detras_magia.js ya pone data-libro="{id}" en cada tarjeta de libro,
+//     así que el destino "[data-libro='{id}']" de la parte 1 es el que gana.
 // ============================================================================
 
 
@@ -38,6 +45,15 @@ const SAGA_CONFIG = {
   selectorTituloSub: "#historia .titulo-seccion-sub",
   selectorTitulo: "#historia .titulo-seccion",
   selectorBarraFija: ".barra-navegacion",   // PERSONALIZABLE: barra de menú fija
+
+  // ⭐ NUEVO: sección que contiene los libros a la venta.
+  // En celular esta sección se abre automáticamente antes del scroll.
+  seccionCompra: "#detras_magia",            // PERSONALIZABLE
+
+  // ⭐ NUEVO: milisegundos de espera después de abrir la sección en celular,
+  // para que el navegador la pinte antes de calcular el scroll.
+  // PERSONALIZABLE: si el scroll queda corto en un celular lento, sube a 400.
+  esperaAbrirSeccion: 250,
 
   // Aire extra (px) entre la barra fija y lo que quedas viendo al hacer scroll
   margenScroll: 12,                          // PERSONALIZABLE
@@ -58,10 +74,10 @@ const SAGA_CONFIG = {
   // Destino de "Toca si quieres llevar el libro" en Detrás de la magia.
   // Se prueba en orden y gana el primero que exista. {id} se reemplaza por
   // el id del libro (por ejemplo "libro-1").
-  // PERSONALIZABLE: ajusta estos selectores cuando revisemos detras_magia.js
+  // PERSONALIZABLE: ajusta estos selectores si cambia detras_magia.js
   destinosCompra: [
     "#{id}",                     // una tarjeta con el id del libro
-    "[data-libro='{id}']",       // o con data-libro
+    "[data-libro='{id}']",       // o con data-libro (la que usa detras_magia.js)
     "#grid-libros-saga",         // el bloque completo de libros
     ".bloque-libros",
     "#detras_magia"              // último recurso: inicio de la sección
@@ -83,6 +99,21 @@ const sagaOriginal = {
 /** Lee los datos de la saga (datos_saga.js) o devuelve null si no están */
 function obtenerDatosSaga() {
   return window.SAGA_DATA || (typeof SAGA_DATA !== "undefined" ? SAGA_DATA : null);
+}
+
+/**
+ * ⭐ NUEVO: si la sección está oculta (pasa en celular, donde cada sección
+ * se abre desde el menú de tarjetas), la abre cambiando la dirección a
+ * "#detras_magia" (el CSS de menu_movil.css la muestra con :target).
+ * Devuelve true si tuvo que abrirla, false si ya estaba visible (PC).
+ */
+function abrirSeccionSiEstaOculta(selector) {
+  const seccion = document.querySelector(selector);
+  if (!seccion) return false;
+  if (getComputedStyle(seccion).display !== "none") return false;
+
+  window.location.hash = selector.replace("#", "");
+  return true;
 }
 
 /**
@@ -317,8 +348,9 @@ function abrirDetalleLibro(libroId) {
 // 6. BOTÓN "TOCA SI QUIERES LLEVAR EL LIBRO" → DETRÁS DE LA MAGIA
 // ----------------------------------------------------------------------------
 // Busca el primer destino que exista según SAGA_CONFIG.destinosCompra.
-// Ya no centra el bloque entero (en celular era altísimo y te dejaba a media
-// altura); ahora alinea el INICIO del destino debajo de la barra fija.
+// Alinea el INICIO del destino debajo de la barra fija.
+// ⭐ NUEVO: en celular, primero abre la sección Detrás de la magia (que está
+// oculta) y espera un momento antes de hacer scroll.
 // ============================================================================
 function irADetrasDeLaMagia(libroId) {
   for (const plantilla of SAGA_CONFIG.destinosCompra) {
@@ -332,7 +364,15 @@ function irADetrasDeLaMagia(libroId) {
     }
 
     if (destino) {
-      scrollAElemento(destino);
+      // ⭐ NUEVO: abrir la sección si está oculta (celular)
+      const seAbrio = abrirSeccionSiEstaOculta(SAGA_CONFIG.seccionCompra);
+
+      if (seAbrio) {
+        // Esperamos a que el navegador pinte la sección ya abierta
+        setTimeout(() => scrollAElemento(destino), SAGA_CONFIG.esperaAbrirSeccion);
+      } else {
+        scrollAElemento(destino);   // PC: la sección ya estaba visible
+      }
       return;
     }
   }
@@ -351,6 +391,10 @@ window.mostrarGridSaga = mostrarGridSaga;
 window.abrirDetalleLibro = abrirDetalleLibro;
 window.restaurarIntroduccionHistoria = restaurarIntroduccionHistoria;
 window.irADetrasDeLaMagia = irADetrasDeLaMagia;
+
+// ⭐ NUEVO: detras_magia.js usa window.scrollAElemento (botón "Enviar Correo").
+// Antes no estaba exportada y siempre caía al scroll normal; ahora sí.
+window.scrollAElemento = scrollAElemento;
 
 // Arranque seguro: espera a que el HTML esté listo
 if (document.readyState === "loading") {

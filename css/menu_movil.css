@@ -1,0 +1,265 @@
+/* =========================================================================
+   📱 MENÚ DE TARJETAS PARA CELULAR  (css/menu_movil.css)
+   -------------------------------------------------------------------------
+   ÍNDICE RÁPIDO (Ctrl+F con estas etiquetas):
+     🖥️ PARTE 1: EN PC SE ESCONDE TODO ... no cambia nada en escritorio
+     📱 PARTE 2: SOLO CELULAR ............ todo va dentro del @media
+        2.1  Esconder el "chorizo" (las secciones largas)
+        2.2  Mostrar UNA sección cuando se toca su tarjeta
+        2.3  Esconder portada/menú cuando hay algo abierto
+        2.4  Sección del menú y grid de 4 tarjetas
+        2.5  Paneles de subtarjetas
+        2.6  Botones "← Volver"
+
+   ¿CÓMO FUNCIONA? (sin JavaScript)
+   Cada tarjeta es un enlace con #algo. El navegador marca como ":target"
+   al elemento al que apunta el enlace, y el CSS lo muestra. Así:
+     tarjeta (#grupo-historia) -> subtarjeta (#historia) -> sección abierta
+   Bonus: el botón "atrás" del celular regresa un paso a la vez.
+
+   ⚠️ Este archivo debe cargarse AL FINAL de los <link> del index.html,
+   para que sus reglas ganen sobre las de los demás CSS.
+   ========================================================================= */
+
+
+/* =========================================================================
+   🖥️ PARTE 1: EN PC SE ESCONDE TODO
+   ========================================================================= */
+#menu-movil,
+.mm-volver-contenedor {
+  display: none;
+}
+
+
+/* =========================================================================
+   📱 PARTE 2: SOLO CELULAR
+   PERSONALIZABLE: 768px es el ancho máximo que cuenta como "celular".
+   Si cambias este número, cámbialo también en estilo.css para que ambos
+   archivos coincidan.
+   ========================================================================= */
+@media (max-width: 768px) {
+
+  /* -----------------------------------------------------------------------
+     2.1  ESCONDER EL "CHORIZO"
+     Las 7 secciones largas empiezan escondidas en celular.
+     PERSONALIZABLE: si agregas una sección nueva, añade su #id aquí
+     y también en 2.2.
+     ----------------------------------------------------------------------- */
+  #historia,
+  #mundo,
+  #escritos,
+  #personajes,
+  #objetos,
+  #tipos_magia,
+  #detras_magia {
+    display: none;
+  }
+
+  /* -----------------------------------------------------------------------
+     2.2  MOSTRAR LA SECCIÓN QUE SE TOCÓ
+     :target = la sección a la que apunta el enlace de la URL (#historia...)
+     ----------------------------------------------------------------------- */
+  #historia:target,
+  #mundo:target,
+  #escritos:target,
+  #personajes:target,
+  #objetos:target,
+  #tipos_magia:target,
+  #detras_magia:target,
+  #detras_magia:has(#seccion-contacto-form:target) {   /* Contacto vive dentro de esta sección */
+    display: block;
+    min-height: 70vh;   /* PERSONALIZABLE: altura mínima mientras carga el contenido */
+  }
+
+  /* -----------------------------------------------------------------------
+     2.3  ESCONDER PORTADA Y MENÚ CUANDO HAY ALGO ABIERTO
+     Así la sección abierta queda arriba y no hay que bajar el scroll.
+     (:has funciona en iPhone con iOS 15.4+ y en Chrome/Android recientes;
+      en celulares muy viejos simplemente no se esconde la portada, y todo
+      lo demás sigue funcionando.)
+     PERSONALIZABLE: borra estas 2 reglas si prefieres que la portada
+     siempre se quede arriba.
+     ----------------------------------------------------------------------- */
+  body:has(.seccion-mistica:target) #hero,
+  body:has(#seccion-contacto-form:target) #hero,
+  body:has(.mm-panel:target) #hero {
+    display: none;
+  }
+
+  body:has(.seccion-mistica:target) #menu-movil,
+  body:has(#seccion-contacto-form:target) #menu-movil {
+    display: none;
+  }
+
+  /* Deja espacio bajo la barra fija al llegar al formulario */
+  #seccion-contacto-form {
+    scroll-margin-top: 80px;
+  }
+
+  /* -----------------------------------------------------------------------
+     2.4  SECCIÓN DEL MENÚ Y GRID DE 4 TARJETAS
+     ----------------------------------------------------------------------- */
+  #menu-movil {
+    display: block;
+    position: relative;
+    z-index: 1;
+    padding: 4rem 1rem 5rem;     /* PERSONALIZABLE: relleno de la sección (abajo deja espacio al footer) */
+    text-align: center;
+    box-sizing: border-box;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .mm-grid,
+  .mm-subgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);   /* PERSONALIZABLE: 2 columnas (2x2) */
+    gap: 0.9rem;                              /* PERSONALIZABLE: separación entre tarjetas */
+    max-width: 460px;
+    margin: 1.5rem auto 0;
+  }
+
+  /* Tarjeta (la usan las 4 grandes y las subtarjetas) */
+  .mm-tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.2rem 0.6rem;
+    min-height: 150px;                        /* PERSONALIZABLE: alto de las tarjetas */
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    color: var(--parch);
+    background: linear-gradient(160deg, rgba(26, 21, 16, 0.92), rgba(10, 8, 6, 0.95));
+    border: 1px solid rgba(200, 168, 75, 0.45);   /* PERSONALIZABLE: color del marco */
+    border-radius: 6px;
+    box-shadow: 0 0 14px rgba(200, 168, 75, 0.12), inset 0 0 12px rgba(200, 168, 75, 0.06);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Feedback al tocar */
+  .mm-tarjeta:active {
+    background: rgba(200, 168, 75, 0.18);
+    border-color: var(--gold);
+    transform: scale(0.98);
+  }
+
+  /* ⭐ Runas (una imagen por tarjeta, con las dos runas juntas, proporción 2:1) */
+  .mm-runa {
+    display: block;
+    width: min(120px, 70%);                   /* PERSONALIZABLE: tamaño de la runa en la tarjeta */
+    height: auto;
+    object-fit: contain;
+    opacity: 0.95;                            /* PERSONALIZABLE: baja el número si brilla demasiado */
+
+    /* PERSONALIZABLE: si tus imágenes son JPG con fondo negro puro (#000000),
+       quita los comentarios de la siguiente línea para que el negro desaparezca.
+       Con PNG transparente no hace falta. */
+    /* mix-blend-mode: screen; */
+  }
+
+  .mm-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;                       /* PERSONALIZABLE: tamaño del nombre */
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+    color: var(--gold);
+  }
+
+  .mm-detalle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;                       /* PERSONALIZABLE: tamaño de la frasecita */
+    font-style: italic;
+    line-height: 1.3;
+    color: rgba(245, 228, 191, 0.7);
+  }
+
+  /* -----------------------------------------------------------------------
+     2.5  PANELES DE SUBTARJETAS
+     Escondidos hasta que se toca la tarjeta grande (:target).
+     Cuando uno se abre, el grid de 4 tarjetas se esconde.
+     ----------------------------------------------------------------------- */
+  .mm-panel {
+    display: none;
+    scroll-margin-top: 80px;
+  }
+
+  .mm-panel:target {
+    display: block;
+    min-height: 60vh;                         /* PERSONALIZABLE */
+  }
+
+  #menu-movil:has(.mm-panel:target) .mm-grid,
+  #menu-movil:has(.mm-panel:target) .mm-encabezado {
+    display: none;
+  }
+
+  .mm-panel-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;                        /* PERSONALIZABLE */
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-shadow: 0 0 12px rgba(197, 169, 86, 0.5);
+    margin: 1rem 0 0;
+  }
+
+  /* -----------------------------------------------------------------------
+     2.6  BOTONES "← VOLVER"
+     ----------------------------------------------------------------------- */
+  /* El de los paneles (va dentro de cada panel) */
+  .mm-btn-volver {
+    display: inline-block;
+    margin-top: 1.8rem;
+    padding: 0.7rem 1.6rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: var(--parch);
+    border: 1px solid rgba(200, 168, 75, 0.5);
+    border-radius: 50px;
+    background: rgba(10, 8, 6, 0.7);
+  }
+
+  /* El flotante que aparece cuando hay una sección abierta */
+  .mm-volver-contenedor {
+    display: block;
+  }
+
+  .mm-volver {
+    display: none;                            /* se muestra solo en su sección (abajo) */
+    position: fixed;
+    left: 0.7rem;                             /* PERSONALIZABLE */
+    bottom: 3.2rem;                           /* PERSONALIZABLE: altura sobre el footer fijo */
+    z-index: 1500;                            /* arriba del contenido, abajo de los modales */
+
+    /* PERSONALIZABLE: tamaño del cuadrito (más chico = tapa menos) */
+    width: 2.3rem;
+    height: 2.3rem;
+    line-height: 2.1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--parch);
+    background: rgba(10, 8, 6, 0.8);
+    border: 1px solid rgba(200, 168, 75, 0.7);
+    border-radius: 4px;                       /* cuadrito, como el del mapa */
+    opacity: 0.9;
+  }
+
+  /* Cada botón flotante se muestra SOLO cuando su sección está abierta.
+     PERSONALIZABLE: el href de cada uno (en index.html) decide a qué
+     panel regresa. */
+  #historia:target     ~ .mm-volver-contenedor .mm-volver-historia,
+  #mundo:target        ~ .mm-volver-contenedor .mm-volver-mundo,
+  #escritos:target     ~ .mm-volver-contenedor .mm-volver-escritos,
+  #personajes:target   ~ .mm-volver-contenedor .mm-volver-personajes,
+  #objetos:target      ~ .mm-volver-contenedor .mm-volver-objetos,
+  #tipos_magia:target  ~ .mm-volver-contenedor .mm-volver-tipos_magia,
+  #detras_magia:target ~ .mm-volver-contenedor .mm-volver-detras_magia,
+  #detras_magia:has(#seccion-contacto-form:target) ~ .mm-volver-contenedor .mm-volver-detras_magia {
+    display: inline-block;
+  }
+}
